@@ -19,22 +19,44 @@ module.exports = function(app) {
 
     //add a subscription to an user
     app.post("/subscriptions", function(req, res) {
-
+        db.Subscription.create(req.body).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //return list of subscriptions for a given user
     app.get("/api/users/:id/subscriptions", function(req, res) {
-
+        db.Subscription.findAll({
+          where: {
+            userId: req.params.id
+          }
+        }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //return a subscription
     app.get("/api/subscriptions/:id", function(req, res) {
-
+        db.Subscription.findOne({
+          where: {
+            id: req.params.id
+          }
+        }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //update a subscription record
-    app.put("/subscriptions/:id", function(req, res) {
-
+    app.put("/api/subscriptions/:id", function(req, res) {
+        db.Subscription.update(
+          req.body,
+          {
+            where: {
+              id: req.body.id
+            }
+          }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //add a ticket to a subscription
