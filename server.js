@@ -34,4 +34,4 @@ db.sequelize.sync().then(function(err) {
     console.log("App listening on PORT " + PORT);
   });
 });
->>>>>>> 78cea97031f0e3675fa09b3b5bf454e1c83b1b73
+
