@@ -34,24 +34,46 @@ module.exports = function(app) {
             });
     });
 
-    //add a subscription to an user
+    //add a subscription to a user
     app.post("/subscriptions", function(req, res) {
-
+        db.Subscription.create(req.body).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //return list of subscriptions for a given user
     app.get("/api/users/:id/subscriptions", function(req, res) {
-
+        db.Subscription.findAll({
+          where: {
+            userId: req.params.id
+          }
+        }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //return a subscription
     app.get("/api/subscriptions/:id", function(req, res) {
-
+        db.Subscription.findOne({
+          where: {
+            id: req.params.id
+          }
+        }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //update a subscription record
-    app.put("/subscriptions/:id", function(req, res) {
-
+    app.put("/api/subscriptions/:id", function(req, res) {
+        db.Subscription.update(
+          req.body,
+          {
+            where: {
+              id: req.body.id
+            }
+          }).then(function(dbSubscription) {
+          res.json(dbSubscription);
+        });
     });
 
     //add a ticket to a subscription
@@ -106,22 +128,44 @@ module.exports = function(app) {
 
     //add a watcher
     app.post("/watchers", function(req, res) {
-
+        db.Watcher.create(req.body).then(function(dbWatcher) {
+          res.json(dbWatcher);
+        });
     });
 
     //return a list of watchers for a specific user
     app.get("/api/users/:id/watchers", function(req, res) {
-
+        db.Watcher.findAll({
+          where: {
+            userId: req.params.id
+          }
+        }).then(function(dbWatcher) {
+          res.json(dbWatcher);
+        });
     });
 
     //update a watcher
     app.put("/watchers/:id", function(req, res) {
-
+        db.Watcher.update(
+          req.body,
+          {
+            where: {
+              id: req.body.id
+            }
+          }).then(function(dbWatcher) {
+          res.json(dbWatcher);
+        });
     });
 
     //remove a watcher
     app.delete("/watchers/:id", function(req, res) {
-
+        db.Watcher.destroy({
+          where: {
+            id: req.params.id
+          }
+        }).then(function(dbWatcher) {
+          res.json(dbWatcher);
+        });
     });
 
     //add a trade journal entry
