@@ -4,17 +4,34 @@ module.exports = function(app) {
 
 	//create a new user
     app.post("/users", function(req, res) {
-
+        db.User.create(req.body)
+        .then(function(dbUser) {
+            res.json(dbUser);
+        });
     });
 
     //return an user's record
     app.get("/api/users/:id", function(req, res) {
-
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        })
     });
 
     //update an user's record
     app.put("/users/:id", function(req, res) {
-
+        db.User.update(
+            req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbUser) {
+                res.json(dbUser);
+            });
     });
 
     //add a subscription to an user
