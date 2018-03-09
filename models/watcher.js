@@ -1,8 +1,3 @@
-// Watcher Id (Primary Auto Increment)
-// User Id
-// Organization
-// Date/Time
-
 module.exports = function(sequelize, DataTypes) {
     var Watcher = sequelize.define("Watcher", {
         id: {
@@ -23,5 +18,25 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     });
+
+    // Watcher should belong to a User
+    // A Watcher can't be created without a User
+
+    // Watcher.associate = function(models) {
+    //     Watcher.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Watcher;
 };
+
+// Add to User model:
+  // User.associate = function(models) {
+  //   // Associating User with Watcher
+  //   // When a User is deleted, also delete any associated Watchers
+  //   User.hasMany(models.Watchers, {
+  //     onDelete: "cascade"
+  //   });
+  // };
