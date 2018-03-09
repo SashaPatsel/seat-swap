@@ -26,8 +26,12 @@ app.use(bodyParser.json());
 //require("./routes/auth-routes.js")(app);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-db.sequelize.sync().then(function() {
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync().then(function(err) {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
+>>>>>>> 78cea97031f0e3675fa09b3b5bf454e1c83b1b73
