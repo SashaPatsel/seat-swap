@@ -1,11 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
     var Ticket = sequelize.define("Ticket", {
-        subId: DataTypes.INTEGER,
         date: DataTypes.DATE,
         seatSec: DataTypes.INTEGER,
         seatRow: DataTypes.STRING,
         seatNum: DataTypes.INTEGER,
-        subscription: { type: DataTypes.BOOLEAN, defaultValue: false }
+        status: {
+            type: DataTypes.ENUM('available', 'flexible', "locked", "gone")
+        },
+        subscription: { 
+            type: DataTypes.BOOLEAN, defaultValue: false 
+        }
     });
     Ticket.associate = function(models) {
         Ticket.belongsTo(models.User, {
@@ -13,9 +17,6 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-
-        Ticket.hasOne(models.TicketState);
-
     };
     return Ticket;
 };

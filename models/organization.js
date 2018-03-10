@@ -6,6 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     });
     Organization.associate = function(models) {
         Organization.hasMany(models.Ticket);
+        Organization.hasMany(models.Subscription);
+        Organization.hasMany(models.Teamfeed);
     }
     return Organization;
 };

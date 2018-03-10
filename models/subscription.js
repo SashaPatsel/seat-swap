@@ -4,17 +4,13 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     });
-
-    // Subscription should belong to a User
-    // A Subscription can't be created without a User
-
     Subscription.associate = function(models) {
         Subscription.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
-        Subscription.hasOne(models.Organization);
+        Subscription.hasMany(models.Ticket);
     };
     return Subscription;
 };
