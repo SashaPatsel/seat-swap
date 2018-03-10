@@ -1,24 +1,40 @@
+
 var db = require("../models");
 
 module.exports = function(app) {
 
-	//create a new user
+    //create a new user
     app.post("/users", function(req, res) {
-      console.log(req);
-        db.User.create(req.body).then(function(dbUser) {
-          console.log(dbUser);
-          res.json(dbUser);
+
+        db.User.create(req.body)
+        .then(function(dbUser) {
+            res.json(dbUser);
+
         });
     });
 
     //return an user's record
     app.get("/api/users/:id", function(req, res) {
-
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        })
     });
 
     //update an user's record
     app.put("/users/:id", function(req, res) {
-
+        db.User.update(
+            req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbUser) {
+                res.json(dbUser);
+            });
     });
 
     //add a subscription to a user
@@ -65,22 +81,52 @@ module.exports = function(app) {
 
     //add a ticket to a subscription
     app.post("/tickets", function(req, res) {
-
+        db.Tickets.create({
+            userId: 4,
+            subId: 203,
+            date: "03/08/2018",
+            time: "7:42",
+            seatSec: 207,
+            seatRow: "H",
+            seatNum: 8,
+            tixStatus: "Available",
+        }).then(function() {
+            res.json(res);
+        });
     });
 
-    //return all tickets for an user
+    //return all tickets for a user
     app.get("/users/:id/tickets", function(req, res) {
-
+        db.Tickets.findAll({
+            where: {
+                userId: req.params.id
+            }
+        }).then(function(results) {
+            res.json(results);
+        });
     });
 
     //return a list of tickets for 1 or all subscriptions for a specific user
-    app.get("/api/users/:id/subscriptions/:id?/tickets", function(req, res) {
-
+    app.get("/api/users/:id/subscriptions/:org?/tickets", function(req, res) {
+        db.Tickets.findAll({
+            where: {
+                userId: req.params.id,
+                org: req.params.org
+            }
+        }).then(function(results) {
+            res.json(results);
+        });
     });
 
     //update a ticket record
     app.put("/tickets/:id", function(req, res) {
-
+        db.Tickets.update({
+            subscription: req.body.subscription
+        }, {
+            where: { userId: req.body.id }
+        }).then(function(result) {
+            res.json(results);
+        });
     });
 
     //add a watcher
