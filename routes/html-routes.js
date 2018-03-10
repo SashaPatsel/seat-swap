@@ -18,6 +18,12 @@ module.exports = function(app) {
         res.send('hello');
     });
 
+    app.get("/logout", function(req, res) {
+        req.session.destroy(function(err) {
+            res.redirect("/");
+        });
+    });
+
 };
 
 function ensureAuthenticated(req, res, next) {
