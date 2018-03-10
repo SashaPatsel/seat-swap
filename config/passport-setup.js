@@ -1,6 +1,7 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var GoogleStrategy = require("passport-google-oauth20");
+var FacebookStrategy = require("passport-facebook");
 var keys = require("./keys");
 var db = require("../models");
 var User = require("../models/users");
@@ -160,6 +161,52 @@ passport.use(new GoogleStrategy({
         });
     }
 ));
+
+//passport config for facebook signin
+passport.use(new FacebookStrategy(
+    {
+        clientID: keys.facebook.appID,
+        clientSecret: keys.facebook.appSecret,
+        callbackURL: "/auth/facebook/callback",
+        profileFields: ["id", "displayName", "email", "first_name", "last_name"]
+    }, function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
+        console.log("ID: " + profile.id);
+        console.log("Display name: " + profile.displayName);
+        console.log("fb passport callback");
+
+
+            process.nextTick(function() {
+                db.User.findOne({
+                    where: {
+                        socialID: profile.id
+                    }
+                }).then(function(user) {
+                    if (user) {
+                        console.log('signupMessage', 'That email is already taken.');
+                        return done(null, false, { message: 'That email is already taken.' });
+                    } else {
+                        db.User.create({
+                            userName: profile.displayName,
+                            firstName: profile.name.givenName,
+                            lastName: profile.name.familyName,
+                            email: profile.emails[0].value,
+                            authMethod: "facebook",
+                            socialID: profile.id
+
+                        }).then(function(dbUser, created) {
+                            if (!dbUser) {
+                                return done(null, false);
+                            } else {
+                                console.log(dbUser.dataValues);
+                                return done(null, dbUser);
+                    }
+                })
+            }
+        })
+    });
+
+}));
 
 //generate hash for password
 function generateHash(password) {
