@@ -4,7 +4,11 @@ module.exports = function(app) {
 
 	//create a new user
     app.post("/users", function(req, res) {
-
+      console.log(req);
+        db.User.create(req.body).then(function(dbUser) {
+          console.log(dbUser);
+          res.json(dbUser);
+        });
     });
 
     //return an user's record

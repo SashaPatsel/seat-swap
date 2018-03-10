@@ -25,6 +25,8 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
         User.hasMany(models.Watcher);
         User.hasMany(models.Teamfeed);
+        User.hasMany(models.Subscription);
+        User.hasMany(models.Ticket);
     };
     return User;
 };
