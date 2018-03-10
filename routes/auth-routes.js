@@ -32,5 +32,17 @@ router.get("/google/callback", passport.authenticate('google'), function(req, re
     res.redirect("/account");
 });
 
+//auth with facebook
+router.get("/facebook",
+    passport.authenticate("facebook", {
+        scope: ["public_profile", "email"]
+    })
+);
+
+//auth facebook callback
+router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
+    res.redirect("/account");
+
+});
 
 module.exports = router;
