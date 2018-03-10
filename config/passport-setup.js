@@ -1,8 +1,9 @@
+require("dotenv").config();
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var GoogleStrategy = require("passport-google-oauth20");
 var FacebookStrategy = require("passport-facebook");
-var keys = require("./keys");
+var keys = require("../keys.js");
 var db = require("../models");
 var User = require("../models/users");
 var bCrypt = require("bcrypt-nodejs");

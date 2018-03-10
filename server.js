@@ -4,6 +4,7 @@ var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var passport = require("passport");
 var passportSetup = require("./config/passport-setup");
+require("dotenv").config();
 
 var PORT = process.env.PORT || 3000;
 
@@ -41,7 +42,7 @@ app.use(passport.session());
 
 
 // Import routes and give the server access to them.
-var authRoutes = require("./routes/authRoutes");
+var authRoutes = require("./routes/auth-routes");
 app.use("/auth", authRoutes);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
