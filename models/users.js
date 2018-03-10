@@ -23,22 +23,11 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    // User.associate = function(models) {
-    //     User.hasMany(models.Subscription);
-    // };
-
+    User.associate = function(models) {
+        User.hasMany(models.Watcher);
+        User.hasMany(models.Teamfeed);
+        User.hasMany(models.Subscription);
+        User.hasMany(models.Ticket);
+    };
     return User;
 };
-
-
-// Users (subscribers)
-// User Id (Primary Auto Increment)
-// Password
-// Username (Unique)
-// Email address
-// First Name
-// Last Name
-// Auth Method (?)
-// Twitter Handle
-// Facebook Handle
-// Google Handle
