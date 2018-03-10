@@ -1,5 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var passport = require("passport");
+var passportSetup = require("./config/passport-setup");
 
 var PORT = process.env.PORT || 3000;
 
@@ -22,8 +26,23 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Import routes and give the server access to them.
-//require("./routes/auth-routes.js")(app);
+var authRoutes = require("./routes/authRoutes");
+app.use("/auth", authRoutes);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
