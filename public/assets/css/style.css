@@ -12,13 +12,14 @@
 }
 
 .foot-contain {
-display: flex;
-  flex-direction: column;
+display: table;
+/*height: 100%;
+width: 100%;*/
 
 }
 
 .for-footer {
-flex: 1 0 auto;
+display: table-row;
 }
 
 #comment-form {
@@ -40,3 +41,14 @@ flex: 1 0 auto;
   position: relative;
   bottom: 8px;
 }
+
+.dyn-frm {
+  position: relative;
+  z-index: 20;
+}
+
+.sneak {
+  position: relative;
+  z-index: 10;
+}
+
