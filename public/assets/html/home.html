@@ -24,10 +24,35 @@
 </head>
 
 <body>
-    <div class="row">
-      <div class="col-md-6">
-        <div id='calendar'></div>
-      </div>  
+    <div class="container">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select your subscription</button>
+            <div class="dropdown-menu" aria-labelleby="dropdownMenuButton">
+                <a class="dropdown-item" data-value="GSW">Golden State Warriors</a>
+                <br>
+                <a class="dropdown-item" data-value="SF">San Francisco Giants</a>
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="seat-section">Seat Section</label>
+                <input type="text" class="form-control" id="seat-section" placeholder="Enter Seat Section">
+            </div>
+            <div class="form-group">
+                <label for="seat-row">Seat Section</label>
+                <input type="text" class="form-control" id="seat-row" placeholder="Enter Seat Row">
+            </div>
+            <div class="form-check">
+                <label for="seat-number">Seat Section</label>
+                <input type="text" class="form-control" id="seat-number" placeholder="Enter Seat Number">
+            </div>
+            <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
+        </form>
+        <div class="row">
+            <div class="col-md-6">
+                <div id='calendar'></div>
+            </div>
+        </div>
     </div>
            <!-- Modal content-->
    <div id="initModal" class="modal fade" role="dialog">
