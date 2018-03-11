@@ -1,4 +1,6 @@
-//var db = require("../models");
+var path = require("path");
+var express = require("express");
+var router = express.Router();
 
 module.exports = function(app) {
 
@@ -8,8 +10,7 @@ module.exports = function(app) {
 	});
 
 	app.get("/home", function(req, res) {
-			var object = {abc: xyz};
-			res.render("home", object);
+			res.render("home");
 	});
 
 	app.get('/account', ensureAuthenticated, function(req, res) {

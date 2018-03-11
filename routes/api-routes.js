@@ -183,12 +183,25 @@ module.exports = function(app) {
 
     //add a feed record
     app.post("/teamfeed", function(req, res) {
-
+        db.Teamfeed.create({
+            UserId: req.body.UserId,
+            OrganizationId: req.body.OrganizationId,
+            comment: req.body.comment
+        }).then(function(results) {
+            res.json(results);
+        });
     });
 
     //return a list of comments for 1 or all organizations
-    app.get("/api/teamfeed/:org?", function(req, res) {
-
+    app.get("/teamfeed/:org?", function(req, res) {
+        db.Teamfeed.findAll({
+            where: {
+                OrganizationId: 1
+            }
+        }).then(function(data) {
+            console.log(data)
+            res.json(data);
+        });
     });
 
 };
