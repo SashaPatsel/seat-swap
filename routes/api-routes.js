@@ -123,6 +123,7 @@ module.exports = function(app) {
     //add a watcher
     app.post("/api/watchers", function(req, res) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
+            console.log(dbWatcher)
             res.json(dbWatcher);
         });
     });
