@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        Teamfeed.belongsTo(models.Organization);
 
     };
     return Teamfeed;

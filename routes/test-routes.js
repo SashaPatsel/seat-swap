@@ -12,6 +12,7 @@ module.exports = function(app) {
         checkOrganization();
         checkSubscription();
         checkTicket();
+        checkTeamfeed();
         res.end("OK", 200);
     });
 
@@ -72,6 +73,21 @@ module.exports = function(app) {
                     seatNum: 16,
                     status: "locked",
                     subscription: true
+                }).then(function(chicken) {
+                    // res.send(chicken);
+                })
+            }
+        })
+    }
+
+    function checkTeamfeed() {
+        db.Teamfeed.count().then(function(c) {
+            console.log("There are " + c + " teamfeeds!")
+            if (c == 0) {
+                db.Teamfeed.create({
+                    UserId: 1,
+                    OrganizationId: 1,
+                    comment: "I love my Subscription"
                 }).then(function(chicken) {
                     // res.send(chicken);
                 })
