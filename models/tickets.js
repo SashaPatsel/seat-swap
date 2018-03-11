@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         seatSec: DataTypes.INTEGER,
         seatRow: DataTypes.STRING,
         seatNum: DataTypes.INTEGER,
+        eventTitle: DataTypes.STRING,
         status: {
             type: DataTypes.ENUM('available', 'flexible', "locked", "gone")
         },

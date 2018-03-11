@@ -28,7 +28,7 @@
     <div class="col-md-6">
         <div id='calendar'></div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-1"><h5>Paul, click on a calendar date to summon the modal ;)</h5></div>
     {{!-- Feed --}}
     <div class="col-md-5">
         <div class="tab-content" id="pills-tabContent">
@@ -45,15 +45,17 @@
                 {{!-- body --}}
             <div class="tab-pane fade feed foot-contain" id="pills-org-feed" role="tabpanel" aria-labelledby="pills-org-feed-tab">
               {{!-- content --}}
-                <div class="for-footer">
+                
                     <h1>Feed</h1>
 
-                </div>
+                <div class="comments-here"></div>
                 {{!-- foot --}}
-                <form id="comment-form">
-                    <input placeholder="Enter a comment" id="comment-text" type="text" />
-                    <button type="submit" class="btn btn-success comm-butt"><span class="comm-butt-text">Post</span></button>
-                </form>
+                <div class="for-footer">
+                    <form id="comment-form">
+                        <input placeholder="Enter a comment" id="comment-text" type="text" />
+                        <button type="submit" class="btn btn-success comm-butt"><span class="comm-butt-text">Post</span></button>
+                    </form>
+                </div>
             </div>
         </div>
         {{!-- Buttons --}}
@@ -79,4 +81,39 @@
         </ul>
     </div>
 </div>
+
+
+       <!-- Modal content-->
+   <div id="initModal" class="modal fade" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Now that you're signed up, help us personalize your experience.</h4>
+         </div>
+         <div class="init-modal-body">
+          <h3>Tell us about the tickets you're looking for</h3>
+           <form class="req-form">
+
+            <div class="form-group">
+              <label for="org">Organization:</label>
+              <input type="text" id="org" name="org">
+              <label for="date">Date:</label>
+              <input type="text" id="date" name="date">
+              <label for="num-tix">Number of tickets:</label>
+              <input type="text" id="num-tix" name="num-tix">
+            </div>
+
+            <button type="submit">Submit</button>
+            </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>
 

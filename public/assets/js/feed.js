@@ -13,7 +13,7 @@
  // A function for creating an author. Calls getAuthors upon completion
  function storeComment(comment) {
      $.post("/teamfeed", comment).then(function() {
-         $(".for-footer").append("<div>" + comment.comment + "</div>")
+         $(".comments-here").append("<div>" + comment.comment + "</div>")
      })
  }
 
@@ -23,9 +23,12 @@ function renderComments() {
       for (var i = 0; i < data.length; i++) {
         
          console.log(data[i].comment)
-         $(".for-footer").append("<div>" + data[i].comment + "</div>")
+         $(".comments-here").append("<div>" + data[i].comment + "</div>")
       }
      
     })
 }
 renderComments()
+
+
+
