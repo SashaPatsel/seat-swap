@@ -18,7 +18,6 @@ Seat Swap was built and tested with MySQL 5.7.20 and the following nodeJS NPM pa
 
 You will need access tokens for Facebook, and Google to use social authentication.
 
-
 To obtain Twitter keys and secrets, goto [Create an Application](https://apps.twitter.com/app/new).
 
 You will need to install mySQL (preferably V5.7 or later).  You will want to set a password when you install it.
@@ -30,25 +29,27 @@ You will need to install mySQL (preferably V5.7 or later).  You will want to set
 
 1. Run `npm install`
 
-1. Create a file named `.env`, add the following to it, replacing the values with your API keys (no quotes):
+1. Create a file named `.env`, add the following to it, replacing the values with your API keys (no quotes).  For LOCALDB_URL, replace the [xyz] with appropriate values.
 
 ```js
-# Spotify API keys
+#Google API keys
 
-SPOTIFY_ID=your-spotify-id
-SPOTIFY_SECRET=your-spotify-secret
+GOOGLE_CLIENT_ID=103457873105-EdupXFWRNjNFa8T2pFZeVXEgAzZhe6Xnqs.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=HAkklM177zw-93Mnku2LNRE3JP
 
-# Twitter API keys
+# Facebook API keys
 
-TWITTER_CONSUMER_KEY=your-twitter-consumer-key
-TWITTER_CONSUMER_SECRET=your-twitter-consumer-secret
-TWITTER_ACCESS_TOKEN_KEY=your-access-token-key
-TWITTER_ACCESS_TOKEN_SECRET=your-twitter-access-token-secret
+FACEBOOK_APP_ID=8135974561357843
+FACEBOOK_APP_SECRET=8751b638f915437982a06f89f0d813492
+
+#Sport Radar API keys
+
+SPORT_RADAR_NBA_KEY=xyz
+SPORT_RADAR_MLB_KEY=abc
 
 # SQL Credentials
 
-SQL_USER=root
-SQL_PASSWORD=zyxxyplugh
+LOCALDB_URL=mysql://[user]:[pass]@[sqldomain]/[db name]
 
 ```
 

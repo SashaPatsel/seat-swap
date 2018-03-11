@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "",
-    "database": "seatSwap_db",
+    "password": null,
+    "database": "seatswap_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
