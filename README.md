@@ -34,13 +34,13 @@ You will need to install mySQL (preferably V5.7 or later).  You will want to set
 ```js
 #Google API keys
 
-GOOGLE_CLIENT_ID=1096321273105-tu3d7popqqtrbgnsv3glrb8kbcli3nqs.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=HAkilM146zw-BpW4dOYQHtKf
+GOOGLE_CLIENT_ID=103457873105-EdupXFWRNjNFa8T2pFZeVXEgAzZhe6Xnqs.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=HAkklM177zw-93Mnku2LNRE3JP
 
 # Facebook API keys
 
-FACEBOOK_APP_ID=586303611715029
-FACEBOOK_APP_SECRET=3184b17f744695740a06f89f0d438782
+FACEBOOK_APP_ID=8135974561357843
+FACEBOOK_APP_SECRET=8751b638f915437982a06f89f0d813492
 
 #Sport Radar API keys
 
