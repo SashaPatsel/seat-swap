@@ -5,8 +5,7 @@ var router = express.Router();
 module.exports = function(app) {
 
 	app.get("/", function(req, res) {
-			var object = {abc: xyz};
-			res.render("index", object);
+			res.sendFile(path.join(__dirname, "../public/assets/html/index.html"));
 	});
 
 	app.get("/home", function(req, res) {
