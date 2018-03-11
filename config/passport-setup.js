@@ -21,7 +21,7 @@ passport.deserializeUser(function(id, done) {
         if (user) {
             done(null, user.get());
         } else {
-            done(user, null);
+            done(user.errors, null);
         }
     });
 });
