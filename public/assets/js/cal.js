@@ -69,3 +69,33 @@ $(document).ready(function() {
     });
 
   });
+
+
+
+$(document).on("click", ".fc-day", function() {
+    // $(this).addClass("sneak")
+    // $("")
+    // $(this).append("<form class='dyn-frm'><input placeholder='Enter an event' type='text'/></form>")
+    console.log("modal")
+    $("#initModal").modal("show");
+})
+
+
+$(document).on("submit", ".req-form", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    OrganizationId: $("#org").val().trim()
+    var newReq = {
+      eventDate: $("#date").val().trim(),
+      numOfSeats: $("#num-tix").val().trim()
+    };
+    console.log("mod-sub")
+    console.log($("#org").val().trim(), $("#date").val().trim(), $("#num-tix").val().trim())
+})    
+  // <script src='assets/fullcalendar-3.9.0/lib/jquery.min.js'></script>  
+
+// app.post("/watchers", function(req, res) {
+//        db.Watcher.create(req.body).then(function(dbWatcher) {
+//          res.json(dbWatcher);
+//        });
+//    });
