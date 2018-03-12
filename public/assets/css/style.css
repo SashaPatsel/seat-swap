@@ -72,3 +72,17 @@ body {
 .pill-heads {
   margin-top: -3px;
 }
+
+.hide {
+  display: none;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-google {
+  background: #bb0000;
+  color: white;
+}
