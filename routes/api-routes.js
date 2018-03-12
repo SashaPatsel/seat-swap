@@ -1,4 +1,7 @@
 var db = require("../models");
+var keys = require("../keys.js")
+var Client = require('node-rest-client').Client;
+var client = new Client();
 
 module.exports = function(app) {
 
@@ -218,4 +221,39 @@ module.exports = function(app) {
             res.json(data);
         });
     });
+
+// var dubsSched = [];
+
+      var events = [];
+
+    // Warriors Schedule
+    client.get("https://api.sportradar.us/nba/trial/v4/en/games/2017/reg/schedule.json?api_key=" + keys.sportradar.nbakey, function(data, response) {
+        // parsed response body as js object 
+                for (var i = 0; i < data.games.length; i++) {
+                   //console.log(data)
+                  
+                  if (data.games[i].home.alias === "GSW") {
+                    var event = {};
+                    // console.log(data.games[i].away.name);
+                    // console.log(data.games[i].scheduled);
+
+                    var away = data.games[i].away.name
+                    event["title"] = "Golden State Warriors vs " + away;
+                    event["start"] = data.games[i].scheduled;
+                    events.push(event);
+                  }
+                  
+                }
+            
+                // console.log(events)
+                
+    });
+
+    app.get("/api/schedule/warriors", function(req, res) {
+        events: events
+    }).then(function(data) {
+            console.log(events)
+            res.json(events);
+        });
+
 };
