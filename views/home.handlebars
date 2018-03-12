@@ -72,14 +72,20 @@
                 <div class="comments-here"></div>
 
             </div>
+            {{!-- Add watcher --}}
                   <div class="tab-pane fade feed foot-contain" id="pills-add-watch" role="tabpanel" aria-labelledby="pills-add-watch-tab">
               {{!-- content --}}
               <h1 class="pill-heads">Request a Ticket</h1>
-               <form id="comment-form">
-                        <input placeholder="Enter a comment" id="comment-text" type="text" />
-                        <button type="submit" class="btn btn-success comm-butt"><span class="comm-butt-text">Request</span></button>
-                    </form>
               <hr>
+               <form id="watcher-form">
+                  <label for="event-name">What event would you like to go to?</label>
+                        <input placeholder="Event Name" id="watcher-date" name="event-date" type="text" />
+                          <label for="event-date">When?</label>
+                        <input placeholder="Event Date mm/dd/yyyy" id="watcher-date" name="event-date" type="text" />
+                        <label for="event-tix">When?</label>
+                        <input placeholder="Event Date mm/dd/yyyy" id="watcher-num" name="event-tix" type="text" />
+                        <button type="submit" class="btn btn-success comm-butt"></button>
+                    </form>
           
             </div>
         </div>
