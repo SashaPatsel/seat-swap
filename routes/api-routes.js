@@ -128,23 +128,43 @@ module.exports = function(app) {
     //add a watcher
     app.post("/api/watchers", function(req, res) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
-            res.json(dbWatcher);
-            console.log(dbWatcher);
             findMatches(dbWatcher);
+            res.json(dbWatcher);
         });
     });
 
+    // Find tickets that match the criteria of the watcher
+    function findMatches(watcherRecord){
+        console.log('findMatches: called');
 
-    function findMatches(watcher){
         db.Ticket.findAll({
             where: {
-                OrganizationId: watcher.dataValues.OrganizationId,
-                date: watcher.dataValues.eventDate
+                OrganizationId: watcherRecord.OrganizationId,
+                date: watcherRecord.eventDate
             }
         }).then(function(dbTickets) {
-            console.log(dbTickets);
+          console.log(JSON.stringify(dbTickets, null, 4));
+
+          dbTickets.forEach(function(singleTicketMatch) {
+            writeMatch(watcherRecord, singleTicketMatch);
+          });
         });
-    };
+    }
+
+
+    // write a match record
+    function writeMatch(watcher, ticket){
+        console.log('writeMatch: called');
+        console.log(watcher, ticket);
+
+        db.Match.create({
+            'WatcherId': watcher.id,
+            'TicketId': ticket.id
+        }).then(function(dbMatches) {
+            console.log('writeMatch: matches created');
+            console.log(JSON.stringify(dbMatches, null, 4));
+        });
+    } 
 
     //return a list of watchers for a specific user
     app.get("/api/users/:UserId/watchers", function(req, res) {
