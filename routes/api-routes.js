@@ -129,8 +129,22 @@ module.exports = function(app) {
     app.post("/api/watchers", function(req, res) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
             res.json(dbWatcher);
+            console.log(dbWatcher);
+            findMatches(dbWatcher);
         });
     });
+
+
+    function findMatches(watcher){
+        db.Ticket.findAll({
+            where: {
+                OrganizationId: watcher.dataValues.OrganizationId,
+                date: watcher.dataValues.eventDate
+            }
+        }).then(function(dbTickets) {
+            console.log(dbTickets);
+        });
+    };
 
     //return a list of watchers for a specific user
     app.get("/api/users/:UserId/watchers", function(req, res) {
