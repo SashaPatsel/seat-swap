@@ -21,6 +21,7 @@ module.exports = function(app) {
 	});
 
     app.get("/logout", function(req, res) {
+        res.clearCookie("user_id");
         req.session.destroy(function(err) {
             res.redirect("/");
         });
