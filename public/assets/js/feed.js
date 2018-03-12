@@ -13,7 +13,8 @@
  // A function for creating an author. Calls getAuthors upon completion
  function storeComment(comment) {
      $.post("/teamfeed", comment).then(function() {
-         $(".comments-here").prepend("<div>" + comment.comment + "</div>")
+        var UserName = "Sasha Patsel"
+         $(".comments-here").prepend("<div class='comment'><span class='userName'>" + UserName + "</span>  " + commment.comment + "</div>")
          console.log(comment)
      })
  }

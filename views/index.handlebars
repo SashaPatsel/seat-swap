@@ -1,77 +1,77 @@
- <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/facebook" target = "_blank" class="fa fa-facebook"></a>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Seat Swap</a>
+        </div>
+</nav>
+<div class="container">
+    <div class="row">
 
-            </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <a href="/auth/facebook" target="_blank" class="fa fa-facebook"></a>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/google" target = "_blank" class="fa fa-google"></a>
-            </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <a href="/auth/google" target="_blank" class="fa fa-google"></a>
         </div>
-        <p>Sign in</p>
-        <form id="signin" name="signin" method="post" action="/auth/signin">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+
+    <p>Sign in</p>
+    <form id="signin" name="signin" method="post" action="/auth/signin">
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="email">Email Address</label>
+                <input type="email" class="ss-form" id="inputEmail4" name="email" placeholder="Email">
             </div>
-        </form>
-        <p>Sign up</p>
-        <form id="signup" name="signup" method="post" action="/auth/signup">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="firstname">Firstname</label>
-                    <input name="firstname" type="text" />
-                </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="ss-form" id="inputPassword4" name="password" placeholder="Password">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="lastname">Lastname</label>
-                    <input name="lastname" type="text" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" />
-                </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+    <p>Sign up</p>
+    <form id="signup" name="signup" method="post" action="/auth/signup">
+        
+                <label for="email">Email Address</label>
+                <input type="text " name="email" type="email" class="ss-form"/>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+
+                <label for="firstname">Firstname</label>
+                <input name="firstname" type="text" class="ss-form"/>
+
+
+                <label for="lastname">Lastname</label>
+                <input name="lastname" type="text" class="ss-form"/>
+
+                <label for="password">Password</label>
+                <input name="password" type="password" class="ss-form" placeholder="Password"/>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <form id="sub-name-form">
+        <h2>Subscription Name</h2>
+        <label for="sub-name">Seat Section</label>
+        <input type="text" id="sub-name" placeholder="Subscription"  class="ss-form">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <form id="tix-info-form" class="hide">
+        <h2>Ticket Info</h2>
+        <label for="seat-section">Seat Section</label>
+        <input type="text" id="seat-section" placeholder="Enter Seat Section" class="ss-form">
+        <label for="seat-row">Seat Section</label>
+        <input type="text" id="seat-row" placeholder="Enter Seat Row" class="ss-form">
+        <label for="seat-number">Seat Section</label>
+        <input type="text" id="seat-number" placeholder="Enter Seat Number" class="ss-form">
+        <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
+    </form>
     </div>
-
-
-            <form id="sub-name-form">
-                <h2>Subscription Name</h2>
-
-                <label for="sub-name">Seat Section</label>
-                <input type="text" id="sub-name" placeholder="Subscription">
-           
-           
-            <button type="submit" class="btn btn-primary" >Submit</button>
-        </form>        
-
-
-        <form id="tix-info-form" class="hide">
-            <h2>Ticket Info</h2>
-                <label for="seat-section">Seat Section</label>
-                <input type="text" id="seat-section" placeholder="Enter Seat Section">
-
-                <label for="seat-row">Seat Section</label>
-                <input type="text" id="seat-row" placeholder="Enter Seat Row">
-            
-                <label for="seat-number">Seat Section</label>
-                <input type="text" id="seat-number" placeholder="Enter Seat Number">
-           
-            <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
-        </form>
+</div>

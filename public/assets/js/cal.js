@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     $(".dropdown-item").on("click", function() {
@@ -6,7 +5,18 @@ $(document).ready(function() {
         var subscription = $(this).data("value");
         console.log(subscription);
         getEventInfo(subscription);
+
+        storeOrg({
+            OrganizationId: $(this).data("value"),
+
+        });
     })
+
+    function storeOrg(org) {
+        $.post("/api/org", org).then(function() {
+            console.log(org)
+        })
+    }
 
     $("#seat-submit").on("click", function() {
         event.preventDefault();

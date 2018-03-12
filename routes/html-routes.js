@@ -8,9 +8,11 @@ module.exports = function(app) {
 		res.render("index");
 	});
 
+
 	app.get("/home", ensureAuthenticated, function(req, res) {
 			res.render("home");
 	});
+
 
     app.get("/logout", function(req, res) {
         req.session.destroy(function(err) {
