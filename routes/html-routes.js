@@ -5,7 +5,7 @@ var router = express.Router();
 module.exports = function(app) {
 
 	app.get("/", function(req, res) {
-			res.sendFile(path.join(__dirname, "../public/assets/html/index.html"));
+		res.render("index");
 	});
 
 	app.get("/home", function(req, res) {

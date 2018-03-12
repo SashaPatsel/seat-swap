@@ -1,6 +1,4 @@
-var sched = require("../../../routes/api-routes.js")
 
-console.log(sched.events)
 $(document).ready(function() {
 
     $(".dropdown-item").on("click", function() {
