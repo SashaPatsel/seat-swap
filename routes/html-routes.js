@@ -8,14 +8,11 @@ module.exports = function(app) {
 		res.render("index");
 	});
 
-	app.get("/home", function(req, res) {
-			res.render("home");
-	});
-
-	app.get('/account', ensureAuthenticated, function(req, res) {
-        // console.log(req);
-        console.log('abc');
-        res.send('hello');
+	// app.get("/home", ensureAuthenticated, function(req, res) {
+	// 		res.render("home");
+	// });
+        app.get("/home", function(req, res) {
+            res.render("home");
     });
 
     app.get("/logout", function(req, res) {
@@ -38,7 +35,6 @@ function ensureAuthenticated(req, res, next) {
         userId = false;
         console.log('request is not authenticated');
         res.redirect('/');
-        return userId
     }
 }
 

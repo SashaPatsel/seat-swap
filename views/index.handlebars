@@ -10,106 +10,68 @@
             </button>
             <a class="navbar-brand" href="#">Seat Swap</a>
         </div>
-
-                <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select your subscription</button>
-            <div class="dropdown-menu" aria-labelleby="dropdownMenuButton">
-                <a class="dropdown-item" data-value="GSW">Golden State Warriors</a>
-                <br>
-                <a class="dropdown-item" data-value="SF">San Francisco Giants</a>
-            </div>
-        </div>
-
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Sign out</a></li>
-
-                </ul>
-            </li>
-        </ul>
-
-    <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
 </nav>
+<div class="container">
+    <div class="row">
 
 
- <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/facebook" target = "_blank" class="fa fa-facebook"></a>
-
-            </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <a href="/auth/facebook" target="_blank" class="fa fa-facebook"></a>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/google" target = "_blank" class="fa fa-google"></a>
-            </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <a href="/auth/google" target="_blank" class="fa fa-google"></a>
         </div>
-        <p>Sign in</p>
-        <form id="signin" name="signin" method="post" action="/auth/signin">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+
+    <p>Sign in</p>
+    <form id="signin" name="signin" method="post" action="/auth/signin">
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="email">Email Address</label>
+                <input type="email" class="ss-form" id="inputEmail4" name="email" placeholder="Email">
             </div>
-        </form>
-        <p>Sign up</p>
-        <form id="signup" name="signup" method="post" action="/auth/signup">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="firstname">Firstname</label>
-                    <input name="firstname" type="text" />
-                </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="ss-form" id="inputPassword4" name="password" placeholder="Password">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="lastname">Lastname</label>
-                    <input name="lastname" type="text" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" />
-                </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+    <p>Sign up</p>
+    <form id="signup" name="signup" method="post" action="/auth/signup">
+        
+                <label for="email">Email Address</label>
+                <input type="text " name="email" type="email" class="ss-form"/>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+
+                <label for="firstname">Firstname</label>
+                <input name="firstname" type="text" class="ss-form"/>
+
+
+                <label for="lastname">Lastname</label>
+                <input name="lastname" type="text" class="ss-form"/>
+
+                <label for="password">Password</label>
+                <input name="password" type="password" class="ss-form" placeholder="Password"/>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <form id="sub-name-form">
+        <h2>Subscription Name</h2>
+        <label for="sub-name">Seat Section</label>
+        <input type="text" id="sub-name" placeholder="Subscription"  class="ss-form">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <form id="tix-info-form" class="hide">
+        <h2>Ticket Info</h2>
+        <label for="seat-section">Seat Section</label>
+        <input type="text" id="seat-section" placeholder="Enter Seat Section" class="ss-form">
+        <label for="seat-row">Seat Section</label>
+        <input type="text" id="seat-row" placeholder="Enter Seat Row" class="ss-form">
+        <label for="seat-number">Seat Section</label>
+        <input type="text" id="seat-number" placeholder="Enter Seat Number" class="ss-form">
+        <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
+    </form>
     </div>
-
-
-            <form id="sub-name-form">
-                <h2>Subscription Name</h2>
-
-                <label for="sub-name">Seat Section</label>
-                <input type="text" id="sub-name" placeholder="Subscription">
-           
-           
-            <button type="submit" class="btn btn-primary" >Submit</button>
-        </form>        
-
-
-        <form id="tix-info-form" class="hide">
-            <h2>Ticket Info</h2>
-                <label for="seat-section">Seat Section</label>
-                <input type="text" id="seat-section" placeholder="Enter Seat Section">
-
-                <label for="seat-row">Seat Section</label>
-                <input type="text" id="seat-row" placeholder="Enter Seat Row">
-            
-                <label for="seat-number">Seat Section</label>
-                <input type="text" id="seat-number" placeholder="Enter Seat Number">
-           
-            <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
-        </form>
+</div>
