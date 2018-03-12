@@ -86,3 +86,8 @@ body {
   background: #bb0000;
   color: white;
 }
+
+.glyph-style {
+  height: auto;
+  width: 30px;
+}

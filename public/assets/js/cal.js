@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     })
 
-
+renderCalendar()
     function renderCalendar(events) {
         $('#calendar').fullCalendar({
             header: {
@@ -94,7 +94,11 @@ $(document).ready(function() {
             navLinks: true, // can click day/week names to navigate views
             editable: true,
             eventLimit: true, // allow "more" link when too many events
-            events: events
+            events: [
+        {
+          title: 'America',
+          start: '1776-03-01',
+        }]
         });
     }
 });
