@@ -1,0 +1,76 @@
+.navbar-brand {
+  padding: 8px;
+  color: white;
+
+}
+
+.navbar-brand img{
+ max-height: 100%;
+ float: left;
+}
+.navbar-brand span{
+  display: inline-block;
+  padding-top:10px;
+  padding-left: 3px;
+  float:left;
+
+}
+
+
+
+
+
+.feed {
+  height: 40vw;
+  width: 95%;
+  background-color: rgba(230,230,230,1);
+}
+
+.nav-item {
+  background-color: black;
+  /*width: 15%;*/
+  /*font-size: 11px;*/
+  /*text-align: center;*/
+}
+
+.foot-contain {
+display: table;
+/*height: 100%;
+width: 100%;*/
+
+}
+
+.for-footer {
+display: table-row;
+}
+
+#comment-form {
+ /* position: relative;
+  bottom: -100px;*/
+  flex-shrink: 0;
+}
+
+#comment-text {
+  margin-left: 5px;
+  width: 85%;
+}
+
+.comm-butt {
+  height: 2vw;
+}
+
+.comm-butt-text {
+  position: relative;
+  bottom: 8px;
+}
+
+.dyn-frm {
+  position: relative;
+  z-index: 20;
+}
+
+.sneak {
+  position: relative;
+  z-index: 10;
+}
+

@@ -1,5 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var passport = require("passport");
+var passportSetup = require("./config/passport-setup");
+require("dotenv").config();
 
 var PORT = process.env.PORT || 3000;
 
@@ -8,7 +13,7 @@ var app = express();
 var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,15 +22,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Set Handlebars.
-// var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Import routes and give the server access to them.
-//require("./routes/auth-routes.js")(app);
+var authRoutes = require("./routes/auth-routes");
+app.use("/auth", authRoutes);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+require("./routes/test-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

@@ -3,14 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
 
     //create a new user
-    app.post("/users", function(req, res) {
+    app.post("/api/users", function(req, res) {
         db.User.create(req.body)
-        .then(function(dbUser) {
-            res.json(dbUser);
-        });
+            .then(function(dbUser) {
+                res.json(dbUser);
+            });
     });
 
-    //return an user's record
+    //return a user's record
     app.get("/api/users/:id", function(req, res) {
         db.User.findOne({
             where: {
@@ -21,82 +21,73 @@ module.exports = function(app) {
         })
     });
 
-    //update an user's record
-    app.put("/users/:id", function(req, res) {
+    //update a user's record
+    app.put("/api/users/:id", function(req, res) {
         db.User.update(
-            req.body,
-            {
+            req.body, {
                 where: {
-                    id: req.body.id
+                    id: req.params.id
                 }
             }).then(function(dbUser) {
-                res.json(dbUser);
-            });
-    });
-
-    //add a subscription to a user
-    app.post("/subscriptions", function(req, res) {
-        db.Subscription.create(req.body).then(function(dbSubscription) {
-          res.json(dbSubscription);
+            res.json(dbUser);
         });
     });
 
+    //add a subscription to a user
+    app.post("/api/subscriptions", function(req, res) {
+        db.Subscription.create(req.body)
+            .then(function(dbSubscription) {
+                res.json(dbSubscription);
+            });
+    });
+
     //return list of subscriptions for a given user
-    app.get("/api/users/:id/subscriptions", function(req, res) {
+    app.get("/api/users/:UserId/subscriptions", function(req, res) {
         db.Subscription.findAll({
-          where: {
-            userId: req.params.id
-          }
+            where: {
+                UserId: req.params.UserId
+            }
         }).then(function(dbSubscription) {
-          res.json(dbSubscription);
+            res.json(dbSubscription);
         });
     });
 
     //return a subscription
     app.get("/api/subscriptions/:id", function(req, res) {
         db.Subscription.findOne({
-          where: {
-            id: req.params.id
-          }
+            where: {
+                id: req.params.id
+            }
         }).then(function(dbSubscription) {
-          res.json(dbSubscription);
+            res.json(dbSubscription);
         });
     });
 
-    //update a subscription record
+    //update a subscription 
     app.put("/api/subscriptions/:id", function(req, res) {
         db.Subscription.update(
-          req.body,
-          {
-            where: {
-              id: req.body.id
-            }
-          }).then(function(dbSubscription) {
-          res.json(dbSubscription);
+            req.body, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(dbSubscription) {
+            res.json(dbSubscription);
         });
     });
 
     //add a ticket to a subscription
-    app.post("/tickets", function(req, res) {
-        db.Tickets.create({
-            userId: 4,
-            subId: 203,
-            date: "03/08/2018",
-            time: "7:42",
-            seatSec: 207,
-            seatRow: "H",
-            seatNum: 8,
-            tixStatus: "Available",
-        }).then(function() {
-            res.json(res);
-        });
+    app.post("/api/tickets", function(req, res) {
+        db.Ticket.create(req.body)
+            .then(function(dbUser) {
+                res.json(dbUser);
+            });
     });
 
     //return all tickets for a user
-    app.get("/users/:id/tickets", function(req, res) {
-        db.Tickets.findAll({
+    app.get("/api/users/:UserId/tickets", function(req, res) {
+        db.Ticket.findAll({
             where: {
-                userId: req.params.id
+                UserId: req.params.UserId
             }
         }).then(function(results) {
             res.json(results);
@@ -104,72 +95,74 @@ module.exports = function(app) {
     });
 
     //return a list of tickets for 1 or all subscriptions for a specific user
-    app.get("/api/users/:id/subscriptions/:org?/tickets", function(req, res) {
-        db.Tickets.findAll({
-            where: {
-                userId: req.params.id,
-                org: req.params.org
-            }
-        }).then(function(results) {
+    app.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets", function(req, res) {
+        var queryObj = { where: { UserId: req.params.UserId } };
+
+        if (req.params.SubscriptionId) {
+            queryObj.where.SubscriptionId = req.params.SubscriptionId
+        };
+        console.log(queryObj);
+        db.Ticket.findAll(queryObj).then(function(results) {
             res.json(results);
         });
     });
 
     //update a ticket record
-    app.put("/tickets/:id", function(req, res) {
-        db.Tickets.update({
-            subscription: req.body.subscription
+    app.put("/api/tickets/:id", function(req, res) {
+        db.Ticket.update({
+            status: req.body.status
         }, {
-            where: { userId: req.body.id }
+            where: {
+                id: req.body.id
+            }
         }).then(function(result) {
             res.json(results);
         });
     });
 
     //add a watcher
-    app.post("/watchers", function(req, res) {
+    app.post("/api/watchers", function(req, res) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
-          res.json(dbWatcher);
+            res.json(dbWatcher);
         });
     });
 
     //return a list of watchers for a specific user
-    app.get("/api/users/:id/watchers", function(req, res) {
+    app.get("/api/users/:UserId/watchers", function(req, res) {
         db.Watcher.findAll({
-          where: {
-            userId: req.params.id
-          }
+            where: {
+                UserId: req.params.UserId
+            }
         }).then(function(dbWatcher) {
-          res.json(dbWatcher);
+            res.json(dbWatcher);
         });
     });
 
     //update a watcher
-    app.put("/watchers/:id", function(req, res) {
+    app.put("/api/watchers/:id", function(req, res) {
         db.Watcher.update(
-          req.body,
-          {
-            where: {
-              id: req.body.id
-            }
-          }).then(function(dbWatcher) {
-          res.json(dbWatcher);
+            req.body, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(dbWatcher) {
+            res.json(dbWatcher);
         });
     });
 
     //remove a watcher
-    app.delete("/watchers/:id", function(req, res) {
+    app.delete("/api/watchers/:id", function(req, res) {
         db.Watcher.destroy({
-          where: {
-            id: req.params.id
-          }
+            where: {
+                id: req.params.id
+            }
         }).then(function(dbWatcher) {
-          res.json(dbWatcher);
+            res.json(dbWatcher);
         });
     });
 
     //add a trade journal entry
-    app.post("/tradejournal", function(req, res) {
+    app.post("/api/tradejournal", function(req, res) {
 
     });
 
@@ -178,14 +171,49 @@ module.exports = function(app) {
 
     });
 
-    //add a feed record
+    //add a feed record [DEPRECATED]
     app.post("/teamfeed", function(req, res) {
-
+        db.Teamfeed.create({
+            UserId: req.body.UserId,
+            OrganizationId: req.body.OrganizationId,
+            comment: req.body.comment
+        }).then(function(results) {
+            res.json(results);
+        });
     });
 
-    //return a list of comments for 1 or all organizations
-    app.get("/api/teamfeed/:org?", function(req, res) {
+    //add a feed record
+    app.post("/api/teamfeed", function(req, res) {
+        db.Teamfeed.create({
+            UserId: req.body.UserId,
+            OrganizationId: req.body.OrganizationId,
+            comment: req.body.comment
+        }).then(function(results) {
+            res.json(results);
+        });
+    });
 
+    //return a list of comments for 1 or all organizations [DEPRECATED]
+    app.get("/teamfeed/:org?", function(req, res) {
+        db.Teamfeed.findAll({
+            where: {
+                OrganizationId: 1
+            }
+        }).then(function(data) {
+            console.log(data)
+            res.json(data);
+        });
+    });
+    //return a list of comments for 1 or all organizations
+    app.get("/api/organization/:OrganizationId?/teamfeed", function(req, res) {
+        db.Teamfeed.findAll({
+            where: {
+                OrganizationId: req.params.OrganizationId
+            }
+        }).then(function(data) {
+            console.log(data)
+            res.json(data);
+        });
     });
 
 };

@@ -1,0 +1,120 @@
+<nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="/assets/image/logo.png"><span>Seat Swap</span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Sign out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- Calendar -->
+<div class="row">
+    <div class="col-md-6">
+        <div id='calendar'></div>
+    </div>
+    <div class="col-md-1"><h5>Paul, click on a calendar date to summon the modal ;)</h5></div>
+    {{!-- Feed --}}
+    <div class="col-md-5">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade active feed" id="pills-trades" role="tabpanel" aria-labelledby="pills-trades-tab">
+                <h1>Trades</h1></div>
+            <div class="tab-pane fade feed" id="pills-offers" role="tabpanel" aria-labelledby="pills-offers-tab">
+                <h1>Offers</h1></div>
+            <div class="tab-pane fade feed" id="pills-org-tix" role="tabpanel" aria-labelledby="pills-org-tix-tab">
+                <h1>Organization Tickets</h1></div>
+            <div class="tab-pane fade feed" id="pills-other-tix" role="tabpanel" aria-labelledby="pills-other-tix-tab">
+                <h1>Other Tickets</h1></div>
+            <div class="tab-pane fade feed " id="pills-log" role="tabpanel" aria-labelledby="pills-log-tab">
+                <h1>Trade Log</h1></div>
+                {{!-- body --}}
+            <div class="tab-pane fade feed foot-contain" id="pills-org-feed" role="tabpanel" aria-labelledby="pills-org-feed-tab">
+              {{!-- content --}}
+                
+                    <h1>Feed</h1>
+
+                <div class="comments-here"></div>
+                {{!-- foot --}}
+                <div class="for-footer">
+                    <form id="comment-form">
+                        <input placeholder="Enter a comment" id="comment-text" type="text" />
+                        <button type="submit" class="btn btn-success comm-butt"><span class="comm-butt-text">Post</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{!-- Buttons --}}
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-trades-tab" data-toggle="pill" href="#pills-trades" role="tab" aria-controls="pills-trades" aria-selected="true">My Trades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-offers-tab" data-toggle="pill" href="#pills-offers" role="tab" aria-controls="pills-offers" aria-selected="false">My Offers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-org-tix-tab" data-toggle="pill" href="#pills-org-tix" role="tab" aria-controls="pills-org-tix" aria-selected="false">Related Tix</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-other-tix-tab" data-toggle="pill" href="#pills-other-tix" role="tab" aria-controls="pills-other-tix" aria-selected="false">Other Tix</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-log-tab" data-toggle="pill" href="#pills-log" role="tab" aria-controls="pills-log" aria-selected="false">Log</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-org-feed-tab" data-toggle="pill" href="#pills-org-feed" role="tab" aria-controls="pills-org-feed" aria-selected="false">Feed</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+       <!-- Modal content-->
+   <div id="initModal" class="modal fade" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Now that you're signed up, help us personalize your experience.</h4>
+         </div>
+         <div class="init-modal-body">
+          <h3>Tell us about the tickets you're looking for</h3>
+           <form class="req-form">
+
+            <div class="form-group">
+              <label for="org">Organization:</label>
+              <input type="text" id="org" name="org">
+              <label for="date">Date:</label>
+              <input type="text" id="date" name="date">
+              <label for="num-tix">Number of tickets:</label>
+              <input type="text" id="num-tix" name="num-tix">
+            </div>
+
+            <button type="submit">Submit</button>
+            </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>
+
