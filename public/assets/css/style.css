@@ -87,7 +87,7 @@ body {
   color: white;
 }
 
-.glyph-style {
+#glyph-ss {
   height: auto;
-  width: 30px;
+  width: 100%;
 }
