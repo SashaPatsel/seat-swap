@@ -37,8 +37,10 @@ module.exports = function(app) {
     });
 
     //add a subscription to a user
-    app.post("/api/subscriptions", function(req, res) {
-        db.Subscription.create(req.body)
+    app.post("/api/subscriptions", ensureAuthenticated, function(req, res) {
+        db.Subscription.create({
+            name: req.body.name,
+            UserId: req.session.passport.user})
             .then(function(dbSubscription) {
                 res.json(dbSubscription);
             });
@@ -222,6 +224,13 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/organizations", function(req, res) {
+        db.Organization.findAll({
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
     // // var dubsSched = [];
 
     // var events = [];
@@ -259,3 +268,19 @@ module.exports = function(app) {
     // });
 
 };
+
+
+function ensureAuthenticated(req, res, next) {
+    console.log('check something', req.session.passport.user);
+    var userId;
+    if (req.isAuthenticated()) {
+        userId = req.session.passport.user;
+
+        console.log("request is authenticated");
+        return next();
+    } else {
+        userId = false;
+        console.log('request is not authenticated');
+        res.redirect('/');
+    }
+}

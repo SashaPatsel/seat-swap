@@ -26,8 +26,9 @@ body {
   background-color: rgba(0,0,128,1);
   border-radius: 25px;
   color: white;
-  padding: 4px;
+  padding: 8px;
   margin: 3px 3px 5px 3px;
+  line-height: 1.5;
 }
 
 .userName {
@@ -85,4 +86,11 @@ body {
 .fa-google {
   background: #bb0000;
   color: white;
+}
+
+  .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
 }
