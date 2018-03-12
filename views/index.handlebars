@@ -1,77 +1,114 @@
- <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/facebook" target = "_blank" class="fa fa-facebook"></a>
-
-            </div>
+<div id="home-wrap">
+    <div class="row" id="home-header">
+        <div class="col-12">
+            <span>Seat</span><img id="h-logo" src="/assets/image/logo.png"><span>Swap</span>
+            <h3>Swap tickets anytime anywhere!</h3>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/auth/google" target = "_blank" class="fa fa-google"></a>
-            </div>
-        </div>
-        <p>Sign in</p>
-        <form id="signin" name="signin" method="post" action="/auth/signin">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-        </form>
-        <p>Sign up</p>
-        <form id="signup" name="signup" method="post" action="/auth/signup">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="firstname">Firstname</label>
-                    <input name="firstname" type="text" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="lastname">Lastname</label>
-                    <input name="lastname" type="text" />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" />
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
     </div>
+    <div id="login-wrap">
+        <div class="container">
+            <div class="row local-wrap">
+                <div class="col-sm-12 col-md-12 col-lg-5 form-left form-wrap">
+                    <h3>Sign in</h3>
+             
+                    <div class="sociallogin-wrap">
+                         <hr>
+                        <div class="row" align="center">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <a href="/auth/facebook"><img class="icon" src="/assets/image/fb.png" alt="Facebook login logo"></a>
+                                <a href="/auth/google"><img class="icon" src="/assets/image/gg.png" alt="Google login logo"></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <form id="signin" name="signin" method="post" action="/auth/signin">
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 form-right form-wrap">
+                    <h3>Sign up</h3>
+                    <div class="sociallogin-wrap" align="center">
+                         <hr> 
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <a href="/auth/facebook"><img class="icon" src="/assets/image/fb.png" alt="Facebook login logo" ></a>
+                                <a href="/auth/google"><img class="icon" src="/assets/image/gg.png" alt="Google login logo" ></a> 
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <form id="signup" name="signup" method="post" action="/auth/signup">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email Address</label>
+                                <input  class="form-control" name="email" type="email" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="firstname">Firstname</label>
+                                <input class="form-control" name="firstname" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Lastname</label>
+                                <input class="form-control" name="lastname" type="text" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input class="form-control" name="password" type="password" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(window).load(function() {
+    $('#h-logo').effect("bounce", {
+        times: 4,
+        distance: 400
+    }, 500).click(function() {
+        $(this).effect("bounce", {
+            times: 4,
+            distance: 400
+        }, 500);
+    });
+    })
 
 
-            <form id="sub-name-form">
-                <h2>Subscription Name</h2>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '586303611715029',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.12'
+        });
 
-                <label for="sub-name">Seat Section</label>
-                <input type="text" id="sub-name" placeholder="Subscription">
-           
-           
-            <button type="submit" class="btn btn-primary" >Submit</button>
-        </form>        
+        FB.AppEvents.logPageView();
 
+    };
 
-        <form id="tix-info-form" class="hide">
-            <h2>Ticket Info</h2>
-                <label for="seat-section">Seat Section</label>
-                <input type="text" id="seat-section" placeholder="Enter Seat Section">
-
-                <label for="seat-row">Seat Section</label>
-                <input type="text" id="seat-row" placeholder="Enter Seat Row">
-            
-                <label for="seat-number">Seat Section</label>
-                <input type="text" id="seat-number" placeholder="Enter Seat Number">
-           
-            <button type="submit" class="btn btn-primary" id="seat-submit">Submit</button>
-        </form>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
