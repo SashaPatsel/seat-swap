@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
         seatNum: DataTypes.INTEGER,
         eventTitle: DataTypes.STRING,
         status: {
-            type: DataTypes.ENUM('available', 'flexible', "locked", "gone")
+            type: DataTypes.ENUM('available', 'flexible', "locked", "gone"),
+            
         },
         subscription: { 
             type: DataTypes.BOOLEAN, defaultValue: false 

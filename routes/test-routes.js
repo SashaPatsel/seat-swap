@@ -20,10 +20,15 @@ module.exports = function(app) {
         db.User.count().then(function(c) {
             console.log("There are " + c + " users!")
             if (c == 0) {
+                
                 db.User.create({
                     firstName: "Dummy",
                     lastName: "Record"
-                }).then(function(chicken) {
+                }, {
+                    firstName: "Sasha",
+                    lastName: "Patsel"
+                }
+                ).then(function(chicken) {
                     // res.send(chicken);
                 })
             }
@@ -36,7 +41,10 @@ module.exports = function(app) {
             if (c == 0) {
                 db.Organization.create({
                     name: "Golden State Warriors"
-                }).then(function(chicken) {
+                }, {
+                    name: "San Francisco Giants"
+                }
+                ).then(function(chicken) {
                     // res.send(chicken);
                 })
             }
@@ -51,7 +59,12 @@ module.exports = function(app) {
                     UserId: 1,
                     OrganizationId: 1,
                     name: "My Summer Subscription"
-                }).then(function(chicken) {
+                }, {
+                    UserId: 2,
+                    OrganizationId: 2,
+                    name: "My Winter Subscription"
+                }
+                ).then(function(chicken) {
                     // res.send(chicken);
                 })
             }
