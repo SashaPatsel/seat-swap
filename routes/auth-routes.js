@@ -7,18 +7,22 @@ var GoogleStrategy = require("passport-google-oauth20");
 var db = require("../models");
 
 //local auth signup
-router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/home',
-        failureRedirect: '/'
-    }
-));
+router.post('/signup', 
+  passport.authenticate('local-signup', { failureRedirect: '/' }),
+  function(req, res) {
+    console.log("signup", req.user.dataValues.id);
+    res.cookie("user_id", req.user.dataValues.id);
+    res.redirect('/home');
+  });
 
 //local auth sign in
-router.post('/signin', passport.authenticate('local-signin', {
-        successRedirect: '/home',
-        failureRedirect: '/'
-    }
-));
+router.post('/signin', 
+  passport.authenticate('local-signin', { failureRedirect: '/' }),
+  function(req, res) {
+    console.log("signin", req.user.id);
+    res.cookie("user_id", req.user.id);
+    res.redirect('/home');
+  });
 
 //auth with google
 router.get("/google",
