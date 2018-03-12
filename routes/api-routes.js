@@ -222,38 +222,40 @@ module.exports = function(app) {
         });
     });
 
-// var dubsSched = [];
+    // // var dubsSched = [];
 
-      var events = [];
+    // var events = [];
 
-    // Warriors Schedule
-    client.get("https://api.sportradar.us/nba/trial/v4/en/games/2017/reg/schedule.json?api_key=" + keys.sportradar.nbakey, function(data, response) {
-        // parsed response body as js object 
-                for (var i = 0; i < data.games.length; i++) {
-                   //console.log(data)
-                  
-                  if (data.games[i].home.alias === "GSW") {
-                    var event = {};
-                    // console.log(data.games[i].away.name);
-                    // console.log(data.games[i].scheduled);
+    // // Warriors Schedule
+    // client.get("https://api.sportradar.us/nba/trial/v4/en/games/2017/reg/schedule.json?api_key=" +
+    //     keys.sportradar.nbakey,
+    //     function(data, response) {
+    //         // parsed response body as js object 
+    //         for (var i = 0; i < data.games.length; i++) {
+    //             //console.log(data)
 
-                    var away = data.games[i].away.name
-                    event["title"] = "Golden State Warriors vs " + away;
-                    event["start"] = data.games[i].scheduled;
-                    events.push(event);
-                  }
-                  
-                }
-            
-                // console.log(events)
-                
-    });
+    //             if (data.games[i].home.alias === "GSW") {
+    //                 var event = {};
+    //                 // console.log(data.games[i].away.name);
+    //                 // console.log(data.games[i].scheduled);
 
-    app.get("/api/schedule/warriors", function(req, res) {
-        events: events
-    }).then(function(data) {
-            console.log(events)
-            res.json(events);
-        });
+    //                 var away = data.games[i].away.name
+    //                 event["title"] = "Golden State Warriors vs " + away;
+    //                 event["start"] = data.games[i].scheduled;
+    //                 events.push(event);
+    //             }
+
+    //         }
+
+    //         // console.log(events)
+
+    //     });
+
+    // app.get("/api/schedule/warriors", function(req, res) {
+    //     events: events
+    // }).then(function(data) {
+    //     console.log(events)
+    //     res.json(events);
+    // });
 
 };
