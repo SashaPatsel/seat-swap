@@ -203,7 +203,6 @@ module.exports = function(app) {
                 OrganizationId: 1
             }
         }).then(function(data) {
-            // console.log(data)
             res.json(data);
         });
     });
@@ -212,9 +211,13 @@ module.exports = function(app) {
         db.Teamfeed.findAll({
             where: {
                 OrganizationId: req.params.OrganizationId
-            }
+            },
+            include: [{
+                model: db.Organization
+            }, {
+                model: db.User
+            }]
         }).then(function(data) {
-            // console.log(data)
             res.json(data);
         });
     });
@@ -252,6 +255,5 @@ module.exports = function(app) {
             console.log(events)
             res.json(events);
         });
-
 
 };
