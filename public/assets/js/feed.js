@@ -31,5 +31,17 @@ function renderComments() {
 }
 renderComments()
 
+var cookie = document.cookie.split(";");
+console.log("cookie", cookie)
+var userID = cookie[0];
+userID = userID.split("=");
+userID = userID[1];
+console.log("userID:", userID);
+var userName = cookie[1];
+userName = userName.split("=");
+userName = userName[1];
+userName = userName.split("%20");
+userName = userName[0] + " " + userName [1];
+console.log(userName);
 
 
