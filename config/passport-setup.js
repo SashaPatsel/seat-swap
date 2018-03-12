@@ -116,57 +116,7 @@ passport.use('local-signin', new LocalStrategy({
     }
 ));
 
-//passport config for Google signin
-// passport.use(new GoogleStrategy({
-//         clientID: keys.google.clientID,
-//         clientSecret: keys.google.clientSecret,
-//         callbackURL: "/auth/google/callback"
-//     }, function(accessToken, refreshToken, profile, done) {
-//         console.log("Email" + profile.emails[0].value);
-//         console.log("ID: " + profile.id);
-//         console.log("Display name: " + profile.displayName);
-//         console.log("given name" + profile.name.givenName);
-//         console.log("google passport callback");
-
-//         //done(null, { id: profile.id });
-//         process.nextTick(function() {
-//             db.User.findOne({
-//                 where: {
-//                     socialID: profile.id
-//                 }
-//             }).then(function(user) {
-//                 if (!user) {
-//                     db.User.create({
-//                         userName: profile.displayName,
-//                         firstName: profile.name.givenName,
-//                         lastName: profile.name.familyName,
-//                         email: profile.emails[0].value,
-//                         authMethod: "google",
-//                         socialID: profile.id
-
-//                     }).then(function(dbUser, created) {
-//                         if (!dbUser) {
-//                             return done(null, false);
-//                         } else {
-//                             console.log(dbUser.dataValues);
-//                             return done(null, dbUser);
-//                         }
-//                     })
-//                 }
-
-//                 var userinfo = user.get();
-//                 return done(null, userinfo);
-
-//             }).catch(function(err) {
-//                 console.log("Error:", err);
-//                 return done(null, false, {
-//                     message: 'Something went wrong with your Signin'
-//                 });
-//             });
-//         });
-//     }));
-
-
+//passport config for google signin
 passport.use(new GoogleStrategy({
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
@@ -186,7 +136,7 @@ passport.use(new GoogleStrategy({
                 }
             }).then(function(user) {
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
+                    console.log('Already signed in.');
                     return done(null, user);
                 } else {
                     db.User.create({
@@ -206,6 +156,8 @@ passport.use(new GoogleStrategy({
                         }
                     })
                 }
+
+
             })
         });
     }
