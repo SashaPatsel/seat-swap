@@ -29,6 +29,7 @@ router.get("/google",
 
 //auth google callback
 router.get("/google/callback", passport.authenticate('google'), function(req, res) {
+    res.cookie("user_id", req.user.dataValues.id);
     res.redirect("/home");
 });
 
@@ -41,6 +42,7 @@ router.get("/facebook",
 
 //auth facebook callback
 router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
+    res.cookie("user_id", req.user.dataValues.id);
     res.redirect("/home");
 
 });

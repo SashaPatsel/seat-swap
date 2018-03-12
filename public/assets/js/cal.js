@@ -122,3 +122,10 @@ $(document).on("submit", ".req-form", function(event) {
     console.log("mod-sub")
     console.log($("#org").val().trim(), $("#date").val().trim(), $("#num-tix").val().trim())
 })
+
+var cookie = document.cookie.split(";");
+console.log("cookie", cookie)
+var userID = cookie[0];
+userID = userID.split("=");
+userID = userID[1];
+console.log("userID:", userID);
