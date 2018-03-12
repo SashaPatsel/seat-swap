@@ -8,15 +8,15 @@ var db = require("../models");
 
 //local auth signup
 router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/account',
-        failureRedirect: '/signup'
+        successRedirect: '/home',
+        failureRedirect: '/'
     }
 ));
 
 //local auth sign in
 router.post('/signin', passport.authenticate('local-signin', {
-        successRedirect: '/account',
-        failureRedirect: '/signup'
+        successRedirect: '/home',
+        failureRedirect: '/'
     }
 ));
 
@@ -29,7 +29,7 @@ router.get("/google",
 
 //auth google callback
 router.get("/google/callback", passport.authenticate('google'), function(req, res) {
-    res.redirect("/account");
+    res.redirect("/home");
 });
 
 //auth with facebook
@@ -41,7 +41,7 @@ router.get("/facebook",
 
 //auth facebook callback
 router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
-    res.redirect("/account");
+    res.redirect("/home");
 
 });
 
