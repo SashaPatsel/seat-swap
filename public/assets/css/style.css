@@ -79,6 +79,7 @@
 
 .navbar {
   border-radius: 0px !important;
+  background-color: rgba(0,0,128,1)
 }
 .nav-pills>li {
   border-radius:5px;
@@ -104,10 +105,15 @@ input:focus {
   height: 40vw;
   width: 95%;
   background-color: rgba(230,230,230,1);
+  border: 3px solid rgba(0,0,128,1);
+  border-radius: 5px;
+  padding: 3px;
+  overflow: auto;
 }
 
 .nav-item {
   background-color: black;
+  border-radius: 8px;
   /*width: 15%;*/
   /*font-size: 11px;*/
   /*text-align: center;*/
@@ -188,8 +194,55 @@ display: table-row;
   }
 }
 
+#calendar {
+  border: 3px solid rgba(0,0,128,1);
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.comment {
+  background-color: rgba(0,0,128,1);
+  border-radius: 25px;
+  color: white;
+  padding: 4px;
+  margin: 3px 3px 5px 3px;
+}
+
+.userName {
+  font-size: 18px;
+  font-weight: 1200;
+  color: rgb(255,215,0);
+}
+
+#pills-tab {
+  margin-top: 2px;
+}
+
+.pill-heads {
+  margin-top: -3px;
+}
+
+.cal-pill {
+  border-radius: 50px;
+  position: relative;
+  float: right;
+  margin-left: 10px;
+}
+
 #glyph-ss {
   height: auto;
   width: 100%;
   color: white;
+  padding: 5px;
+  border-radius: 50px;
+}
+
+
+#glyph-ss1 {
+  height: auto;
+  width: 100%;
+  color: white;
+  padding: 5px;
+  border-radius: 50px;
 }
