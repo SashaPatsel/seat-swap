@@ -30,10 +30,10 @@
 <div class="row">
     <div class="col-md-6">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item">
+            <li class="nav-item above-cal">
       <a class="nav-link active" id="pills-add-watch-tab" data-toggle="pill" href="#pills-add-watch" role="tab" aria-controls="pills-add-watch" aria-selected="true"><span class="glyphicon glyphicon-eye-open" id="glyph-ss" aria-hidden="true"></span></a>
 </li>
-            <li class="nav-item cal-pill">
+            <li class="nav-item cal-pill above-cal">
       <a class="nav-link active" id="pills-req-tab" data-toggle="pill" href="#pills-req" role="tab" aria-controls="pills-req" aria-selected="true"><span class="glyphicon glyphicon-plus-sign" id="glyph-ss1" aria-hidden="true"></span></a>
 </li>
 </ul>
@@ -97,13 +97,13 @@
                   <label for="add-name">What is the name of this event?</label>
                         <input placeholder="Event Name" id="add-tix-name" name="add-name" type="text" />
                           <label for="add-name">Seat Section</label>
-                        <input placeholder="Seat Section" id="add-tix-sec" name="add-date" type="date" />
+                        <input placeholder="Seat Section" id="add-tix-sec" name="add-date" type="number" />
                         <label for="add-tix">Seat Row</label>
-                        <input placeholder="Seat Row" id="add-tix-row" name="add-tix" type="number" />
+                        <input placeholder="Seat Row" id="add-tix-row" name="add-tix" type="text" />
                         <label for="add-tix">Seat Number</label>
                         <input placeholder="Seat Number" id="add-tix-num" name="add-tix" type="number" />
                         <label for="add-tix">When?</label>
-                        <input placeholder="add Date mm/dd/yyyy" id="add-tix-date" name="add-tix" type="number" />
+                        <input placeholder="add Date mm/dd/yyyy" id="add-tix-date" name="add-tix" type="date" />
                         <button type="submit" class="btn btn-success comm-butt"></button>
                     </form>
           
@@ -169,109 +169,3 @@
      </div>
    </div>
 
-<script type="text/x-handlebars-template" id="entry-template">
-{{!-- $(document).ready(function() {
-
-    $(".dropdown-item").on("click", function() {
-        event.preventDefault();
-        var subscription = $(this).data("value");
-        console.log(subscription);
-        getEventInfo(subscription);
-    })
-
-    $("#seat-submit").on("click", function() {
-        event.preventDefault();
-        var seatSec = $("#seat-section").val();
-        var seatRow = $("#seat-row").val();
-        var seatNum = $("#seat-number").val();
-        console.log(seatSec, seatRow, seatNum);
-    })
-
-    function getEventInfo(subscription) {
-        // https://api.sportradar.us/nba/{access_level}/{version}/{language_code}/games/{season_year}/{nba_season}/schedule.{format}?api_key={your_api_key}
-        var nbaUrl = "https://api.sportradar.us/nba/trial/v4/en/games/2017/reg/schedule.json?api_key=qt53q4h4nux3nzv8xzyfwusw";
-        // + keys.nbakey;
-        var mlbUrl = "https://api.sportradar.us/mlb/trial/v6.5/en/games/2018/reg/schedule.json?api_key=mkapyy5p9ra9yz5y3km4v8tb";
-        // + keys.mlbkey;
-
-        switch (subscription) {
-            case "GSW":
-                $.ajax({
-                    url: nbaUrl,
-                    method: "GET"
-                }).done(function(response) {
-                    var events = [];
-                    for (var i = 0; i < response.games.length; i++) {
-                        //console.log(response)
-
-                        if (response.games[i].home.alias === "GSW") {
-                            var event = {};
-                            console.log(response.games[i].away.name);
-                            console.log(response.games[i].scheduled);
-
-                            var away = response.games[i].away.name
-                            event["title"] = "Golden State Warriors vs " + away;
-                            event["start"] = response.games[i].scheduled;
-                            events.push(event);
-                        }
-
-                    }
-                    console.log(events);
-                    renderCalendar(events);
-                });
-                break;
-
-            case "SF":
-                $.ajax({
-                    url: mlbUrl,
-                    method: "GET"
-                }).done(function(response) {
-                    var events = [];
-                    for (var i = 0; i < response.games.length; i++) {
-                        //console.log(response)
-                        if (response.games[i].home.abbr === "SF") {
-                            var event = {};
-                            console.log(response.games[i].away.name);
-                            var away = response.games[i].away.name;
-                            event["title"] = "Giants vs " + away;
-                            console.log(response.games[i].scheduled);
-                            event["start"] = response.games[i].scheduled;
-                            events.push(event);
-                        }
-                    }
-                    console.log(events);
-                    renderCalendar(events);
-                });
-                break;
-        }
-    }
-
-
-    $.get("/api/schedule/warriors", function(data) {
-
-        console.log(data)
-
-    })
-
-renderCalendar()
-    function renderCalendar(events) {
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,listMonth'
-            },
-            defaultDate: '2018-03-12',
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-        {
-          title: 'America',
-          start: '1776-03-01',
-        }]
-        });
-    }
-}); --}}
-
-</script>

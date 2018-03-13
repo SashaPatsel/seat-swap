@@ -256,7 +256,7 @@ module.exports = function(app) {
     app.get("/teamfeed/:org?", function(req, res) {
         db.Teamfeed.findAll({
             where: {
-                OrganizationId: 1
+                OrganizationId: 2
             }
         }).then(function(data) {
             res.json(data);
