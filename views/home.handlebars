@@ -29,17 +29,17 @@
 <!-- Calendar -->
 <div class="row">
     <div class="col-md-6">
+        <div id='calendar'></div>
       <ul class="nav nav-pills mb-3 western-pills" id="pills-tab" role="tablist">
-        <h6 class="pill-title">Find tickets</h6>
+        
             <li class="nav-item above-cal">
       <a class="nav-link active" id="pills-add-watch-tab" data-toggle="pill" href="#pills-add-watch" role="tab" aria-controls="pills-add-watch" aria-selected="true"><span class="glyphicon glyphicon-eye-open" id="glyph-ss" aria-hidden="true"></span></a>
 </li>
-            <h6 class="pill-title1 scootch-right">Add your tickets</h6>
+            
             <li class="nav-item cal-pill above-cal scootch-right">
       <a class="nav-link active" id="pills-req-tab" data-toggle="pill" href="#pills-req" role="tab" aria-controls="pills-req" aria-selected="true"><span class="glyphicon glyphicon-plus-sign" id="glyph-ss1" aria-hidden="true"></span></a>
 </li>
 </ul>
-        <div id='calendar'></div>
     </div>
     <div class="col-md-1"></div>
     {{!-- Feed --}}
@@ -74,9 +74,7 @@
               <h1 class="pill-heads">Request a Ticket</h1>
               <hr>
                <form id="watcher-form">
-                <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+
                           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event Host</button>
             <div class="dropdown-menu" aria-labelleby="dropdownMenuButton">
@@ -85,38 +83,23 @@
                 <a class="dropdown-item" data-value="2">San Francisco Giants</a>
             </div>
         </div>
-          </div>      
-          <div class="col-md-2"></div>
-          </div>        
+
             <br>
-            <br>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+
                <label for="event-date">Date:</label>
                 <input placeholder="Event Date mm/dd/yyyy" id="watcher-date" name="event-date" type="date"/>
-          </div>      
-          <div class="col-md-2"></div>
-          </div>
+
           <br>
           <br>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">        
+      
                 <label for="event-tix">Number of Tickets:</label>
                 <input placeholder="Number of tickets" id="watcher-num" name="event-tix" type="number" />
-          </div>      
-          <div class="col-md-2"></div>      
-        </div>
+
           <br>
           <br>        
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+
                 <button type="submit" class="btn btn-success comm-butt" id="watcher">Submit</button>
-          </div>      
-          <div class="col-md-2"></div>      
-        </div>
+
             </form>
             </div>
 
@@ -125,17 +108,17 @@
               <h1 class="pill-heads">Add a Ticket</h1>
               <hr>
                <form id="add-tix-form">
-                  <label for="add-name">What is the name of this event?</label>
-                        <input placeholder="Event Name" id="add-tix-name" name="add-name" type="text" />
-                          <label for="add-name">Seat Section</label>
-                        <input placeholder="Seat Section" id="add-tix-sec" name="add-date" type="number" />
-                        <label for="add-tix">Seat Row</label>
-                        <input placeholder="Seat Row" id="add-tix-row" name="add-tix" type="text" />
-                        <label for="add-tix">Seat Number</label>
-                        <input placeholder="Seat Number" id="add-tix-num" name="add-tix" type="number" />
-                        <label for="add-tix">When?</label>
-                        <input placeholder="add Date mm/dd/yyyy" id="add-tix-date" name="add-tix" type="date" />
-                        <button type="submit" class="btn btn-success comm-butt"></button>
+                  <label for="add-name">What is the name of this event?</label><br>
+                        <input placeholder="Event Name" id="add-tix-name" name="add-name" type="text" /><br><br>
+                          <label for="add-name">Seat Section</label><br>
+                        <input placeholder="Seat Section" id="add-tix-sec" name="add-date" type="number" /><br><br>
+                        <label for="add-tix">Seat Row</label><br>
+                        <input placeholder="Seat Row" id="add-tix-row" name="add-tix" type="text" /><br><br>
+                        <label for="add-tix">Seat Number</label><br>
+                        <input placeholder="Seat Number" id="add-tix-num" name="add-tix" type="number" /><br><br>
+                        <label for="add-tix">When?</label><br>
+                        <input placeholder="add Date mm/dd/yyyy" id="add-tix-date" name="add-tix" type="date" /><br><br>
+                        <button type="submit" class="btn btn-success comm-butt">Submit</button>
                     </form>
           
             </div>
