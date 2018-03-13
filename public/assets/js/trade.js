@@ -1,5 +1,5 @@
 
- var orgId = 0;
+ var orgId;
 
 $(".dropdown-item").on("click", function() {
         event.preventDefault();
@@ -28,10 +28,41 @@ $(".dropdown-item").on("click", function() {
     $("#watcher-num").val("")
  })
 
-        // date: ,
-        // seatSec: ,
-        // seatRow: ,
-        // seatNum: ,
-        // eventTitle: ,
-        // status: "locked"
+
+
+  function storeNewTix(newTix) {
+     $.post("/api/tickets", newTix).then(function() {
+         console.log("newTix", newTix)
+     })
+ }
+
+ $(document).on("submit", "#add-tix-form", function() {
+     event.preventDefault()
+        console.log("I'm here")
+     storeNewTix({
+        date: $("#add-tix-date").val().trim(),
+        seatSec: $("#add-tix-sec").val().trim(),
+        seatRow: $("#add-tix-row").val().trim(),
+        seatNum: $("#add-tix-num").val().trim(),
+        eventTitle: $("#add-tix-name").val().trim(),
+        status: "locked",
+        UserId: userID
+});
+ console.log("here it is", userID)   
+ })
+
+
+var cookie = document.cookie.split(";");
+console.log("cookie", cookie)
+var userID = cookie[0];
+userID = userID.split("=");
+userID = userID[1];
+console.log("userID:", userID);
+var userName = cookie[1];
+userName = userName.split("=");
+userName = userName[1];
+userName = userName.split("%20");
+userName = userName[0] + " " + userName [1];
+console.log(userName);
+    
         

@@ -12,20 +12,20 @@
 
  // A function for creating an author. Calls getAuthors upon completion
  function storeComment(comment) {
-    var UserName = "Sasha Patsel"
+   
      $.post("/teamfeed", comment).then(function() {
-         $(".comments-here").prepend("<div class='comment'><span class='userName'>" + UserName + "</span>  " + comment.comment + "</div>")
+         $(".comments-here").prepend("<div class='comment'><span class='userName'>" + userName + "</span>  " + comment.comment + "</div>")
          console.log(comment)
      })
  }
 
 function renderComments() {
-     $.get("/teamfeed/:org?", function(data) {
+     $.get("/api/organization/:OrganizationId?/teamfeed", function(data) {
       
       for (var i = 0; i < data.length; i++) {
-       var UserName = "Sasha Patsel"
-         console.log(data[i].comment)
-         $(".comments-here").prepend("<div class='comment'><span class='userName'>" + UserName + "</span>  " + data[i].comment + "</div>")
+
+         console.log(data[i])
+         $(".comments-here").prepend("<div class='comment'><span class='userName'>" + userName + "</span>  " + data[i].comment + "</div>")
       }
      
     })
