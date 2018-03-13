@@ -21,8 +21,10 @@ module.exports = function(app) {
 	});
 
     app.get("/logout", function(req, res) {
-        res.clearCookie("user_id");
+        
         req.session.destroy(function(err) {
+            res.clearCookie("user_id");
+            res.clearCookie("user_name");
             res.redirect("/");
         });
     });
