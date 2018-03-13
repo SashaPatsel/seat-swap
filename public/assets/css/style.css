@@ -85,6 +85,26 @@
   border-radius:5px;
   margin-top: 3px;
 }
+.western-pills{
+  margin-left: 15px;
+}
+.pill-title {
+  float: top;
+  position: absolute;
+  top: -25px;
+  left: 27px;
+  color: rgba(0,0,128,1);
+}
+.pill-title1 {
+  float: top;
+  position: absolute;
+   top: -25px;
+  left: 107px;
+  color: rgba(0,0,128,1);
+}
+/*.scootch-right {
+  margin-left:  15px;
+}*/
 .feed h1 {
   padding: 10px;
   margin-bottom: 0px;
@@ -105,7 +125,7 @@ input:focus {
   height: 40vw;
   width: 95%;
   background-color: rgba(230,230,230,1);
-  border: 3px solid rgba(0,0,128,1);
+  border: 5px solid rgba(0,0,128,1);
   border-radius: 5px;
   padding: 3px;
   overflow: auto;
@@ -195,7 +215,7 @@ display: table-row;
 }
 
 #calendar {
-  border: 3px solid rgba(0,0,128,1);
+  border: 5px solid rgba(0,0,128,1);
   border-radius: 5px;
   padding: 5px;
   margin-left: 10px;
