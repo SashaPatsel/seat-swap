@@ -34,7 +34,7 @@ module.exports = function(app) {
             }).then(function(dbUser) {
             res.json(dbUser);
         });
-    });
+    }); 
 
     //add a subscription to a user
     app.post("/api/subscriptions", ensureAuthenticated, function(req, res) {
@@ -230,6 +230,18 @@ module.exports = function(app) {
                 res.json(data);
             });
     });
+
+    app.get("/api/:tickets", function(req,res){
+        db.Ticket.findAll({
+            where: {
+                status: "available",
+                // OrganizationId: req.params.OrganizationId
+            }
+        }).then(function(data){
+            res.json(data);
+        });
+            
+    })
 
     // // var dubsSched = [];
 

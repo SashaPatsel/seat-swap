@@ -7,6 +7,21 @@
      });
      $("#comment-text").val("")
  })
+$(document).on("click", "#pills-org-tix-tab", function() {
+     event.preventDefault()
+     toWindowshop({
+         
+         status: status,
+         date:date
+         // seatSec: seatSec,
+         // seatNum: seatNum,
+         // seatRow: seatRow,
+         // eventTitle: eventTitle
+       
+        
+     });
+     $(".relatedTix").val("")
+ });
 
 
 
@@ -30,6 +45,19 @@ function renderComments() {
     })
 }
 renderComments()
+
+
+function toWindowshop(ticket){
+    $.get("/api/tickets/?status=available").then(function(data){
+        console.log(data);
+        for (var i=0; i<data.length; i++){
+
+        $(".relatedTix").prepend("<div class='ticket-info'>" +data[i].date+ data[i].seatSec + data[i].seatRow + data[i].seatNum + data[i].eventTitle + "</div>")
+        }
+        console.log(ticket)
+        
+    })
+}
 
 
 

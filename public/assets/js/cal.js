@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     $(".dropdown-item").on("click", function() {
@@ -97,7 +96,29 @@ $(document).ready(function() {
             events: events
         });
     }
+
+    $("").on("click", function(event) {
+        var id = $(this).data("id");
+        var newStatus = $(this).data("newstatus");
+
+        var newStatusState = {
+            status: newStatus
+        };
+
+        $.ajax("/api/tickets"+id, {
+            type: "PUT",
+            data: newStatusState
+        }).then(
+            function() {
+                console.log("changed status to", newStatus);
+                
+            }
+        );
+    });
+
 });
+
+
 
 $(document).on("click", ".fc-day", function() {
     // $(this).addClass("sneak")
