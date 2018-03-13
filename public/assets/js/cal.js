@@ -81,9 +81,18 @@ $(document).ready(function() {
     //     console.log(data)
 
     // })
+calPopulate = [
+        {
+          title: 'America',
+          start: '1776-03-01',
+        }]
 
-renderCalendar()
+        renderCalendar(calPopulate)
+console.log("calPopulate",calPopulate)        
+
+
     function renderCalendar(events) {
+        console.log("This is a console log from w/in the renderCalendar function",events)
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -94,11 +103,7 @@ renderCalendar()
             navLinks: true, // can click day/week names to navigate views
             editable: true,
             eventLimit: true, // allow "more" link when too many events
-            events: [
-        {
-          title: 'America',
-          start: '1776-03-01',
-        }]
+            events: events
         });
     }
 });
@@ -128,15 +133,22 @@ function returnAllTix() {
       
       for (var i = 0; i < data.length ; i++) {
         if (data[i].UserId == userID) {
-            console.log("cal-tix!!!!!!", data[i])
+            console.log("cal-tix!!!!!!", {
+                title: data[i].eventTitle,
+                start: data[i].date.slice(0, 10)
+             })
+             calPopulate.push({
+                title: data[i].eventTitle,
+                start: data[i].date.slice(0, 10)
+             })
         }
       }
-      console.log("literally all the tickets", data)
-      console.log("only some :(" , data[7].UserId, userID)
+     
       })
      
 }
 returnAllTix()
+
 
 
 var cookie = document.cookie.split(";");
