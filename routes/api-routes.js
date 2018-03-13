@@ -6,23 +6,23 @@ var client = new Client();
 module.exports = function(app) {
 
     //create a new user
-    app.post("/api/users", function(req, res) {
-        db.User.create(req.body)
-            .then(function(dbUser) {
-                res.json(dbUser);
-            });
-    });
+    // app.post("/api/users", function(req, res) {
+    //     db.User.create(req.body)
+    //         .then(function(dbUser) {
+    //             res.json(dbUser);
+    //         });
+    // });
 
     //return a user's record
-    app.get("/api/users/:id", function(req, res) {
-        db.User.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        })
-    });
+    // app.get("/api/users/:id", function(req, res) {
+    //     db.User.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     }).then(function(dbUser) {
+    //         res.json(dbUser);
+    //     })
+    // });
 
     //update a user's record
     app.put("/api/users/:id", function(req, res) {
@@ -233,6 +233,21 @@ module.exports = function(app) {
         });
     });
 
+    // Return a list of all current matches
+    app.get("/api/matches", function(req, res) {
+        db.Match.findAll({
+            include: [{
+                model: db.Ticket,
+                include: [{
+                    model: db.Organization
+                }]
+            }]
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
+
     //add a trade journal entry
     app.post("/api/tradejournal", function(req, res) {
 
@@ -266,15 +281,16 @@ module.exports = function(app) {
     });
 
     //return a list of comments for 1 or all organizations [DEPRECATED]
-    app.get("/teamfeed/:org?", function(req, res) {
-        db.Teamfeed.findAll({
-            where: {
-                OrganizationId: 2
-            }
-        }).then(function(data) {
-            res.json(data);
-        });
-    });
+    // app.get("/teamfeed/:org?", function(req, res) {
+    //     db.Teamfeed.findAll({
+    //         where: {
+    //             OrganizationId: 2
+    //         }
+    //     }).then(function(data) {
+    //         res.json(data);
+    //     });
+    // });
+
     //return a list of comments for 1 or all organizations
     app.get("/api/organization/:OrganizationId?/teamfeed", function(req, res) {
         db.Teamfeed.findAll({

@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
         Ticket.belongsTo(models.Subscription);
+        Ticket.belongsTo(models.Organization);        
     };
     return Ticket;
 };
