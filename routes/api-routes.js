@@ -80,6 +80,19 @@ module.exports = function(app) {
         });
     });
 
+    // Get a list of all tickets
+    app.get("/api/tickets", function(req, res) {
+        var queryObj = {};
+        if (req.query.status) {
+            queryObj = { where: { status: req.query.status } };
+        };
+        db.Ticket.findAll({
+              queryObj
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
         db.Ticket.create(req.body)
