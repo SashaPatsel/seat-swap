@@ -351,19 +351,3 @@ module.exports = function(app) {
     // });
 
 };
-
-
-// function ensureAuthenticated(req, res, next) {
-//     console.log('check something', req.session.passport.user);
-//     var userId;
-//     if (req.isAuthenticated()) {
-//         userId = req.session.passport.user;
-//         console.log("request is authenticated");
-//         return next();
-//     } else {
-//         userId = false;
-//         console.log('request is not authenticated');
-//         res.redirect('/');
-//         return;
-//     }
-// }
