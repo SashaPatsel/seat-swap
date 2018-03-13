@@ -83,10 +83,31 @@ module.exports = function(app) {
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
         db.Ticket.create(req.body)
-            .then(function(dbUser) {
-                res.json(dbUser);
+            .then(function(dbTicket) {
+                findWatcherMatches(dbTicket);
+                res.json(dbTicket);
             });
     });
+
+
+    // Find tickets that match the criteria of the watcher
+    function findWatcherMatches(ticketRecord){
+        // console.log('findTicketMatches: called');
+
+        db.Watcher.findAll({
+            where: {
+                OrganizationId: ticketRecord.OrganizationId,
+                eventDate: ticketRecord.date
+            }
+        }).then(function(dbWatchers) {
+          console.log(JSON.stringify(dbWatchers, null, 4));
+
+          dbWatchers.forEach(function(singleWatcherMatch) {
+            writeMatch(singleWatcherMatch, ticketRecord);
+          });
+        });
+    }
+    
 
     //return all tickets for a user
     app.get("/api/users/:UserId/tickets", function(req, res) {
@@ -128,9 +149,42 @@ module.exports = function(app) {
     //add a watcher
     app.post("/api/watchers", function(req, res) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
+            findTicketMatches(dbWatcher);
             res.json(dbWatcher);
         });
     });
+
+    // Find tickets that match the criteria of the watcher
+    function findTicketMatches(watcherRecord){
+        // console.log('findTicketMatches: called');
+
+        db.Ticket.findAll({
+            where: {
+                OrganizationId: watcherRecord.OrganizationId,
+                date: watcherRecord.eventDate
+            }
+        }).then(function(dbTickets) {
+          console.log(JSON.stringify(dbTickets, null, 4));
+
+          dbTickets.forEach(function(singleTicketMatch) {
+            writeMatch(watcherRecord, singleTicketMatch);
+          });
+        });
+    }
+
+    // write a match record
+    function writeMatch(watcher, ticket){
+        // console.log('writeMatch: called');
+        // console.log(watcher, ticket);
+
+        db.Match.create({
+            'WatcherId': watcher.id,
+            'TicketId': ticket.id
+        }).then(function(dbMatches) {
+            console.log('writeMatch: matches created');
+            console.log(JSON.stringify(dbMatches, null, 4));
+        });
+    } 
 
     //return a list of watchers for a specific user
     app.get("/api/users/:UserId/watchers", function(req, res) {
