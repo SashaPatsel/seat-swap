@@ -19,18 +19,19 @@
      })
  }
 
-function renderComments() {
-     $.get("/api/organization/:OrganizationId?/teamfeed", function(data) {
+// function renderComments() {
+     $.get("/api/organization/2/teamfeed", function(data) {
       
       for (var i = 0; i < data.length; i++) {
 
-         console.log(data[i])
+         console.log("comments!!!!!!!!!!!!!", data[i].User.firstName)
+         console.log("comments???????",data[i].User.firstName)
          $(".comments-here").prepend("<div class='comment'><span class='userName'>" + userName + "</span>  " + data[i].comment + "</div>")
       }
      
     })
-}
-renderComments()
+// }
+// renderComments()
 
 var cookie = document.cookie.split(";");
 console.log("cookie", cookie)

@@ -85,25 +85,23 @@ calPopulate = [
         {
           title: 'America',
           start: '1776-03-01',
-        }]
+        },]
 
         renderCalendar(calPopulate)
-console.log("calPopulate",calPopulate)        
 
-
-    function renderCalendar(events) {
-        console.log("This is a console log from w/in the renderCalendar function",events)
+    function renderCalendar(tickets) {
+        console.log("This is a console log from w/in the renderCalendar function",tickets)
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,listMonth'
             },
-            defaultDate: '2018-03-12',
+            defaultDate: '2018-03-13',
             navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: events
+            editable: false,
+            eventLimit: false, // allow "more" link when too many events
+            events: tickets
         });
     }
 });
