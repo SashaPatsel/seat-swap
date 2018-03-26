@@ -13,7 +13,7 @@ router.post('/signup',
     console.log("signup", req.user.dataValues.id);
     res.cookie("user_id", req.user.dataValues.id);
     res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect('/home');
+    res.redirect('/');
   });
 
 //local auth sign in
@@ -23,7 +23,7 @@ router.post('/signin',
     console.log("signin", req.user.id);
     res.cookie("user_id", req.user.id);
     res.cookie("user_name", req.user.userName);
-    res.redirect('/home');
+    res.redirect('/');
   });
 
 //auth with google
@@ -37,7 +37,7 @@ router.get("/google",
 router.get("/google/callback", passport.authenticate('google'), function(req, res) {
     res.cookie("user_id", req.user.dataValues.id);
     res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect("/home");
+    res.redirect("/");
 });
 
 //auth with facebook
@@ -51,7 +51,7 @@ router.get("/facebook",
 router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
     res.cookie("user_id", req.user.dataValues.id);
     res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect("/home");
+    res.redirect("/");
 
 });
 
