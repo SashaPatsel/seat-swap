@@ -45,8 +45,8 @@ class FullCal extends React.Component {
                 },
                 {
                     title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2017-05-28'
+                    // url: 'http://google.com/',
+                    start: '2018-03-26'
                 }
             ],		
     }
@@ -62,9 +62,9 @@ class FullCal extends React.Component {
               center: 'title',
               right: 'month,listMonth'
           }}
-         defaultDate={'2017-09-12'}
+        //  defaultDate={'2017-09-12'}
         navLinks= {true} // can click day/week names to navigate views
-        editable= {true}
+        editable= {false}
         eventLimit= {true} // allow "more" link when too many events
         events = {this.state.events}	
     />
