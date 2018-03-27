@@ -15,10 +15,7 @@ import News from "./pages/News";
 
 
 
-
-
-
-const Wrapper = props => (
+const Home = props => (
   <div className="ss-wrapper">
     <Nav />
     <div className="row">
@@ -42,4 +39,4 @@ const Wrapper = props => (
   </div>
 );
 
-export default Wrapper;
+export default Home;
