@@ -10,8 +10,8 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     };
@@ -29,25 +29,33 @@ class SignUp extends Component {
   
     event.preventDefault();
 
+    console.log("email, pwd", this.state.email, this.state.password);
+
     fetch("/auth/signup", {
-      method: "POST",
+      method: 'POST',
       credentials: "include",
       mode: "cors",
-      data: {
-      email: this.state.email,
-      password: this.state.password,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName
-    }}).then(response  => {
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        firstname: this.state.firstname,
+        lastname: this.state.lastname
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then(response  => {
       console.log(response)
       //console.log(response.headers.get("content-type"));
+
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
 
     this.setState({
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     });
@@ -64,15 +72,15 @@ class SignUp extends Component {
           </div>
         <form className="form" >
           <input
-            value={this.state.firstName}
-            name="firstName"
+            value={this.state.firstname}
+            name="firstname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="First Name"
           />
           <input
-            value={this.state.lastName}
-            name="lastName"
+            value={this.state.lastname}
+            name="lastname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
