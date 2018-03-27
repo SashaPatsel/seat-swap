@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
   "dependencies": {
     "axios": "^0.18.0",
     "fullcalendar-reactwrapper": "^1.0.7",
@@ -17,9 +16,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-   "proxy": {
-     "/auth": {
-       "target": "http://localhost:5000"
-     }
-   }
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5000"
+    },
+    "/auth": {
+      "target": "http://localhost:5000"    
+    }
+  }
 }
