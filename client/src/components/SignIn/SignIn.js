@@ -26,16 +26,29 @@ class SignIn extends Component {
   
     event.preventDefault();
 
-    axios.post("/auth/signin", {
-      email: this.state.email,
-      password: this.state.password
+    fetch("/auth/signin", {
+      method: 'POST',
+      credentials: "include",
+      mode: "cors",
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
     }).then(response  => {
       console.log(response)
+      //console.log(response.headers.get("content-type"));
+
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
 
     this.setState({
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     });
