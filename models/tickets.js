@@ -1,6 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     var Ticket = sequelize.define("Ticket", {
-        date: DataTypes.DATE,
+        date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
         seatSec: DataTypes.INTEGER,
         seatRow: DataTypes.STRING,
         seatNum: DataTypes.INTEGER,
