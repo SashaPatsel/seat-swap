@@ -7,24 +7,50 @@ var GoogleStrategy = require("passport-google-oauth20");
 var db = require("../models");
 
 //local auth signup
-router.post('/signup', 
-  passport.authenticate('local-signup', { failureRedirect: '/' }),
-  function(req, res) {
-    console.log("signup", req.user.dataValues.id);
-    res.cookie("user_id", req.user.dataValues.id);
-    res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect('/');
-  });
+router.post("/signup", (req, res, next) => {
+  passport.authenticate("local-signup", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+
+    if(!user) {
+      return res.redirect("/");
+    }
+
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      //console.log("id, username", req.user.dataValues.id, req.user.dataValues.userName);
+      res.cookie("user_id", req.user.dataValues.id);
+      res.cookie("user_name", req.user.dataValues.userName);
+      return res.redirect("/")
+    })
+  }) (req, res, next);
+});
 
 //local auth sign in
-router.post('/signin', 
-  passport.authenticate('local-signin', { failureRedirect: '/' }),
-  function(req, res) {
-    console.log("signin", req.user.id);
-    res.cookie("user_id", req.user.id);
-    res.cookie("user_name", req.user.userName);
-    res.redirect('/');
-  });
+router.post("/signin", (req, res, next) => {
+  passport.authenticate("local-signin", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+
+    if(!user) {
+      return res.redirect("/");
+    }
+
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      //console.log("id, username", req.user.dataValues.id, req.user.dataValues.userName);
+      res.cookie("user_id", req.user.dataValues.id);
+      res.cookie("user_name", req.user.dataValues.userName);
+      return res.redirect("/")
+    })
+  }) (req, res, next);
+});
 
 //auth with google
 router.get("/google",
@@ -37,7 +63,7 @@ router.get("/google",
 router.get("/google/callback", passport.authenticate('google'), function(req, res) {
     res.cookie("user_id", req.user.dataValues.id);
     res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect("/");
+    return res.redirect("/");
 });
 
 //auth with facebook
