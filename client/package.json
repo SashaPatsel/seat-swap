@@ -23,6 +23,12 @@
       "target": "http://localhost:5000"
     },
     "/auth": {
+<<<<<<< HEAD
+=======
+      "target": "http://localhost:5000"    
+    },
+    "/": {
+>>>>>>> ce48c8f7a625a88fbf96de0c2ec235d88093b4f9
       "target": "http://localhost:5000"
     }
   }

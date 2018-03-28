@@ -31,6 +31,8 @@ const Home = props => (
             <Route path="/alltix" component={AllTix} />
             <Route path="/history" component={Historyy} />
             <Route path="/news" component={News} />
+            <Route path="/addTix" component={addTix} />
+            <Route path="/addWatcher" component={addWatcher} />
           </div>
         </Router>
       </div>

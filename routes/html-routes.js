@@ -6,15 +6,15 @@ module.exports = function(app) {
 
 	app.get("/", function(req, res) {
         if (req.isAuthenticated()) {
-            res.redirect("/home");
+            res.redirect("/");
         } else {
-            res.render("index"); 
+            res.redirect("/"); 
         }
 	});
 
 	app.get("/home", function(req, res) {
         if (req.isAuthenticated()) {
-            res.render("home");
+            res.redirect("/");
         } else {
             res.redirect("/"); 
         }
