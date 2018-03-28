@@ -241,6 +241,40 @@ module.exports = function(app) {
                 include: [{
                     model: db.Organization
                 }]
+            }, {
+                model: db.Watcher,
+                include: {
+                    model: db.User
+                }
+            }]
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
+    // Get all matches by the User who created the Watcher
+    app.get("/api/matches/:UserId", function(req, res) {
+        db.Match.findAll({
+            include: [{
+                model: db.Watcher,
+                include: [{
+                    model: db.User,
+                    include: {
+                        model: db.Ticket
+                    }
+                }]
+                },
+                {
+                model: db.Ticket,
+                where: {
+                    UserId: req.params.UserId
+                },
+                include: [{
+                    model: db.Organization
+                },
+                {
+                    model: db.User
+                }]
             }]
             }).then(function(data) {
                 res.json(data);
