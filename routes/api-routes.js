@@ -241,6 +241,33 @@ module.exports = function(app) {
                 include: [{
                     model: db.Organization
                 }]
+            }, {
+                model: db.Watcher,
+                include: {
+                    model: db.User
+                }
+            }]
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
+    app.get("/api/matches/:UserId", function(req, res) {
+        db.Match.findAll({
+            include: [{
+                model: db.Watcher,
+                include: [{
+                    model: db.User
+                }]
+                },
+                {
+                model: db.Ticket,
+                include: [{
+                    model: db.Organization
+                },
+                {
+                    model: db.User
+                }]
             }]
             }).then(function(data) {
                 res.json(data);
