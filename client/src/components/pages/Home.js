@@ -18,10 +18,10 @@ const Home = props => (
   <div className="ss-wrapper">
     <Nav />
     <div className="row">
-      <div className="col-md-7">
+      <div className="col-md-8">
         <FullCal />
       </div>
-      <div className="col-md-5">
+      <div className="col-md-4">
         <Router>
           <div className="rightNav">
             <Navpills />

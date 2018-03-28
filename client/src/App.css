@@ -60,6 +60,8 @@ body {
   background-color: white;
   color: #026670;
   padding: 1em;
+  border: solid 4px #026670;
+  border-radius: 15px;
 }
 
 
@@ -86,8 +88,30 @@ a.hover {
   height: 41.5em;
   background-color: white;
   color: #026670;
+  border: solid 4px #026670;
+  border-radius: 15px;
 }
 
 .n-pills {
   font-size: 13px;
 }
+
+.nav-tabs {
+  background-color: #022140;
+  border-radius: 10px;
+}
+
+#exchange-button {
+ margin-top: 1%;
+ background-color: #026670;
+ color: white;
+ border-radius: 15px;
+}
+
+#add-button {
+  margin-top: 1%;
+  margin-left: 1%;
+  background-color: #026670;
+  color: white;
+  border-radius: 15px;
+ }
