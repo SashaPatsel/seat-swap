@@ -11,6 +11,8 @@ import OrgTix from "./OrgTix";
 import AllTix from "./AllTix";
 import Historyy from "./Historyy";
 import News from "./News";
+import addTix from "./addTix";
+import addWatcher from "./addWatcher";
 
 
 

@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import FullCalendar from 'fullcalendar-reactwrapper';
 import API from "../utils/API";
 import { Button, Icon } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 class FullCal extends React.Component {
 
@@ -64,14 +65,18 @@ class FullCal extends React.Component {
                     eventLimit={true} // allow "more" link when too many events
                     events={this.state.events}
                 />
-                <Button size='small' id='exchange-button'>
-                    <Icon name='exchange' /> Find Tickets
-                </Button>
 
-                <Button size='small' id='add-button'>
-                    <Icon name='add circle' /> Add Tickets
-                </Button>
-
+                <Link to="/addTix" className="n-pills">
+                    <Button size='small' id='exchange-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
+                        <Icon name='exchange' /> Find Tickets
+                    </Button>
+                </Link>
+                
+                <Link to="/addWatcher" className="n-pills">
+                    <Button size='small' id='add-button' className={window.location.pathname === "/addWatcher" ? "active" : ""}>
+                        <Icon name='add circle' /> Add Tickets
+                    </Button>
+                </Link>
             </div>
         );
     }
