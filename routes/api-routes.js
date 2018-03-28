@@ -177,7 +177,9 @@ module.exports = function(app) {
                 date: watcherRecord.eventDate
             }
         }).then(function(dbTickets) {
-          console.log(JSON.stringify(dbTickets, null, 4));
+            // console.log(dbTickets)
+            // console.log("Hello, it's me you're looking for.")
+            // console.log(JSON.stringify(dbTickets, null, 4));
 
           dbTickets.forEach(function(singleTicketMatch) {
             writeMatch(watcherRecord, singleTicketMatch);
@@ -187,8 +189,8 @@ module.exports = function(app) {
 
     // write a match record
     function writeMatch(watcher, ticket){
-        // console.log('writeMatch: called');
-        // console.log(watcher, ticket);
+        console.log('writeMatch: called');
+        console.log(watcher, ticket);
 
         db.Match.create({
             'WatcherId': watcher.id,
