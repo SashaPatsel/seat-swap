@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-// import "./Form.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import axios from "axios";
-// import Google from "../Google";
-// import Facebook from "../Facebook";
 
 class SignIn extends Component {
   // Setting the component's initial state
@@ -39,7 +34,6 @@ class SignIn extends Component {
       })
     }).then(response  => {
       console.log(response)
-      //console.log(response.headers.get("content-type"));
 
       window.location.href = "/";
     }).catch(err => {
@@ -55,7 +49,6 @@ class SignIn extends Component {
   };
 
   render() {
-
     return (
       <div>
         <div>

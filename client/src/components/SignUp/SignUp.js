@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-// import "./Form.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import axios from "axios";
-// import Google from "../Google";
-
 
 class SignUp extends Component {
   // Setting the component's initial state
@@ -45,8 +40,7 @@ class SignUp extends Component {
         'Content-Type': 'application/json'
       })
     }).then(response  => {
-      console.log(response)
-      //console.log(response.headers.get("content-type"));
+      console.log(response);
 
       window.location.href = "/";
     }).catch(err => {
@@ -64,6 +58,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <div className="col-xs-12 col-sm-12 col-md-6">
           <div>
             <a href="/auth/google">Google SignUp</a>
           </div>
@@ -101,6 +96,7 @@ class SignUp extends Component {
           />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
+        </div>
       </div>
     );
   }
