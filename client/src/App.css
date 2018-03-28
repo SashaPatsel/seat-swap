@@ -43,7 +43,7 @@ body {
 }
 
 .ss-nav {
-  background-color: #026670;
+  background-color: #2e9cca;
   color: #c9c9c9;
   width: 100%;
   height: 10%;
@@ -58,15 +58,15 @@ body {
 #fullCal-main {
   width: 100%;
   background-color: white;
-  color: #026670;
+  color: #25274d;
   padding: 1em;
-  border: solid 4px #026670;
+  border: solid 4px #2e9cca;
   border-radius: 15px;
 }
 
 
 a.fc-day-number {
-  color: #026670;
+  color: #25274d;
 }
 
 .logo {
@@ -77,18 +77,18 @@ a.fc-day-number {
 }
 
 a {
-  color: #026670;
+  color: #2e9cca;
 }
 
 a.hover {
-  color: #026670;
+  color: #2e9cca;
 }
 
 .rightNav {
   height: 41.5em;
   background-color: white;
-  color: #026670;
-  border: solid 4px #026670;
+  color: #25274d;
+  border: solid 4px #2e9cca;
   border-radius: 15px;
 }
 
@@ -103,7 +103,7 @@ a.hover {
 
 #exchange-button {
  margin-top: 1%;
- background-color: #026670;
+ background-color: #2e9cca;
  color: white;
  border-radius: 15px;
 }
@@ -111,7 +111,7 @@ a.hover {
 #add-button {
   margin-top: 1%;
   margin-left: 1%;
-  background-color: #026670;
+  background-color: #2e9cca;
   color: white;
   border-radius: 15px;
  }
