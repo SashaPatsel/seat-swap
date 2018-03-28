@@ -21,7 +21,7 @@ router.post("/signup", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      //console.log("id, username", req.user.dataValues.id, req.user.dataValues.userName);
+    
       res.cookie("user_id", req.user.dataValues.id);
       res.cookie("user_name", req.user.dataValues.userName);
       return res.redirect("/")
@@ -44,8 +44,7 @@ router.post("/signin", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      //console.log("id, username", req.user.dataValues.id, req.user.dataValues.userName);
-      res.cookie("user_id", req.user.dataValues.id);
+      
       res.cookie("user_name", req.user.dataValues.userName);
       return res.redirect("/")
     })
@@ -77,7 +76,7 @@ router.get("/facebook",
 router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
     res.cookie("user_id", req.user.dataValues.id);
     res.cookie("user_name", req.user.dataValues.userName);
-    res.redirect("/");
+    return res.redirect("/");
 
 });
 
