@@ -252,16 +252,23 @@ module.exports = function(app) {
             });
     });
 
+    // Get all matches by the User who created the Watcher
     app.get("/api/matches/:UserId", function(req, res) {
         db.Match.findAll({
             include: [{
                 model: db.Watcher,
                 include: [{
-                    model: db.User
+                    model: db.User,
+                    include: {
+                        model: db.Ticket
+                    }
                 }]
                 },
                 {
                 model: db.Ticket,
+                where: {
+                    UserId: req.params.UserId
+                },
                 include: [{
                     model: db.Organization
                 },
