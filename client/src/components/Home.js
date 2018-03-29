@@ -5,7 +5,7 @@ import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 import Navpills from "./Navpills";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Pending from "./pages/PendingTrades";
+import TradeOffers from "./pages/TradeOffers";
 import MyRequests from "./pages/MyRequests";
 import OrgTix from "./pages/OrgTix";
 import AllTix from "./pages/AllTix";
@@ -26,8 +26,8 @@ const Home = props => (
         <Router>
           <div className="rightNav">
             <Navpills />
-            <Route exact path="/pendingtrades" component={Pending} />
             <Route exact path="/requests" component={MyRequests} />
+            <Route exact path="/tradeoffers" component={TradeOffers} />
             <Route exact path="/orgtix" component={OrgTix} />
             <Route path="/alltix" component={AllTix} />
             <Route path="/history" component={Historyy} />

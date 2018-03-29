@@ -1,16 +1,57 @@
 import React from "react";
+import API from "../../utils/API";
+import { Link } from "react-router-dom";
+import FormBtn from "../Form/FormBtn";
+import Input from "../Form/Input";
 
-const Pending = () => (
-  <div className="navTabs">
-    <h1>Pending Page</h1>
-    <p>
-      Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui mauris,
-      ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus porta. Nam
-      quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam semper
-      imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed rhoncus mollis
-      diam, sit amet facilisis lectus blandit at.
-    </p>
-  </div>
-);
 
-export default Pending;
+class Offers extends React.Component {
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.title && this.state.author) {
+      API.saveBook({
+        title: this.state.title,
+        author: this.state.author,
+        synopsis: this.state.synopsis
+      })
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+  render() {
+    return (
+      <div className="navTabs">
+        <h1>Offers Page</h1>
+        <form>
+          <Input
+            // value={this.state.title}
+            onChange={this.handleInputChange}
+            name="title"
+            placeholder="Title (required)"
+          />
+          <Input
+            // value={this.state.author}
+            onChange={this.handleInputChange}
+            name="author"
+            placeholder="Author (required)"
+          />
+          <FormBtn
+            // disabled={!(this.state.author && this.state.title)}
+            onClick={this.handleFormSubmit}
+          >
+            Submit Book
+              </FormBtn>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Offers;
