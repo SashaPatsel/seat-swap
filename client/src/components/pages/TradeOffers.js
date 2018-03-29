@@ -28,17 +28,17 @@ componentDidMount() {
 
   render() {
     return (
-      <div className="navTabs">
+      <div className="navTabs" id="trade-offers">
         <h1>Offers Page</h1>
           <List>
             {this.state.matches.map(match =>(
               match.Watcher.User.Tickets.map(tix =>(
                 <ListItem key={match.id}>
-                {tix.eventTitle}
+                <strong>{tix.eventTitle}</strong>
                 {tix.seatSec}
                 {tix.seatRow}
                 {tix.seatNum}
-             </ListItem>  
+               </ListItem>  
               ))
 
             ))}

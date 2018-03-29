@@ -91,6 +91,7 @@ a.hover {
   border: solid 4px #2e9cca;
   border-radius: 15px;
   padding: 1%;
+  overflow: auto;
 }
 
 .n-pills {
@@ -116,3 +117,7 @@ a.hover {
   color: white;
   border-radius: 15px;
  }
+
+#trade-offers {
+  margin: .5%;
+}

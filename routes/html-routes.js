@@ -4,6 +4,14 @@ var router = express.Router();
 
 module.exports = function(app) {
 
+    app.get("*", function(req, res) {
+        //Put if/else here. the if will send ppl to the pages we've declared, the else will send every other string back to our root route. 
+
+        //Step 2 will be to look through the users cookies and send them back to the route they were at last
+
+        res.redirect("/")
+    })
+
 	app.get("/", function(req, res) {
         if (req.isAuthenticated()) {
             res.redirect("/");
