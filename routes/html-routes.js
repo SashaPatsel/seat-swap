@@ -4,11 +4,34 @@ var router = express.Router();
 
 module.exports = function(app) {
 
-    app.get("*", function(req, res) {
         //Put if/else here. the if will send ppl to the pages we've declared, the else will send every other string back to our root route. 
 
         //Step 2 will be to look through the users cookies and send them back to the route they were at last
-
+    // app.get("*", function(req, res) {
+    //     res.redirect("/")
+    // })
+    app.get("/requests", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("/tradeoffers", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("orgtix", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("alltix", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("history", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("News", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("addTix", function(req, res) {
+        res.redirect("/")
+    })
+    app.get("addWatcher", function(req, res) {
         res.redirect("/")
     })
 
