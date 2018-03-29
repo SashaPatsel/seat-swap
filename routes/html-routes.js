@@ -20,11 +20,11 @@ module.exports = function(app) {
         }
 	});
 
-    app.get("/logout", function(req, res) {
-        
+    app.get("/logout", function(req, res) {      
         req.session.destroy(function(err) {
             res.clearCookie("user_id");
             res.clearCookie("user_name");
+            res.clearCookie("connect.sid");
             res.redirect("/");
         });
     });

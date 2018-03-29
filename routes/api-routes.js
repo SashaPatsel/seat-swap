@@ -177,7 +177,9 @@ module.exports = function(app) {
                 date: watcherRecord.eventDate
             }
         }).then(function(dbTickets) {
-          console.log(JSON.stringify(dbTickets, null, 4));
+            // console.log(dbTickets)
+            // console.log("Hello, it's me you're looking for.")
+            // console.log(JSON.stringify(dbTickets, null, 4));
 
           dbTickets.forEach(function(singleTicketMatch) {
             writeMatch(watcherRecord, singleTicketMatch);
@@ -187,8 +189,8 @@ module.exports = function(app) {
 
     // write a match record
     function writeMatch(watcher, ticket){
-        // console.log('writeMatch: called');
-        // console.log(watcher, ticket);
+        console.log('writeMatch: called');
+        console.log(watcher, ticket);
 
         db.Match.create({
             'WatcherId': watcher.id,
@@ -240,6 +242,40 @@ module.exports = function(app) {
                 model: db.Ticket,
                 include: [{
                     model: db.Organization
+                }]
+            }, {
+                model: db.Watcher,
+                include: {
+                    model: db.User
+                }
+            }]
+            }).then(function(data) {
+                res.json(data);
+            });
+    });
+
+    // Get all matches by the User who created the Watcher
+    app.get("/api/matches/:UserId", function(req, res) {
+        db.Match.findAll({
+            include: [{
+                model: db.Watcher,
+                include: [{
+                    model: db.User,
+                    include: {
+                        model: db.Ticket
+                    }
+                }]
+                },
+                {
+                model: db.Ticket,
+                where: {
+                    UserId: req.params.UserId
+                },
+                include: [{
+                    model: db.Organization
+                },
+                {
+                    model: db.User
                 }]
             }]
             }).then(function(data) {

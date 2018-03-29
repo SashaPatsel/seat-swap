@@ -50,7 +50,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-xs-12 col-sm-12 col-md-6">
         <div>
           <a href="/auth/google">Google SignIn</a>
         </div>

@@ -14,5 +14,10 @@ module.exports = function(sequelize, DataTypes) {
 
         Watcher.belongsTo(models.Organization);
     };
+
+    Watcher.associate = function(models) {
+
+        Watcher.belongsTo(models.User);
+    };
     return Watcher;
 };
