@@ -6,30 +6,30 @@ import Input from "../Form/Input";
 
 
 class Offers extends React.Component {
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
   render() {
     return (
       <div className="navTabs">
         <h1>Offers Page</h1>
-        <form>
+        {/* <form>
           <Input
             // value={this.state.title}
             onChange={this.handleInputChange}
@@ -48,7 +48,7 @@ class Offers extends React.Component {
           >
             Submit Book
               </FormBtn>
-        </form>
+        </form> */}
       </div>
     );
   }
