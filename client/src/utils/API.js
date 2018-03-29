@@ -44,7 +44,7 @@ export default {
     return axios.destroy("api/watchers/:id")
   },  
   getAllMatches: function() {
-    return axios.get("/api/matches")
+    return axios.get("/api/matches/:UserId")
   },
   addTJournal: function() {
     return axios.post("/api/tradejournal")
