@@ -14,14 +14,19 @@ class Watcher extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
+  componentDidMount() {
+    this.getUserId();
+  }
+
   handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-    console.log("abc", event.target.value)
+  };
 
+  getUserId = () => {
     const cookie = document.cookie.split(";");
       console.log("cookie", cookie)
     let userID = cookie[0];
@@ -29,18 +34,10 @@ class Watcher extends Component {
       userID = userID[1];
       console.log("userID:", userID);
     this.setState({UserId: userID});
-  };
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('org', this.state.OrganizationId, 'seat', this.state.numberOfSeats)
-    console.log("submit, date:", this.state.eventDate);
-    var date = this.state.eventDate;
-    this.setState({
-      eventDate:  date + " 03:00:00"
-    })
-    console.log("changed date:", this.state.eventDate);
-    console.log("UseId", this.state.UserId);
 
     fetch("/api/watchers", {
       method: 'POST',
