@@ -1,16 +1,72 @@
 import React from "react";
+import "./myRequest.css";
 
 const MyRequests = () => (
-  <div className="navTabs">
-    <h1>MyRequests Page</h1>
-    <p>
-      Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui mauris,
-      ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus porta. Nam
-      quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam semper
-      imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed rhoncus mollis
-      diam, sit amet facilisis lectus blandit at.
-    </p>
-  </div>
+  <div className="card-container">
+    <div className="card text-center">
+      <div className="card-header c.head">
+        Featured
+      </div>
+      <div className="card-body c.body">
+        <div className = "row">
+          <div className="col-md-12">
+            <a href="#" className="btn btn-primary text-center"  id="accept">Accept</a>
+            <br></br>
+            <br></br>
+          </div>
+        </div>
+        <div className = "row">
+                <div className="col-md-6 requested-ticket">
+                <h5 className="card-title c.title">Oak vs. SF</h5>
+                <p className="card-text c.text">4/3/2018</p>
+                </div>
+                <div className="col-md-6 offered-ticket">
+                <h5 className="card-title c.title">Hamilton</h5>
+                <p className="card-text c.text">5/23/2018</p>
+                </div>
+        </div>
+      </div>
+        <div className = "row card-footer">
+                <div className="col-md-12">
+                <a href="#" className="btn btn-danger" id="decline">Reject</a>
+                </div>
+        </div>
+    </div>  
+
+    
+        <div className="card text-center">
+      <div className="card-header c.head">
+        Featured
+      </div>
+      <div className="card-body c.body">
+        <div className = "row">
+          <div className="col-md-12">
+            <a href="#" className="btn btn-primary text-center"  id="accept">Accept</a>
+            <br></br>
+            <br></br>
+          </div>
+        </div>
+        <div className = "row">
+                <div className="col-md-6 requested-ticket">
+                <h5 className="card-title c.title">Oak vs. SF</h5>
+                <p className="card-text c.text">4/3/2018</p>
+                </div>
+                <div className="col-md-6 offered-ticket">
+                <h5 className="card-title c.title">Hamilton</h5>
+                <p className="card-text c.text">5/23/2018</p>
+                </div>
+        </div>
+      </div>
+        <div className = "row card-footer">
+                <div className="col-md-12">
+                <a href="#" className="btn btn-danger" id="decline">Reject</a>
+                </div>
+        </div>
+    </div>  
+
+
+
+</div>
 );
 
 export default MyRequests;

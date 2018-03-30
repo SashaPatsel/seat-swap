@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const Navpills = () => (
   <ul className="nav nav-tabs">
-    <li className={window.location.pathname === "/pendingtrades" ? "active" : ""}>
-      <Link to="/pendingtrades" className="n-pills">Pending</Link>
-    </li>
     <li className= {window.location.pathname === "/requests" ? "active" : ""}>
       <Link to="/requests" className="n-pills">My Requests</Link>
+    </li>
+    <li className={window.location.pathname === "/tradeoffers" ? "active" : ""}>
+      <Link to="/tradeoffers" className="n-pills">Trade Offers</Link>
     </li>
     <li className={window.location.pathname === "/orgtix" ? "active" : ""}>
       <Link to="/orgtix" className="n-pills"><span>Org</span> Tickets</Link>

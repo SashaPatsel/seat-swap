@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     Match.associate = function(models) {
         Match.belongsTo(models.Watcher);
         Match.belongsTo(models.Ticket);
+        Match.belongsTo(models.Ticket, { as: 'Swapticket', constraints: false })
     };
     return Match;
 };

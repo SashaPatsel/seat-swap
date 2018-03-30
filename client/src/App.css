@@ -91,6 +91,7 @@ a.hover {
   border: solid 4px #2e9cca;
   border-radius: 15px;
   padding: 1%;
+  overflow: scroll;
 }
 
 .n-pills {
@@ -100,6 +101,9 @@ a.hover {
 .nav-tabs {
   background-color: #022140;
   border-radius: 10px;
+  /* position: absolute;
+  z-index: 99;
+  width: 90.5%; */
 }
 
 #exchange-button {
@@ -116,3 +120,7 @@ a.hover {
   color: white;
   border-radius: 15px;
  }
+
+#trade-offers {
+  margin: .5%;
+}
