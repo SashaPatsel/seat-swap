@@ -18,9 +18,9 @@ INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, st
 INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, status, OrganizationId, SubscriptionId, UserId, createdAt, updatedAt) VALUES ("2018-04-03 10:00:00", "30", 2, 0, "gsw", "locked", 1, 2, 2, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, status, OrganizationId, SubscriptionId, UserId, createdAt, updatedAt) VALUES ("2018-04-03 10:00:00", "30", 2, 1, "gsw", "locked", 1, 2, 2, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 
-INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-03 10:00:00", 1, 1, 1);
-INSERT INTO seatSwap_db.Matches (WatcherID, TicketID) VALUES (1, 5);
-INSERT INTO seatSwap_db.Matches (WatcherID, TicketID) VALUES (1, 6);
+INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId, createdAt, updatedAt) VALUES ("2018-04-03 10:00:00", 1, 1, 1, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Matches (WatcherID, TicketID, createdAt, updatedAt) VALUES (1, 5, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Matches (WatcherID, TicketID, createdAt, updatedAt) VALUES (1, 6, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 
 INSERT INTO seatSwap_db.Teamfeeds (comment,OrganizationId, UserId, createdAt, updatedAt) VALUES (
 "absdbhjafkj", 1, 1, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
