@@ -101,6 +101,9 @@ a.hover {
 .nav-tabs {
   background-color: #022140;
   border-radius: 10px;
+  /* position: absolute;
+  z-index: 99;
+  width: 90.5%; */
 }
 
 #exchange-button {
@@ -121,3 +124,9 @@ a.hover {
 #trade-offers {
   margin: .5%;
 }
+
+/* Keep nav tabs up no matter how far down user scrolls */
+/* .nav-content {
+  margin-top: 30%;
+  overflow-y: scroll;
+} */

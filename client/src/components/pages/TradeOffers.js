@@ -3,47 +3,70 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import List from "../MatchList";
 import ListItem from "../MatchListItem";
+import OfferList from "../MatchOfferList";
+import OfferListItem from "../MatchOfferListItem";
 
 
 class Offers extends React.Component {
   state = {
-    matches: []
+    matches: [],
+    offers:[]
   };
 
   getAllMatches = () => {
     API.getAllMatches()
-        .then(res => {
-            console.log(res.data)
-            this.setState({ 
-              matches: res.data
-            })
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          matches: res.data,
+          offers: res.data
         })
-        .catch(err => console.log(err));
-};
+      })
+      .catch(err => console.log(err));
+  };
 
 
-componentDidMount() {
-  this.getAllMatches();
-}
+  componentDidMount() {
+    this.getAllMatches();
+  }
 
   render() {
     return (
       <div className="navTabs" id="trade-offers">
-        <h1>Offers Page</h1>
+        <div className="nav-content">
+          <h1>Offers Page</h1>
           <List>
-            {this.state.matches.map(match =>(
-              match.Watcher.User.Tickets.map(tix =>(
-                <ListItem key={match.id}>
-                <strong>{tix.eventTitle}</strong>
-                {tix.seatSec}
-                {tix.seatRow}
-                {tix.seatNum}
-               </ListItem>  
-              ))
+            {this.state.matches.map(match => (
+
+              // match.Watcher.User.Tickets.map(tix => (
+                <ListItem>
+
+                  <strong>{match.Ticket.eventTitle}</strong>
+                  <br />
+              
+                  <OfferList>
+                  {this.state.offers.map(tix => (
+                  <OfferListItem>
+                    {tix.Watcher.User.Tickets.eventTitle} @ {tix.Watcher.User.Tickets.date}
+                    <br />
+                    Section: {tix.Watcher.User.Tickets.seatSec}
+                    <br/>
+                    Row: {tix.Watcher.User.Tickets.seatRow}
+                    <br/>
+                    Seat: {tix.Watcher.User.Tickets.seatNum}
+                    
+                  </OfferListItem>
+            ))}
+                </OfferList>
+              
+
+                </ListItem>
+              // ))
 
             ))}
 
-          </List>  
+          </List>
+        </div>
       </div>
     );
   }
