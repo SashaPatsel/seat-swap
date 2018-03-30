@@ -1,3 +1,16 @@
+/**{
+	border: solid red 1px;
+}
+*/
+.card-body .row{
+	
+	display: flex;
+	justify-content: space-around; 
+}
+
+.navTabs{
+	overflow: hidden;
+}
 .c.body{
 
 }
@@ -25,27 +38,17 @@
 
 }
 
-#left-ticket{
-
+.requested-ticket, .offered-ticket {
+height: 75px;
+width: 150px;
 background: url("images/leftTicket.png");
-background-size: 500px;
+background-size: 100%;
 background-repeat: no-repeat;
 background-position: center;
-padding: 100px;
-
+padding: 10px;
 
 }
 
-#right-ticket{
-
-background: url("images/leftTicket.png");
-background-size: 500px;
-background-repeat: no-repeat;
-background-position: center;
-padding: 100px;
-
-
-}
 
 .ticketRow{
 
