@@ -91,7 +91,7 @@ a.hover {
   border: solid 4px #2e9cca;
   border-radius: 15px;
   padding: 1%;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .n-pills {
@@ -124,9 +124,3 @@ a.hover {
 #trade-offers {
   margin: .5%;
 }
-
-/* Keep nav tabs up no matter how far down user scrolls */
-/* .nav-content {
-  margin-top: 30%;
-  overflow-y: scroll;
-} */

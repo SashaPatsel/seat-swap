@@ -1,0 +1,55 @@
+/**{
+	border: solid red 1px;
+}
+*/
+.card-body .row{
+	
+	display: flex;
+	justify-content: space-around; 
+}
+
+.navTabs{
+	overflow: hidden;
+}
+.c.body{
+
+}
+
+.c.head{
+
+
+}
+
+.c.title{
+
+
+}
+
+.c.text{
+
+}
+
+#accept{
+
+}
+
+#decline{
+
+
+}
+
+.requested-ticket, .offered-ticket {
+height: 75px;
+width: 150px;
+background: url("images/leftTicket.png");
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: center;
+padding: 10px;
+
+}
+
+
+.ticketRow{
+
+}

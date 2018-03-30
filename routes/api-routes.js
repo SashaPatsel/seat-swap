@@ -95,6 +95,11 @@ module.exports = function(app) {
 
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
+       if (!req.body.UserId) {
+        console.log(userId);
+        var userId = req.session.passport.user;
+        req.body.UserId = userId;
+       }
         db.Ticket.create(req.body)
             .then(function(dbTicket) {
                 findWatcherMatches(dbTicket);

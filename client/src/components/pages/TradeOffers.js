@@ -10,7 +10,7 @@ import OfferListItem from "../MatchOfferListItem";
 class Offers extends React.Component {
   state = {
     matches: [],
-    offers:[]
+    offers: []
   };
 
   getAllMatches = () => {
@@ -37,31 +37,29 @@ class Offers extends React.Component {
           <h1>Offers Page</h1>
           <List>
             {this.state.matches.map(match => (
+              <ListItem>
 
-              // match.Watcher.User.Tickets.map(tix => (
-                <ListItem>
+                <strong>{match.Ticket.eventTitle}</strong>
+                <br />
 
-                  <strong>{match.Ticket.eventTitle}</strong>
-                  <br />
-              
-                  <OfferList>
+                <OfferList>
                   {this.state.offers.map(tix => (
-                  <OfferListItem>
-                    {tix.Watcher.User.Tickets.eventTitle} @ {tix.Watcher.User.Tickets.date}
-                    <br />
-                    Section: {tix.Watcher.User.Tickets.seatSec}
-                    <br/>
-                    Row: {tix.Watcher.User.Tickets.seatRow}
-                    <br/>
-                    Seat: {tix.Watcher.User.Tickets.seatNum}
-                    
-                  </OfferListItem>
-            ))}
-                </OfferList>
-              
+                    <OfferListItem>
+                      {tix.Ticket.eventTitle}
+                      {tix.Watcher.User.Tickets.eventTitle} @ {tix.Watcher.User.Tickets.date}
+                      <br />
+                      Section: {tix.Watcher.User.Tickets.seatSec}
+                      <br />
+                      Row: {tix.Watcher.User.Tickets.seatRow}
+                      <br />
+                      Seat: {tix.Watcher.User.Tickets.seatNum}
 
-                </ListItem>
-              // ))
+                    </OfferListItem>
+                  ))}
+                </OfferList>
+
+
+              </ListItem>
 
             ))}
 
