@@ -149,7 +149,7 @@ INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, st
 
 
 INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-22 10:00:00", 2, 2, 1);
-INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-16 10:00:00", 1, 4, 6);
+INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-15 10:00:00", 1, 7, 6);
 
 
 INSERT INTO seatSwap_db.Teamfeeds (comment,OrganizationId, UserId, createdAt, updatedAt) VALUES (
