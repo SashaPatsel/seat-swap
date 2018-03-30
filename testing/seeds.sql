@@ -2,9 +2,32 @@ USE seatSwap_db;
 
 INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, socialID, createdAt, updatedAt) VALUES ("abc", "def", "abc def", "123@gmail.com", "google", 1283194190840, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, socialID, createdAt, updatedAt) VALUES ("ahfkjhka", "fajkhak", "abfjkal", "abc@gmail.com", "google", 123124164249, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, createdAt, updatedAt) VALUES ("xyz", "xyz", "xyz xyz", "xyz@mail.com", "local", "2018-03-11 10:00:00", "2018-03-11 10:00:00");
+INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, createdAt, updatedAt) VALUES ("abc", "abc", "abc abc", "abc@mail.com", "local", "2018-03-12 10:00:00", "2018-03-12 10:00:00");
+INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, createdAt, updatedAt) VALUES ("def", "abc", "def abc", "def@mail.com", "local", "2018-03-13 10:00:00", "2018-03-13 10:00:00");
+INSERT INTO seatSwap_db.Users (firstName, lastName, userName, email, authMethod, createdAt, updatedAt) VALUES ("ijk", "ijk", "ijk ijk", "ijk@mail.com", "local", "2018-03-13 10:00:00", "2018-03-13 10:00:00");
+
+
 
 INSERT INTO seatSwap_db.Organizations (name,createdAt, updatedAt) VALUES ("Golden State Warriors", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("San Francisco Giants", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name,createdAt, updatedAt) VALUES ("San Francisco 49ers", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("San Jose Sharks", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("Oakland Raiders", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name,createdAt, updatedAt) VALUES ("Los Angeles Lakers", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("San Francisco Symphony", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name,createdAt, updatedAt) VALUES ("San Francisco Ballet", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("San Francisco Opera", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("Metropolitan Opera", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("Lyric Opera of Chicago", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("Chicago Symphony Orchestra", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+INSERT INTO seatSwap_db.Organizations (name, createdAt, updatedAt) VALUES ("Canegie Hall", "2018-03-01 10:00:00", "2018-03-01 10:00:00");
+
+
+
+
+
+
 
 INSERT INTO seatSwap_db.Subscriptions (name, OrganizationId, UserId, createdAt, updatedAt) VALUES ("sub1", 1, 1, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 INSERT INTO seatSwap_db.Subscriptions (name, OrganizationId, UserId, createdAt, updatedAt) VALUES ("sub2", 1, 2, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
