@@ -295,8 +295,7 @@ module.exports = function(app) {
 
     // Update match record with pointer to the ticket that is proposed in exchange for the requested ticket.
     //    Where :id is the id of the match record and (optional) SwapticketId is the is the TicketId of the proposed exchange.
-    //    if SwapticketId is not provided, then the existing TicketId will be removed from the match record.
-    // TODO: Validate that Swapticket exists.  Return errors.
+    //    if SwapticketId is not provided, then the existing SwapticketId will be removed from the match record.
 
     app.put("/api/matches/:id/swapticket/:SwapticketId?", function(req, res) {
         if (req.params.SwapticketId === undefined) {
@@ -308,7 +307,10 @@ module.exports = function(app) {
                     id: req.params.id
                 }
             }).then(function(dbMatch) {
-            res.json(dbMatch);
+                res.json(dbMatch);
+            }).catch(function(err) {
+                // console.log(err.original.errno);
+              res.status(500).json(err);
         });
     });
 
