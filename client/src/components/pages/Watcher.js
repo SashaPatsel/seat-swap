@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
 
 class Watcher extends Component {
   constructor(props) {
@@ -13,7 +11,6 @@ class Watcher extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    //this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -34,12 +31,6 @@ class Watcher extends Component {
     this.setState({UserId: userID});
   };
 
-  // handleSelect = event => {
-  //   console.log("got clicked bru")
-  //   const { name, value } = event.target;
-  //   this.setState({[name]: value})
-  // }
-
   handleSubmit(event) {
     event.preventDefault();
     console.log('org', this.state.OrganizationId, 'seat', this.state.numberOfSeats)
@@ -50,7 +41,6 @@ class Watcher extends Component {
     })
     console.log("changed date:", this.state.eventDate);
     console.log("UseId", this.state.UserId);
-    console.log("dateInt", parseInt(this.state.numberOfSeats));
 
     fetch("/api/watchers", {
       method: 'POST',
@@ -87,9 +77,25 @@ class Watcher extends Component {
                 <div className="section-content">                 
                   <div className="select">
                     <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
-                      <option value="1">Golden State Warriors</option>
-                      <option value="2">San Francisco Giants</option>
+                      <optgroup label="Sports">
+                        <option value="1">Golden State Warriors</option>
+                        <option value="2">San Francisco Giants</option>
+                        <option value="3">San Francisco 49ers</option>
+                        <option value="4">Oakland Raiders</option>
+                        <option value="5">Los Angeles Lakers</option>
+                      </optgroup>
+                      <optgroup label="Art & Music">
+                        <option value="6">San Francisco Symphony</option>
+                        <option value="7">San Francisco Ballet</option>
+                        <option value="8">San Francisco Opera</option>
+                        <option value="9">Metropolitan Opera</option>
+                        <option value="10">Lyric Opera of Chicago</option>
+                        <option value="11">Chicago Symphony Orchestra</option>
+                        <option value="12">Canegie Hall</option>
+                      </optgroup>
+
                     </select>
+                   
                   </div>                                  
                 </div>
               </div>
@@ -110,6 +116,11 @@ class Watcher extends Component {
                       <option value="3">3</option>
                       <option value="4">4</option>
                       <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
                     </select>
                   </div>
                 </div>
