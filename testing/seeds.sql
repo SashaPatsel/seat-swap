@@ -148,8 +148,8 @@ INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, st
 INSERT INTO seatSwap_db.Tickets (date, seatSec, seatRow, seatNum, eventTitle, status, OrganizationId, SubscriptionId, UserId, createdAt, updatedAt) VALUES ("2018-04-13 10:00:00", "22", 1, 3, "sub15", "locked", 2, 15, 5, "2018-03-01 10:00:00", "2018-03-01 10:00:00");
 
 
-INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-22 10:00:00", 2, 2, 1);
-INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId) VALUES ("2018-04-15 10:00:00", 1, 7, 6);
+INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId, createdAt, updatedAt) VALUES ("2018-04-22 10:00:00", 2, 2, 1, "2018-03-29 10:00:00", "2018-03-29 10:00:00");
+INSERT INTO seatSwap_db.Watchers (eventDate, numberOfSeats, OrganizationId, UserId, createdAt, updatedAt) VALUES ("2018-04-15 10:00:00", 1, 7, 6, "2018-03-29 10:00:00", "2018-03-29 10:00:00");
 
 
 INSERT INTO seatSwap_db.Teamfeeds (comment,OrganizationId, UserId, createdAt, updatedAt) VALUES (
