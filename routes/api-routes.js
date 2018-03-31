@@ -324,17 +324,6 @@ module.exports = function(app) {
 
     });
 
-    //add a feed record [DEPRECATED]
-    app.post("api/teamfeed", function(req, res) {
-        db.Teamfeed.create({
-            UserId: req.body.UserId,
-            OrganizationId: req.body.OrganizationId,
-            comment: req.body.comment
-        }).then(function(results) {
-            res.json(results);
-        });
-    });
-
     //add a feed record
     app.post("/api/teamfeed", function(req, res) {
         db.Teamfeed.create({
