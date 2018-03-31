@@ -5,14 +5,6 @@ var client = new Client();
 
 module.exports = function(app) {
 
-    //create a new user
-    // app.post("/api/users", function(req, res) {
-    //     db.User.create(req.body)
-    //         .then(function(dbUser) {
-    //             res.json(dbUser);
-    //         });
-    // });
-
     //return a user's record
     // app.get("/api/users/:id", function(req, res) {
     //     db.User.findOne({
