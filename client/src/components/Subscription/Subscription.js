@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import Input from "../Form/Input";
+import "./Subscription.css";
 
-class Watcher extends Component {
+class Subscription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      OrganizationId: "1",
-      numberOfSeats: "1",
-      eventDate: "",
+      OrganizationId: "",
+      subName: "",
       UserId:""
     };
 
@@ -24,6 +25,8 @@ class Watcher extends Component {
     this.setState({
       [name]: value
     });
+
+    console.log("change", event.target.value);
   };
 
   getUserId = () => {
@@ -39,18 +42,17 @@ class Watcher extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch("/api/watchers", {
-      method: 'POST',
+    fetch("/api/subscriptions", {
+      method: "POST",
       credentials: "include",
       mode: "cors",
       body: JSON.stringify({
         OrganizationId: this.state.OrganizationId,
-        eventDate: this.state.eventDate,
-        numberOfSeats: this.state.numberOfSeats,
+        name: this.state.subName,
         UserId: this.state.UserId
       }),
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       })
     }).then(response  => {
       console.log(response);
@@ -68,12 +70,15 @@ class Watcher extends Component {
           <div className="panel panel-default">
             <div className="panel-heading">
               <div className="panel-title">
-                <p>What tickets do you want?</p>
+                <p>What have you subscribed to?</p>
               </div>
               <div className="panel-body">
                 <div className="section-content">                 
                   <div className="select">
                     <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
+                      <optgroup label="Pick One">
+                        <option value=""></option>
+                      </optgroup>
                       <optgroup label="Sports">
                         <option value="1">Golden State Warriors</option>
                         <option value="2">San Francisco Giants</option>
@@ -90,9 +95,7 @@ class Watcher extends Component {
                         <option value="11">Chicago Symphony Orchestra</option>
                         <option value="12">Canegie Hall</option>
                       </optgroup>
-
-                    </select>
-                   
+                    </select> 
                   </div>                                  
                 </div>
               </div>
@@ -102,45 +105,21 @@ class Watcher extends Component {
           <div className="panel panel-default">
             <div className="panel-heading">
               <div className="panel-title">
-                <p>How many seats do you want?</p>
+                <p>Subscription Name:</p>
               </div>
               <div className="panel-body">
                 <div className="section-content">
-                  <div className="select">
-                    <select className="form-control" value={this.state.numberOfSeats} onChange={this.handleChange} name="numberOfSeats">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-                  </div>
+                  <Input
+                    value={this.state.subName}
+                    onChange={this.handleChange}
+                    name="subName"
+                    placeholder="My Subscription"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Date:</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">                   
-                  <div className="select-date">
-                      <input placeholder="Event Date mm/dd/yyyy" name="eventDate" type="date"value={this.state.eventDate} onChange={this.handleChange}/> 
-                    <span className="glyphicon glyphicon-calendar"></span>
-                  </div>               
-                </div>
-              </div>
-            </div>
-          </div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Save" />
         </form>
  
       </div>
@@ -148,4 +127,4 @@ class Watcher extends Component {
   }
 }
 
-export default Watcher;
+export default Subscription;
