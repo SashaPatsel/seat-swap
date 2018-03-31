@@ -31,10 +31,15 @@
 
 body {
   background-color: #ffffff
+
 }
 
 .fc-button {
   background-color: #9ad3de;
+}
+i#manage-prof {
+  width: 50px;
+  color: red;
 }
 
 .ss-wrapper {
@@ -123,4 +128,22 @@ a.hover {
 
 #trade-offers {
   margin: .5%;
+}
+.myAvail {
+  font-size: 2em;
+  position: relative;
+  top: .5em;
+}
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  bottom: 1em;
+  background-color: #2e9cca;
+  padding: .3em;
+}
+
+.list-group-item {
+  border: black solid 2px;
+  margin: 3px;
 }
