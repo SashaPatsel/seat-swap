@@ -11,8 +11,7 @@ import { Button, Icon } from 'semantic-ui-react';
 class Offers extends React.Component {
   state = {
     matches: [],
-    offers: [],
-    // dataTarget: ""
+    offers: []
   };
 
   getAllMatches = () => {
@@ -37,13 +36,6 @@ class Offers extends React.Component {
       .catch(err => console.log(err));
   };
 
-  handleDropDownClick = () => {
-    // this.setState({
-    //   dataTarget
-    // })
-  }
-
-
   componentDidMount() {
     this.getAllMatches();
   }
@@ -55,10 +47,10 @@ class Offers extends React.Component {
           <h1>Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
-              <ListItem key={match.id} id={match.Watcher.id}>
-                <strong className="myAvail">{match.Ticket.eventTitle}</strong>
+              <ListItem key={match.id} id={match.Ticket.id}>
+                <strong className="myAvail" doSomething={this.chicken}>{match.Ticket.eventTitle}</strong>
                 <br />
-                <OfferList id={match.Watcher.id}>
+                <OfferList id={match.Ticket.id}>
                 {/* id={this.match.Watcher.id} */}
                   {this.state.offers.map(x => (
                     x.Watcher.User.Tickets.map(tix => (

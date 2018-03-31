@@ -132,13 +132,12 @@ a.hover {
 .myAvail {
   font-size: 2em;
   position: relative;
-  top: .5em;
+  left: -3em;
 }
 
 .TOButton {
   position: relative;
   right: -75%;
-  bottom: 1em;
   background-color: #2e9cca;
   padding: .3em;
 }
@@ -146,4 +145,8 @@ a.hover {
 .list-group-item {
   border: black solid 2px;
   margin: 3px;
+}
+
+.offer-select:hover {
+  background-color: red;
 }

@@ -1,12 +1,11 @@
 import React from "react";
 
-const OfferList = ({ children }) => {
+const OfferList = props => {
   return (
     // Need to assign unique ids for collapse
-    <div className="collapse">
+    <div className="collapse" id={props.id}>
       <ul>
-        
-        {children}
+        {props.children}
       </ul>
     </div>
   );
