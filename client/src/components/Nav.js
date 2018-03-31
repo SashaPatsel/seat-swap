@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Icon } from 'semantic-ui-react';
 
 const Nav = () => (
 <nav className="navbar navbar-default ss-nav">
@@ -17,7 +18,7 @@ const Nav = () => (
 
         <ul className="nav navbar-nav navbar-right">
             <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span className="caret"></span></a>
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <Icon id="manage-prof" name='user circle' />  <span className="caret"></span></a>
                 <ul className="dropdown-menu">
                     <li><a href="/logout">Sign out</a></li>
                 </ul>
