@@ -1,0 +1,16 @@
+.panel-heading {
+	height: 80px;
+	padding: 5px 15px 5px 15px;
+}
+
+.panel-body {
+	padding: 8px 15px 5px 15px;
+}
+
+.form-control {
+	height: 25px;
+}
+
+.select-date input {
+	height: 35px;
+}
