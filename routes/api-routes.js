@@ -5,14 +5,6 @@ var client = new Client();
 
 module.exports = function(app) {
 
-    //create a new user
-    // app.post("/api/users", function(req, res) {
-    //     db.User.create(req.body)
-    //         .then(function(dbUser) {
-    //             res.json(dbUser);
-    //         });
-    // });
-
     //return a user's record
     // app.get("/api/users/:id", function(req, res) {
     //     db.User.findOne({
@@ -240,6 +232,32 @@ module.exports = function(app) {
         });
     });
 
+    //return a list of watchers for a specific user with results of the matches
+    app.get("/api/users/:UserId/watchers/matches", function(req, res) {
+        db.Watcher.findAll({
+            attributes: ['eventDate'],
+            where: { UserId: req.params.UserId },
+            include: [ {
+                model: db.Organization,
+                attributes:['name']
+                        }, {
+                model: db.Match, 
+                attributes:['TicketId', 'SwapticketId'],
+                include: [ { 
+                    model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
+                            }, {
+                    model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
+                            }
+                ]
+            } ]
+            // include: [ {model: db.Tickets} ]            
+        }).then(function(dbWatcher) {
+            res.json(dbWatcher);
+        });
+    });
+
+
+
     //update a watcher
     app.put("/api/watchers/:id", function(req, res) {
         db.Watcher.update(
@@ -312,10 +330,12 @@ module.exports = function(app) {
     });
 
 
+
+
+
     // Update match record with pointer to the ticket that is proposed in exchange for the requested ticket.
     //    Where :id is the id of the match record and (optional) SwapticketId is the is the TicketId of the proposed exchange.
-    //    if SwapticketId is not provided, then the existing TicketId will be removed from the match record.
-    // TODO: Validate that Swapticket exists.  Return errors.
+    //    if SwapticketId is not provided, then the existing SwapticketId will be removed from the match record.
 
     app.put("/api/matches/:id/swapticket/:SwapticketId?", function(req, res) {
         if (req.params.SwapticketId === undefined) {
@@ -327,7 +347,10 @@ module.exports = function(app) {
                     id: req.params.id
                 }
             }).then(function(dbMatch) {
-            res.json(dbMatch);
+                res.json(dbMatch);
+            }).catch(function(err) {
+                // console.log(err.original.errno);
+              res.status(500).json(err);
         });
     });
 
@@ -339,17 +362,6 @@ module.exports = function(app) {
     //return a list of trade journal entries
     app.get("/api/tradejournal", function(req, res) {
 
-    });
-
-    //add a feed record [DEPRECATED]
-    app.post("api/teamfeed", function(req, res) {
-        db.Teamfeed.create({
-            UserId: req.body.UserId,
-            OrganizationId: req.body.OrganizationId,
-            comment: req.body.comment
-        }).then(function(results) {
-            res.json(results);
-        });
     });
 
     //add a feed record

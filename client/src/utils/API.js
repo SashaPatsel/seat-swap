@@ -60,6 +60,8 @@ export default {
   },
   getOrgs: function() {
     return axios.get("/api/organizations")
+  },
+  sendTradeOffer: function() {
+    return axios.put("/api/matches/:id/swapticket/:SwapticketId?")
   }
-
 };
