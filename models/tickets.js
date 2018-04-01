@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: false
         },
-        seatSec: DataTypes.INTEGER,
+        seatSec: DataTypes.STRING,
         seatRow: DataTypes.STRING,
         seatNum: DataTypes.INTEGER,
         eventTitle: DataTypes.STRING,

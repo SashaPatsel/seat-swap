@@ -225,9 +225,9 @@ module.exports = function(app) {
                 model: db.Match, 
                 attributes:['TicketId', 'SwapticketId'],
                 include: [ { 
-                    model: db.Ticket, attributes:['date','seatSec', 'seatRow', 'SeatNum']
+                    model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
                             }, {
-                    model: db.Ticket, as: 'Swapticket' 
+                    model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
                             }
                 ]
             } ]
