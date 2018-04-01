@@ -217,11 +217,19 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/watchers/matches", function(req, res) {
         db.Watcher.findAll({
             attributes: ['eventDate'],
-            where: {
-                UserId: req.params.UserId
-            },
-            include: [ {model: db.Organization, attributes:['name']},
-                {model: db.Match, attributes:['TicketId', 'SwapticketId'], include: [ { model: db.Ticket, attributes:['date','seatSec', 'seatRow', 'SeatNum'] } ]
+            where: { UserId: req.params.UserId },
+            include: [ {
+                model: db.Organization,
+                attributes:['name']
+                        }, {
+                model: db.Match, 
+                attributes:['TicketId', 'SwapticketId'],
+                include: [ { 
+                    model: db.Ticket, attributes:['date','seatSec', 'seatRow', 'SeatNum']
+                            }, {
+                    model: db.Ticket, as: 'Swapticket' 
+                            }
+                ]
             } ]
             // include: [ {model: db.Tickets} ]            
         }).then(function(dbWatcher) {
