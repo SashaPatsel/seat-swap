@@ -5,6 +5,7 @@ import List from "../MatchList";
 import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
 import OfferListItem from "../MatchOfferListItem";
+import { Button, Icon } from 'semantic-ui-react';
 
 
 class Offers extends React.Component {
@@ -17,6 +18,7 @@ class Offers extends React.Component {
     API.getAllMatches()
       .then(res => {
         console.log(res.data)
+
         this.setState({
           matches: res.data,
           offers: res.data
@@ -25,6 +27,14 @@ class Offers extends React.Component {
       .catch(err => console.log(err));
   };
 
+  sendTradeOffer = () => {
+    API.sendTradeOffer()
+      .then(res => {
+        console.log(res.data)
+
+      })
+      .catch(err => console.log(err));
+  };
 
   componentDidMount() {
     this.getAllMatches();
@@ -34,35 +44,33 @@ class Offers extends React.Component {
     return (
       <div className="navTabs" id="trade-offers">
         <div className="nav-content">
-          <h1>Offers Page</h1>
+          <h1>Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
-              <ListItem>
-
-                <strong>{match.Ticket.eventTitle}</strong>
+              <ListItem key={match.id} id={match.Ticket.id}>
+                <strong className="myAvail" doSomething={this.chicken}>{match.Ticket.eventTitle}</strong>
                 <br />
-
-                <OfferList>
-                  {this.state.offers.map(tix => (
-                    <OfferListItem>
-                      {tix.Ticket.eventTitle}
-                      {tix.Watcher.User.Tickets.eventTitle} @ {tix.Watcher.User.Tickets.date}
+                <OfferList id={match.Ticket.id}>
+                {/* id={this.match.Watcher.id} */}
+                  {this.state.offers.map(x => (
+                    x.Watcher.User.Tickets.map(tix => (
+                      <OfferListItem key={tix.id} onClick={this.sendTradeOffer}>
+                        {/* Div is highlighted in different color? with timedout message saying "trade request sent"? */}
+                        
+                      <br/>
+                      {tix.eventTitle} @ {tix.date}
                       <br />
-                      Section: {tix.Watcher.User.Tickets.seatSec}
+                      Section: {tix.seatSec}
                       <br />
-                      Row: {tix.Watcher.User.Tickets.seatRow}
+                      Row: {tix.seatRow}
                       <br />
-                      Seat: {tix.Watcher.User.Tickets.seatNum}
-
+                      Seat: {tix.seatNum}
                     </OfferListItem>
+                    ))
                   ))}
                 </OfferList>
-
-
               </ListItem>
-
             ))}
-
           </List>
         </div>
       </div>
@@ -71,3 +79,12 @@ class Offers extends React.Component {
 }
 
 export default Offers;
+
+// To do:
+// - Remotely open the feed
+// - Calendar clickability (could be solved if remotely open is solved)
+// - Open trade offers w/ dropdown (give list item and list unique ids)
+// - Avoid double trade entries cause by double loop
+// - Give NavPills absolute position. everything else scrolls
+// - resize calendar appropriately
+

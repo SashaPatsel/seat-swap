@@ -5,14 +5,6 @@ var client = new Client();
 
 module.exports = function(app) {
 
-    //create a new user
-    // app.post("/api/users", function(req, res) {
-    //     db.User.create(req.body)
-    //         .then(function(dbUser) {
-    //             res.json(dbUser);
-    //         });
-    // });
-
     //return a user's record
     // app.get("/api/users/:id", function(req, res) {
     //     db.User.findOne({
@@ -38,6 +30,10 @@ module.exports = function(app) {
 
     //add a subscription to a user
     app.post("/api/subscriptions", function(req, res) {
+        console.log(req.body);
+        var userId = req.session.passport.user;
+        req.body.UserId = userId;
+        console.log(req.session.passport.user);
         db.Subscription.create({
             name: req.body.name,
             UserId: req.body.userID
@@ -217,6 +213,32 @@ module.exports = function(app) {
         });
     });
 
+    //return a list of watchers for a specific user with results of the matches
+    app.get("/api/users/:UserId/watchers/matches", function(req, res) {
+        db.Watcher.findAll({
+            attributes: ['eventDate'],
+            where: { UserId: req.params.UserId },
+            include: [ {
+                model: db.Organization,
+                attributes:['name']
+                        }, {
+                model: db.Match, 
+                attributes:['TicketId', 'SwapticketId'],
+                include: [ { 
+                    model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
+                            }, {
+                    model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
+                            }
+                ]
+            } ]
+            // include: [ {model: db.Tickets} ]            
+        }).then(function(dbWatcher) {
+            res.json(dbWatcher);
+        });
+    });
+
+
+
     //update a watcher
     app.put("/api/watchers/:id", function(req, res) {
         db.Watcher.update(
@@ -289,6 +311,30 @@ module.exports = function(app) {
     });
 
 
+
+
+
+    // Update match record with pointer to the ticket that is proposed in exchange for the requested ticket.
+    //    Where :id is the id of the match record and (optional) SwapticketId is the is the TicketId of the proposed exchange.
+    //    if SwapticketId is not provided, then the existing SwapticketId will be removed from the match record.
+
+    app.put("/api/matches/:id/swapticket/:SwapticketId?", function(req, res) {
+        if (req.params.SwapticketId === undefined) {
+            req.params.SwapticketId = null
+        };
+        db.Match.update(
+            {SwapticketId: req.params.SwapticketId},
+                {where: {
+                    id: req.params.id
+                }
+            }).then(function(dbMatch) {
+                res.json(dbMatch);
+            }).catch(function(err) {
+                // console.log(err.original.errno);
+              res.status(500).json(err);
+        });
+    });
+
     //add a trade journal entry
     app.post("/api/tradejournal", function(req, res) {
 
@@ -297,17 +343,6 @@ module.exports = function(app) {
     //return a list of trade journal entries
     app.get("/api/tradejournal", function(req, res) {
 
-    });
-
-    //add a feed record [DEPRECATED]
-    app.post("api/teamfeed", function(req, res) {
-        db.Teamfeed.create({
-            UserId: req.body.UserId,
-            OrganizationId: req.body.OrganizationId,
-            comment: req.body.comment
-        }).then(function(results) {
-            res.json(results);
-        });
     });
 
     //add a feed record
@@ -320,17 +355,6 @@ module.exports = function(app) {
             res.json(results);
         });
     });
-
-    //return a list of comments for 1 or all organizations [DEPRECATED]
-    // app.get("/teamfeed/:org?", function(req, res) {
-    //     db.Teamfeed.findAll({
-    //         where: {
-    //             OrganizationId: 2
-    //         }
-    //     }).then(function(data) {
-    //         res.json(data);
-    //     });
-    // });
 
     //return a list of comments for 1 or all organizations
     app.get("/api/organization/:OrganizationId?/teamfeed", function(req, res) {
@@ -354,41 +378,4 @@ module.exports = function(app) {
                 res.json(data);
             });
     });
-
-    // // var dubsSched = [];
-
-    // var events = [];
-
-    // // Warriors Schedule
-    // client.get("https://api.sportradar.us/nba/trial/v4/en/games/2017/reg/schedule.json?api_key=" +
-    //     keys.sportradar.nbakey,
-    //     function(data, response) {
-    //         // parsed response body as js object 
-    //         for (var i = 0; i < data.games.length; i++) {
-    //             //console.log(data)
-
-    //             if (data.games[i].home.alias === "GSW") {
-    //                 var event = {};
-    //                 // console.log(data.games[i].away.name);
-    //                 // console.log(data.games[i].scheduled);
-
-    //                 var away = data.games[i].away.name
-    //                 event["title"] = "Golden State Warriors vs " + away;
-    //                 event["start"] = data.games[i].scheduled;
-    //                 events.push(event);
-    //             }
-
-    //         }
-
-    //         // console.log(events)
-
-    //     });
-
-    // app.get("/api/schedule/warriors", function(req, res) {
-    //     events: events
-    // }).then(function(data) {
-    //     console.log(events)
-    //     res.json(events);
-    // });
-
 };
