@@ -12,7 +12,7 @@ import AllTix from "./AllTix";
 import Historyy from "./Historyy";
 import News from "./News";
 import addTix from "./addTix";
-import Watcher from "./Watcher";
+import addWatcher from "./addWatcher";
 
 
 
@@ -34,7 +34,7 @@ const Home = props => (
             <Route path="/history" component={Historyy} />
             <Route path="/news" component={News} />
             <Route path="/addTix" component={addTix} />
-            <Route path="/addWatcher" component={Watcher} />
+            <Route path="/addWatcher" component={addWatcher} />
           </div>
         </Router>
       </div>

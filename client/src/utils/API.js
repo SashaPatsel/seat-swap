@@ -7,8 +7,8 @@ export default {
   addSub: function() {
     return axios.post("/api/subscriptions");
   },
-  getAllSubs: function() {
-    return axios.get("/api/users/:UserId/subscriptions");
+  getAllSubs: function(userId) {
+    return axios.get("/api/users/" + userId + "/subscriptions")
   },
   getOneSub: function() {
     return axios.get("/api/subscriptions/:id");
