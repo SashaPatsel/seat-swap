@@ -3,6 +3,7 @@ import React, {Component} from "react";
 //import Ticket from "../Ticket";
 import Input from "../Form/Input";
 import API from "./../../utils/API";
+import SubscriptionDropdown from "../SubscriptionDropdown"
 
 class addTix extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class addTix extends Component {
       status: "locked",
       subscription: 0,
       OrganizationId: "",
-      SubscriptionId: ""
+      SubscriptionId: "",
+      allSubscriptions: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -83,7 +85,10 @@ class addTix extends Component {
 
     API.getAllSubs(id)
     .then(res => {
-      this.setState({SubscriptionId: (res.data.length-1)})
+      // this.setState({SubscriptionId: (res.data.length-1)});
+      this.setState({allSubscriptions: res.data});
+      console.log(this.state.allSubscriptions);
+      
     }).catch(err => 
       console.log(err)
     );
@@ -124,197 +129,209 @@ class addTix extends Component {
     })
   }
 
-
-
-
-
-
-
-
-
-
   render() {
     return (
       <div> 
       	<div className="col-10">          
-        <form onSubmit={this.handleSubmit}>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>What have you subscribed to?</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">                 
-                  <div className="select">
-                    <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
-                      <optgroup label="Pick One">
-                        <option value=""></option>
-                      </optgroup>
-                      <optgroup label="Sports">
-                        <option value="1">Golden State Warriors</option>
-                        <option value="2">San Francisco Giants</option>
-                        <option value="3">San Francisco 49ers</option>
-                        <option value="4">Oakland Raiders</option>
-                        <option value="5">Los Angeles Lakers</option>
-                      </optgroup>
-                      <optgroup label="Art & Music">
-                        <option value="6">San Francisco Symphony</option>
-                        <option value="7">San Francisco Ballet</option>
-                        <option value="8">San Francisco Opera</option>
-                        <option value="9">Metropolitan Opera</option>
-                        <option value="10">Lyric Opera of Chicago</option>
-                        <option value="11">Chicago Symphony Orchestra</option>
-                        <option value="12">Canegie Hall</option>
-                      </optgroup>
-                    </select> 
-                  </div>                                  
+          <form onSubmit={this.handleSubmit}>
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>What have you subscribed to?</p>
                 </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Subscription Name:</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <Input
-                    value={this.state.subName}
-                    onChange={this.handleChange}
-                    name="subName"
-                    placeholder="My Subscription"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <input type="submit" value="Save" />
-        </form>
-      </div>
-
-
-
-
-
-
-      <div className="col-10">          
-        <form onSubmit={this.handleTixSubmit}>
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>What is the name of the event?</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <Input
-                    value={this.state.eventTitle}
-                    onChange={this.handleChange}
-                    name="eventTitle"
-                    placeholder="Name of Event"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p><span className="glyphicon glyphicon-calendar"></span> Date of Your Ticket: </p> 
-              </div>
-              <div className="panel-body">
-                <div className="section-content">                   
-                  <div className="select-date">
-                      <input placeholder="Event Date mm/dd/yyyy" name="tixDate" type="date"value={this.state.tixDate} onChange={this.handleChange}/> 
-                  </div>               
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Seat Section:</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <Input
-                    value={this.state.seatSec}
-                    onChange={this.handleChange}
-                    name="seatSec"
-                    placeholder="Seat Section"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Seat Row:</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <Input
-                    value={this.state.seatRow}
-                    onChange={this.handleChange}
-                    name="seatRow"
-                    placeholder="Seat Row"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Seat Number:</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <Input
-                    value={this.state.seatNum}
-                    onChange={this.handleChange}
-                    name="seatNum"
-                    placeholder="Seat Number"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="panel panel-default">
-            <div className="panel-heading">
-              <div className="panel-title">
-                <p>Ticket Status</p>
-              </div>
-              <div className="panel-body">
-                <div className="section-content">
-                  <div className="select">
-                    <select className="form-control" value={this.state.status} onChange={this.handleChange} name="status">
-                      <option value="locked">locked</option>
-                      <option value="available">available</option>
-                      <option value="flexible">flexible</option>
-                      <option value="gone">gone</option>
-                    </select>
+                <div className="panel-body">
+                  <div className="section-content">                 
+                    <div className="select">
+                      <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
+                        <optgroup label="Pick One">
+                          <option value=""></option>
+                        </optgroup>
+                        <optgroup label="Sports">
+                          <option value="1">Golden State Warriors</option>
+                          <option value="2">San Francisco Giants</option>
+                          <option value="3">San Francisco 49ers</option>
+                          <option value="4">Oakland Raiders</option>
+                          <option value="5">Los Angeles Lakers</option>
+                        </optgroup>
+                        <optgroup label="Art & Music">
+                          <option value="6">San Francisco Symphony</option>
+                          <option value="7">San Francisco Ballet</option>
+                          <option value="8">San Francisco Opera</option>
+                          <option value="9">Metropolitan Opera</option>
+                          <option value="10">Lyric Opera of Chicago</option>
+                          <option value="11">Chicago Symphony Orchestra</option>
+                          <option value="12">Canegie Hall</option>
+                        </optgroup>
+                      </select> 
+                    </div>                                  
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Subscription Name:</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <Input
+                      value={this.state.subName}
+                      onChange={this.handleChange}
+                      name="subName"
+                      placeholder="My Subscription"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input id="save-sub" type="submit" value="Save" />
+          </form>
+        </div>
 
-          <input type="submit" value="Save" />
-        </form>
- 
+        <div className="col-10">
+      	  <form onSubmit={this.handleTixSubmit}>
+      	    
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Add tickets to the following subscription:</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">                 
+                    <div className="select">
+                      <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleChange} name="SubscriptionId">
+
+                          {this.state.allSubscriptions.map(subscription => {
+                            return <SubscriptionDropdown
+                            key={subscription.id}
+                            id={subscription.id}
+                            name={subscription.name}
+                            />
+                          })}
+                      </select>
+                    </div>                                  
+                  </div>
+                </div>
+              </div>
+            </div>
+      	                
+        
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>What is the name of the event?</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <Input
+                      value={this.state.eventTitle}
+                      onChange={this.handleChange}
+                      name="eventTitle"
+                      placeholder="Name of Event"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p><span className="glyphicon glyphicon-calendar"></span> Date of Your Ticket: </p> 
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">                   
+                    <div className="select-date">
+                        <input placeholder="Event Date mm/dd/yyyy" name="tixDate" type="date"value={this.state.tixDate} onChange={this.handleChange}/> 
+                    </div>               
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Seat Section:</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <Input
+                      value={this.state.seatSec}
+                      onChange={this.handleChange}
+                      name="seatSec"
+                      placeholder="Seat Section"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Seat Row:</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <Input
+                      value={this.state.seatRow}
+                      onChange={this.handleChange}
+                      name="seatRow"
+                      placeholder="Seat Row"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Seat Number:</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <Input
+                      value={this.state.seatNum}
+                      onChange={this.handleChange}
+                      name="seatNum"
+                      placeholder="Seat Number"
+                    />
+                  </div>
+                </div>
+                </div>
+            </div>
+
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <div className="panel-title">
+                  <p>Ticket Status</p>
+                </div>
+                <div className="panel-body">
+                  <div className="section-content">
+                    <div className="select">
+                      <select className="form-control" value={this.state.status} onChange={this.handleChange} name="status">
+                        <option value="locked">locked</option>
+                        <option value="available">available</option>
+                        <option value="flexible">flexible</option>
+                        <option value="gone">gone</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <input type="submit" value="Save" />
+          </form>
+   
+        </div>
       </div>
 
 
-      </div>
     )
   }
 }
