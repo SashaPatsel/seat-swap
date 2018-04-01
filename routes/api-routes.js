@@ -213,6 +213,32 @@ module.exports = function(app) {
         });
     });
 
+    //return a list of watchers for a specific user with results of the matches
+    app.get("/api/users/:UserId/watchers/matches", function(req, res) {
+        db.Watcher.findAll({
+            attributes: ['eventDate'],
+            where: { UserId: req.params.UserId },
+            include: [ {
+                model: db.Organization,
+                attributes:['name']
+                        }, {
+                model: db.Match, 
+                attributes:['TicketId', 'SwapticketId'],
+                include: [ { 
+                    model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
+                            }, {
+                    model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
+                            }
+                ]
+            } ]
+            // include: [ {model: db.Tickets} ]            
+        }).then(function(dbWatcher) {
+            res.json(dbWatcher);
+        });
+    });
+
+
+
     //update a watcher
     app.put("/api/watchers/:id", function(req, res) {
         db.Watcher.update(
@@ -283,6 +309,9 @@ module.exports = function(app) {
                 res.json(data);
             });
     });
+
+
+
 
 
     // Update match record with pointer to the ticket that is proposed in exchange for the requested ticket.
