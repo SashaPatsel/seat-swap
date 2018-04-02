@@ -43,6 +43,7 @@
     "passport-oauth2-strategy": "^1.0.4",
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
+    "react-select": "^1.2.1",
     "sequelize": "^4.35.2"
   }
 }

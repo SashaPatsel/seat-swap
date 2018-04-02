@@ -37,6 +37,8 @@ const Home = props => (
             <Route path="/addWatcher" component={addWatcher} />
             <Route path="/addSubscription" component={addSubscription} />
             <Route path="/addTicket" component={addTicket} />
+            <Route path="/addWatcher" component={addSubscription} />
+            <Route path="/addTix" component={addTicket} />
           </div>
         </Router>
       </div>
