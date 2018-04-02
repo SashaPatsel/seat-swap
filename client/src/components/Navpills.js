@@ -22,9 +22,9 @@ const Navpills = () => (
       <Link to="/News" className="n-pills">News</Link>
     </li>
 
-    // <li className={window.location.pathname === "/addTix" ? "active" : ""}>
-    // <Link to="/addTix" className="n-pills">Add Tickets</Link>
-    // </li>
+    <li className={window.location.pathname === "/AllTickets" ? "active" : ""}>
+    <Link to="/AllTickets" className="n-pills">ALL Tickets</Link>
+    </li>
 
     <li className={window.location.pathname === "/addWatcher" ? "active" : ""}>
     <Link to="/addWatcher" className="n-pills">Find Tickets</Link>
