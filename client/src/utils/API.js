@@ -63,5 +63,8 @@ export default {
   },
   sendTradeOffer: function() {
     return axios.put("/api/matches/:id/swapticket/:SwapticketId?")
+  },
+  getWatcherAndMatch: function(id) {
+    return axios.get("/api/users/" + id + "/watchers/matches")
   }
 };
