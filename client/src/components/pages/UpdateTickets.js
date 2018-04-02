@@ -86,8 +86,10 @@ class UpdateTickets extends Component {
                     <select className="form-control" value={this.state.ticketId} onChange={this.handleChange} name="ticketId" > 
                         <option value=""></option>
                         {this.state.allTickets.map(ticket => {
-                          return <option key={ticket.id} value={ticket.id}>{ticket.eventTitle}  Date: {ticket.date.split("T")[0]}</option>
-                        })}                      
+                          return <optgroup><option key={ticket.id} value={ticket.id}>Event: {ticket.eventTitle}</option>
+                          <option key={ticket.id} value={ticket.id} disabled>Date: {ticket.date.split("T")[0]}</option>
+                          <option key={ticket.id} value={ticket.id} disabled>Current Status: {ticket.status}</option></optgroup>
+                        })}                     
                     </select>
                   </div>
                 </div>
