@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import API from "./../../utils/API";
 import Input from "../Form/Input";
 
-class AllTickets extends Component {
+class UpdateTickets extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,6 @@ class AllTickets extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleStatusSubmit = this.handleStatusSubmit.bind(this);
   };
 
@@ -40,7 +39,6 @@ class AllTickets extends Component {
     });
   };  
   
-
   getTicketsInfo = id => {
     API.getTixForUser(id)
     .then(res => {
@@ -67,7 +65,7 @@ class AllTickets extends Component {
       })
     }).then(response  => {
       console.log(response);
-      //window.location.href = "/";
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -125,4 +123,4 @@ class AllTickets extends Component {
   }
 }
 
-export default AllTickets;
+export default UpdateTickets;
