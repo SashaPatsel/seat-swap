@@ -3,7 +3,8 @@ import React, {Component} from "react";
 //import Ticket from "../Ticket";
 import Input from "../Form/Input";
 import API from "./../../utils/API";
-import SubscriptionDropdown from "../SubscriptionDropdown"
+//import SubscriptionDropdown from "../SubscriptionDropdown"
+import {Async} from "react-select";
 
 class addTicket extends Component {
   constructor(props) {
@@ -23,12 +24,12 @@ class addTicket extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleTixSubmit = this.handleTixSubmit.bind(this);
-    
   };
 
   componentDidMount() {
-  	this.getUserId();
+    this.getUserId();
   }
 
   getUserId = () => {
@@ -39,37 +40,48 @@ class addTicket extends Component {
       userID = userID[1];
       console.log("userID:", userID);
     this.setState({UserId: userID});
-    console.log(this.state.UserId);
     setTimeout(this.getSubscriptionInfo(userID), 2000);
   }
 
-  handleChange = event => {
+  handleSelectChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
 
-    console.log("change", event.target.value);
+    this.setState({OrganizationId: event.target[event.target.selectedIndex].getAttribute("data-organizationid")})
   };  
 
-	getSubscriptionInfo = id => {
+
+  handleChange = event => { 
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };  
+  
+
+  getSubscriptionInfo = id => {
     console.log(id);
 
     API.getAllSubs(id)
     .then(res => {
-      // this.setState({SubscriptionId: (res.data.length-1)});
+      let sub = res.data.length-1
+      let subId = res.data[sub].id;
+      this.setState({SubscriptionId: subId});
       this.setState({allSubscriptions: res.data});
-      console.log(this.state.allSubscriptions);
-
+      console.log(this.state.SubscriptionId); //ok
+      console.log("allSub", this.state.allSubscriptions); //ok
     }).catch(err => 
       console.log(err)
     );
   }
 
-	handleTixSubmit(event) {
+  handleTixSubmit(event) {
     event.preventDefault();
-    console.log("tixsubmit", this.state.OrganizationId, this.state.subName, this.state.UserId, this.SubscriptionId);
+    console.log("tixsubmit", this.state.OrganizationId, this.state.UserId, this.state.SubscriptionId);
 
     fetch("/api/tickets", {
       method: "POST",
@@ -92,10 +104,7 @@ class addTicket extends Component {
       })
     }).then(response  => {
       console.log(response);
-
-
-
-      //window.location.href = "/";
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -103,39 +112,26 @@ class addTicket extends Component {
 
   render() {
     return (
-      <div> 
-      
-
+      <div>
         <div className="col-10">
-      	  <form onSubmit={this.handleTixSubmit}>
-      	    
+          <form onSubmit={this.handleTixSubmit}>
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
-                  <p>Add tickets to the following subscription:</p>
+                  <p>Pick the subscription</p>
                 </div>
                 <div className="panel-body">
-                  <div className="section-content">                 
-                    <div className="select">
-                      <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleChange} name="SubscriptionId">
-                          {this.state.allSubscriptions.map(subscription => {
-                            return <SubscriptionDropdown
-
-                            key={subscription.id}
-                            id={subscription.id}
-                            name={subscription.name}
-                          
-                            />
-                          }
-                          )}
-                      </select>
-                    </div>                                  
+                  <div className="section-content">
+                    <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleSelectChange} name="SubscriptionId" > 
+                      {this.state.allSubscriptions.map(subscription => {
+                          return <option key={subscription.id} value={subscription.id} data-organizationid={subscription.OrganizationId}>{subscription.name}</option>
+                        })}
+                    </select>
                   </div>
                 </div>
               </div>
             </div>
-      	                
-        
+
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
@@ -168,7 +164,7 @@ class addTicket extends Component {
                 </div>
               </div>
             </div>
-            
+                
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
@@ -243,13 +239,10 @@ class addTicket extends Component {
               </div>
             </div>
 
-            <input type="submit" value="Save" />
-          </form>
-   
-        </div>
+          <input type="submit" value="Add" />
+        </form>
       </div>
-
-
+    </div>
     )
   }
 }
