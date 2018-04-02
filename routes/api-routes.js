@@ -362,42 +362,51 @@ module.exports = function(app) {
                 id: req.params.id
             }
         }).then(function(matchData) {
-            swappedTickets(matchData);
-            res.json(matchData);
+            console.log("found match", matchData)
+            swappedTickets(matchData, res);
+            // res.json(matchData);
         })
     });
 
     // Using the TicketId and SwapticketId to get those tickets information
-    function swappedTickets(data) {
+    function swappedTickets(data, res) {
+        console.log("hit swapped tickets")
         db.Ticket.findOne({
+            attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
             where: {
                 id: data.TicketId
             }
         }).then(function(ticket1) {
+            console.log(ticket1)
             db.Ticket.findOne({
+                attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
                 where: {
-                    id: SwapticketId
+                    id: data.SwapticketId
                 }
             }).then(function(ticket2) {
-                createNewTickets(ticket1, ticket2, data);
+                createNewTickets(ticket1, ticket2, data, res);
             })
         })
     }
 
     // Swapping the UserIds for the tickets to be swapped and then creating those tickets with the new UserId
-    function createNewTickets(one, two, matchData) {
+    function createNewTickets(one, two, matchData, res) {
+        // console.log("got here before error.", two.date, two.UserId)
+        one.subscription = 0;
+        two.subscription = 0;
         var temp = one.UserId;
         one.UserId = two.UserId;
         two.UserId = temp;
-        db.Ticket.create(one).then(function(response) {
-            db.Ticket.create(two).then(function(res) {
-                changeOldTickets(matchData);
+        console.log(one.dataValues, two.dataValues);
+        db.Ticket.create(one.dataValues).then(function(response) {
+            db.Ticket.create(two.dataValues).then(function(result) {
+                changeOldTickets(matchData, res);
             })
         })
     }
 
     // Updating the original tickets to the status of "gone" so users can still see tickets they've traded away
-    function changeOldTickets(data) {
+    function changeOldTickets(data, res) {
         db.Ticket.update(
             {status: "gone"},
                 {where: {
@@ -409,14 +418,14 @@ module.exports = function(app) {
                         {where: {
                             id: data.TicketId
                         }
-                }).then(function(res) {
-                    removeWatcher(data);
+                }).then(function(result) {
+                    removeWatcher(data, res);
                 })
             })
     }
 
     // destroying the watcher which also destroys it's associated matches
-    function removeWatcher(matchData) {
+    function removeWatcher(matchData, res) {
         db.Watcher.destroy({
             where: {
                 id: matchData.WatcherId
