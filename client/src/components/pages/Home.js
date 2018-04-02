@@ -8,14 +8,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Offers from "./TradeOffers";
 import MyRequests from "./MyRequests";
 import OrgTix from "./OrgTix";
-import AllTix from "./AllTix";
+import AllTickets from "./AllTickets";
 import Historyy from "./Historyy";
 import News from "./News";
-//import addTix from "./addTix";
 import addWatcher from "./addWatcher";
 import addTicket from "./addTicket";
 import addSubscription from "./addSubscription";
-//<Route path="/addTix" component={addTix} />
 
 const Home = props => (
   <div className="ss-wrapper">
@@ -31,7 +29,7 @@ const Home = props => (
             <Route exact path="/requests" component={MyRequests} />
             <Route exact path="/tradeoffers" component={Offers} />
             <Route exact path="/orgtix" component={OrgTix} />
-            <Route path="/alltix" component={AllTix} />
+            <Route path="/AllTickets" component={AllTickets} />
             <Route path="/history" component={Historyy} />
             <Route path="/news" component={News} />
             <Route path="/addWatcher" component={addWatcher} />

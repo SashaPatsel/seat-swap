@@ -143,10 +143,10 @@ module.exports = function(app) {
     
 
     //return all tickets for a user
-    app.get("/api/users/:UserId/tickets", function(req, res) {
+    app.get("/api/users/:userId/tickets", function(req, res) {
         db.Ticket.findAll({
             where: {
-                UserId: req.params.UserId
+                UserId: req.params.userId
             }
         }).then(function(results) {
             res.json(results);
@@ -172,10 +172,10 @@ module.exports = function(app) {
             status: req.body.status
         }, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(function(result) {
-            res.json(results);
+            res.json(result);
         });
     });
 
