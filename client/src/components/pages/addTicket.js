@@ -4,13 +4,12 @@ import React, {Component} from "react";
 import Input from "../Form/Input";
 import API from "./../../utils/API";
 //import SubscriptionDropdown from "../SubscriptionDropdown"
+import {Async} from "react-select";
 
-class addTix extends Component {
+class addTicket extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      OrganizationId: "",
-      subName: "",
       UserId:"",
       tixDate: "",
       seatSec: "",
@@ -25,7 +24,7 @@ class addTix extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleTixSubmit = this.handleTixSubmit.bind(this);
   };
 
@@ -41,57 +40,40 @@ class addTix extends Component {
       userID = userID[1];
       console.log("userID:", userID);
     this.setState({UserId: userID});
+    setTimeout(this.getSubscriptionInfo(userID), 2000);
   }
 
-  handleChange = event => {
+  handleSelectChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
 
-    console.log("change", event.target.value);
+    this.setState({OrganizationId: event.target[event.target.selectedIndex].getAttribute("data-organizationid")})
   };  
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log("submit", this.state.OrganizationId, this.state.subName, this.state.UserId);
 
-    fetch("/api/subscriptions", {
-      method: "POST",
-      credentials: "include",
-      mode: "cors",
-      body: JSON.stringify({
-        OrganizationId: this.state.OrganizationId,
-        name: this.state.subName,
-        UserId: this.state.UserId
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    }).then(response  => {
-      console.log(response);
+  handleChange = event => { 
+    const { name, value } = event.target;
 
-      this.getSubscriptionInfo(this.state.UserId)
-
-      //window.location.href = "/";
-    }).catch(err => {
-      console.log(err);
-    })
-  }
+    this.setState({
+      [name]: value
+    });
+  };  
+  
 
   getSubscriptionInfo = id => {
     console.log(id);
 
     API.getAllSubs(id)
     .then(res => {
-      console.log("res", res.data)
       let sub = res.data.length-1
       let subId = res.data[sub].id;
       this.setState({SubscriptionId: subId});
       this.setState({allSubscriptions: res.data});
-      console.log(this.state.SubscriptionId);
-      //console.log(this.state.allSubscriptions); 
+      console.log(this.state.SubscriptionId); //ok
+      console.log("allSub", this.state.allSubscriptions); //ok
     }).catch(err => 
       console.log(err)
     );
@@ -99,7 +81,7 @@ class addTix extends Component {
 
   handleTixSubmit(event) {
     event.preventDefault();
-    console.log("tixsubmit", this.state.OrganizationId, this.state.subName, this.state.UserId, this.state.SubscriptionId);
+    console.log("tixsubmit", this.state.OrganizationId, this.state.UserId, this.state.SubscriptionId);
 
     fetch("/api/tickets", {
       method: "POST",
@@ -122,7 +104,7 @@ class addTix extends Component {
       })
     }).then(response  => {
       console.log(response);
-      //window.location.href = "/";
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -130,71 +112,26 @@ class addTix extends Component {
 
   render() {
     return (
-      <div> 
-        <div className="col-10">          
-          <form onSubmit={this.handleSubmit}>
+      <div>
+        <div className="col-10">
+          <form onSubmit={this.handleTixSubmit}>
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
-                  <p>What have you subscribed to?</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">                 
-                    <div className="select">
-                      <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
-                        <optgroup label="Pick One">
-                          <option value=""></option>
-                        </optgroup>
-                        <optgroup label="Sports">
-                          <option value="1">Golden State Warriors</option>
-                          <option value="2">San Francisco Giants</option>
-                          <option value="3">San Francisco 49ers</option>
-                          <option value="4">Oakland Raiders</option>
-                          <option value="5">Los Angeles Lakers</option>
-                        </optgroup>
-                        <optgroup label="Art & Music">
-                          <option value="6">San Francisco Symphony</option>
-                          <option value="7">San Francisco Ballet</option>
-                          <option value="8">San Francisco Opera</option>
-                          <option value="9">Metropolitan Opera</option>
-                          <option value="10">Lyric Opera of Chicago</option>
-                          <option value="11">Chicago Symphony Orchestra</option>
-                          <option value="12">Canegie Hall</option>
-                        </optgroup>
-                      </select> 
-                    </div>                                  
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Subscription Name:</p>
+                  <p>Pick the subscription</p>
                 </div>
                 <div className="panel-body">
                   <div className="section-content">
-                    <Input
-                      value={this.state.subName}
-                      onChange={this.handleChange}
-                      name="subName"
-                      placeholder="My Subscription"
-                    />
+                    <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleSelectChange} name="SubscriptionId" > 
+                      {this.state.allSubscriptions.map(subscription => {
+                          return <option key={subscription.id} value={subscription.id} data-organizationid={subscription.OrganizationId}>{subscription.name}</option>
+                        })}
+                    </select>
                   </div>
                 </div>
               </div>
             </div>
-            <input id="save-sub" type="submit" value="Save" />
-          </form>
-        </div>
 
-        <div className="col-10">
-          <form onSubmit={this.handleTixSubmit}>
-            
-            
-                        
-        
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
@@ -302,15 +239,12 @@ class addTix extends Component {
               </div>
             </div>
 
-            <input type="submit" value="Save" />
-          </form>
-   
-        </div>
+          <input type="submit" value="Add" />
+        </form>
       </div>
-
-
+    </div>
     )
   }
 }
 
-export default addTix;
+export default addTicket;

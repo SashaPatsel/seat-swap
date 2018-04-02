@@ -27,7 +27,7 @@ class SignUp extends Component {
     console.log("email, pwd", this.state.email, this.state.password);
 
     fetch("/auth/signup", {
-      method: 'POST',
+      method: "POST",
       credentials: "include",
       mode: "cors",
       body: JSON.stringify({
@@ -37,7 +37,7 @@ class SignUp extends Component {
         lastname: this.state.lastname
       }),
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       })
     }).then(response  => {
       console.log(response);

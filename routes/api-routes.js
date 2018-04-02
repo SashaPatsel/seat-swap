@@ -29,17 +29,28 @@ module.exports = function(app) {
     });
 
     //add a subscription to a user
+    // app.post("/api/subscriptions", function(req, res) {
+    //     console.log(req.body);
+    //     var userId = req.session.passport.user;
+    //     req.body.UserId = userId;
+    //     console.log(req.session.passport.user);
+    //     db.Subscription.create({
+    //         name: req.body.name,
+    //         UserId: req.body.userID
+    //     }).then(function(dbSubscription) {
+    //         res.json(dbSubscription);
+    //     });
+    // });
+
     app.post("/api/subscriptions", function(req, res) {
-        console.log(req.body);
-        var userId = req.session.passport.user;
-        req.body.UserId = userId;
-        console.log(req.session.passport.user);
-        db.Subscription.create({
-            name: req.body.name,
-            UserId: req.body.userID
-        }).then(function(dbSubscription) {
-            res.json(dbSubscription);
-        });
+            db.Subscription.create({
+                name: req.body.name,
+                UserId: req.body.UserId,
+                OrganizationId: req.body.OrganizationId
+            }).then(function(dbSubscription) {
+                res.json(dbSubscription);
+            });
+
     });
 
     //return list of subscriptions for a given user
@@ -90,19 +101,27 @@ module.exports = function(app) {
     });
 
     //add a ticket to a subscription
-    app.post("/api/tickets", function(req, res) {
-       if (!req.body.UserId) {
-        console.log(userId);
-        var userId = req.session.passport.user;
-        req.body.UserId = userId;
-       }
-        db.Ticket.create(req.body)
-            .then(function(dbTicket) {
-                findWatcherMatches(dbTicket);
-                res.json(dbTicket);
-            });
-    });
+    // app.post("/api/tickets", function(req, res) {
+    //    if (!req.body.UserId) {
+    //     console.log(userId);
+    //     var userId = req.session.passport.user;
+    //     req.body.UserId = userId;
+    //    }
+    //     db.Ticket.create(req.body)
+    //         .then(function(dbTicket) {
+    //             findWatcherMatches(dbTicket);
+    //             res.json(dbTicket);
+    //         });
+    // });
 
+    app.post("/api/tickets", function(req, res) {
+        console.log(req.body);
+        db.Ticket.create(req.body)
+        .then(function(dbTicket) {
+            findWatcherMatches(dbTicket);
+            res.json(dbTicket);
+        });
+    });
 
     // Find tickets that match the criteria of the watcher
     function findWatcherMatches(ticketRecord){
@@ -451,3 +470,18 @@ module.exports = function(app) {
             });
     });
 };
+
+function ensureAuthenticated(req, res, next) {
+    console.log('check something', req.session.passport.user);
+    var userId;
+    if (req.isAuthenticated()) {
+        userId = req.session.passport.user;
+        console.log("request is authenticated");
+        return next();
+    } else {
+        userId = false;
+        console.log('request is not authenticated');
+        res.redirect('/');
+        return;
+    }
+}

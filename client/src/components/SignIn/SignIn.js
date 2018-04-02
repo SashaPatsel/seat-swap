@@ -22,7 +22,7 @@ class SignIn extends Component {
     event.preventDefault();
 
     fetch("/auth/signin", {
-      method: 'POST',
+      method: "POST",
       credentials: "include",
       mode: "cors",
       body: JSON.stringify({
@@ -30,7 +30,7 @@ class SignIn extends Component {
         password: this.state.password
       }),
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       })
     }).then(response  => {
       console.log(response)
