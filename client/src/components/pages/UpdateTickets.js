@@ -100,7 +100,7 @@ class UpdateTickets extends Component {
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
-                  <p>Ticket Status</p>
+                  <p>Update Ticket Status To:</p>
                 </div>
                 <div className="panel-body">
                   <div className="section-content">
