@@ -147,6 +147,17 @@ a.hover {
   margin: 3px;
 }
 
-.offer-select:hover {
-  background-color: red;
+.offerButton:hover {
+  color: #2e9cca;
+}
+
+.offerButton {
+  position: relative;
+  float: right;
+}
+
+.listItemOfferTitle {
+  position: relative;
+  bottom: 2em;
+  text-align: center;
 }
