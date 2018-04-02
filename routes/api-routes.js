@@ -2,6 +2,7 @@ var db = require("../models");
 var keys = require("../keys.js")
 var Client = require('node-rest-client').Client;
 var client = new Client();
+const Op = db.Sequelize.Op;
 
 module.exports = function(app) {
 
@@ -191,10 +192,19 @@ module.exports = function(app) {
     function findTicketMatches(watcherRecord){
         // console.log('findTicketMatches: called');
 
+        var minDate = new Date(watcherRecord.eventDate);
+        var maxDate = new Date(watcherRecord.eventDate);
+        maxDate.setHours(maxDate.getHours() + 23);
+        maxDate.setMinutes(maxDate.getMinutes() + 59);
+        console.log(minDate);
+        console.log(maxDate);
         db.Ticket.findAll({
             where: {
                 OrganizationId: watcherRecord.OrganizationId,
-                date: watcherRecord.eventDate
+                date: {
+                    [Op.lte]: maxDate,
+                    [Op.gte]: minDate 
+                }
             }
         }).then(function(dbTickets) {
             // console.log(dbTickets)
