@@ -11,10 +11,11 @@ import OrgTix from "./OrgTix";
 import AllTix from "./AllTix";
 import Historyy from "./Historyy";
 import News from "./News";
-import addTix from "./addTix";
+//import addTix from "./addTix";
 import addWatcher from "./addWatcher";
-
-
+import addTicket from "./addTicket";
+import addSubscription from "./addSubscription";
+//<Route path="/addTix" component={addTix} />
 
 const Home = props => (
   <div className="ss-wrapper">
@@ -33,8 +34,9 @@ const Home = props => (
             <Route path="/alltix" component={AllTix} />
             <Route path="/history" component={Historyy} />
             <Route path="/news" component={News} />
-            <Route path="/addTix" component={addTix} />
             <Route path="/addWatcher" component={addWatcher} />
+            <Route path="/addSubscription" component={addSubscription} />
+            <Route path="/addTicket" component={addTicket} />
           </div>
         </Router>
       </div>
