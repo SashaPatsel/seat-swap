@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import API from "./../../utils/API";
 import Input from "../Form/Input";
 
-class AllTickets extends Component {
+class UpdateTickets extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,6 @@ class AllTickets extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleStatusSubmit = this.handleStatusSubmit.bind(this);
   };
 
@@ -40,7 +39,6 @@ class AllTickets extends Component {
     });
   };  
   
-
   getTicketsInfo = id => {
     API.getTixForUser(id)
     .then(res => {
@@ -67,7 +65,7 @@ class AllTickets extends Component {
       })
     }).then(response  => {
       console.log(response);
-      //window.location.href = "/";
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -88,8 +86,10 @@ class AllTickets extends Component {
                     <select className="form-control" value={this.state.ticketId} onChange={this.handleChange} name="ticketId" > 
                         <option value=""></option>
                         {this.state.allTickets.map(ticket => {
-                          return <option key={ticket.id} value={ticket.id}>{ticket.eventTitle}  Date: {ticket.date.split("T")[0]}</option>
-                        })}                      
+                          return <optgroup><option key={ticket.id} value={ticket.id}>Event: {ticket.eventTitle}</option>
+                          <option key={ticket.id} value={ticket.id} disabled>Date: {ticket.date.split("T")[0]}</option>
+                          <option key={ticket.id} value={ticket.id} disabled>Current Status: {ticket.status}</option></optgroup>
+                        })}                     
                     </select>
                   </div>
                 </div>
@@ -100,7 +100,7 @@ class AllTickets extends Component {
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
-                  <p>Ticket Status</p>
+                  <p>Update Ticket Status To:</p>
                 </div>
                 <div className="panel-body">
                   <div className="section-content">
@@ -125,4 +125,4 @@ class AllTickets extends Component {
   }
 }
 
-export default AllTickets;
+export default UpdateTickets;
