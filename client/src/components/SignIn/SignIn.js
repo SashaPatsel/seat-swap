@@ -73,7 +73,7 @@ class SignIn extends Component {
             type="text"
             placeholder="Password"
           />
-          <p id="click" onClick={this.handleFormSubmit}>Submit</p>
+          <div id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
         <div id="landing-link">
           <a href="/auth/google">Login with Google</a>
