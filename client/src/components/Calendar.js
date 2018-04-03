@@ -66,17 +66,17 @@ class FullCal extends React.Component {
                     events={this.state.events}
                 />
 
-                <Link to="/addTix" className="n-pills">
+                {/* <Link to="/addTix" className="n-pills">
                     <Button size='small' id='exchange-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
                         <Icon name='exchange' /> Find Tickets
                     </Button>
                 </Link>
                 
-                <Link to="/addTix" className="n-pills">
-                    <Button size='small' id='add-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
+                <Link to="/addWatcher" className="n-pills">
+                    <Button size='small' id='add-button' className={window.location.pathname === "/addWatcher" ? "active" : ""}>
                         <Icon name='add circle' /> Add Tickets
                     </Button>
-                </Link>
+                </Link> */}
             </div>
         );
     }

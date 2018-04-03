@@ -8,38 +8,49 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Offers from "./TradeOffers";
 import MyRequests from "./MyRequests";
 import OrgTix from "./OrgTix";
+import AllTix from "./AllTix";
 import Historyy from "./Historyy";
 import News from "./News";
+//import addTix from "./addTix";
 import addWatcher from "./addWatcher";
 import addTicket from "./addTicket";
 import addSubscription from "./addSubscription";
-import UpdateTickets from "./UpdateTickets";
+import JsxParser from 'react-jsx-parser'
+//<Route path="/addTix" component={addTix} />
 
-const Home = props => (
+class Home extends React.Component {
+  state = {
+    feedRender: "Offers"
+  }
+
+renderFeed = () => {
+  this.setState({
+    feedRender: "Offers"
+  })
+}
+
+  render() {
+    const {feedRender} = this.state.feedRender
+    console.log(this.state.feedRender)
+    return (
   <div className="ss-wrapper">
-    <Nav />
-    <div className="row">
-      <div className="col-md-8">
-        <FullCal />
-      </div>
-      <div className="col-md-4">
-        <Router>
-          <div className="rightNav">
-            <Navpills />
-            <Route exact path="/requests" component={MyRequests} />
-            <Route exact path="/tradeoffers" component={Offers} />
-            <Route exact path="/orgtix" component={OrgTix} />
-            <Route path="/history" component={Historyy} />
-            <Route path="/news" component={News} />
-            <Route path="/addWatcher" component={addWatcher} />
-            <Route path="/addSubscription" component={addSubscription} />
-            <Route path="/addTicket" component={addTicket} />
-            <Route path="/UpdateTickets" component={UpdateTickets} />
-          </div>
-        </Router>
-      </div>
+  <Nav />
+  <div className="row">
+    <div className="col-md-8">
+      <FullCal />
+    </div>
+    <div className="col-md-4">
+        <div className="rightNav">
+          <Navpills/>
+        </div>
+
     </div>
   </div>
-);
+</div>
+        );
+      }
+}
+
+
 
 export default Home;
