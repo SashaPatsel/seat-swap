@@ -7,9 +7,10 @@
 
 }*/
 
-/* body {
-  font-family: 'Raleway', sans-serif;
-} */
+body {
+  /* font-family: 'Raleway', sans-serif; */
+  background-color: black;
+}
 
 /* .ss-wrapper {
   font-size: 12px;
@@ -30,7 +31,7 @@
 }
 
 .ss-nav {
-  background-color: #2e9cca;
+  background-color: #bb732a;
   color: #c9c9c9;
   width: 100%;
   height: 2%;
@@ -53,16 +54,16 @@
 }
 
 #fullCal-main {
-  background-color: white;
-  color: #25274d;
+  background-color: rgb(220,220,220);
+  color: black;
   padding: 1em;
-  border: solid 4px #2e9cca;
+  border: solid 4px #bb732a;
   border-radius: 15px;
 }
 
 
 a.fc-day-number {
-  color: #25274d;
+  color: #bb732a;
   font-size: .9em;
 }
 
@@ -74,11 +75,11 @@ a.fc-day-number {
 }
 
 a {
-  color: #2e9cca;
+  color: #bb732a;
 }
 
 a.hover {
-  color: #2e9cca;
+  color: #bb732a;
 }
 
 dropdown {
@@ -87,16 +88,16 @@ dropdown {
 
 .rightNav {
   height: 46em;
-  background-color: white;
+  background-color: rgb(220,220,220);
   color: #25274d;
-  border: solid 4px #2e9cca;
+  border: solid 4px #bb732a;
   border-radius: 15px;
   padding: 1%;
   overflow: auto;
 }
 
 .nav-tabs {
-  background-color: #022140;
+  background-color: #bb732a;
   border-radius: 10px;
   font-size: 100px;
   /* position: absolute;
@@ -107,7 +108,7 @@ dropdown {
 
 #exchange-button {
  margin-top: 1%;
- background-color: #2e9cca;
+ background-color: #bb732a;
  color: white;
  border-radius: 15px;
 }
@@ -115,7 +116,7 @@ dropdown {
 #add-button {
   margin-top: 1%;
   margin-left: 1%;
-  background-color: #2e9cca;
+  background-color: #bb732a;
   color: white;
   border-radius: 15px;
  }
@@ -136,7 +137,7 @@ dropdown {
 .TOButton {
   position: relative;
   right: -75%;
-  background-color: #2e9cca;
+  background-color: #bb732a;
   padding: .3em;
 }
 
@@ -146,7 +147,7 @@ dropdown {
 }
 
 .offerButton:hover {
-  color: #2e9cca;
+  color: #bb732a;
 }
 
 .offerButton {
@@ -160,4 +161,11 @@ dropdown {
   color: #25274d;
   bottom: 1em;
   text-align: center;
+}
+/* .fc-event-container{
+  box-decoration-break: unset;
+  background-color: #bb732a !important;
+} */
+.fc-content {
+  background-color: #bb732a;
 }
