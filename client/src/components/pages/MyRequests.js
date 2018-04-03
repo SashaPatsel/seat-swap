@@ -11,8 +11,7 @@ class MyRequests extends React.Component {
   state = {
 
     matches:[],
-    offers: []
-
+    UserID: ""
   };
 
 

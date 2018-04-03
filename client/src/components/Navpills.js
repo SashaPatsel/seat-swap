@@ -26,7 +26,7 @@ const Navpills = props => (
       </li>
 
     <li class="nav-item">
-        <a class="nav-link active" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
+        <a class="nav-link" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
       </li>
 
       <li class="nav-item">
@@ -44,6 +44,10 @@ const Navpills = props => (
 
     <div class="tab-content" id="myTabContent">
 
+      <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
+      <MyRequests/>
+      </div>
+
     <div class="tab-pane fade" id="addWatcher" role="tabpanel" aria-labelledby="addWatcher-tab">
       <Watcher/>
       </div>
@@ -55,10 +59,6 @@ const Navpills = props => (
 
       <div class="tab-pane fade" id="addTicket" role="tabpanel" aria-labelledby="addTicket-tab">
       <AddTicket/>
-      </div>
-
-      <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
-      <MyRequests/>
       </div>
 
       <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
