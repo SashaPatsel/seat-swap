@@ -360,7 +360,7 @@ module.exports = function(app) {
                 attributes:['name']
                         }, {
                 model: db.Match, 
-                attributes:['TicketId', 'SwapticketId'],
+                attributes:['id','TicketId', 'SwapticketId'],
                 include: [ { 
                     model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
                             }, {
