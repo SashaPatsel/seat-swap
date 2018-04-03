@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+// import googlelogo from "../pages/images/google.png";
+// import fblogo from "../pages/images/fb.png";
+import "./SignUp.css";
 
 class SignUp extends Component {
   // Setting the component's initial state
@@ -58,13 +61,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div className="col-xs-12 col-sm-12 col-md-6">
-          <div>
-            <a href="/auth/google">Google SignUp</a>
-          </div>
-          <div>
-            <a href="/auth/facebook">Facebook SignUp</a>
-          </div>
+        <h3>Sign Up</h3>
         <form className="form" >
           <input
             value={this.state.firstname}
@@ -94,8 +91,13 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <p id="click" onClick={this.handleFormSubmit}>Submit</p>
         </form>
+        <div id="landing-link">
+          <a href="/auth/google">Sign Up with Google</a>
+        </div>
+        <div id="landing-link">
+          <a href="/auth/facebook">Sign Up with Facebook</a>
         </div>
       </div>
     );
