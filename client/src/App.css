@@ -73,7 +73,7 @@ dropdown {
 }
 
 .rightNav {
-  height: 44em;
+  height: 40.15em;
   background-color: white;
   color: #25274d;
   border: solid 4px #2e9cca;
@@ -89,6 +89,10 @@ dropdown {
   /* position: absolute;
   z-index: 99;
   width: 90.5%; */
+}
+
+.nav-links {
+  font-size: 2em;
 }
 
 #exchange-button {
