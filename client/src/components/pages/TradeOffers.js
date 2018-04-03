@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import List from "../MatchList";
 import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
-import OfferListItem from "../MatchOfferListItem";
+// import OfferListItem from "../MatchOfferListItem";
 import { Button, Icon } from 'semantic-ui-react';
 
 
@@ -40,7 +40,7 @@ class Offers extends React.Component {
   //     .catch(err => console.log(err));
   // };
 
-  sendTradeOffer = (id, SwapticketId)  => {
+  sendTradeOffer = (id, SwapticketId) => {
     API.sendTradeOffer(id, SwapticketId)
       .then(res => {
         console.log(id, SwapticketId)
@@ -54,57 +54,59 @@ class Offers extends React.Component {
     this.getAllMatches();
   }
 
+  convertDate(newDate) {
+    let d = new Date(newDate);
+    let n = d.toLocaleString();
+    return n
+  }
   render() {
+
     return (
       <div className="navTabs" id="trade-offers">
         <div className="nav-content">
-      
+
           <h1 className="TOHead">Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
-              <ListItem key={match.id} id={match.Ticket.id}>
+              <ListItem key={match.id} id={match.Ticket.id}
+              
+              >
+              {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
                 <strong className="myAvail" >{match.Ticket.eventTitle}</strong>
                 <br />
-         
+                ({this.convertDate(match.Ticket.date)})
+
                 <OfferList id={match.Ticket.id}>
-                {/* id={this.match.Watcher.id} */}
-                  {this.state.offers.map(x => (
+                      <li>
+                        <table>
+                          <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Section</th>
+                            <th>Row</th>
+                            <th>Number</th>
+                            <th></th>
+                          </tr>
+                          {this.state.offers.map(x => (
                     x.Watcher.User.Tickets.map(tix => (
-                      <OfferListItem key={tix.id} >
-                             
-                        {/* Div is highlighted in different color? with timedout message saying "trade request sent"? */}
-                        
-                      <br/>
-                      {/* <h2 class="listItemOfferTitle"> */}
-                      <table>
-                        <tr>
-                          <th>Event</th>
-                          <th>Date</th>
-                          <th>Section</th>
-                          <th>Row</th>
-                          <th>Number</th>
-                        </tr>
-                        <tr>
-                          <td>{tix.eventTitle}</td>
-                          <td>{tix.date}</td>
-                          <td>{tix.seatSec}</td>
-                          <td>{tix.seatRow}</td>
-                          <td>{tix.seatNum}</td>
-                        </tr>  
-                      </table> 
-                    
-
-                      <button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button>
-
-                    </OfferListItem>
-                    ))
-                  ))}
+                          <tr>
+                            <td>{tix.eventTitle}</td>
+                            <td>{this.convertDate(tix.date)}</td>
+                            <td>{tix.seatSec}</td>
+                            <td>{tix.seatRow}</td>
+                            <td>{tix.seatNum}</td>
+                            <td> < button className = "offerButton" onClick = {() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
+                          </tr>
+            ))
+          ))}
+              </table>
+                      </li>
                 </OfferList>
               </ListItem>
-            ))}
+        ))}
           </List>
-        </div>
-      </div>
+        </div >
+      </div >
     );
   }
 }
