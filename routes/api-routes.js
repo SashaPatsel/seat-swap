@@ -18,11 +18,23 @@ module.exports = function(app) {
     // });
 
     //update a user's record
-    app.put("/api/users/:id", function(req, res) {
+    app.put("/api/users/:Userid", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
         db.User.update(
             req.body, {
                 where: {
-                    id: req.params.id
+                    id: id
                 }
             }).then(function(dbUser) {
             res.json(dbUser);
@@ -30,20 +42,10 @@ module.exports = function(app) {
     });
 
     //add a subscription to a user
-    // app.post("/api/subscriptions", function(req, res) {
-    //     console.log(req.body);
-    //     var userId = req.session.passport.user;
-    //     req.body.UserId = userId;
-    //     console.log(req.session.passport.user);
-    //     db.Subscription.create({
-    //         name: req.body.name,
-    //         UserId: req.body.userID
-    //     }).then(function(dbSubscription) {
-    //         res.json(dbSubscription);
-    //     });
-    // });
-
     app.post("/api/subscriptions", function(req, res) {
+        if (req.session.id) {
+            req.body.UserId = req.session.id
+        }
             db.Subscription.create({
                 name: req.body.name,
                 UserId: req.body.UserId,
@@ -58,7 +60,12 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/subscriptions", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            id = req.session.id
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
         }
         else {
             id = req.params.UserId
@@ -109,20 +116,10 @@ module.exports = function(app) {
     });
 
     //add a ticket to a subscription
-    // app.post("/api/tickets", function(req, res) {
-    //    if (!req.body.UserId) {
-    //     console.log(userId);
-    //     var userId = req.session.passport.user;
-    //     req.body.UserId = userId;
-    //    }
-    //     db.Ticket.create(req.body)
-    //         .then(function(dbTicket) {
-    //             findWatcherMatches(dbTicket);
-    //             res.json(dbTicket);
-    //         });
-    // });
-
     app.post("/api/tickets", function(req, res) {
+        if (req.session) {
+            req.body.UserId = req.session.id
+        }
         console.log(req.body);
         db.Ticket.create(req.body)
         .then(function(dbTicket) {
@@ -151,10 +148,22 @@ module.exports = function(app) {
     
 
     //return all tickets for a user
-    app.get("/api/users/:userId/tickets", function(req, res) {
+    app.get("/api/users/:UserId/tickets", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            if (req.session) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
         db.Ticket.findAll({
             where: {
-                UserId: req.params.userId
+                UserId: req.params.UserId
             }
         }).then(function(results) {
             res.json(results);
@@ -163,7 +172,19 @@ module.exports = function(app) {
 
     //return a list of tickets for 1 or all subscriptions for a specific user
     app.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets", function(req, res) {
-        var queryObj = { where: { UserId: req.params.UserId } };
+        var id;
+        if (req.params.UserId === "me") {
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
+        var queryObj = { where: { UserId: id } };
 
         if (req.params.SubscriptionId) {
             queryObj.where.SubscriptionId = req.params.SubscriptionId
@@ -189,6 +210,7 @@ module.exports = function(app) {
 
     //add a watcher
     app.post("/api/watchers", function(req, res) {
+        
         db.Watcher.create(req.body).then(function(dbWatcher) {
             findTicketMatches(dbWatcher);
             res.json(dbWatcher);
@@ -240,9 +262,21 @@ module.exports = function(app) {
 
     //return a list of watchers for a specific user
     app.get("/api/users/:UserId/watchers", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
         db.Watcher.findAll({
             where: {
-                UserId: req.params.UserId
+                UserId: id
             }
         }).then(function(dbWatcher) {
             res.json(dbWatcher);
@@ -251,9 +285,21 @@ module.exports = function(app) {
 
     //return a list of watchers for a specific user with results of the matches
     app.get("/api/users/:UserId/watchers/matches", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
         db.Watcher.findAll({
             attributes: ['eventDate'],
-            where: { UserId: req.params.UserId },
+            where: { UserId: id },
             include: [ {
                 model: db.Organization,
                 attributes:['name']
@@ -319,6 +365,18 @@ module.exports = function(app) {
 
     // Get all matches by the User who created the Watcher
     app.get("/api/matches/:UserId", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
+        }
+        else {
+            id = req.params.UserId
+        };
         db.Match.findAll({
             include: [{
                 model: db.Watcher,
@@ -332,7 +390,7 @@ module.exports = function(app) {
                 {
                 model: db.Ticket,
                 where: {
-                    UserId: req.params.UserId
+                    UserId: id
                 },
                 include: [{
                     model: db.Organization
