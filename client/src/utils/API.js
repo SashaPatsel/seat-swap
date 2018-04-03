@@ -43,8 +43,8 @@ export default {
   deleteWatcher: function() {
     return axios.destroy("api/watchers/:id")
   },  
-  getAllMatches: function() {
-    return axios.get("/api/matches/2")
+  getAllMatches: function(id) {
+    return axios.get("/api/matches/" + id)
   },
   addTJournal: function() {
     return axios.post("/api/tradejournal")
