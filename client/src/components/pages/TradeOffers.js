@@ -75,14 +75,27 @@ class Offers extends React.Component {
                         {/* Div is highlighted in different color? with timedout message saying "trade request sent"? */}
                         
                       <br/>
-                      <h2 class="listItemOfferTitle">{tix.eventTitle}</h2> @ {tix.date}
-                      <br />
+                      {/* <h2 class="listItemOfferTitle"> */}
+                      <table>
+                        <tr>
+                          <th>Event</th>
+                          <th>Date</th>
+                          <th>Section</th>
+                          <th>Row</th>
+                          <th>Number</th>
+                        </tr>
+                        <tr>
+                          <td>{tix.eventTitle}</td>
+                          <td>{tix.date}</td>
+                          <td>{tix.seatSec}</td>
+                          <td>{tix.seatRow}</td>
+                          <td>{tix.seatNum}</td>
+                        </tr>  
+                      </table> 
+                    
+
                       <button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button>
-                      Section: {tix.seatSec}
-                      <br />
-                      Row: {tix.seatRow}
-                      <br />
-                      Seat: {tix.seatNum}
+
                     </OfferListItem>
                     ))
                   ))}
