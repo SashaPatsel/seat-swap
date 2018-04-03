@@ -61,7 +61,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div className="col-xs-12 col-sm-12 col-md-12" id="signup-container">
+        <div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
         <h1>Sign Up</h1>
         <form className="form" >
           <input
@@ -92,7 +92,7 @@ class SignUp extends Component {
             type="text"
             placeholder="Password"
           />
-          <p onClick={this.handleFormSubmit}>Submit</p>
+          <p id="click" onClick={this.handleFormSubmit}>Submit</p>
         </form>
         <div id="landing-link">
           <a href="/auth/google">Sign Up with Google</a>

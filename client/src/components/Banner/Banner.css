@@ -1,0 +1,18 @@
+#banner {
+	background: url("./tix.jpg") no-repeat center fixed;
+	background-size: contain;
+	opacity: 0.4;
+	background-color: transparent;
+	height: 800px;
+}
+
+
+
+h1 {
+	line-height: 2.0;
+	font-size: 55px;
+	font-weight: 800;
+	color: #000000;
+	text-align: center;
+	vertical-align: middle;
+}

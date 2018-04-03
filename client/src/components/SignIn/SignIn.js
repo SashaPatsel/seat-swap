@@ -53,7 +53,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12" id="signin-container">
+      <div>
         <h1>Sign In</h1>
         <form className="form" method="POST" action="http://localhost:5000/signin">
           <input

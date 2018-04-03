@@ -1,17 +1,15 @@
 #landing-container {
-	height:100%;
+	padding-top: 50px
 }
 
-#title {
-	color: #ffffff;
+.banner {
+	margin: 0px 0px 0px 0px;
+	height: auto;
+	background-color: transparent;
 }
 
-#paralax{ 
-  background-image: url("./images/ticket.jpg");
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#login {
+	text-align: center;
+	line-height: 1.5
 }
 

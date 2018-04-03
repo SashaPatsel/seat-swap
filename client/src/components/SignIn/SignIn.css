@@ -1,20 +1,12 @@
-#signin-container {
-	padding-top: 40px;
-	background-color: #111;
-	color: #fff;
-	font-size: 25px;
-	letter-spacing: 5px;
-	text-align: center;
-	margin-top: 200px;
-	font-size: 36px;
-	line-height: 1.5;
-	height: auto;
+h1 {
+	color: #31137c;
 }
 
-#landing-link {
-	font-size:25px;
+a {
+	font-size:20px;
+	color: #28346d;
 }
 
 p #click {
-	font-size:25px;
+	font-size:20px;
 }
