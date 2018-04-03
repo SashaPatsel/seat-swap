@@ -59,7 +59,7 @@ class Offers extends React.Component {
       <div className="navTabs" id="trade-offers">
         <div className="nav-content">
       
-          <h1>Interest in my Tickets</h1>
+          <h1 className="TOHead">Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
               <ListItem key={match.id} id={match.Ticket.id}>

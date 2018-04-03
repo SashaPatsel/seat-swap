@@ -6,11 +6,9 @@ import OrgTix from "./pages/OrgTix";
 import AllTix from "./pages/AllTix";
 import Historyy from "./pages/Historyy";
 import News from "./pages/News";
-import addWatcher from "./pages/addWatcher";
 import AddTicket from "./pages/AddTicket";
 import AddSubscription from "./pages/AddSubscription";
 import Watcher from "./Watcher/Watcher";
-// import Test from "./pages/Test"
 
 
 const Navpills = props => (
@@ -18,26 +16,29 @@ const Navpills = props => (
   <div>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-    
+          
     <li class="nav-item">
-        <a class="nav-link active" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSu3bscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">Sub</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" id="addTicket-tab" data-toggle="pill" href="#addTicket" role="tabpanel" aria-controls="addTicket" aria-selected="false">Add</a>
-      </li>
-      
-      <li class="nav-item">
         <a class="nav-link active" id="myRequests-tab" data-toggle="pill" href="#myRequests" role="tab" aria-controls="myRequests" aria-selected="true">My Requests</a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" id="offers-tab" data-toggle="pill" href="#offers" role="tab" aria-controls="offers" aria-selected="false">My Offers</a>
       </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSubscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">My Subs</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" id="addTicket-tab" data-toggle="pill" href="#addTicket" role="tabpanel" aria-controls="addTicket" aria-selected="false">Add Tickets</a>
+      </li>
+
+
+
       {/* Org tix and all tix should be a toggle within one feed */}
     </ul>
 
