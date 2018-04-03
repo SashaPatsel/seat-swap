@@ -79,9 +79,8 @@ render() {
           </div>
         </div>
         <div className = "row">
-          {this.state.matches.map(match => {
             
-              <div key={match.id} id={match.id}>
+    
                   <div className="col-md-6" id="requested-ticket">
                       <h5 className="card-title c.title">abc</h5>
                       <p className="card-text c.text">abc</p>
@@ -89,9 +88,9 @@ render() {
                   <div className="col-md-6" id="offered-ticket">
                     <h5 className="card-title c.title">Hamilton</h5>
                     <p className="card-text c.text">5/23/2018</p>
-                  </div>
+
               </div>
-          })}
+
         </div>
       </div>
         <div className = "row card-footer">
