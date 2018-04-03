@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Input from "../Form/Input";
 import API from "./../../utils/API";
 
-class addTicket extends Component {
+class AddTicket extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -238,4 +238,4 @@ class addTicket extends Component {
   }
 }
 
-export default addTicket;
+export default AddTicket;

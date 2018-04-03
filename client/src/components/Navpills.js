@@ -7,7 +7,7 @@ import AllTix from "./pages/AllTix";
 import Historyy from "./pages/Historyy";
 import News from "./pages/News";
 import addWatcher from "./pages/addWatcher";
-import addTicket from "./pages/addTicket";
+import AddTicket from "./pages/AddTicket";
 import AddSubscription from "./pages/AddSubscription";
 import Watcher from "./Watcher/Watcher";
 // import Test from "./pages/Test"
@@ -24,7 +24,7 @@ const Navpills = props => (
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSubscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">Sub</a>
+        <a class="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSu3bscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">Sub</a>
       </li>
       
       <li class="nav-item">
@@ -53,7 +53,7 @@ const Navpills = props => (
 
 
       <div class="tab-pane fade" id="addTicket" role="tabpanel" aria-labelledby="addTicket-tab">
-      <addTicket/>
+      <AddTicket/>
       </div>
 
       <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
