@@ -20,6 +20,7 @@ class Landing extends Component {
 						<SignIn/>
 					</div>
 				</div>
+				<Banner />
 			</div>
 		)
 	}
