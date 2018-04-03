@@ -22,14 +22,14 @@ export default {
   addTickets: function() {
     return axios.post("/api/tickets")
   },
-  getTixForUser: function() {
-    return axios.get("/api/users/:UserId/tickets")
+  getTixForUser: function(userId) {
+    return axios.get("/api/users/" + userId + "/tickets")
   },
   getTixForUserForSub: function() {
     return axios.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets")
   },  
-  updateTix: function() {
-    return axios.put("/api/tickets/:id")
+  updateTix: function(id) {
+    return axios.put("/api/tickets/" + id)
   },  
   addWatcher: function() {
     return axios.post("/api/watchers")

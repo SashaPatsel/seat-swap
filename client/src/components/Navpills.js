@@ -12,19 +12,12 @@ const Navpills = () => (
     <li className={window.location.pathname === "/orgtix" ? "active" : ""}>
       <Link to="/orgtix" className="n-pills"><span>Org</span> Tickets</Link>
     </li>
-    <li className={window.location.pathname === "/alltix" ? "active" : ""}>
-      <Link to="/alltix" className="n-pills">All Tickets</Link>
-    </li>
     <li className={window.location.pathname === "/history" ? "active" : ""}>
       <Link to="/history" className="n-pills">History</Link>
     </li>
     <li className={window.location.pathname === "/News" ? "active" : ""}>
       <Link to="/News" className="n-pills">News</Link>
     </li>
-
-    // <li className={window.location.pathname === "/addTix" ? "active" : ""}>
-    // <Link to="/addTix" className="n-pills">Add Tickets</Link>
-    // </li>
 
     <li className={window.location.pathname === "/addWatcher" ? "active" : ""}>
     <Link to="/addWatcher" className="n-pills">Find Tickets</Link>
@@ -36,6 +29,10 @@ const Navpills = () => (
 
     <li className={window.location.pathname === "/addTicket" ? "active" : ""}>
     <Link to="/addTicket" className="n-pills">Add A Ticket</Link>
+    </li>
+  
+    <li className={window.location.pathname === "/UpdateTickets" ? "active" : ""}>
+    <Link to="/UpdateTickets" className="n-pills">Update Ticket Status</Link>
     </li>
 
   </ul>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Watcher from "../Watcher";
 
-class addTix extends Component {
+class addWatcher extends Component {
   render() {
     return (
       <div> 
@@ -11,4 +11,4 @@ class addTix extends Component {
   }
 }
 
-export default Watcher;
+export default addWatcher;

@@ -2,6 +2,7 @@ var db = require("../models");
 var keys = require("../keys.js")
 var Client = require('node-rest-client').Client;
 var client = new Client();
+const Op = db.Sequelize.Op;
 
 module.exports = function(app) {
 
@@ -143,10 +144,10 @@ module.exports = function(app) {
     
 
     //return all tickets for a user
-    app.get("/api/users/:UserId/tickets", function(req, res) {
+    app.get("/api/users/:userId/tickets", function(req, res) {
         db.Ticket.findAll({
             where: {
-                UserId: req.params.UserId
+                UserId: req.params.userId
             }
         }).then(function(results) {
             res.json(results);
@@ -172,10 +173,10 @@ module.exports = function(app) {
             status: req.body.status
         }, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(function(result) {
-            res.json(results);
+            res.json(result);
         });
     });
 
@@ -191,10 +192,19 @@ module.exports = function(app) {
     function findTicketMatches(watcherRecord){
         // console.log('findTicketMatches: called');
 
+        var minDate = new Date(watcherRecord.eventDate);
+        var maxDate = new Date(watcherRecord.eventDate);
+        maxDate.setHours(maxDate.getHours() + 23);
+        maxDate.setMinutes(maxDate.getMinutes() + 59);
+        console.log(minDate);
+        console.log(maxDate);
         db.Ticket.findAll({
             where: {
                 OrganizationId: watcherRecord.OrganizationId,
-                date: watcherRecord.eventDate
+                date: {
+                    [Op.lte]: maxDate,
+                    [Op.gte]: minDate 
+                }
             }
         }).then(function(dbTickets) {
             // console.log(dbTickets)
@@ -353,6 +363,81 @@ module.exports = function(app) {
               res.status(500).json(err);
         });
     });
+
+    // When trade accepted, hit this put route to kick off the trade in our database
+    // Find the match by it's id to return the data including the tickets to be swapped
+    app.put("/api/matches/:id/traded", function(req, res) {
+        db.Match.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(matchData) {
+            swappedTickets(matchData, res);
+        })
+    });
+
+    // Using the TicketId and SwapticketId to get those tickets information
+    function swappedTickets(data, res) {
+        db.Ticket.findOne({
+            attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
+            where: {
+                id: data.TicketId
+            }
+        }).then(function(ticket1) {
+            db.Ticket.findOne({
+                attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
+                where: {
+                    id: data.SwapticketId
+                }
+            }).then(function(ticket2) {
+                createNewTickets(ticket1, ticket2, data, res);
+            })
+        })
+    }
+
+    // Swapping the UserIds for the tickets to be swapped and then creating those tickets with the new UserId
+    function createNewTickets(one, two, matchData, res) {
+        one.subscription = 0;
+        two.subscription = 0;
+        var temp = one.UserId;
+        one.UserId = two.UserId;
+        two.UserId = temp;
+        db.Ticket.create(one.dataValues).then(function(response) {
+            db.Ticket.create(two.dataValues).then(function(result) {
+                changeOldTickets(matchData, res);
+            })
+        })
+    }
+
+    // Updating the original tickets to the status of "gone" so users can still see tickets they've traded away
+    function changeOldTickets(data, res) {
+        db.Ticket.update(
+            {status: "gone"},
+                {where: {
+                    id: data.SwapticketId
+                }
+            }).then(function(response) {
+                db.Ticket.update({
+                    status: "gone"},
+                        {where: {
+                            id: data.TicketId
+                        }
+                }).then(function(result) {
+                    removeWatcher(data, res);
+                })
+            })
+    }
+
+    // destroying the watcher which also destroys it's associated matches
+    function removeWatcher(matchData, res) {
+        db.Watcher.destroy({
+            where: {
+                id: matchData.WatcherId
+            }
+        }).then(function(data){
+            res.json(data);
+        })
+    }
 
     //add a trade journal entry
     app.post("/api/tradejournal", function(req, res) {

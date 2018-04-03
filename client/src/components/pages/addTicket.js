@@ -1,10 +1,6 @@
 import React, {Component} from "react";
-//import Subscription from "../Subscription";
-//import Ticket from "../Ticket";
 import Input from "../Form/Input";
 import API from "./../../utils/API";
-//import SubscriptionDropdown from "../SubscriptionDropdown"
-import {Async} from "react-select";
 
 class addTicket extends Component {
   constructor(props) {
@@ -64,16 +60,10 @@ class addTicket extends Component {
   
 
   getSubscriptionInfo = id => {
-    console.log(id);
-
     API.getAllSubs(id)
     .then(res => {
-      let sub = res.data.length-1
-      let subId = res.data[sub].id;
-      this.setState({SubscriptionId: subId});
       this.setState({allSubscriptions: res.data});
-      console.log(this.state.SubscriptionId); //ok
-      console.log("allSub", this.state.allSubscriptions); //ok
+      console.log("allSub", this.state.allSubscriptions);
     }).catch(err => 
       console.log(err)
     );
@@ -123,9 +113,10 @@ class addTicket extends Component {
                 <div className="panel-body">
                   <div className="section-content">
                     <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleSelectChange} name="SubscriptionId" > 
-                      {this.state.allSubscriptions.map(subscription => {
+                        <option value=""></option>
+                        {this.state.allSubscriptions.map(subscription => {
                           return <option key={subscription.id} value={subscription.id} data-organizationid={subscription.OrganizationId}>{subscription.name}</option>
-                        })}
+                        })}                      
                     </select>
                   </div>
                 </div>
