@@ -56,9 +56,16 @@ module.exports = function(app) {
 
     //return list of subscriptions for a given user
     app.get("/api/users/:UserId/subscriptions", function(req, res) {
+        var id;
+        if (req.params.UserId === "me") {
+            id = req.session.id
+        }
+        else {
+            id = req.params.UserId
+        };
         db.Subscription.findAll({
             where: {
-                UserId: req.params.UserId
+                UserId: id
             }
         }).then(function(dbSubscription) {
             res.json(dbSubscription);
@@ -435,7 +442,7 @@ module.exports = function(app) {
                 id: matchData.WatcherId
             }
         }).then(function(data){
-            res.json(data);
+            res.status(200).json(data);
         })
     }
 
