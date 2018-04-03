@@ -27,9 +27,23 @@ class Offers extends React.Component {
       .catch(err => console.log(err));
   };
 
-  sendTradeOffer = () => {
-    API.sendTradeOffer()
+  // handleTradeOffer = event => {
+  //   // event.preventDefault();
+  //   console.log("chicken")
+  //   API.sendTradeOffer({
+
+  //   })
+  //     .then(res => {
+  //       console.log(res.data)
+
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  sendTradeOffer = (id, SwapticketId)  => {
+    API.sendTradeOffer(id, SwapticketId)
       .then(res => {
+        console.log(id, SwapticketId)
         console.log(res.data)
 
       })
@@ -44,27 +58,44 @@ class Offers extends React.Component {
     return (
       <div className="navTabs" id="trade-offers">
         <div className="nav-content">
+      
           <h1>Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
               <ListItem key={match.id} id={match.Ticket.id}>
-                <strong className="myAvail" doSomething={this.chicken}>{match.Ticket.eventTitle}</strong>
+                <strong className="myAvail" >{match.Ticket.eventTitle}</strong>
                 <br />
+         
                 <OfferList id={match.Ticket.id}>
                 {/* id={this.match.Watcher.id} */}
                   {this.state.offers.map(x => (
                     x.Watcher.User.Tickets.map(tix => (
-                      <OfferListItem key={tix.id} onClick={this.sendTradeOffer}>
+                      <OfferListItem key={tix.id} >
+                             
                         {/* Div is highlighted in different color? with timedout message saying "trade request sent"? */}
                         
                       <br/>
-                      {tix.eventTitle} @ {tix.date}
-                      <br />
-                      Section: {tix.seatSec}
-                      <br />
-                      Row: {tix.seatRow}
-                      <br />
-                      Seat: {tix.seatNum}
+                      {/* <h2 class="listItemOfferTitle"> */}
+                      <table>
+                        <tr>
+                          <th>Event</th>
+                          <th>Date</th>
+                          <th>Section</th>
+                          <th>Row</th>
+                          <th>Number</th>
+                        </tr>
+                        <tr>
+                          <td>{tix.eventTitle}</td>
+                          <td>{tix.date}</td>
+                          <td>{tix.seatSec}</td>
+                          <td>{tix.seatRow}</td>
+                          <td>{tix.seatNum}</td>
+                        </tr>  
+                      </table> 
+                    
+
+                      <button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button>
+
                     </OfferListItem>
                     ))
                   ))}
@@ -83,8 +114,11 @@ export default Offers;
 // To do:
 // - Remotely open the feed
 // - Calendar clickability (could be solved if remotely open is solved)
-// - Open trade offers w/ dropdown (give list item and list unique ids)
 // - Avoid double trade entries cause by double loop
 // - Give NavPills absolute position. everything else scrolls
 // - resize calendar appropriately
 
+// - presentable landing page
+// - Joyce's two get routes asynchronicity
+// - my post route 
+// - parameters on front end

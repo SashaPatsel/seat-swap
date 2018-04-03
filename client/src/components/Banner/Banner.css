@@ -1,0 +1,11 @@
+#banner {
+	background: url("./ticket.jpg") repeat fixed;
+	background-size: contain;
+	opacity: 1;
+	background-color: transparent
+}
+
+.banner {
+	margin: 0px 0px 0px 0px;
+	height: 100px;
+}

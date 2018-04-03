@@ -1,9 +1,13 @@
-#signup-container {
-	padding: 40px;
-	margin-top: 100px;
+h1 {
+	color: #ffffff;
 }
 
+a {
+	font-size:20px;
+	color: #ffffff;
+}
 
-input [type="text"] {
-	background-color: #ffffff;
+p #click {
+	font-size:20px;
+	line-height: 1.5
 }

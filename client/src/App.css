@@ -1,43 +1,21 @@
-/* .App {
-  text-align: center;
-}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
 
 /* SS Style */
 
-body {
+/*body {
   background-color: #ffffff
 
+}*/
+
+body {
+  font-family: 'Raleway', sans-serif;
 }
 
 .fc-button {
   background-color: #9ad3de;
 }
-i#manage-prof {
+
+#manage-prof {
   width: 50px;
   color: red;
 }
@@ -90,13 +68,13 @@ a.hover {
 }
 
 .rightNav {
-  height: 41.5em;
+  height: 44em;
   background-color: white;
   color: #25274d;
   border: solid 4px #2e9cca;
   border-radius: 15px;
   padding: 1%;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .n-pills {
@@ -147,6 +125,19 @@ a.hover {
   margin: 3px;
 }
 
-.offer-select:hover {
-  background-color: red;
+.offerButton:hover {
+  color: #2e9cca;
+}
+
+.offerButton {
+  position: relative;
+  float: right;
+  margin: 1%;
+}
+
+.listItemOfferTitle {
+  position: relative;
+  color: #25274d;
+  bottom: 1em;
+  text-align: center;
 }

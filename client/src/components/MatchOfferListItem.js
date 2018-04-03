@@ -1,8 +1,9 @@
 import React from "react";
 
 const OfferListItem = props => (
-  <li className="list-group-item offer-select">
+  <li className="offer-select" >
     {props.children}
+
   </li>
 );
 
