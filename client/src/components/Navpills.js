@@ -6,11 +6,12 @@ import OrgTix from "./pages/OrgTix";
 import AllTix from "./pages/AllTix";
 import Historyy from "./pages/Historyy";
 import News from "./pages/News";
-//import addTix from "./addTix";
 import addWatcher from "./pages/addWatcher";
 import addTicket from "./pages/addTicket";
-import addSubscription from "./pages/addSubscription";
+import AddSubscription from "./pages/AddSubscription";
 import Watcher from "./Watcher/Watcher";
+// import Test from "./pages/Test"
+
 
 const Navpills = props => (
 
@@ -38,22 +39,23 @@ const Navpills = props => (
         <a class="nav-link" id="offers-tab" data-toggle="pill" href="#offers" role="tab" aria-controls="offers" aria-selected="false">My Offers</a>
       </li>
       {/* Org tix and all tix should be a toggle within one feed */}
-
     </ul>
 
     <div class="tab-content" id="myTabContent">
+
     <div class="tab-pane fade" id="addWatcher" role="tabpanel" aria-labelledby="addWatcher-tab">
       <Watcher/>
       </div>
 
       <div class="tab-pane fade" id="addSubscription" role="tabpanel" aria-labelledby="addSubscription-tab">
-      <addSubscription/>
+      <AddSubscription/>
       </div>
 
 
       <div class="tab-pane fade" id="addTicket" role="tabpanel" aria-labelledby="addTicket-tab">
       <addTicket/>
       </div>
+
       <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
       <MyRequests/>
       </div>

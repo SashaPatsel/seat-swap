@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Input from "../Form/Input";
 
-class addSubscription extends Component {
+class Test extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,4 +130,4 @@ class addSubscription extends Component {
   }
 }
 
-export default addSubscription;
+export default Test;
