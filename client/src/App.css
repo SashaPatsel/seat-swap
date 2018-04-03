@@ -37,6 +37,16 @@
   border-radius: 0px;
 }
 
+.signOut {
+  float: right;
+  height: 2em;
+  font-size: 1em;
+}
+
+.nav-link {
+  font-size: .15em;
+}
+
 .fullCal {
   margin-left: 2%;
   margin-right: 5%; 
@@ -53,12 +63,14 @@
 
 a.fc-day-number {
   color: #25274d;
+  font-size: .9em;
 }
 
 .logo {
   width: 10%;
   position: relative;
   left: .9em;
+  bottom: .8em;
 }
 
 a {
@@ -74,7 +86,7 @@ dropdown {
 }
 
 .rightNav {
-  height: 40.15em;
+  height: 46em;
   background-color: white;
   color: #25274d;
   border: solid 4px #2e9cca;
@@ -92,9 +104,6 @@ dropdown {
   width: 90.5%; */
 }
 
-.nav-links {
-  font-size: 2em;
-}
 
 #exchange-button {
  margin-top: 1%;
@@ -118,6 +127,10 @@ dropdown {
   font-size: 2em;
   position: relative;
   left: -3em;
+}
+
+.fc-more {
+  color: #022140;
 }
 
 .TOButton {

@@ -11,11 +11,12 @@ import { Button, Icon } from 'semantic-ui-react';
 class Offers extends React.Component {
   state = {
     matches: [],
-    offers: []
+    offers: [],
+    UserID: ""
   };
 
-  getAllMatches = () => {
-    API.getAllMatches()
+  getAllMatches = (id) => {
+    API.getAllMatches(id)
       .then(res => {
         console.log(res.data)
 
@@ -27,31 +28,28 @@ class Offers extends React.Component {
       .catch(err => console.log(err));
   };
 
-  // handleTradeOffer = event => {
-  //   // event.preventDefault();
-  //   console.log("chicken")
-  //   API.sendTradeOffer({
-
-  //   })
-  //     .then(res => {
-  //       console.log(res.data)
-
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getUserId = () => {
+    const cookie = document.cookie.split(";");
+      console.log("cookie", cookie)
+    let userID = cookie[0];
+      userID = userID.split("=");
+      userID = userID[1];
+      console.log("userID:", userID);
+    this.setState({UserId: userID});
+    setTimeout(this.getAllMatches(this.state.UserId),500)
+  }
 
   sendTradeOffer = (id, SwapticketId) => {
     API.sendTradeOffer(id, SwapticketId)
       .then(res => {
         console.log(id, SwapticketId)
         console.log(res.data)
-
       })
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    this.getAllMatches();
+    this.getUserId();
   }
 
   convertDate(newDate) {
