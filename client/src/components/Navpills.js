@@ -44,7 +44,7 @@ const Navpills = props => (
 
     <div class="tab-content" id="myTabContent">
 
-      <div class="tab-pane fade show active" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
+      <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
       <MyRequests/>
       </div>
 

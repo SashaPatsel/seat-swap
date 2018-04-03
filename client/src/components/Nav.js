@@ -24,7 +24,7 @@ const Nav = () => (
                 </ul>
             </li>
         </ul> */}
-        <a href="/logout" className="signOut">Sign out</a>
+        <a href="/logout" className="signOut">Sign Out</a>
     </div>
 </nav>
     
