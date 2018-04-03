@@ -25,7 +25,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -37,14 +37,22 @@ module.exports = function(app) {
                     id: id
                 }
             }).then(function(dbUser) {
-            res.json(dbUser);
-        });
+                res.json(dbUser);
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     });
 
     //add a subscription to a user
     app.post("/api/subscriptions", function(req, res) {
         if (req.session.id) {
-            req.body.UserId = req.session.id
+            if (Number.isInteger(req.session.id)) {
+                req.body.UserId = req.session.id
+            }
+            else {
+                res.status(401)
+            }
         }
             db.Subscription.create({
                 name: req.body.name,
@@ -52,6 +60,9 @@ module.exports = function(app) {
                 OrganizationId: req.body.OrganizationId
             }).then(function(dbSubscription) {
                 res.json(dbSubscription);
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
             });
 
     });
@@ -64,7 +75,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -76,6 +87,9 @@ module.exports = function(app) {
             }
         }).then(function(dbSubscription) {
             res.json(dbSubscription);
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
         });
     });
 
@@ -87,6 +101,9 @@ module.exports = function(app) {
             }
         }).then(function(dbSubscription) {
             res.json(dbSubscription);
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
         });
     });
 
@@ -98,8 +115,11 @@ module.exports = function(app) {
                     id: req.params.id
                 }
             }).then(function(dbSubscription) {
-            res.json(dbSubscription);
-        });
+                res.json(dbSubscription);
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     // Get a list of all tickets
@@ -112,20 +132,31 @@ module.exports = function(app) {
               queryObj
             }).then(function(data) {
                 res.json(data);
-            });
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     });
 
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
         if (req.session) {
-            req.body.UserId = req.session.id
+            if (Number.isInteger(req.session.id)) {
+                req.body.UserId = req.session.id
+            }
+            else {
+                res.status(401)
+            }
         }
         console.log(req.body);
         db.Ticket.create(req.body)
         .then(function(dbTicket) {
             findWatcherMatches(dbTicket);
             res.json(dbTicket);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     // Find tickets that match the criteria of the watcher
@@ -143,7 +174,10 @@ module.exports = function(app) {
           dbWatchers.forEach(function(singleWatcherMatch) {
             writeMatch(singleWatcherMatch, ticketRecord);
           });
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     }
     
 
@@ -155,7 +189,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -167,7 +201,10 @@ module.exports = function(app) {
             }
         }).then(function(results) {
             res.json(results);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     //return a list of tickets for 1 or all subscriptions for a specific user
@@ -178,7 +215,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -192,7 +229,10 @@ module.exports = function(app) {
         console.log(queryObj);
         db.Ticket.findAll(queryObj).then(function(results) {
             res.json(results);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     //update a ticket record
@@ -205,7 +245,10 @@ module.exports = function(app) {
             }
         }).then(function(result) {
             res.json(result);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     //add a watcher
@@ -214,7 +257,10 @@ module.exports = function(app) {
         db.Watcher.create(req.body).then(function(dbWatcher) {
             findTicketMatches(dbWatcher);
             res.json(dbWatcher);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     // Find tickets that match the criteria of the watcher
@@ -243,7 +289,10 @@ module.exports = function(app) {
           dbTickets.forEach(function(singleTicketMatch) {
             writeMatch(watcherRecord, singleTicketMatch);
           });
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     }
 
     // write a match record
@@ -257,7 +306,10 @@ module.exports = function(app) {
         }).then(function(dbMatches) {
             console.log('writeMatch: matches created');
             console.log(JSON.stringify(dbMatches, null, 4));
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     } 
 
     //return a list of watchers for a specific user
@@ -268,7 +320,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -280,7 +332,10 @@ module.exports = function(app) {
             }
         }).then(function(dbWatcher) {
             res.json(dbWatcher);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     //return a list of watchers for a specific user with results of the matches
@@ -291,7 +346,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -316,7 +371,10 @@ module.exports = function(app) {
             // include: [ {model: db.Tickets} ]            
         }).then(function(dbWatcher) {
             res.json(dbWatcher);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
 
@@ -330,7 +388,10 @@ module.exports = function(app) {
                 }
             }).then(function(dbWatcher) {
             res.json(dbWatcher);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     //remove a watcher
@@ -341,7 +402,10 @@ module.exports = function(app) {
             }
         }).then(function(dbWatcher) {
             res.json(dbWatcher);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     // Return a list of all current matches
@@ -360,7 +424,10 @@ module.exports = function(app) {
             }]
             }).then(function(data) {
                 res.json(data);
-            });
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     });
 
     // Get all matches by the User who created the Watcher
@@ -371,7 +438,7 @@ module.exports = function(app) {
                 id = req.session.id
             }
             else {
-                res.status(500)
+                res.status(401)
             }
         }
         else {
@@ -401,7 +468,10 @@ module.exports = function(app) {
             }]
             }).then(function(data) {
                 res.json(data);
-            });
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     });
 
 
@@ -424,7 +494,7 @@ module.exports = function(app) {
             }).then(function(dbMatch) {
                 res.json(dbMatch);
             }).catch(function(err) {
-                // console.log(err.original.errno);
+                
               res.status(500).json(err);
         });
     });
@@ -438,7 +508,10 @@ module.exports = function(app) {
             }
         }).then(function(matchData) {
             swappedTickets(matchData, res);
-        })
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     // Using the TicketId and SwapticketId to get those tickets information
@@ -457,7 +530,10 @@ module.exports = function(app) {
             }).then(function(ticket2) {
                 createNewTickets(ticket1, ticket2, data, res);
             })
-        })
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     }
 
     // Swapping the UserIds for the tickets to be swapped and then creating those tickets with the new UserId
@@ -471,7 +547,10 @@ module.exports = function(app) {
             db.Ticket.create(two.dataValues).then(function(result) {
                 changeOldTickets(matchData, res);
             })
-        })
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     }
 
     // Updating the original tickets to the status of "gone" so users can still see tickets they've traded away
@@ -490,7 +569,10 @@ module.exports = function(app) {
                 }).then(function(result) {
                     removeWatcher(data, res);
                 })
-            })
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     }
 
     // destroying the watcher which also destroys it's associated matches
@@ -501,7 +583,10 @@ module.exports = function(app) {
             }
         }).then(function(data){
             res.status(200).json(data);
-        })
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     }
 
     //add a trade journal entry
@@ -538,14 +623,20 @@ module.exports = function(app) {
             }]
         }).then(function(data) {
             res.json(data);
-        });
+        }).catch(function(err) {
+                
+            res.status(500).json(err);
+      });
     });
 
     app.get("/api/organizations", function(req, res) {
         db.Organization.findAll({
             }).then(function(data) {
                 res.json(data);
-            });
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
     });
 };
 
