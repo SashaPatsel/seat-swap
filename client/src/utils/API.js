@@ -61,7 +61,12 @@ export default {
   getOrgs: function() {
     return axios.get("/api/organizations")
   },
+
+  getWatcherAndMatch: function(id) {
+    return axios.get("/api/users/" + id + "/watchers/matches")
+  },
   sendTradeOffer: function(id, SwapticketId) {
     return axios.put("/api/matches/"+ id +"/swapticket/" + SwapticketId)
+
   }
 };
