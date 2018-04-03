@@ -21,7 +21,12 @@ module.exports = function(app) {
     app.put("/api/users/:Userid", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            id = req.session.id
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
         }
         else {
             id = req.params.UserId
@@ -55,7 +60,12 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/subscriptions", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            id = req.session.id
+            if (Number.isInteger(req.session.id)) {
+                id = req.session.id
+            }
+            else {
+                res.status(500)
+            }
         }
         else {
             id = req.params.UserId
@@ -106,19 +116,6 @@ module.exports = function(app) {
     });
 
     //add a ticket to a subscription
-    // app.post("/api/tickets", function(req, res) {
-    //    if (!req.body.UserId) {
-    //     console.log(userId);
-    //     var userId = req.session.passport.user;
-    //     req.body.UserId = userId;
-    //    }
-    //     db.Ticket.create(req.body)
-    //         .then(function(dbTicket) {
-    //             findWatcherMatches(dbTicket);
-    //             res.json(dbTicket);
-    //         });
-    // });
-
     app.post("/api/tickets", function(req, res) {
         if (req.session) {
             req.body.UserId = req.session.id
@@ -177,7 +174,7 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            if (req.session) {
+            if (Number.isInteger(req.session.id)) {
                 id = req.session.id
             }
             else {
@@ -267,7 +264,7 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/watchers", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            if (req.session) {
+            if (Number.isInteger(req.session.id)) {
                 id = req.session.id
             }
             else {
@@ -290,7 +287,7 @@ module.exports = function(app) {
     app.get("/api/users/:UserId/watchers/matches", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            if (req.session) {
+            if (Number.isInteger(req.session.id)) {
                 id = req.session.id
             }
             else {
@@ -370,7 +367,7 @@ module.exports = function(app) {
     app.get("/api/matches/:UserId", function(req, res) {
         var id;
         if (req.params.UserId === "me") {
-            if (req.session) {
+            if (Number.isInteger(req.session.id)) {
                 id = req.session.id
             }
             else {
