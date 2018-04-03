@@ -23,32 +23,32 @@ class Home extends React.Component {
     feedRender: "Offers"
   }
 
-renderFeed = () => {
-  this.setState({
-    feedRender: "Offers"
-  })
-}
+  renderFeed = () => {
+    this.setState({
+      feedRender: "Offers"
+    })
+  }
 
   render() {
-    const {feedRender} = this.state.feedRender
+    const { feedRender } = this.state.feedRender
     console.log(this.state.feedRender)
     return (
-  <div className="ss-wrapper">
-  <Nav />
-  <div className="row">
-    <div className="col-md-8">
-      <FullCal />
-    </div>
-    <div className="col-md-4">
-        <div className="rightNav">
-          <Navpills/>
-        </div>
+      <div className="ss-wrapper">
+        <Nav />
+        <div className="row">
+          <div className="col-md-7">
+            <FullCal />
+          </div>
+          <div className="col-md-5">
+            <div className="rightNav">
+              <Navpills />
+            </div>
 
-    </div>
-  </div>
-</div>
-        );
-      }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 

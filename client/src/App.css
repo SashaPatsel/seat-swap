@@ -90,13 +90,13 @@ a.hover {
 }
 
 .rightNav {
-  height: 41.5em;
+  height: 44em;
   background-color: white;
   color: #25274d;
   border: solid 4px #2e9cca;
   border-radius: 15px;
   padding: 1%;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .n-pills {
@@ -154,10 +154,12 @@ a.hover {
 .offerButton {
   position: relative;
   float: right;
+  margin: 1%;
 }
 
 .listItemOfferTitle {
   position: relative;
-  bottom: 2em;
+  color: #25274d;
+  bottom: 1em;
   text-align: center;
 }
