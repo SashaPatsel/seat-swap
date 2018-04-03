@@ -1,15 +1,18 @@
-#landing-container {
-	padding-top: 50px
-}
-
-.banner {
-	margin: 0px 0px 0px 0px;
-	height: auto;
-	background-color: transparent;
-}
-
-#login {
+#signup-container {
 	text-align: center;
-	line-height: 1.5
+	line-height: 1.5;
+	background-color: black;
+	height: 500px;
+	color: #ffffff;
+	padding: 50px;
 }
 
+#signin-container {
+	text-align: center;
+	line-height: 1.5;
+	background-color: black;
+	height: 500px;
+	color: #ffffff;
+	padding: 50px 50px 100px 50px;
+
+}

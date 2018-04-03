@@ -61,8 +61,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
-        <h1>Sign Up</h1>
+        <h3>Sign Up</h3>
         <form className="form" >
           <input
             value={this.state.firstname}
@@ -99,7 +98,6 @@ class SignUp extends Component {
         </div>
         <div id="landing-link">
           <a href="/auth/facebook">Sign Up with Facebook</a>
-        </div>
         </div>
       </div>
     );

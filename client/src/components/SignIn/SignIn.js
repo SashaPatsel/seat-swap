@@ -54,7 +54,10 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <h1>Sign In</h1>
+        <h3>Sign In</h3>
+        <br/>
+        <br/>
+        <br/>
         <form className="form" method="POST" action="http://localhost:5000/signin">
           <input
             value={this.state.email}
