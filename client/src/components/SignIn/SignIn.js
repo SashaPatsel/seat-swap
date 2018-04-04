@@ -72,7 +72,7 @@ class SignIn extends Component {
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
-            type="text"
+            type="password"
             placeholder="Password"
           />
           <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
