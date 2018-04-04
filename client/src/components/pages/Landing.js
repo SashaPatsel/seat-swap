@@ -9,10 +9,16 @@ class Landing extends Component {
 	render() {
 		return (
 			<div id="landing-container">
-				<Banner />
-				<Banner2 />
-				<Banner />
-				<div id="login">
+				<div className="row" id="first-banner">
+					<Banner />
+				</div>
+				<div className="row" id="second-banner">
+					<Banner2 />
+				</div>
+				<div className="row" id="third-banner">
+					<Banner />
+				</div>
+				<div className="row" id="login">
 					<div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
 						<SignUp/>
 					</div>
@@ -20,7 +26,6 @@ class Landing extends Component {
 						<SignIn/>
 					</div>
 				</div>
-				<Banner />
 			</div>
 		)
 	}

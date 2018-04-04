@@ -54,7 +54,9 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <h3>Sign In</h3>
+        <div className="row">
+          <h3>Sign In</h3>
+        </div>
         <br/>
         <br/>
         <br/>
@@ -73,12 +75,12 @@ class SignIn extends Component {
             type="text"
             placeholder="Password"
           />
-          <div id="click" onClick={this.handleFormSubmit}>Submit</div>
+          <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
-        <div id="landing-link">
+        <div className="row" id="landing-link">
           <a href="/auth/google">Login with Google</a>
         </div>
-        <div id="landing-link">
+        <div className="row" id="landing-link">
           <a href="/auth/facebook">Login with Facebook</a>
         </div>
       </div>
