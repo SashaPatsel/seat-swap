@@ -1,6 +1,7 @@
 import React from "react";
 import "./myRequest.css";
 import API from "./../../utils/API";
+import TradeCard from "../TradeCard"
 
 
 
@@ -64,6 +65,8 @@ getInfo = id => {
 
 
 render() {
+  console.log(this.state.matches, "matches")
+  console.log(this.state.offers, "offers")
   return (
   <div className="card-container">
     <div className="card text-center">
@@ -79,17 +82,20 @@ render() {
           </div>
         </div>
         <div className = "row">
-            
-    
-                  <div className="col-md-6" id="requested-ticket">
-                      <h5 className="card-title c.title">abc</h5>
-                      <p className="card-text c.text">abc</p>
-                  </div>
-                  <div className="col-md-6" id="offered-ticket">
-                    <h5 className="card-title c.title">Hamilton</h5>
-                    <p className="card-text c.text">5/23/2018</p>
 
-              </div>
+          {this.state.matches.map(match => 
+              this.state.offers.map(e => (
+                e.Matches.map(offer => (
+                              <TradeCard watcher={offer.Ticket.eventTitle} 
+            wDate= {offer.Ticket.date} swap = "chicken" sDate="tomorrow" 
+
+            >
+            </TradeCard>
+                  ))
+                ))
+
+                      )}
+
 
         </div>
       </div>
@@ -107,5 +113,16 @@ render() {
 }
 
 }
+              // <div key={match.id} id={match.id}>
+
+              //     <div className="col-md-6" id="requested-ticket">
+              //         <h5 className="card-title c.title">abc</h5>
+              //         <p className="card-text c.text">abc</p>
+              //     </div>
+              //     <div className="col-md-6" id="offered-ticket">
+              //       <h5 className="card-title c.title">Hamilton</h5>
+              //       <p className="card-text c.text">5/23/2018</p>
+              //     </div>
+              // </div>
 
 export default MyRequests;
