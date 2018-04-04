@@ -86,7 +86,6 @@ class AddSubscription extends Component {
                       <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
                         <optgroup label="Pick One">
                           <option value=""></option>
-                        
                           {this.state.Organizations.map(organization => {
                             return <SubscriptionCard 
                             key={organization.id}
@@ -94,15 +93,8 @@ class AddSubscription extends Component {
                             name={organization.name}
                             />
                           })}
-                        </optgroup>
-                    
-                        
+                        </optgroup>        
                       </select> 
-
-
-
-
-                     
                     </div>                                  
                   </div>
                 </div>
