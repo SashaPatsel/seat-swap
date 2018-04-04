@@ -61,7 +61,9 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <h3>Sign Up</h3>
+        <div className="row">
+          <h3>Sign Up</h3>
+        </div>
         <form className="form" >
           <input
             value={this.state.firstname}
@@ -91,12 +93,12 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
           />
-          <div id="click" onClick={this.handleFormSubmit}>Submit</div>
+          <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
-        <div id="landing-link">
+        <div className="row" id="landing-link">
           <a href="/auth/google">Sign Up with Google</a>
         </div>
-        <div id="landing-link">
+        <div className="row" id="landing-link">
           <a href="/auth/facebook">Sign Up with Facebook</a>
         </div>
       </div>
