@@ -1,8 +1,12 @@
 import React from "react";
 import "./myRequest.css";
 import API from "./../../utils/API";
+<<<<<<< HEAD
+import ListItem from "../MatchListItem";
+=======
 import TradeCard from "../TradeCard"
 
+>>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
 
 
 
@@ -12,8 +16,7 @@ class MyRequests extends React.Component {
   state = {
 
     matches:[],
-    offers: []
-
+    UserID: ""
   };
 
 
@@ -41,7 +44,6 @@ getInfo = id => {
 
       this.setState({
         matches: res.data,
-        offers: res.data
 
       })
       console.log(this.state.matches)
@@ -69,6 +71,7 @@ render() {
   console.log(this.state.offers, "offers")
   return (
   <div className="card-container">
+  
     <div className="card text-center">
       <div className="card-header c.head">
         Featured
@@ -81,7 +84,25 @@ render() {
             <br></br>
           </div>
         </div>
+
         <div className = "row">
+<<<<<<< HEAD
+        {this.state.matches.map(match => (
+          <ListItem>
+{match.Organization.name}
+</ListItem> 
+                      ))}
+    
+                  <div className="col-md-6" id="requested-ticket">
+                      <h5 className="card-title c.title">abc</h5>
+                      <p className="card-text c.text">abc</p>
+                  </div>
+                  <div className="col-md-6" id="offered-ticket">
+                    <h5 className="card-title c.title">Hamilton</h5>
+                    <p className="card-text c.text">5/23/2018</p>
+
+              </div>
+=======
 
           {this.state.matches.map(match => 
               this.state.offers.map(e => (
@@ -96,6 +117,7 @@ render() {
 
                       )}
 
+>>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
 
         </div>
       </div>
@@ -104,7 +126,9 @@ render() {
                 <a href="#" className="btn btn-danger" id="decline">Reject</a>
                 </div>
         </div>
-    </div>  
+    </div> 
+
+                      
   </div>
 
 );

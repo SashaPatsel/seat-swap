@@ -63,7 +63,7 @@ class AddTicket extends Component {
     API.getAllSubs(id)
     .then(res => {
       this.setState({allSubscriptions: res.data});
-      console.log("allSub", this.state.allSubscriptions);
+      // console.log("allSub", this.state.allSubscriptions);
     }).catch(err => 
       console.log(err)
     );
@@ -94,7 +94,7 @@ class AddTicket extends Component {
       })
     }).then(response  => {
       console.log(response);
-      window.location.href = "/";
+      //window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -104,7 +104,7 @@ class AddTicket extends Component {
     return (
       <div>
         <div className="col-10">
-          <form onSubmit={this.handleTixSubmit}>
+          <form  onSubmit={this.handleTixSubmit}>
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
@@ -230,7 +230,7 @@ class AddTicket extends Component {
               </div>
             </div>
 
-          <input type="submit" value="Add" />
+          <input type="submit" value="Add"/>
         </form>
       </div>
     </div>

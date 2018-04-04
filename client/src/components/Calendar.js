@@ -11,21 +11,37 @@ import { Link } from "react-router-dom";
 class FullCal extends React.Component {
 
     state = {
-
         events: [],
+        UserId: ""
     }
 
-    loadAllTix = () => {
-        API.getAllTix()
+
+  getUserId = () => {
+    const cookie = document.cookie.split(";");
+    console.log("cookie", cookie)
+    let userID = cookie[0];
+    userID = userID.split("=");
+    userID = userID[1];
+    console.log("userID:", userID);
+    this.setState({ UserId: userID });
+    setTimeout(this.getTixForUser(this.state.UserId), 500)
+  }
+
+  componentDidMount() {
+    this.getUserId();
+  }
+
+  getTixForUser = (user) => {
+        API.getTixForUser(user)
             .then(res => {
-                // console.log(res.data)
+                console.log(res.data)
                 this.getTix(res.data)
             })
             .catch(err => console.log(err));
     };
 
     componentDidMount = () => {
-        this.loadAllTix()
+        this.getTixForUser()
     };
 
     getTix = (tickets) => {
