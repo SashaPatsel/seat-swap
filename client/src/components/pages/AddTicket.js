@@ -94,6 +94,15 @@ class AddTicket extends Component {
       })
     }).then(response  => {
       console.log(response);
+      this.setState({
+        tixDate: "",
+        seatSec: "",
+        seatRow: "",
+        seatNum: "",
+        eventTitle: "",
+        OrganizationId: "",
+        SubscriptionId: ""
+      })
       //window.location.href = "/";
     }).catch(err => {
       console.log(err);

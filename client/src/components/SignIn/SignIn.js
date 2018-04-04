@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import googlelogo from "../pages/images/google.png";
-// import fblogo from "../pages/images/fb.png";
 import "./SignIn.css";
 
 class SignIn extends Component {
