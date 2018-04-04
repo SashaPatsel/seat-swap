@@ -12,7 +12,7 @@ class Landing extends Component {
 				<Banner />
 				<Banner2 />
 				<Banner />
-				<div id="login">
+				<div className="row" id="login">
 					<div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
 						<SignUp/>
 					</div>
@@ -20,7 +20,6 @@ class Landing extends Component {
 						<SignIn/>
 					</div>
 				</div>
-				<Banner />
 			</div>
 		)
 	}

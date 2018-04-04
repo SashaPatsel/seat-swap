@@ -1,18 +1,17 @@
 #signup-container {
-	text-align: center;
-	line-height: 1.5;
-	background-color: black;
-	height: 500px;
-	color: #ffffff;
-	padding: 50px;
+	padding: 100px 200px 100px 200px;
+	height: 600px;
 }
 
 #signin-container {
-	text-align: center;
-	line-height: 1.5;
-	background-color: black;
-	height: 500px;
-	color: #ffffff;
-	padding: 50px 50px 100px 50px;
+	padding: 100px 200px 150px 200px;
+	height: 600px;
+}
 
+#login {
+	background-color: black;
+	height: 100%;
+	color: #ffffff;
+	text-align: center;
+	line-height: 1.5
 }
