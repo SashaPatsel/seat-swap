@@ -67,7 +67,11 @@ class MyRequests extends React.Component {
     console.log(this.state.matches, "matches")
     console.log(this.state.offers, "offers")
     return (
-      <div className="card-container">
+      
+          <div>
+              {this.state.matches.map(match =>
+                match.Matches.map(offer => (
+                  <div className="card-container">
 
         <div className="card text-center">
           <div className="card-header c.head">
@@ -75,45 +79,37 @@ class MyRequests extends React.Component {
       </div>
           <div className="card-body c.body">
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-12 topRow">
                 <a href="#" className="btn btn-primary text-center" id="accept">Accept</a>
                 <br></br>
                 <br></br>
               </div>
             </div>
 
-            <div className="row">
-
-              {this.state.matches.map(match =>
-                match.Matches.map(offer => (
+            <div className="row midRow">
                     <TradeCard watcher={offer.Ticket.eventTitle}
                       wDate={offer.Ticket.date} swap="chicken" sDate="tomorrow"
 
                     >
                     </TradeCard>
-                  ))
+                  
                 
-
-              )}
-
-
-            </div>
-          </div>
-          <div className="row card-footer">
-            <div className="col-md-12">
-              <a href="#" className="btn btn-danger" id="decline">Reject</a>
-            </div>
+               </div>
           </div>
         </div>
+        </div>
+          ))
+              )}
+              
+    
 
 
-      </div>
+      </div>     
 
-    );
+    )
 
 
   }
-
 }
 // <div key={match.id} id={match.id}>
 
