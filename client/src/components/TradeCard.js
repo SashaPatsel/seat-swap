@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const TradeCard = props => (
 <div>
  	<div className="col-md-6" id="requested-ticket">
