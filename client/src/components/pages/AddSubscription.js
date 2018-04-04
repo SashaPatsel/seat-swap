@@ -18,6 +18,7 @@ class AddSubscription extends Component {
   	this.getUserId();
   }
 
+
   getUserId = () => {
     const cookie = document.cookie.split(";");
       console.log("cookie", cookie)
@@ -56,8 +57,11 @@ class AddSubscription extends Component {
       })
     }).then(response  => {
       console.log(response);
-
-      window.location.href = "/";
+      this.setState({
+        OrganizationId: "",
+        subName: ""
+      });
+      //window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
