@@ -63,7 +63,7 @@ class AddTicket extends Component {
     API.getAllSubs(id)
     .then(res => {
       this.setState({allSubscriptions: res.data});
-      console.log("allSub", this.state.allSubscriptions);
+      // console.log("allSub", this.state.allSubscriptions);
     }).catch(err => 
       console.log(err)
     );

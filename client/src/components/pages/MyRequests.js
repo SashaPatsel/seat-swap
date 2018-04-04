@@ -1,7 +1,7 @@
 import React from "react";
 import "./myRequest.css";
 import API from "./../../utils/API";
-
+import ListItem from "../MatchListItem";
 
 
 
@@ -39,7 +39,6 @@ getInfo = id => {
 
       this.setState({
         matches: res.data,
-        offers: res.data
 
       })
       console.log(this.state.matches)
@@ -65,6 +64,7 @@ getInfo = id => {
 render() {
   return (
   <div className="card-container">
+  
     <div className="card text-center">
       <div className="card-header c.head">
         Featured
@@ -77,8 +77,13 @@ render() {
             <br></br>
           </div>
         </div>
+
         <div className = "row">
-            
+        {this.state.matches.map(match => (
+          <ListItem>
+{match.Organization.name}
+</ListItem> 
+                      ))}
     
                   <div className="col-md-6" id="requested-ticket">
                       <h5 className="card-title c.title">abc</h5>
@@ -97,7 +102,9 @@ render() {
                 <a href="#" className="btn btn-danger" id="decline">Reject</a>
                 </div>
         </div>
-    </div>  
+    </div> 
+
+                      
   </div>
 
 );
