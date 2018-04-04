@@ -26,6 +26,7 @@ class Offers extends React.Component {
         })
       })
       .catch(err => console.log(err));
+      console.log(this.state.offers)
   };
 
   getUserId = () => {
@@ -85,8 +86,7 @@ class Offers extends React.Component {
                         <th>Number</th>
                         <th></th>
                       </tr>
-                      {this.state.offers.map(x => (
-                        x.Watcher.User.Tickets.map(tix => (
+                      {match.Watcher.User.Tickets.map(tix => (
                           <tr>
                             <td>{tix.eventTitle}</td>
                             <td>{this.convertDate(tix.date)}</td>
@@ -95,7 +95,6 @@ class Offers extends React.Component {
                             <td>{tix.seatNum}</td>
                             <td> < button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
                           </tr>
-                        ))
                       ))}
                     </table>
                   </li>
