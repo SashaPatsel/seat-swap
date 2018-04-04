@@ -37,7 +37,7 @@ class Offers extends React.Component {
     userID = userID[1];
     console.log("userID:", userID);
     this.setState({ UserId: userID });
-    setTimeout(this.getAllMatches(this.state.UserId), 500)
+    setTimeout(this.getAllMatches(userID), 500)
   }
 
   sendTradeOffer = (id, SwapticketId) => {

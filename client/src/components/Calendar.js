@@ -24,15 +24,11 @@ class FullCal extends React.Component {
     userID = userID[1];
     console.log("userID:", userID);
     this.setState({ UserId: userID });
-    setTimeout(this.getTixForUser(this.state.UserId), 500)
+    setTimeout(this.getTixForUser(userID), 500)
   }
 
-  componentDidMount() {
-    this.getUserId();
-  }
-
-  getTixForUser = (user) => {
-        API.getTixForUser(user)
+  getTixForUser (userId) {
+        API.getTixForUser(userId)
             .then(res => {
                 console.log(res.data)
                 this.getTix(res.data)
@@ -40,13 +36,13 @@ class FullCal extends React.Component {
             .catch(err => console.log(err));
     };
 
-    componentDidMount = () => {
-        this.getTixForUser()
+    componentDidMount ()  {
+        this.getUserId();
     };
 
     getTix = (tickets) => {
         const userDates = [];
-
+        console.log("chicken")
         tickets.map(function (newTix) {
             console.log
             const userTix = {
