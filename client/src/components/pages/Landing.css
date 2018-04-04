@@ -1,18 +1,30 @@
-#signup-container {
+#login {
+	background-color: black;
+	height: 100%;
+	color: #ffffff;
 	text-align: center;
 	line-height: 1.5;
-	background-color: black;
-	height: 500px;
-	color: #ffffff;
-	padding: 50px;
+	margin-bottom: 0
+}
+
+#signup-container {
+	padding: 100px 150px 100px 150px;
+	height: 600px;
 }
 
 #signin-container {
-	text-align: center;
-	line-height: 1.5;
-	background-color: black;
-	height: 500px;
-	color: #ffffff;
-	padding: 50px 50px 100px 50px;
+	padding: 100px 150px 150px 150px;
+	height: 600px;
+}
 
+#first-banner {
+	margin-bottom: 0
+}
+
+#second-banner {
+	margin-bottom: 0
+}
+
+#third-banner {
+	margin-bottom: 0
 }
