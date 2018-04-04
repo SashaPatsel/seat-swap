@@ -138,6 +138,25 @@ module.exports = function(app) {
           });
     });
 
+    // Get a list of all tickets
+    app.get("/api/tickets/available", function(req, res) {
+        db.Ticket.findAll({
+              where: {
+                  status: {
+                      $or: {
+                          $eq: "available",
+                          $eq: "flex"
+                      }
+                  }
+              }
+            }).then(function(data) {
+                res.json(data);
+            }).catch(function(err) {
+                
+                res.status(500).json(err);
+          });
+    });
+
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
         if (!req.body.UserId) {
@@ -591,7 +610,7 @@ module.exports = function(app) {
 
     //add a trade journal entry
     app.post("/api/tradejournal", function(req, res) {
-
+        
     });
 
     //return a list of trade journal entries

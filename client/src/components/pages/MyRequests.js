@@ -1,12 +1,8 @@
 import React from "react";
 import "./myRequest.css";
 import API from "./../../utils/API";
-<<<<<<< HEAD
-import ListItem from "../MatchListItem";
-=======
 import TradeCard from "../TradeCard"
 
->>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
 
 
 
@@ -86,23 +82,6 @@ render() {
         </div>
 
         <div className = "row">
-<<<<<<< HEAD
-        {this.state.matches.map(match => (
-          <ListItem>
-{match.Organization.name}
-</ListItem> 
-                      ))}
-    
-                  <div className="col-md-6" id="requested-ticket">
-                      <h5 className="card-title c.title">abc</h5>
-                      <p className="card-text c.text">abc</p>
-                  </div>
-                  <div className="col-md-6" id="offered-ticket">
-                    <h5 className="card-title c.title">Hamilton</h5>
-                    <p className="card-text c.text">5/23/2018</p>
-
-              </div>
-=======
 
           {this.state.matches.map(match => 
               this.state.offers.map(e => (
@@ -117,7 +96,6 @@ render() {
 
                       )}
 
->>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
 
         </div>
       </div>

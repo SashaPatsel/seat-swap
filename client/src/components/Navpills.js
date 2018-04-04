@@ -25,13 +25,8 @@ const Navpills = props => (
         <a className="nav-link" id="offers-tab" data-toggle="pill" href="#offers" role="tab" aria-controls="offers" aria-selected="false">My Offers</a>
       </li>
 
-<<<<<<< HEAD
     <li class="nav-item">
         <a class="nav-link" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
-=======
-    <li className="nav-item">
-        <a className="nav-link active" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
->>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
       </li>
 
       <li className="nav-item">
@@ -49,15 +44,11 @@ const Navpills = props => (
 
     <div className="tab-content" id="myTabContent">
 
-<<<<<<< HEAD
       <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
       <MyRequests/>
       </div>
 
     <div class="tab-pane fade" id="addWatcher" role="tabpanel" aria-labelledby="addWatcher-tab">
-=======
-    <div className="tab-pane fade" id="addWatcher" role="tabpanel" aria-labelledby="addWatcher-tab">
->>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
       <Watcher/>
       </div>
 
@@ -70,15 +61,7 @@ const Navpills = props => (
       <AddTicket/>
       </div>
 
-<<<<<<< HEAD
       <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
-=======
-      <div className="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
-      <MyRequests/>
-      </div>
-
-      <div className="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
->>>>>>> fa70dfe89ac68f5c0d5905e95bcb798d047c84cb
       <Offers/>
       </div>
 
