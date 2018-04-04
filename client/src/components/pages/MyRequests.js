@@ -85,15 +85,14 @@ class MyRequests extends React.Component {
             <div className="row">
 
               {this.state.matches.map(match =>
-                this.state.offers.map(e => (
-                  e.Matches.map(offer => (
+                match.Matches.map(offer => (
                     <TradeCard watcher={offer.Ticket.eventTitle}
                       wDate={offer.Ticket.date} swap="chicken" sDate="tomorrow"
 
                     >
                     </TradeCard>
                   ))
-                ))
+                
 
               )}
 
