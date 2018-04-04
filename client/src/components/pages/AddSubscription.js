@@ -57,9 +57,7 @@ class AddSubscription extends Component {
     }).then(response  => {
       console.log(response);
 
-      //this.getSubscriptionInfo(this.state.UserId)
-
-      //window.location.href = "/";
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })

@@ -46,7 +46,7 @@ module.exports = function(app) {
 
     //add a subscription to a user
     app.post("/api/subscriptions", function(req, res) {
-        if (req.session.id) {
+        if (!req.body.UserId) {
             if (Number.isInteger(req.session.id)) {
                 req.body.UserId = req.session.id
             }
@@ -140,7 +140,7 @@ module.exports = function(app) {
 
     //add a ticket to a subscription
     app.post("/api/tickets", function(req, res) {
-        if (req.session) {
+        if (!req.body.UserId) {
             if (Number.isInteger(req.session.id)) {
                 req.body.UserId = req.session.id
             }
@@ -360,7 +360,7 @@ module.exports = function(app) {
                 attributes:['name']
                         }, {
                 model: db.Match, 
-                attributes:['TicketId', 'SwapticketId'],
+                attributes:['id','TicketId', 'SwapticketId'],
                 include: [ { 
                     model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
                             }, {
