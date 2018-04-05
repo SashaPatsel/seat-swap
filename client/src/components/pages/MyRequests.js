@@ -7,6 +7,7 @@ import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
 import { Button, Icon } from 'semantic-ui-react';
 import DeleteBtn from "../DeleteButton";
+import AcceptOffer from "../AcceptOffer"
 
 
 
@@ -16,7 +17,8 @@ class MyRequests extends React.Component {
 
     matches: [],
     offers: [],
-    UserID: ""
+    UserID: "",
+    refresh: 0
   };
 
 
@@ -51,8 +53,10 @@ class MyRequests extends React.Component {
   finalizeTrade = id => {
     API.finalizeTrade(id)
     .then(res => {
+      console.log("farley")
       console.log(res.data)
     })
+    .catch(err => console.log(err));
   }
 
   ifNull(swap) {
@@ -69,19 +73,24 @@ class MyRequests extends React.Component {
     return n
   }
 
-  showTrades(swap) {
-    //Need to render only if swaptix !== null
-    swap.map(tix => (
-          
-      <tr>
-        <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td>
-        
-        <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
-        <td>< button onClick={() => this.finalizeTrade(tix.id)}>Accept!</button></td>
-        <td><button><DeleteBtn/> </button></td>
-      </tr>
-    ))
+  deleteWatcher = id => {
+    API.deleteWatcher(id)
+    .then(res => {
+      console.log(res.data)
+      // refresh virtual dom so watcher disappears after click
+      this.setState({
+        refresh: this.state.refresh++
+      })
+      console.log(this.state.refresh)
+    })
+    .catch(err => console.log(err)); 
   }
+
+  // showTrades(swap) {
+  //   //Need to render only if swaptix !== null
+  //   swap
+  //   ))
+  // }
 
   render() {
 
@@ -91,14 +100,14 @@ class MyRequests extends React.Component {
         <h1 className="TOHead">Pending Trades</h1>
         <List>
           {this.state.matches.map(match => (
-            <ListItem key={match.id} id="1"
+            <ListItem key={match.id} id={match.id}
             >
               {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
               <strong className="myAvail" >{match.Organization.name}</strong>
               <br />
               ({this.convertDate(match.eventDate)})
 
-                <OfferList id="1">
+                <OfferList id={match.id}>
                 <li>
                   <h4>What They Want From You</h4>
                   <table>
@@ -108,7 +117,15 @@ class MyRequests extends React.Component {
                       <th>Accept</th>
                       <th>Delete</th>
                     </tr>
-                    {this.showTrades(match.Matches)}
+                    {/* {this.showTrades(match.Matches)} */}
+                {match.Matches.map(tix => (
+          
+          <tr>
+            <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td> 
+            <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
+            <td><AcceptOffer onClick={() => this.finalizeTrade(tix.id)} /></td>
+            <td><button><DeleteBtn onClick={() => this.deleteWatcher(tix.id)}/> </button></td>
+                </tr>))}
                   </table>
                 </li>
               </OfferList>
@@ -132,3 +149,4 @@ export default MyRequests;
 //2. Cannot replace null values
 //3. cannot .toString() seatNum
 //4. Dont render match if swap is null
+//delete watcher, not rject trade

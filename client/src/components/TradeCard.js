@@ -15,3 +15,4 @@ const TradeCard = props => (
 );
 
 export default TradeCard;
+
