@@ -10,3 +10,14 @@ a {
 #click {
 	font-size:20px;
 }
+
+#googlelogo {
+	height: 65px;
+	width: 65px
+}
+
+#fblogo {
+	padding-top: 5px;
+	height: 55px;
+	width: 55px
+}
