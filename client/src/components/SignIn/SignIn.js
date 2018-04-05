@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./SignIn.css";
+import fblogo from "./fb.png";
+import googlelogo from "./google.png";
 
 class SignIn extends Component {
   // Setting the component's initial state
@@ -57,7 +59,6 @@ class SignIn extends Component {
         </div>
         <br/>
         <br/>
-        <br/>
         <form className="form" method="POST" action="http://localhost:5000/signin">
           <input
             value={this.state.email}
@@ -76,10 +77,10 @@ class SignIn extends Component {
           <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
         <div className="row" id="landing-link">
-          <a href="/auth/google">Login with Google</a>
+          <a href="/auth/google">Login With Google</a>
         </div>
         <div className="row" id="landing-link">
-          <a href="/auth/facebook">Login with Facebook</a>
+          <a href="/auth/facebook">Login With Facebook</a>
         </div>
       </div>
     );
