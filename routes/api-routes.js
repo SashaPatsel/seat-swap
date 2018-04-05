@@ -403,14 +403,13 @@ module.exports = function(app) {
                         dbWatcher[j].Matches[i] = {}
                     }
                 }
-                console.log(dbWatcher[j]);
                 results.push(dbWatcher[j].dataValues)
 
             }
-            console.log("got here");
+            
             res.json(results);
         }).catch(function(err) {
-                console.log("was an error", err);
+                
             res.json(err);
       });
     });
