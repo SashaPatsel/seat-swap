@@ -7,7 +7,7 @@ class AddTicket extends Component {
     super(props);
     this.state = {
       UserId:"",
-      tixDate: "",
+      tixTime: "",
       seatSec: "",
       seatRow: "",
       seatNum: "",
@@ -71,14 +71,14 @@ class AddTicket extends Component {
 
   handleTixSubmit(event) {
     event.preventDefault();
-    console.log("tixsubmit", this.state.OrganizationId, this.state.UserId, this.state.SubscriptionId);
+    console.log("tixsubmit", this.state.OrganizationId, this.state.UserId, this.state.SubscriptionId, this.state.tixTime);
 
     fetch("/api/tickets", {
       method: "POST",
       credentials: "include",
       mode: "cors",
       body: JSON.stringify({
-        date: this.state.tixDate,
+        date: this.state.tixTime,
         seatSec: this.state.seatSec,
         seatRow: this.state.seatRow,
         seatNum: this.state.seatNum,
@@ -153,12 +153,12 @@ class AddTicket extends Component {
             <div className="panel panel-default">
               <div className="panel-heading">
                 <div className="panel-title">
-                  <p><span className="glyphicon glyphicon-calendar"></span> Date of Your Ticket: </p> 
+                  <p><span className="glyphicon glyphicon-calendar"></span> Time of the Event: </p> 
                 </div>
                 <div className="panel-body">
                   <div className="section-content">                   
-                    <div className="select-date">
-                        <input placeholder="Event Date mm/dd/yyyy" name="tixDate" type="date"value={this.state.tixDate} onChange={this.handleChange}/> 
+                    <div className="select-time">
+                        <input placeholder="Event Time" name="tixTime" type="datetime-local"value={this.state.tixTime} onChange={this.handleChange}/> 
                     </div>               
                   </div>
                 </div>
