@@ -91,7 +91,7 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
           />
-          <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
+          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
         </form>
       </div>
     );

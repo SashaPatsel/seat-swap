@@ -183,3 +183,7 @@ dropdown {
   float: left;
   position: relative;
 }
+
+.auth-button {
+  color: black;
+}
