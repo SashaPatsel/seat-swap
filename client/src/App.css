@@ -126,19 +126,10 @@ dropdown {
 }
 .myAvail {
   font-size: 2em;
-  position: relative;
-  left: -3em;
 }
 
 .fc-more {
   color: #022140;
-}
-
-.TOButton {
-  position: relative;
-  right: -75%;
-  background-color: #bb732a;
-  padding: .3em;
 }
 
 .list-group-item {
@@ -162,10 +153,33 @@ dropdown {
   bottom: 1em;
   text-align: center;
 }
-/* .fc-event-container{
-  box-decoration-break: unset;
-  background-color: #bb732a !important;
-} */
+
 .fc-content {
   background-color: #bb732a;
+}
+
+.delete-watcher {
+  bottom: 2em;
+  color: white;
+  background-color: #bb732a;
+  border: solid 1.5px black;
+  height: 28px;
+}
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  background-color: #bb732a;
+  padding: .3em;
+  color: white;
+  border: solid 1.5px black;
+}
+
+.watchInstruct {
+  font-size: 1.6em;
+}
+
+.watcher-date {
+  float: left;
+  position: relative;
 }

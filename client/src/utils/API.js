@@ -40,8 +40,8 @@ export default {
   updateWatcher: function() {
     return axios.put("/api/watchers/:id")
   },  
-  deleteWatcher: function() {
-    return axios.destroy("api/watchers/:id")
+  deleteWatcher: function(id) {
+    return axios.delete("api/watchers/" + id)
   },  
   getAllMatches: function(id) {
     return axios.get("/api/matches/" + id)
@@ -67,6 +67,8 @@ export default {
   },
   sendTradeOffer: function(id, SwapticketId) {
     return axios.put("/api/matches/"+ id +"/swapticket/" + SwapticketId)
-
+  },
+  finalizeTrade: function(id) {
+    return axios.put("/api/matches/" + id + "/traded")
   }
 };
