@@ -110,13 +110,14 @@ class MyRequests extends React.Component {
                     </tr>
                     {/* {this.showTrades(match.Matches)} */}
                 {/* {this.showTrades(match.Matches)} */}
-                {match.Matches.map(tix => (
-          
+                 {match.Matches.map(tix => (
+             tix.SwapticketId ?      
           <tr>
             <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td> 
-            <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
+            <td><strong>{tix.Swapticket.eventTitle}</strong> | {tix.Swapticket.seatSec} | {tix.Swapticket.seatRow} | {tix.Swapticket.seatNum}</td>
             <td><AcceptOffer onClick={() => this.finalizeTrade(tix.id)} /></td>
                 </tr>
+                : null 
                 ))}
                   </table>
                 </li>
