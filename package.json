@@ -1,12 +1,12 @@
 {
   "name": "seat-swap",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "start": "concurrently -k \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
     "seed": "node scripts/seedDB.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,7 +26,6 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
-    "concurrently": "^3.5.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
@@ -35,7 +34,6 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "node-rest-client": "^3.1.0",
-    "nodemon": "^1.17.2",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
@@ -44,5 +42,12 @@
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
     "sequelize": "^4.35.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "node": ">=9.3.0"
   }
 }
