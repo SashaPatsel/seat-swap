@@ -5,7 +5,7 @@ import List from "../MatchList";
 import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
 import { Button, Icon } from 'semantic-ui-react';
-import DeleteBtn from "../DeleteButton";
+
 import AcceptOffer from "../AcceptOffer"
 
 
@@ -82,9 +82,9 @@ class MyRequests extends React.Component {
     .catch(err => console.log(err)); 
   }
 
-  // showTrades(swap) {
-  //   //Need to render only if swaptix !== null
-
+  showTrades(swap) {
+    //Need to render only if swaptix !== null
+}
   render() {
 
     return (
@@ -94,16 +94,14 @@ class MyRequests extends React.Component {
         <List>
           {this.state.matches.map(match => (
             <ListItem key={match.id} id={match.id}
+            onClick={() => this.deleteWatcher(match.id)}
+            Watcher={match.Organization.name}
+            date={this.convertDate(match.eventDate)}
             >
-            
-              {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
-              <strong className="myAvail" >{match.Organization.name}</strong>
-              <br />
-              ({this.convertDate(match.eventDate)})
-              <button class="delete-watcher"><DeleteBtn onClick={() => this.deleteWatcher(match.id)}/> </button>
                 <OfferList id={match.id}>
                 <li>
-                  <h4>What They Want From You</h4>
+                  <br/>
+                  <h4 className="watchInstruct">What They Want From You</h4>
                   <table>
                     <tr>
                       <th>Their Ticket</th>
@@ -111,13 +109,15 @@ class MyRequests extends React.Component {
                       <th>Accept</th>
                     </tr>
                     {/* {this.showTrades(match.Matches)} */}
+                {/* {this.showTrades(match.Matches)} */}
                 {match.Matches.map(tix => (
           
           <tr>
             <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td> 
             <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
             <td><AcceptOffer onClick={() => this.finalizeTrade(tix.id)} /></td>
-                </tr>))}
+                </tr>
+                ))}
                   </table>
                 </li>
               </OfferList>
