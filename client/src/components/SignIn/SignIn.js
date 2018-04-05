@@ -74,7 +74,7 @@ class SignIn extends Component {
             type="password"
             placeholder="Password"
           />
-          <div type="submit" className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
+          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit} Submit />
         </form>
         <br/>
         <div className="row" id="landing-link">
