@@ -126,6 +126,7 @@ dropdown {
 }
 .myAvail {
   font-size: 2em;
+  text-align: left;
 }
 
 .fc-more {
@@ -159,11 +160,11 @@ dropdown {
 }
 
 .delete-watcher {
-  bottom: 2em;
   color: white;
   background-color: #bb732a;
   border: solid 1.5px black;
   height: 28px;
+  float: right;
 }
 
 .TOButton {
