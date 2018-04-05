@@ -378,6 +378,7 @@ module.exports = function(app) {
         else {
             id = req.params.UserId
         };
+
         db.Watcher.findAll({
             attributes: ['id','eventDate'],
             where: { UserId: id },
@@ -393,13 +394,23 @@ module.exports = function(app) {
                     model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
                             }
                 ]
-            } ]
-            // include: [ {model: db.Tickets} ]            
+            } ]           
         }).then(function(dbWatcher) {
-            res.json(dbWatcher);
+            var results = [];
+            for (j = 0; j < dbWatcher.length; j++ ) {
+                for (i = 0; i < dbWatcher[j].Matches.length; i ++) {
+                    if (!dbWatcher[j].Matches[i].SwapticketId) {
+                        dbWatcher[j].Matches[i] = {}
+                    }
+                }
+                results.push(dbWatcher[j].dataValues)
+
+            }
+            
+            res.json(results);
         }).catch(function(err) {
                 
-            res.status(500).json(err);
+            res.json(err);
       });
     });
 
