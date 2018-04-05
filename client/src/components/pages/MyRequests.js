@@ -69,6 +69,20 @@ class MyRequests extends React.Component {
     return n
   }
 
+  showTrades(swap) {
+    //Need to render only if swaptix !== null
+    swap.map(tix => (
+          
+      <tr>
+        <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td>
+        
+        <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
+        <td>< button onClick={() => this.finalizeTrade(tix.id)}>Accept!</button></td>
+        <td><button><DeleteBtn/> </button></td>
+      </tr>
+    ))
+  }
+
   render() {
 
     return (
@@ -94,16 +108,7 @@ class MyRequests extends React.Component {
                       <th>Accept</th>
                       <th>Delete</th>
                     </tr>
-                    {match.Matches.map(tix => (
-                      
-                      <tr>
-                        <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td>
-                        
-                        <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
-                        <td>< button onClick={() => this.finalizeTrade(tix.id)}>Accept!</button></td>
-                        <td><button><DeleteBtn/> </button></td>
-                      </tr>
-                    ))}
+                    {this.showTrades(match.Matches)}
                   </table>
                 </li>
               </OfferList>
