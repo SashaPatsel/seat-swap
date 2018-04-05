@@ -180,15 +180,22 @@ module.exports = function(app) {
 
     // Find tickets that match the criteria of the watcher
     function findWatcherMatches(ticketRecord){
-        // console.log('findTicketMatches: called');
-
+        console.log('findTicketMatches: called');
+        var maxDate = new Date(ticketRecord.date);
+        var minDate = new Date(ticketRecord.date);
+        minDate.setHours(minDate.getHours() - 24);
+        
+        console.log(minDate, maxDate);
         db.Watcher.findAll({
             where: {
                 OrganizationId: ticketRecord.OrganizationId,
-                eventDate: ticketRecord.date
+                eventDate: {
+                    [Op.lte]: maxDate,
+                    [Op.gte]: minDate 
+                }
             }
         }).then(function(dbWatchers) {
-          console.log(JSON.stringify(dbWatchers, null, 4));
+          console.log("hey", JSON.stringify(dbWatchers, null, 4));
 
           dbWatchers.forEach(function(singleWatcherMatch) {
             writeMatch(singleWatcherMatch, ticketRecord);
