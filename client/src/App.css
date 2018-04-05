@@ -169,3 +169,8 @@ dropdown {
 .fc-content {
   background-color: #bb732a;
 }
+
+.delete-btn {
+  float: right;
+  color: #e74944;
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import List from "../MatchList";
 import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
@@ -86,6 +85,7 @@ class Offers extends React.Component {
                         <th>Number</th>
                         <th></th>
                       </tr>
+                      
                       {match.Watcher.User.Tickets.map(tix => (
                           <tr>
                             <td>{tix.eventTitle}</td>

@@ -67,6 +67,8 @@ export default {
   },
   sendTradeOffer: function(id, SwapticketId) {
     return axios.put("/api/matches/"+ id +"/swapticket/" + SwapticketId)
-
+  },
+  finalizeTrade: function(id) {
+    return axios.put("/api/matches/" + id + "/traded")
   }
 };

@@ -1,9 +1,12 @@
 import React from "react";
 import "./myRequest.css";
 import API from "./../../utils/API";
-import TradeCard from "../TradeCard"
-
-
+// import TradeCard from "../TradeCard"
+import List from "../MatchList";
+import ListItem from "../MatchListItem";
+import OfferList from "../MatchOfferList";
+import { Button, Icon } from 'semantic-ui-react';
+import DeleteBtn from "../DeleteButton";
 
 
 
@@ -36,9 +39,6 @@ class MyRequests extends React.Component {
   getInfo = id => {
     API.getWatcherAndMatch(id)
       .then(res => {
-        //console.log(res.data)
-        console.log("abc")
-
         this.setState({
           matches: res.data,
           offers: res.data,
@@ -46,81 +46,84 @@ class MyRequests extends React.Component {
         console.log(this.state.matches)
       })
       .catch(err => console.log(err));
-
-
-
-
-
-    // <div className="col-md-6 requested-ticket">
-    // <h5 className="card-title c.title">{match.Organization.name}</h5>
-    // <p className="card-text c.text">{match.eventDate}</p>
-    // </div>
-    // <div className="col-md-6 offered-ticket">
-    // <h5 className="card-title c.title">Hamilton</h5>
-    // <p className="card-text c.text">5/23/2018</p>
-    // </div>
   }
 
+  finalizeTrade = id => {
+    API.finalizeTrade(id)
+    .then(res => {
+      console.log(res.data)
+    })
+  }
 
+  ifNull(swap) {
+    if (swap === null) {
+      return ("No Matches")
+    } else {
+      return swap
+    }
+  }
+
+  convertDate(newDate) {
+    let d = new Date(newDate);
+    let n = d.toLocaleString();
+    return n
+  }
 
   render() {
-    console.log(this.state.matches, "matches")
-    console.log(this.state.offers, "offers")
+
     return (
-      
-          <div>
-              {this.state.matches.map(match =>
-                match.Matches.map(offer => (
-                  <div className="card-container">
 
-        <div className="card text-center">
-          <div className="card-header c.head">
-            Featured
+      <div>
+        <h1 className="TOHead">Pending Trades</h1>
+        <List>
+          {this.state.matches.map(match => (
+            <ListItem key={match.id} id="1"
+            >
+              {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
+              <strong className="myAvail" >{match.Organization.name}</strong>
+              <br />
+              ({this.convertDate(match.eventDate)})
+
+                <OfferList id="1">
+                <li>
+                  <h4>What They Want From You</h4>
+                  <table>
+                    <tr>
+                      <th>Their Ticket</th>
+                      <th>Your Ticket</th>
+                      <th>Accept</th>
+                      <th>Delete</th>
+                    </tr>
+                    {match.Matches.map(tix => (
+                      
+                      <tr>
+                        <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td>
+                        
+                        <td><strong>{this.ifNull(tix.Swapticket).eventTitle}</strong> | {this.ifNull(tix.Swapticket).seatSec} | {this.ifNull(tix.Swapticket).seatRow} | {this.ifNull(tix.Swapticket).seatNum}</td>
+                        <td>< button onClick={() => this.finalizeTrade(tix.id)}>Accept!</button></td>
+                        <td><button><DeleteBtn/> </button></td>
+                      </tr>
+                    ))}
+                  </table>
+                </li>
+              </OfferList>
+            </ListItem>
+          ))}
+        </List>
+
+
       </div>
-          <div className="card-body c.body">
-            <div className="row">
-              <div className="col-md-12 topRow">
-                <a href="#" className="btn btn-primary text-center" id="accept">Accept</a>
-                <br></br>
-                <br></br>
-              </div>
-            </div>
-
-            <div className="row midRow">
-                    <TradeCard watcher={offer.Ticket.eventTitle}
-                      wDate={offer.Ticket.date} swap="chicken" sDate="tomorrow"
-
-                    >
-                    </TradeCard>
-                  
-                
-               </div>
-          </div>
-        </div>
-        </div>
-          ))
-              )}
-              
-    
-
-
-      </div>     
 
     )
 
 
   }
 }
-// <div key={match.id} id={match.id}>
-
-//     <div className="col-md-6" id="requested-ticket">
-//         <h5 className="card-title c.title">abc</h5>
-//         <p className="card-text c.text">abc</p>
-//     </div>
-//     <div className="col-md-6" id="offered-ticket">
-//       <h5 className="card-title c.title">Hamilton</h5>
-//       <p className="card-text c.text">5/23/2018</p>
-//     </div>
-// </div>
 
 export default MyRequests;
+
+//Problems:
+//1. Cannot identify dropdowns by id (id must be unique)
+//2. Cannot replace null values
+//3. cannot .toString() seatNum
+//4. Dont render match if swap is null
