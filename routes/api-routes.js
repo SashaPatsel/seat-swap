@@ -223,7 +223,10 @@ module.exports = function(app) {
         };
         db.Ticket.findAll({
             where: {
-                UserId: req.params.UserId
+                UserId: req.params.UserId,
+                status: {
+                    [Op.ne]: "gone"
+                }
             }
         }).then(function(results) {
             res.json(results);
