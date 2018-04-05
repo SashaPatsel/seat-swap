@@ -93,12 +93,6 @@ class SignUp extends Component {
           />
           <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
-        <div className="row" id="landing-link">
-          <a href="/auth/google">Sign Up with Google</a>
-        </div>
-        <div className="row" id="landing-link">
-          <a href="/auth/facebook">Sign Up with Facebook</a>
-        </div>
       </div>
     );
   }
