@@ -379,7 +379,7 @@ module.exports = function(app) {
             id = req.params.UserId
         };
         db.Watcher.findAll({
-            attributes: ['eventDate'],
+            attributes: ['id','eventDate'],
             where: { UserId: id },
             include: [ {
                 model: db.Organization,
