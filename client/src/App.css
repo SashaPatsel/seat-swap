@@ -185,5 +185,8 @@ dropdown {
 }
 
 .auth-button {
-  color: black;
+  color: white;
+  background-color: rgba(70,70,70,.7);
+  border-radius: 15px;
+  border: solid 1px white;
 }
