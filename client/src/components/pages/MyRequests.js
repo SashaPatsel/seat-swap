@@ -5,7 +5,7 @@ import List from "../MatchList";
 import ListItem from "../MatchListItem";
 import OfferList from "../MatchOfferList";
 import { Button, Icon } from 'semantic-ui-react';
-
+import DeleteBtn from "../DeleteButton";
 import AcceptOffer from "../AcceptOffer"
 
 
@@ -48,11 +48,11 @@ class MyRequests extends React.Component {
 
   finalizeTrade = id => {
     API.finalizeTrade(id)
-    .then(res => {
-      console.log("farley")
-      console.log(res.data)
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        console.log("farley")
+        console.log(res.data)
+      })
+      .catch(err => console.log(err));
   }
 
   ifNull(swap) {
@@ -71,20 +71,20 @@ class MyRequests extends React.Component {
 
   deleteWatcher = id => {
     API.deleteWatcher(id)
-    .then(res => {
-      console.log(res.data)
-      // refresh virtual dom so watcher disappears after click
-      this.setState({
-        refresh: this.state.refresh++
+      .then(res => {
+        console.log(res.data)
+        // refresh virtual dom so watcher disappears after click
+        this.setState({
+          refresh: this.state.refresh++
+        })
+        console.log(this.state.refresh)
       })
-      console.log(this.state.refresh)
-    })
-    .catch(err => console.log(err)); 
+      .catch(err => console.log(err));
   }
 
   showTrades(swap) {
     //Need to render only if swaptix !== null
-}
+  }
   render() {
 
     return (
@@ -94,13 +94,17 @@ class MyRequests extends React.Component {
         <List>
           {this.state.matches.map(match => (
             <ListItem key={match.id} id={match.id}
-            onClick={() => this.deleteWatcher(match.id)}
-            Watcher={match.Organization.name}
-            date={this.convertDate(match.eventDate)}
             >
-                <OfferList id={match.id}>
+              <strong className="myAvail" >{match.Organization.name}</strong>
+
+              <button class="delete-watcher" >
+                <DeleteBtn onClick={() => this.deleteWatcher(match.id)} />
+              </button>
+              <br/>
+              {this.convertDate(match.eventDate)}
+              <OfferList id={match.id}>
                 <li>
-                  <br/>
+                  <br />
                   <h4 className="watchInstruct">What They Want From You</h4>
                   <table>
                     <tr>
@@ -109,16 +113,16 @@ class MyRequests extends React.Component {
                       <th>Accept</th>
                     </tr>
                     {/* {this.showTrades(match.Matches)} */}
-                {/* {this.showTrades(match.Matches)} */}
-                 {match.Matches.map(tix => (
-             tix.SwapticketId ?      
-          <tr>
-            <td>{tix.Ticket.eventTitle} {tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td> 
-            <td><strong>{tix.Swapticket.eventTitle}</strong> | {tix.Swapticket.seatSec} | {tix.Swapticket.seatRow} | {tix.Swapticket.seatNum}</td>
-            <td><AcceptOffer onClick={() => this.finalizeTrade(tix.id)} /></td>
-                </tr>
-                : null 
-                ))}
+                    {/* {this.showTrades(match.Matches)} */}
+                    {match.Matches.map(tix => (
+                      tix.SwapticketId ?
+                        <tr>
+                          <td>{tix.Ticket.seatSec} | {tix.Ticket.seatRow} | {tix.Ticket.seatNum}</td>
+                          <td><strong>{tix.Swapticket.eventTitle}</strong> | {tix.Swapticket.seatSec} | {tix.Swapticket.seatRow} | {tix.Swapticket.seatNum}</td>
+                          <td><AcceptOffer onClick={() => this.finalizeTrade(tix.id)} /></td>
+                        </tr>
+                        : null
+                    ))}
                   </table>
                 </li>
               </OfferList>
