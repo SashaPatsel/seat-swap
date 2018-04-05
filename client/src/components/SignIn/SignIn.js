@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SignIn.css";
-import fblogo from "./fb.png";
+import fblogo from "./fblogo.png";
 import googlelogo from "./google.png";
 
 class SignIn extends Component {
@@ -76,11 +76,14 @@ class SignIn extends Component {
           />
           <div className="row" id="click" onClick={this.handleFormSubmit}>Submit</div>
         </form>
+        <br/>
         <div className="row" id="landing-link">
-          <a href="/auth/google">Login With Google</a>
-        </div>
-        <div className="row" id="landing-link">
-          <a href="/auth/facebook">Login With Facebook</a>
+          <div className="col-xs-12 col-sm-6 col-md-6 text-right">
+            <a href="/auth/google"><img alt="googlelogin" src={googlelogo} id="googlelogo"/></a>
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-6 text-left">
+            <a href="/auth/facebook"><img alt="facebooklogin" src={fblogo} id="fblogo"/></a>
+          </div>
         </div>
       </div>
     );
