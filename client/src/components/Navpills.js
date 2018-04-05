@@ -15,26 +15,26 @@ const Navpills = props => (
 
   <div>
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul className="nav nav-tabs" id="myTab" role="tablist">
           
+    <li className="nav-item">
+        <a className="nav-link active" id="myRequests-tab" data-toggle="pill" href="#myRequests" role="tab" aria-controls="myRequests" aria-selected="true">My Requests</a>
+      </li>
+
+      <li className="nav-item">
+        <a className="nav-link" id="offers-tab" data-toggle="pill" href="#offers" role="tab" aria-controls="offers" aria-selected="false">My Offers</a>
+      </li>
+
     <li class="nav-item">
-        <a class="nav-link active" id="myRequests-tab" data-toggle="pill" href="#myRequests" role="tab" aria-controls="myRequests" aria-selected="true">My Requests</a>
+        <a class="nav-link" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" id="offers-tab" data-toggle="pill" href="#offers" role="tab" aria-controls="offers" aria-selected="false">My Offers</a>
-      </li>
-
-    <li class="nav-item">
-        <a class="nav-link active" id="addWatcher-tab" data-toggle="pill" href="#addWatcher" role="tabpanel" aria-controls="addWatcher" aria-selected="false">Find Tickets</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSubscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">My Subs</a>
+      <li className="nav-item">
+        <a className="nav-link" id="addSubscription-tab" data-toggle="pill" href="#addSubscription" role="tabpanel" aria-controls="addSubscription" aria-selected="false">My Subs</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" id="addTicket-tab" data-toggle="pill" href="#addTicket" role="tabpanel" aria-controls="addTicket" aria-selected="false">Add Tickets</a>
+      <li className="nav-item">
+        <a className="nav-link" id="addTicket-tab" data-toggle="pill" href="#addTicket" role="tabpanel" aria-controls="addTicket" aria-selected="false">Add Tickets</a>
       </li>
 
 
@@ -42,23 +42,23 @@ const Navpills = props => (
       {/* Org tix and all tix should be a toggle within one feed */}
     </ul>
 
-    <div class="tab-content" id="myTabContent">
+    <div className="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
+      <MyRequests/>
+      </div>
 
     <div class="tab-pane fade" id="addWatcher" role="tabpanel" aria-labelledby="addWatcher-tab">
       <Watcher/>
       </div>
 
-      <div class="tab-pane fade" id="addSubscription" role="tabpanel" aria-labelledby="addSubscription-tab">
+      <div className="tab-pane fade" id="addSubscription" role="tabpanel" aria-labelledby="addSubscription-tab">
       <AddSubscription/>
       </div>
 
 
-      <div class="tab-pane fade" id="addTicket" role="tabpanel" aria-labelledby="addTicket-tab">
+      <div className="tab-pane fade" id="addTicket" role="tabpanel" aria-labelledby="addTicket-tab">
       <AddTicket/>
-      </div>
-
-      <div class="tab-pane fade" id="myRequests" role="tabpanel" aria-labelledby="myRequests-tab">
-      <MyRequests/>
       </div>
 
       <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">

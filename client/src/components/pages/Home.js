@@ -25,10 +25,10 @@ class Home extends React.Component {
       <div className="ss-wrapper">
         <Nav />
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-7">
             <FullCal />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="rightNav">
               <Navpills />
             </div>

@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Input from "../Form/Input";
+import Organizations from "../../utils/Organizations.json";
+import SubscriptionCard from "../SubscriptionCard";
 
 class AddSubscription extends Component {
   constructor(props) {
@@ -7,7 +9,8 @@ class AddSubscription extends Component {
     this.state = {
       OrganizationId: "",
      	subName: "",
-      UserId:""
+      UserId:"",
+      Organizations: Organizations
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,6 +20,7 @@ class AddSubscription extends Component {
   componentDidMount() {
   	this.getUserId();
   }
+
 
   getUserId = () => {
     const cookie = document.cookie.split(";");
@@ -56,7 +60,10 @@ class AddSubscription extends Component {
       })
     }).then(response  => {
       console.log(response);
-
+      this.setState({
+        OrganizationId: "",
+        subName: ""
+      });
       window.location.href = "/";
     }).catch(err => {
       console.log(err);
@@ -79,23 +86,14 @@ class AddSubscription extends Component {
                       <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
                         <optgroup label="Pick One">
                           <option value=""></option>
-                        </optgroup>
-                        <optgroup label="Sports">
-                          <option value="1">Golden State Warriors</option>
-                          <option value="2">San Francisco Giants</option>
-                          <option value="3">San Francisco 49ers</option>
-                          <option value="4">Oakland Raiders</option>
-                          <option value="5">Los Angeles Lakers</option>
-                        </optgroup>
-                        <optgroup label="Art & Music">
-                          <option value="6">San Francisco Symphony</option>
-                          <option value="7">San Francisco Ballet</option>
-                          <option value="8">San Francisco Opera</option>
-                          <option value="9">Metropolitan Opera</option>
-                          <option value="10">Lyric Opera of Chicago</option>
-                          <option value="11">Chicago Symphony Orchestra</option>
-                          <option value="12">Canegie Hall</option>
-                        </optgroup>
+                          {this.state.Organizations.map(organization => {
+                            return <SubscriptionCard 
+                            key={organization.id}
+                            id={organization.id}
+                            name={organization.name}
+                            />
+                          })}
+                        </optgroup>        
                       </select> 
                     </div>                                  
                   </div>

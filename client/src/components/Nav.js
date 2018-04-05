@@ -16,14 +16,15 @@ const Nav = () => (
             </a>
         </div>
 
-        <ul className="nav navbar-nav navbar-right">
+        {/* <ul className="nav navbar-nav navbar-right">
             <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  <Icon id="manage-prof" name='user circle' />  <span className="caret"></span></a>
                 <ul className="dropdown-menu">
-                    <li><a href="/logout">Sign out</a></li>
+                    <li></li>
                 </ul>
             </li>
-        </ul>
+        </ul> */}
+        <a href="/logout" className="signOut">Sign Out</a>
     </div>
 </nav>
     

@@ -45,7 +45,8 @@ router.post("/signin", (req, res, next) => {
         return next(err);
       }
       
-      res.cookie("user_name", req.user.dataValues.userName);
+      res.cookie("user_id", req.user.id);
+      res.cookie("user_name", req.user.userName);
       return res.redirect("/")
     })
   }) (req, res, next);

@@ -11,11 +11,12 @@ import { Button, Icon } from 'semantic-ui-react';
 class Offers extends React.Component {
   state = {
     matches: [],
-    offers: []
+    offers: [],
+    UserID: ""
   };
 
-  getAllMatches = () => {
-    API.getAllMatches()
+  getAllMatches = (id) => {
+    API.getAllMatches(id)
       .then(res => {
         console.log(res.data)
 
@@ -25,33 +26,31 @@ class Offers extends React.Component {
         })
       })
       .catch(err => console.log(err));
+      console.log(this.state.offers)
   };
 
-  // handleTradeOffer = event => {
-  //   // event.preventDefault();
-  //   console.log("chicken")
-  //   API.sendTradeOffer({
-
-  //   })
-  //     .then(res => {
-  //       console.log(res.data)
-
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getUserId = () => {
+    const cookie = document.cookie.split(";");
+    console.log("cookie", cookie)
+    let userID = cookie[0];
+    userID = userID.split("=");
+    userID = userID[1];
+    console.log("userID:", userID);
+    this.setState({ UserId: userID });
+    setTimeout(this.getAllMatches(userID), 500)
+  }
 
   sendTradeOffer = (id, SwapticketId) => {
     API.sendTradeOffer(id, SwapticketId)
       .then(res => {
         console.log(id, SwapticketId)
         console.log(res.data)
-
       })
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    this.getAllMatches();
+    this.getUserId();
   }
 
   convertDate(newDate) {
@@ -69,41 +68,39 @@ class Offers extends React.Component {
           <List>
             {this.state.matches.map(match => (
               <ListItem key={match.id} id={match.Ticket.id}
-              
+
               >
-              {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
+                {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
                 <strong className="myAvail" >{match.Ticket.eventTitle}</strong>
                 <br />
                 ({this.convertDate(match.Ticket.date)})
 
                 <OfferList id={match.Ticket.id}>
-                      <li>
-                        <table>
-                          <tr>
-                            <th>Event</th>
-                            <th>Date</th>
-                            <th>Section</th>
-                            <th>Row</th>
-                            <th>Number</th>
-                            <th></th>
-                          </tr>
-                          {this.state.offers.map(x => (
-                    x.Watcher.User.Tickets.map(tix => (
+                  <li>
+                    <table>
+                      <tr>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Section</th>
+                        <th>Row</th>
+                        <th>Number</th>
+                        <th></th>
+                      </tr>
+                      {match.Watcher.User.Tickets.map(tix => (
                           <tr>
                             <td>{tix.eventTitle}</td>
                             <td>{this.convertDate(tix.date)}</td>
                             <td>{tix.seatSec}</td>
                             <td>{tix.seatRow}</td>
                             <td>{tix.seatNum}</td>
-                            <td> < button className = "offerButton" onClick = {() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
+                            <td> < button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
                           </tr>
-            ))
-          ))}
-              </table>
-                      </li>
+                      ))}
+                    </table>
+                  </li>
                 </OfferList>
               </ListItem>
-        ))}
+            ))}
           </List>
         </div >
       </div >
