@@ -88,7 +88,7 @@ class Offers extends React.Component {
                       
                       {match.Watcher.User.Tickets.map
                            (tix => (
-                            tix.Watcher ?
+            
                           <tr>
                             <td>{tix.eventTitle}</td>
                             <td>{this.convertDate(tix.date)}</td>
@@ -97,7 +97,7 @@ class Offers extends React.Component {
                             <td>{tix.seatNum}</td>
                             <td> < button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
                           </tr>
-                          : null
+ 
                       ))}
                     </table>
                   </li>

@@ -15,8 +15,7 @@ class MyRequests extends React.Component {
   state = {
     matches: [],
     offers: [],
-    UserID: "",
-    refresh: 0
+    UserID: ""
   };
 
   componentDidMount() {
@@ -74,10 +73,7 @@ class MyRequests extends React.Component {
       .then(res => {
         console.log(res.data)
         // refresh virtual dom so watcher disappears after click
-        this.setState({
-          refresh: this.state.refresh++
-        })
-        console.log(this.state.refresh)
+       this.getInfo(this.state.UserID)
       })
       .catch(err => console.log(err));
   }
