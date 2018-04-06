@@ -103,13 +103,16 @@ class MyRequests extends React.Component {
                   <br />
                   <h4 className="watchInstruct">What They Want From You</h4>
                   <table>
+                    <thead>
                     <tr>
                       <th>Their Ticket</th>
                       <th>Your Ticket</th>
                       <th>Accept</th>
                     </tr>
+                    </thead>
                     {/* {this.showTrades(match.Matches)} */}
                     {/* {this.showTrades(match.Matches)} */}
+                    <tbody>
                     {match.Matches.map(tix => (
                       tix.SwapticketId ?
                         <tr>
@@ -119,6 +122,7 @@ class MyRequests extends React.Component {
                         </tr>
                         : null
                     ))}
+                    </tbody>
                   </table>
                 </li>
               </OfferList>
