@@ -77,6 +77,7 @@ class Offers extends React.Component {
                 <OfferList id={match.Ticket.id}>
                   <li>
                     <table>
+                      <thead>
                       <tr>
                         <th>Event</th>
                         <th>Date</th>
@@ -85,10 +86,11 @@ class Offers extends React.Component {
                         <th>Number</th>
                         <th></th>
                       </tr>
-                      
+                      </thead>
+                      <tbody>
                       {match.Watcher.User.Tickets.map
                            (tix => (
-            
+                            
                           <tr>
                             <td>{tix.eventTitle}</td>
                             <td>{this.convertDate(tix.date)}</td>
@@ -97,8 +99,9 @@ class Offers extends React.Component {
                             <td>{tix.seatNum}</td>
                             <td> < button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
                           </tr>
- 
+                            
                       ))}
+                      </tbody>
                     </table>
                   </li>
                 </OfferList>
