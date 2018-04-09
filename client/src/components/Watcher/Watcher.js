@@ -6,7 +6,7 @@ class Watcher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      OrganizationId: "",
+      OrganizationId: "0",
       numberOfSeats: "1",
       eventDate: "",
       UserId:""
@@ -78,6 +78,7 @@ class Watcher extends Component {
                 <div className="section-content">                 
                   <div className="select">
                     <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
+                      <option value="0" disabled>Organization</option> 
                       <optgroup label="Pick One">
                         <option value=""></option>
                       </optgroup>
@@ -95,7 +96,7 @@ class Watcher extends Component {
                         <option value="9">Metropolitan Opera</option>
                         <option value="10">Lyric Opera of Chicago</option>
                         <option value="11">Chicago Symphony Orchestra</option>
-                        <option value="12">Canegie Hall</option>
+                        <option value="12">Carnegie Hall</option>
                       </optgroup>
                     </select>
                   </div>                                  
