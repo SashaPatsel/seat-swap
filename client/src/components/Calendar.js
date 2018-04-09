@@ -46,6 +46,7 @@ class FullCal extends React.Component {
         tickets.map(function (newTix) {
             console.log
             const userTix = {
+                id: newTix.id,
                 title: newTix.eventTitle,
                 start: newTix.date
             }
@@ -60,11 +61,15 @@ class FullCal extends React.Component {
         })
     }
 
-
+testFunc = event => {
+    alert("chicken")
+    console.log("chicken")
+}
     render() {
         return (
             <div id="example-component" className="fullCal">
                 <FullCalendar
+                
                     id="fullCal-main"
                     header={{
                         left: 'prev,next today',
@@ -76,19 +81,8 @@ class FullCal extends React.Component {
                     editable={false}
                     eventLimit={true} // allow "more" link when too many events
                     events={this.state.events}
+                    eventClick={this.testFunc}
                 />
-
-                {/* <Link to="/addTix" className="n-pills">
-                    <Button size='small' id='exchange-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
-                        <Icon name='exchange' /> Find Tickets
-                    </Button>
-                </Link>
-                
-                <Link to="/addWatcher" className="n-pills">
-                    <Button size='small' id='add-button' className={window.location.pathname === "/addWatcher" ? "active" : ""}>
-                        <Icon name='add circle' /> Add Tickets
-                    </Button>
-                </Link> */}
             </div>
         );
     }

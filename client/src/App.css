@@ -9,7 +9,6 @@
 
 body {
   /* font-family: 'Raleway', sans-serif; */
-  background-color: black;
 }
 
 /* .ss-wrapper {
@@ -31,7 +30,7 @@ body {
 }
 
 .ss-nav {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   color: #c9c9c9;
   width: 100%;
   height: 2%;
@@ -57,13 +56,13 @@ body {
   background-color: rgb(220,220,220);
   color: black;
   padding: 1em;
-  border: solid 4px #bb732a;
+  border: solid 4px rgb(235,79,28);
   border-radius: 15px;
 }
 
 
 a.fc-day-number {
-  color: #bb732a;
+  color: rgb(235,79,28);
   font-size: .9em;
 }
 
@@ -75,11 +74,11 @@ a.fc-day-number {
 }
 
 a {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 a.hover {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 dropdown {
@@ -90,14 +89,14 @@ dropdown {
   height: 46em;
   background-color: rgb(220,220,220);
   color: #25274d;
-  border: solid 4px #bb732a;
+  border: solid 4px rgb(235,79,28);
   border-radius: 15px;
   padding: 1%;
   overflow: auto;
 }
 
 .nav-tabs {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   border-radius: 10px;
   font-size: 100px;
   /* position: absolute;
@@ -108,7 +107,7 @@ dropdown {
 
 #exchange-button {
  margin-top: 1%;
- background-color: #bb732a;
+ background-color: rgb(235,79,28);
  color: white;
  border-radius: 15px;
 }
@@ -116,7 +115,7 @@ dropdown {
 #add-button {
   margin-top: 1%;
   margin-left: 1%;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   color: white;
   border-radius: 15px;
  }
@@ -139,7 +138,7 @@ dropdown {
 }
 
 .offerButton:hover {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 .offerButton {
@@ -156,12 +155,12 @@ dropdown {
 }
 
 .fc-content {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
 }
 
 .delete-watcher {
   color: white;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   border: solid 1.5px black;
   height: 28px;
   float: right;
@@ -170,7 +169,7 @@ dropdown {
 .TOButton {
   position: relative;
   right: -75%;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   padding: .3em;
   color: white;
   border: solid 1.5px black;
