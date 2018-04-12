@@ -3,13 +3,15 @@ body {
   /* font-family: 'Raleway', sans-serif; */
   z-index: 3;
 }
+button:focus{
+  background-color: white;
+  color: black;
+}
 
 .nav-brand {
-  float: left;
   color: white;
   text-align: left;
-  position: relative;
-  left: -13em;
+  font-size: 1em;
 }
 
 .ss-modal {
@@ -91,9 +93,9 @@ a.fc-day-number {
 }
 
 .logo {
-  width: 10%;
+  width: 90%;
   position: relative;
-  left: .9em;
+  left: .3em;
   bottom: .8em;
 }
 
