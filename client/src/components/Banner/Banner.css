@@ -1,9 +1,39 @@
-#banner {
-	background: url("./ticket.jpg") repeat fixed;
-	background-size: contain;
+.attPark {
+	background: url("./attPark.jpg") no-repeat fixed;
+	background-size: cover;
 	opacity: 1;
 	background-color: transparent
 }
+
+.sfOpera {
+	background: url("./sfOpera.jpg") no-repeat fixed;
+	background-size: cover;
+	opacity: 1;
+	background-color: transparent
+}
+
+.oracle {
+	background: url("./oracle.jpg") no-repeat fixed;
+	background-size: cover;
+	opacity: 1;
+	background-color: transparent
+}
+
+.sfSymphony {
+	background: url("./symphonyhall.jpg") no-repeat fixed;
+	background-size: cover;
+	opacity: 1;
+	background-color: transparent
+}
+
+.niners {
+	background: url("./athletes-audience-bleachers-128457.jpg") no-repeat fixed;
+	background-size: cover;
+	opacity: 1;
+	background-color: transparent
+}
+
+
 
 .banner {
 	margin: 0px 0px 0px 0px;

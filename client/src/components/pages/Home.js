@@ -11,7 +11,9 @@ class Home extends React.Component {
   render() {
     return (
       <div className="ss-wrapper">
-        <Nav />
+        <Nav 
+        inOut="Out"
+        />
         <div className="row">
           <div className="col-md-7">
             <FullCal />

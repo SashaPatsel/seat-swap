@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Icon } from 'semantic-ui-react';
 
-const Nav = () => (
+const Nav = props => (
     <nav className="navbar navbar-default ss-nav">
         <div className="container-fluid">
             <div className="row">
@@ -19,7 +19,7 @@ const Nav = () => (
                 </div>
                 <div className="col-md-5"></div>
                 <div className="col-md-2">
-                <a href="/logout" className="signOut">Sign Out</a>
+                <a href="/logout" className="signOut">Sign {props.inOut}</a>
                 </div>
             </div>
         </div>

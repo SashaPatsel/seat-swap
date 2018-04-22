@@ -1,6 +1,6 @@
 
 body {
-  /* font-family: 'Raleway', sans-serif; */
+  font-family: 'Roboto', sans-serif;
   z-index: 3;
 }
 button:focus{
@@ -86,6 +86,26 @@ button:hover {
   border-radius: 15px;
 }
 
+.main-title {
+  font-size: 5em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.join-button {
+  background-color: rgb(235,79,28);
+  border: solid 2px white;
+  border-radius: 15px;
+  font-size: 2em;
+  color: white;
+  padding: 1%;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.join-button:hover {
+  background-color: black;
+  color: rgb(235,79,28);
+}
 
 a.fc-day-number {
   color: black;
@@ -217,4 +237,14 @@ dropdown {
   background-color: rgba(70,70,70,.7);
   border-radius: 15px;
   border: solid 1px white;
+}
+
+.landing-page {
+  background: url("/components/pages/imagesattPark.jpg") no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.roboto {
+  font-family: 'Roboto', sans-serif;
 }

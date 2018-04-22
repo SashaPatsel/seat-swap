@@ -1,7 +1,5 @@
 #login {
-	background-color: black;
 	height: 100%;
-	color: #ffffff;
 	text-align: center;
 	line-height: 1.5;
 	margin-bottom: 0
@@ -27,4 +25,41 @@
 
 #third-banner {
 	margin-bottom: 0
+}
+
+.landing-content {
+	text-align: center;
+	color: white
+}
+
+.landing-container {
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.giants { 
+	background:
+	url(https://images.pexels.com/photos/269948/pexels-photo-269948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) no-repeat fixed;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.symphony {
+	background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHHTG_r2EuJi7xeEL2_Eko9VXBDhQG0V80JyADS5fMS-ftXD4o) no-repeat fixed;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+.warriors {
+	background: url(https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-s3.si.com%2Fs3fs-public%2Fstyles%2Fmarquee_large_2x%2Fpublic%2F2015%2F06%2F05%2Foracle-arena-warriors.jpg%3Fitok%3DD4IcX6-B&w=700&q=85) no-repeat fixed;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
 }
