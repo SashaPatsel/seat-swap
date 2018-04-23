@@ -19,7 +19,7 @@ const styles = {
 
 	},
 	symphony: {
-		background: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHHTG_r2EuJi7xeEL2_Eko9VXBDhQG0V80JyADS5fMS-ftXD4o) no-repeat fixed',
+		background: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCgzmyFV3jKAMnpvjPQsUgQ4z40WAKArjofDHh4QzquTE-FmPrdQ) no-repeat fixed',
 		backgroundSize: "cover",
 		height: "100%",
 		width: "100%",
@@ -51,7 +51,6 @@ class Landing extends Component {
 	componentDidMount() {
 		const landing = this
 		this.changeBackground()
-
 	}
 
 	changeBackground() {
@@ -95,8 +94,12 @@ class Landing extends Component {
 					<JoinUs
 						modal={this.onOpenModal}
 					/>
+
+
 				</div>
-        <Modal open={open} onClose={this.onCloseModal} little>
+        <Modal open={open} onClose={this.onCloseModal} little
+				showCloseIcon = {this.state.showCloseIcon}
+				>
 				<div className="row" id="login">
 						<div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
 							<SignUp />
