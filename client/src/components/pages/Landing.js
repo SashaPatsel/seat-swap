@@ -1,64 +1,25 @@
 import React, { Component } from "react";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
-// import Banner from "../Banner";
-// import Banner2 from "../Banner2";
 import "./Landing.css";
 import JoinUs from "../JoinUs";
-import { findDOMNode } from "react-dom";
-// import Modal from "../Modal";
-// import $ from "jquery";
-// import Nav from "../Nav"
-//fadein/fadeout components for background?
+import Modal from 'react-modal';
+
 
 
 class Landing extends Component {
 
 	state = {
 		changingBackground: "giants",
-		open: false,
-		showCloseIcon: true,
-		
+		show: "hide"
 	}
 
-	componentDidMount() {
-		const landing = this
-		// this.changeBackground()
-		// $("#initModal").modal("show")
-		// $("#myModal").modal();
-	}
-
-	changeBackground() {
-		const backgrounds = ["giants", "warriors", "symphony"]
-		let bGroundIndex = 0
-		const landing = this
-		setInterval(function () {
-
-			if (bGroundIndex >= (backgrounds.length - 1)) {
-				bGroundIndex = 0;
-			} else {
-				bGroundIndex++;
-			}
-
-			landing.newBackground(backgrounds[bGroundIndex])
-		}, 4000)
-
-	}
-
-	newBackground(i) {
+	showAuth() {
 		this.setState({
-			changingBackground: i
+			show: ""
 		})
 	}
 
-
-	onOpenModal = () => {
-		this.setState({ open: true });
-	};
-
-	onCloseModal = () => {
-		this.setState({ open: false });
-	};
 	render() {
 		const { open } = this.state;
 
@@ -68,30 +29,23 @@ class Landing extends Component {
 					<h1 className="roboto main-title">Seat Swap</h1>
 					<h2 className="roboto main-sub">The Bay Area's Ticket Exchange</h2>
 					<JoinUs
-						modal={this.onOpenModal}
+						onClick={() => this.showAuth()}
 					/>
 				</div>
-
-	
-				
-				{/* <Modal 
-				
-				/> */}
-				{/* <Modal open={open} onClose={this.onCloseModal} little
-				showCloseIcon = {this.state.showCloseIcon}
-				>
-				<div className="row" id="login">
-						<div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
-							<SignUp />
-						</div>
-						<div className="col-xs-12 col-sm-12 col-md-6" id="signin-container">
-							<SignIn />
+				<div className={this.state.show}>
+					<div className="col-md-2"></div>
+					<div className="col-md-8 authenticate">
+						<div className="row" id="login">
+							<div className="col-xs-12 col-sm-12 col-md-6" id="signup-container">
+								<SignUp />
+							</div>
+							<div className="col-xs-12 col-sm-12 col-md-6" id="signin-container">
+								<SignIn />
+							</div>
 						</div>
 					</div>
-        </Modal> */}
-			<div class="chicken"></div>
-
-
+					<div className="col-md-2"></div>
+				</div>
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ import React from "react";
 const JoinUs = props => (
 	<div>
 		<button className="join-button"
-		onClick={props.modal}
+		{...props}
 		>
       Start Swapping!
     </button>  

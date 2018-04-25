@@ -6,13 +6,13 @@
 }
 
 #signup-container {
-	padding: 100px 150px 100px 150px;
-	height: 600px;
+	/* padding: 100px 150px 100px 150px; */
+	/* height: 600px; */
 }
 
 #signin-container {
-	padding: 100px 150px 150px 150px;
-	height: 600px;
+	/* padding: 100px 150px 150px 150px; */
+	/* height: 600px; */
 }
 
 #first-banner {
@@ -101,4 +101,13 @@
 		width: 100%;
 		position: absolute;
 	}
+}
+
+.authenticate {
+	background-color: rgba(255,255,255,.6);
+	margin-top: 1em;
+}
+
+.hide {
+	display: none;
 }
