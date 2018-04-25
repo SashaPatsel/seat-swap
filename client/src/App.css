@@ -89,17 +89,75 @@ button:hover {
 .main-title {
   font-size: 5em;
   font-family: 'Roboto', sans-serif;
+  -webkit-animation-name: mTitle; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
 }
 
 .join-button {
   background-color: rgb(235,79,28);
   border: solid 2px white;
+  color: white;
   border-radius: 15px;
   font-size: 2em;
-  color: white;
   padding: 1%;
   position: relative;
   font-family: 'Roboto', sans-serif;
+  -webkit-animation-name: jButton; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
+}
+
+.main-sub {
+  font-size: 3em;
+  -webkit-animation-name: mSub; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
+}
+
+@keyframes mSub {
+	0%   {  
+    -webkit-text-stroke: 2px white;
+    color: rgb(235,79,28);}
+	33%  { 
+    -webkit-text-stroke: 2px rgb(218,165,32);
+    color: black;}
+	66%  {	 
+    -webkit-text-stroke: 2px rgb(9,72,170);
+    color: rgb(247,196,70);}
+}
+
+@keyframes mTitle {
+	0%   {  
+    -webkit-text-stroke: 2px white;
+    color: rgb(235,79,28);}
+	33%  { 
+    -webkit-text-stroke: 2px rgb(218,165,32);
+    color: black;}
+	66%  {	 
+    -webkit-text-stroke: 2px rgb(9,72,170);
+    color: rgb(247,196,70);}
+}
+
+@keyframes jButton {
+	0%   {  
+    background-color: rgb(235,79,28);
+    border: solid 2px white;
+    color: white;
+  }
+	33%  {  
+    background-color: rgb(218,165,32);
+    border: solid 2px black;
+    color: black;
+  }
+	66%  {	 
+     background-color: rgb(9,72,170);
+    border: solid 2px rgb(247,196,70);
+    color: rgb(247,196,70);
+  }
 }
 
 .join-button:hover {

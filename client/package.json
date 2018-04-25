@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "cheerio-req": "^1.2.2",
     "fullcalendar-reactwrapper": "^1.0.7",
+    "jquery": "^3.3.1",
     "less": "^3.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
