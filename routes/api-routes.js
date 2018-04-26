@@ -3,8 +3,9 @@ var keys = require("../keys.js")
 var Client = require('node-rest-client').Client;
 var client = new Client();
 const Op = db.Sequelize.Op;
-
-module.exports = function(app) {
+var cheerio = require("cheerio");
+var request = require("request");
+module.exports = function (app) {
 
     //return a user's record
     // app.get("/api/users/:id", function(req, res) {
@@ -18,7 +19,7 @@ module.exports = function(app) {
     // });
 
     //update a user's record
-    app.put("/api/users/:Userid", function(req, res) {
+    app.put("/api/users/:Userid", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -36,16 +37,16 @@ module.exports = function(app) {
                 where: {
                     id: id
                 }
-            }).then(function(dbUser) {
+            }).then(function (dbUser) {
                 res.json(dbUser);
-            }).catch(function(err) {
-                
+            }).catch(function (err) {
+
                 res.status(500).json(err);
-          });
+            });
     });
 
     //add a subscription to a user
-    app.post("/api/subscriptions", function(req, res) {
+    app.post("/api/subscriptions", function (req, res) {
         if (!req.body.UserId) {
             if (Number.isInteger(req.session.id)) {
                 req.body.UserId = req.session.id
@@ -54,21 +55,21 @@ module.exports = function(app) {
                 res.status(401)
             }
         }
-            db.Subscription.create({
-                name: req.body.name,
-                UserId: req.body.UserId,
-                OrganizationId: req.body.OrganizationId
-            }).then(function(dbSubscription) {
-                res.json(dbSubscription);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-            });
+        db.Subscription.create({
+            name: req.body.name,
+            UserId: req.body.UserId,
+            OrganizationId: req.body.OrganizationId
+        }).then(function (dbSubscription) {
+            res.json(dbSubscription);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
 
     });
 
     //return list of subscriptions for a given user
-    app.get("/api/users/:UserId/subscriptions", function(req, res) {
+    app.get("/api/users/:UserId/subscriptions", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -85,80 +86,80 @@ module.exports = function(app) {
             where: {
                 UserId: id
             }
-        }).then(function(dbSubscription) {
+        }).then(function (dbSubscription) {
             res.json(dbSubscription);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
         });
     });
 
     //return a subscription
-    app.get("/api/subscriptions/:id", function(req, res) {
+    app.get("/api/subscriptions/:id", function (req, res) {
         db.Subscription.findOne({
             where: {
                 id: req.params.id
             }
-        }).then(function(dbSubscription) {
+        }).then(function (dbSubscription) {
             res.json(dbSubscription);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
         });
     });
 
     //update a subscription 
-    app.put("/api/subscriptions/:id", function(req, res) {
+    app.put("/api/subscriptions/:id", function (req, res) {
         db.Subscription.update(
             req.body, {
                 where: {
                     id: req.params.id
                 }
-            }).then(function(dbSubscription) {
+            }).then(function (dbSubscription) {
                 res.json(dbSubscription);
-        }).catch(function(err) {
-                
-            res.status(500).json(err);
-      });
+            }).catch(function (err) {
+
+                res.status(500).json(err);
+            });
     });
 
     // Get a list of all tickets
-    app.get("/api/tickets", function(req, res) {
+    app.get("/api/tickets", function (req, res) {
         var queryObj = {};
         if (req.query.status) {
             queryObj = { where: { status: req.query.status } };
         };
         db.Ticket.findAll({
-              queryObj
-            }).then(function(data) {
-                res.json(data);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-          });
+            queryObj
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
     });
 
     // Get a list of all tickets
-    app.get("/api/tickets/available", function(req, res) {
+    app.get("/api/tickets/available", function (req, res) {
         db.Ticket.findAll({
-              where: {
-                  status: {
-                      $or: {
-                          $eq: "available",
-                          $eq: "flex"
-                      }
-                  }
-              }
-            }).then(function(data) {
-                res.json(data);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-          });
+            where: {
+                status: {
+                    $or: {
+                        $eq: "available",
+                        $eq: "flex"
+                    }
+                }
+            }
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
     });
 
     //add a ticket to a subscription
-    app.post("/api/tickets", function(req, res) {
+    app.post("/api/tickets", function (req, res) {
         if (!req.body.UserId) {
             if (Number.isInteger(req.session.id)) {
                 req.body.UserId = req.session.id
@@ -169,46 +170,46 @@ module.exports = function(app) {
         }
         console.log(req.body);
         db.Ticket.create(req.body)
-        .then(function(dbTicket) {
-            findWatcherMatches(dbTicket);
-            res.json(dbTicket);
-        }).catch(function(err) {
-                
-            res.status(500).json(err);
-      });
+            .then(function (dbTicket) {
+                findWatcherMatches(dbTicket);
+                res.json(dbTicket);
+            }).catch(function (err) {
+
+                res.status(500).json(err);
+            });
     });
 
     // Find tickets that match the criteria of the watcher
-    function findWatcherMatches(ticketRecord){
+    function findWatcherMatches(ticketRecord) {
         console.log('findTicketMatches: called');
         var maxDate = new Date(ticketRecord.date);
         var minDate = new Date(ticketRecord.date);
         minDate.setHours(minDate.getHours() - 24);
-        
+
         console.log(minDate, maxDate);
         db.Watcher.findAll({
             where: {
                 OrganizationId: ticketRecord.OrganizationId,
                 eventDate: {
                     [Op.lte]: maxDate,
-                    [Op.gte]: minDate 
+                    [Op.gte]: minDate
                 }
             }
-        }).then(function(dbWatchers) {
-          console.log("hey", JSON.stringify(dbWatchers, null, 4));
+        }).then(function (dbWatchers) {
+            console.log("hey", JSON.stringify(dbWatchers, null, 4));
 
-          dbWatchers.forEach(function(singleWatcherMatch) {
-            writeMatch(singleWatcherMatch, ticketRecord);
-          });
-        }).catch(function(err) {
-                
+            dbWatchers.forEach(function (singleWatcherMatch) {
+                writeMatch(singleWatcherMatch, ticketRecord);
+            });
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     }
-    
+
 
     //return all tickets for a user
-    app.get("/api/users/:UserId/tickets", function(req, res) {
+    app.get("/api/users/:UserId/tickets", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (req.session) {
@@ -228,16 +229,16 @@ module.exports = function(app) {
                     [Op.ne]: "gone"
                 }
             }
-        }).then(function(results) {
+        }).then(function (results) {
             res.json(results);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     //return a list of tickets for 1 or all subscriptions for a specific user
-    app.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets", function(req, res) {
+    app.get("/api/users/:UserId/subscriptions/:SubscriptionId?/tickets", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -256,44 +257,44 @@ module.exports = function(app) {
             queryObj.where.SubscriptionId = req.params.SubscriptionId
         };
         console.log(queryObj);
-        db.Ticket.findAll(queryObj).then(function(results) {
+        db.Ticket.findAll(queryObj).then(function (results) {
             res.json(results);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     //update a ticket record
-    app.put("/api/tickets/:id", function(req, res) {
+    app.put("/api/tickets/:id", function (req, res) {
         db.Ticket.update({
             status: req.body.status
         }, {
-            where: {
-                id: req.params.id
-            }
-        }).then(function(result) {
-            res.json(result);
-        }).catch(function(err) {
-                
-            res.status(500).json(err);
-      });
+                where: {
+                    id: req.params.id
+                }
+            }).then(function (result) {
+                res.json(result);
+            }).catch(function (err) {
+
+                res.status(500).json(err);
+            });
     });
 
     //add a watcher
-    app.post("/api/watchers", function(req, res) {
-        
-        db.Watcher.create(req.body).then(function(dbWatcher) {
+    app.post("/api/watchers", function (req, res) {
+
+        db.Watcher.create(req.body).then(function (dbWatcher) {
             findTicketMatches(dbWatcher);
             res.json(dbWatcher);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     // Find tickets that match the criteria of the watcher
-    function findTicketMatches(watcherRecord){
+    function findTicketMatches(watcherRecord) {
         // console.log('findTicketMatches: called');
 
         var minDate = new Date(watcherRecord.eventDate);
@@ -307,42 +308,42 @@ module.exports = function(app) {
                 OrganizationId: watcherRecord.OrganizationId,
                 date: {
                     [Op.lte]: maxDate,
-                    [Op.gte]: minDate 
+                    [Op.gte]: minDate
                 }
             }
-        }).then(function(dbTickets) {
+        }).then(function (dbTickets) {
             // console.log(dbTickets)
             // console.log("Hello, it's me you're looking for.")
             // console.log(JSON.stringify(dbTickets, null, 4));
 
-          dbTickets.forEach(function(singleTicketMatch) {
-            writeMatch(watcherRecord, singleTicketMatch);
-          });
-        }).catch(function(err) {
-                
+            dbTickets.forEach(function (singleTicketMatch) {
+                writeMatch(watcherRecord, singleTicketMatch);
+            });
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     }
 
     // write a match record
-    function writeMatch(watcher, ticket){
+    function writeMatch(watcher, ticket) {
         console.log('writeMatch: called');
         console.log(watcher, ticket);
 
         db.Match.create({
             'WatcherId': watcher.id,
             'TicketId': ticket.id
-        }).then(function(dbMatches) {
+        }).then(function (dbMatches) {
             console.log('writeMatch: matches created');
             console.log(JSON.stringify(dbMatches, null, 4));
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
-    } 
+        });
+    }
 
     //return a list of watchers for a specific user
-    app.get("/api/users/:UserId/watchers", function(req, res) {
+    app.get("/api/users/:UserId/watchers", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -359,16 +360,16 @@ module.exports = function(app) {
             where: {
                 UserId: id
             }
-        }).then(function(dbWatcher) {
+        }).then(function (dbWatcher) {
             res.json(dbWatcher);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     //return a list of watchers for a specific user with results of the matches
-    app.get("/api/users/:UserId/watchers/matches", function(req, res) {
+    app.get("/api/users/:UserId/watchers/matches", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -383,25 +384,25 @@ module.exports = function(app) {
         };
 
         db.Watcher.findAll({
-            attributes: ['id','eventDate'],
+            attributes: ['id', 'eventDate'],
             where: { UserId: id },
-            include: [ {
+            include: [{
                 model: db.Organization,
-                attributes:['name']
-                        }, {
-                model: db.Match, 
-                attributes:['id','TicketId', 'SwapticketId'],
-                include: [ { 
-                    model: db.Ticket, attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum']
-                            }, {
-                    model: db.Ticket, as: 'Swapticket', attributes:['id','eventTitle','date','seatSec', 'seatRow', 'SeatNum'] 
-                            }
+                attributes: ['name']
+            }, {
+                model: db.Match,
+                attributes: ['id', 'TicketId', 'SwapticketId'],
+                include: [{
+                    model: db.Ticket, attributes: ['id', 'eventTitle', 'date', 'seatSec', 'seatRow', 'SeatNum']
+                }, {
+                    model: db.Ticket, as: 'Swapticket', attributes: ['id', 'eventTitle', 'date', 'seatSec', 'seatRow', 'SeatNum']
+                }
                 ]
-            } ]           
-        }).then(function(dbWatcher) {
+            }]
+        }).then(function (dbWatcher) {
             var results = [];
-            for (j = 0; j < dbWatcher.length; j++ ) {
-                for (i = 0; i < dbWatcher[j].Matches.length; i ++) {
+            for (j = 0; j < dbWatcher.length; j++) {
+                for (i = 0; i < dbWatcher[j].Matches.length; i++) {
                     if (!dbWatcher[j].Matches[i].SwapticketId) {
                         dbWatcher[j].Matches[i] = {}
                     }
@@ -409,47 +410,47 @@ module.exports = function(app) {
                 results.push(dbWatcher[j].dataValues)
 
             }
-            
+
             res.json(results);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.json(err);
-      });
+        });
     });
 
 
 
     //update a watcher
-    app.put("/api/watchers/:id", function(req, res) {
+    app.put("/api/watchers/:id", function (req, res) {
         db.Watcher.update(
             req.body, {
                 where: {
                     id: req.params.id
                 }
-            }).then(function(dbWatcher) {
-            res.json(dbWatcher);
-        }).catch(function(err) {
-                
-            res.status(500).json(err);
-      });
+            }).then(function (dbWatcher) {
+                res.json(dbWatcher);
+            }).catch(function (err) {
+
+                res.status(500).json(err);
+            });
     });
 
     //remove a watcher
-    app.delete("/api/watchers/:id", function(req, res) {
+    app.delete("/api/watchers/:id", function (req, res) {
         db.Watcher.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function(dbWatcher) {
+        }).then(function (dbWatcher) {
             res.json(dbWatcher);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     // Return a list of all current matches
-    app.get("/api/matches", function(req, res) {
+    app.get("/api/matches", function (req, res) {
         db.Match.findAll({
             include: [{
                 model: db.Ticket,
@@ -462,16 +463,16 @@ module.exports = function(app) {
                     model: db.User
                 }
             }]
-            }).then(function(data) {
-                res.json(data);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-          });
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
     });
 
     // Get all matches by the User who created the Watcher
-    app.get("/api/matches/:UserId", function(req, res) {
+    app.get("/api/matches/:UserId", function (req, res) {
         var id;
         if (req.params.UserId === "me") {
             if (Number.isInteger(req.session.id)) {
@@ -493,8 +494,8 @@ module.exports = function(app) {
                         model: db.Ticket
                     }
                 }]
-                },
-                {
+            },
+            {
                 model: db.Ticket,
                 where: {
                     UserId: id
@@ -506,12 +507,12 @@ module.exports = function(app) {
                     model: db.User
                 }]
             }]
-            }).then(function(data) {
-                res.json(data);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-          });
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
     });
 
 
@@ -522,58 +523,59 @@ module.exports = function(app) {
     //    Where :id is the id of the match record and (optional) SwapticketId is the is the TicketId of the proposed exchange.
     //    if SwapticketId is not provided, then the existing SwapticketId will be removed from the match record.
 
-    app.put("/api/matches/:id/swapticket/:SwapticketId?", function(req, res) {
+    app.put("/api/matches/:id/swapticket/:SwapticketId?", function (req, res) {
         if (req.params.SwapticketId === undefined) {
             req.params.SwapticketId = null
         };
         db.Match.update(
-            {SwapticketId: req.params.SwapticketId},
-                {where: {
+            { SwapticketId: req.params.SwapticketId },
+            {
+                where: {
                     id: req.params.id
                 }
-            }).then(function(dbMatch) {
+            }).then(function (dbMatch) {
                 res.json(dbMatch);
-            }).catch(function(err) {
-                
-              res.status(500).json(err);
-        });
+            }).catch(function (err) {
+
+                res.status(500).json(err);
+            });
     });
 
     // When trade accepted, hit this put route to kick off the trade in our database
     // Find the match by it's id to return the data including the tickets to be swapped
-    app.put("/api/matches/:id/traded", function(req, res) {
+    app.put("/api/matches/:id/traded", function (req, res) {
         db.Match.findOne({
             where: {
                 id: req.params.id
             }
-        }).then(function(matchData) {
+        }).then(function (matchData) {
             swappedTickets(matchData, res);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
     // Using the TicketId and SwapticketId to get those tickets information
     function swappedTickets(data, res) {
         db.Ticket.findOne({
-            attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
+            attributes: ["date", "seatSec", "seatRow", `seatNum`, `eventTitle`, `status`, `subscription`, `OrganizationId`, `SubscriptionId`, `UserId`],
             where: {
                 id: data.TicketId
             }
-        }).then(function(ticket1) {
+        }).then(function (ticket1) {
             db.Ticket.findOne({
-                attributes: ["date", "seatSec", "seatRow", `seatNum`,`eventTitle`,`status`,`subscription`,`OrganizationId`,`SubscriptionId`,`UserId`],
+                attributes: ["date", "seatSec", "seatRow", `seatNum`, `eventTitle`, `status`, `subscription`, `OrganizationId`, `SubscriptionId`, `UserId`],
                 where: {
                     id: data.SwapticketId
                 }
-            }).then(function(ticket2) {
+            }).then(function (ticket2) {
                 createNewTickets(ticket1, ticket2, data, res);
             })
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     }
 
     // Swapping the UserIds for the tickets to be swapped and then creating those tickets with the new UserId
@@ -583,36 +585,39 @@ module.exports = function(app) {
         var temp = one.UserId;
         one.UserId = two.UserId;
         two.UserId = temp;
-        db.Ticket.create(one.dataValues).then(function(response) {
-            db.Ticket.create(two.dataValues).then(function(result) {
+        db.Ticket.create(one.dataValues).then(function (response) {
+            db.Ticket.create(two.dataValues).then(function (result) {
                 changeOldTickets(matchData, res);
             })
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     }
 
     // Updating the original tickets to the status of "gone" so users can still see tickets they've traded away
     function changeOldTickets(data, res) {
         db.Ticket.update(
-            {status: "gone"},
-                {where: {
+            { status: "gone" },
+            {
+                where: {
                     id: data.SwapticketId
                 }
-            }).then(function(response) {
+            }).then(function (response) {
                 db.Ticket.update({
-                    status: "gone"},
-                        {where: {
+                    status: "gone"
+                },
+                    {
+                        where: {
                             id: data.TicketId
                         }
-                }).then(function(result) {
-                    removeWatcher(data, res);
-                })
-            }).catch(function(err) {
-                
+                    }).then(function (result) {
+                        removeWatcher(data, res);
+                    })
+            }).catch(function (err) {
+
                 res.status(500).json(err);
-          });
+            });
     }
 
     // destroying the watcher which also destroys it's associated matches
@@ -621,37 +626,37 @@ module.exports = function(app) {
             where: {
                 id: matchData.WatcherId
             }
-        }).then(function(data){
+        }).then(function (data) {
             res.status(200).json(data);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     }
 
     //add a trade journal entry
-    app.post("/api/tradejournal", function(req, res) {
-        
+    app.post("/api/tradejournal", function (req, res) {
+
     });
 
     //return a list of trade journal entries
-    app.get("/api/tradejournal", function(req, res) {
+    app.get("/api/tradejournal", function (req, res) {
 
     });
 
     //add a feed record
-    app.post("/api/teamfeed", function(req, res) {
+    app.post("/api/teamfeed", function (req, res) {
         db.Teamfeed.create({
             UserId: req.body.UserId,
             OrganizationId: req.body.OrganizationId,
             comment: req.body.comment
-        }).then(function(results) {
+        }).then(function (results) {
             res.json(results);
         });
     });
 
     //return a list of comments for 1 or all organizations
-    app.get("/api/organization/:OrganizationId?/teamfeed", function(req, res) {
+    app.get("/api/organization/:OrganizationId?/teamfeed", function (req, res) {
         db.Teamfeed.findAll({
             where: {
                 OrganizationId: req.params.OrganizationId
@@ -661,23 +666,105 @@ module.exports = function(app) {
             }, {
                 model: db.User
             }]
-        }).then(function(data) {
+        }).then(function (data) {
             res.json(data);
-        }).catch(function(err) {
-                
+        }).catch(function (err) {
+
             res.status(500).json(err);
-      });
+        });
     });
 
-    app.get("/api/organizations", function(req, res) {
+    app.get("/api/organizations", function (req, res) {
         db.Organization.findAll({
-            }).then(function(data) {
-                res.json(data);
-            }).catch(function(err) {
-                
-                res.status(500).json(err);
-          });
+        }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+
+            res.status(500).json(err);
+        });
     });
+
+    // const articles= []
+
+    // app.get("/scrape", function (req, res) {
+    //     request("http://www.nba.com/warriors/schedule", function (error, response, html) {
+
+
+    //         // Cheerio
+    //         var $ = cheerio.load(html);
+
+    //         // h2.c-entry-box--compact__title
+    //         $("div.Season").each(function (i, element) {
+
+
+    //             var opponent = $(element).children("div.Game").children("div.fd-row").children("div.GameMatchup").find("div.GameMatchup-info").find("div.GameMatchup-info-name").text
+    //             // var link = $(element).children("a").attr("href")
+    //             // var img = $(element).find("img").attr("src")
+    //             // var subHead = $(element).find("p.p-dek").text()
+
+    //             articles.push({
+    //                 opponent: opponent
+    //             });
+                
+    //             buckets(opponent)
+    //             console.log("up here")
+    //         });
+
+    //     });
+    //     // console.log(articles)
+    //     console.log("anytjign")
+    // });
+
+    // function buckets(chicken) {
+    //     articles.push({
+    //         opponent: chicken
+    //     });
+    //     console.log(chicken)
+    //     console.log("hi")
+    //     console.log(articles)
+    // }
+
+    var articles = [];
+// var secondary = []
+
+app.get("/scrape", function(req, res) {
+
+    request("https://www.lineups.com/nba/schedule/golden-state-warriors", function(error, response, html) {
+
+
+        // Cheerio
+        var $ = cheerio.load(html);
+
+        // h2.c-entry-box--compact__title
+        $("table.t-stripped").each(function(i, element) {
+
+            let opponent = $(element).find("tbody").children("tr.t-content").find("td.px-2").find("a.link-black-underline").text().trim()
+            let date = $(element)
+            
+            // .find("span.collapse-narrow--table-cell").find("span.display-inline-block").find("a").find("span.team-abbreviation").text()
+
+
+            // var title = $(element).find("h2.c-entry-box--compact__title").text()
+            // var link = $(element).children("a").attr("href")
+            // var img = $(element).find("img").attr("src")
+            // var subHead = $(element).find("p.p-dek").text()
+
+          let other = opponent.replace("\n", "")
+                articles.push({
+                    opponent: (other + "hey"), 
+                    chickrn: "chicken"
+                })
+
+            
+
+        });
+        console.log(articles)
+
+
+    });
+
+});
+
 };
 
 function ensureAuthenticated(req, res, next) {

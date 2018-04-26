@@ -1,23 +1,46 @@
 
-
-/* SS Style */
-
-/*body {
-  background-color: #ffffff
-
-}*/
-
 body {
-  /* font-family: 'Raleway', sans-serif; */
-  background-color: black;
+  font-family: 'Roboto', sans-serif;
+  z-index: 3;
+}
+button:focus{
+  background-color: white;
+  color: black;
 }
 
-/* .ss-wrapper {
-  font-size: 12px;
-} */
+.nav-brand {
+  color: white;
+  text-align: left;
+  font-size: 1em;
+}
 
+.ss-modal {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%,-50%);
+  background-color: rgba(52,52,52,1);
+}
+.Overlay {
+  position: fixed;
+  z-index: 990;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(230,230,230,.3);
+}
 .fc-button {
   background-color: #9ad3de;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
 
 .TOHead {
@@ -31,7 +54,7 @@ body {
 }
 
 .ss-nav {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   color: #c9c9c9;
   width: 100%;
   height: 2%;
@@ -42,6 +65,8 @@ body {
   float: right;
   height: 2em;
   font-size: 1em;
+  position: relative;
+  top: 1.6em;
 }
 
 .nav-link {
@@ -54,32 +79,132 @@ body {
 }
 
 #fullCal-main {
-  background-color: rgb(220,220,220);
+  /* background-color: rgb(220,220,220); */
   color: black;
   padding: 1em;
-  border: solid 4px #bb732a;
+  border: solid 4px rgb(235,79,28);
   border-radius: 15px;
 }
 
+.main-title {
+  font-size: 5em;
+  font-family: 'Roboto', sans-serif;
+  -webkit-animation-name: mTitle; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
+}
+
+.join-button {
+  background-color: rgb(235,79,28);
+  border: solid 2px white;
+  color: white;
+  border-radius: 15px;
+  font-size: 2em;
+  padding: 1%;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  -webkit-animation-name: jButton; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
+}
+
+.main-sub {
+  font-size: 3em;
+  -webkit-animation-name: mSub; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
+	animation-iteration-count: 299;
+	animation-duration: 40s;
+}
+
+@keyframes mSub {
+	0%   {  
+    -webkit-text-stroke: 1px white;
+    color: rgb(204, 0, 0);}
+	20%  { 
+    -webkit-text-stroke: 1px rgb(218,165,32);
+    color: black;}
+	40%  {	 
+    -webkit-text-stroke: 1px rgb(9,72,170);
+    color: rgb(247,196,70);}
+  60%  {	 
+    -webkit-text-stroke: 1px rgb(235,79,28);
+    color: rgb(247,196,70);}
+  80%  {	 
+    -webkit-text-stroke: 1px rgb(169,6,15);
+    color: #B3995D;}
+}
+
+@keyframes mTitle {
+	0%   {  
+    -webkit-text-stroke: 2px white;
+    color: rgb(204, 0, 0);}
+	20%  { 
+    -webkit-text-stroke: 2px rgb(218,165,32);
+    color: black;}
+	40%  {	 
+    -webkit-text-stroke: 2px rgb(9,72,170);
+    color: rgb(247,196,70);}
+  60%  { 
+    -webkit-text-stroke: 2px rgb(235,79,28);
+    color: black;}
+  80%  {	 
+    -webkit-text-stroke: 2px rgb(169,6,15);
+    color: #B3995D;}
+}
+
+@keyframes jButton {
+	0%   {  
+    background-color: rgb(204, 0, 0);
+    border: solid 2px white;
+    color: white;
+  }
+	20%  {  
+    background-color: rgb(218,165,32);
+    border: solid 2px black;
+    color: black;
+  }
+	40%  {	 
+     background-color: rgb(9,72,170);
+    border: solid 2px rgb(247,196,70);
+    color: rgb(247,196,70);
+  }
+  60%  {  
+    background-color: rgb(235,79,28);
+    border: solid 2px black;
+    color: black;
+  }
+	80%  {	 
+     background-color: rgb(169,6,15);
+    border: solid 2px #B3995D;
+    color: #B3995D;
+  }
+}
+
+.join-button:hover {
+  background-color: black;
+  color: rgb(235,79,28);
+}
 
 a.fc-day-number {
-  color: #bb732a;
+  color: black;
   font-size: .9em;
 }
 
 .logo {
-  width: 10%;
+  width: 90%;
   position: relative;
-  left: .9em;
+  left: .3em;
   bottom: .8em;
 }
 
 a {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 a.hover {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 dropdown {
@@ -88,16 +213,16 @@ dropdown {
 
 .rightNav {
   height: 46em;
-  background-color: rgb(220,220,220);
+  /* background-color: rgb(220,220,220); */
   color: #25274d;
-  border: solid 4px #bb732a;
+  border: solid 4px rgb(235,79,28);
   border-radius: 15px;
   padding: 1%;
   overflow: auto;
 }
 
 .nav-tabs {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   border-radius: 10px;
   font-size: 100px;
   /* position: absolute;
@@ -108,7 +233,7 @@ dropdown {
 
 #exchange-button {
  margin-top: 1%;
- background-color: #bb732a;
+ background-color: rgb(235,79,28);
  color: white;
  border-radius: 15px;
 }
@@ -116,7 +241,7 @@ dropdown {
 #add-button {
   margin-top: 1%;
   margin-left: 1%;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   color: white;
   border-radius: 15px;
  }
@@ -139,7 +264,7 @@ dropdown {
 }
 
 .offerButton:hover {
-  color: #bb732a;
+  color: rgb(235,79,28);
 }
 
 .offerButton {
@@ -156,13 +281,14 @@ dropdown {
 }
 
 .fc-content {
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
 }
 
 .delete-watcher {
   color: white;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
   border: solid 1.5px black;
+  border-radius: 30px;
   height: 28px;
   float: right;
 }
@@ -170,7 +296,8 @@ dropdown {
 .TOButton {
   position: relative;
   right: -75%;
-  background-color: #bb732a;
+  background-color: rgb(235,79,28);
+  border-radius: 30px;
   padding: .3em;
   color: white;
   border: solid 1.5px black;
@@ -190,4 +317,14 @@ dropdown {
   background-color: rgba(70,70,70,.7);
   border-radius: 15px;
   border: solid 1px white;
+}
+
+.landing-page {
+  background: url("/components/pages/imagesattPark.jpg") no-repeat fixed;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.roboto {
+  font-family: 'Roboto', sans-serif;
 }

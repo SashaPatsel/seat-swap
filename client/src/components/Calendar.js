@@ -1,33 +1,44 @@
-// import React...
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// ... and fullcalendar-reactwrapper.
 import FullCalendar from 'fullcalendar-reactwrapper';
+import Modal from 'react-modal';
 import API from "../utils/API";
-import { Button, Icon } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
+
 
 class FullCal extends React.Component {
 
     state = {
         events: [],
-        UserId: ""
+        UserId: "",
+        modalIsOpen: false
     }
 
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
 
-  getUserId = () => {
-    const cookie = document.cookie.split(";");
-    console.log("cookie", cookie)
-    let userID = cookie[0];
-    userID = userID.split("=");
-    userID = userID[1];
-    console.log("userID:", userID);
-    this.setState({ UserId: userID });
-    setTimeout(this.getTixForUser(userID), 500)
-  }
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+    }
 
-  getTixForUser (userId) {
+    closeModal() {
+        this.setState({ modalIsOpen: false });
+    }
+
+    getUserId = () => {
+        const cookie = document.cookie.split(";");
+        console.log("cookie", cookie)
+        let userID = cookie[0];
+        userID = userID.split("=");
+        userID = userID[1];
+        console.log("userID:", userID);
+        this.setState({ UserId: userID });
+        setTimeout(this.getTixForUser(userID), 500)
+    }
+
+    getTixForUser(userId) {
         API.getTixForUser(userId)
             .then(res => {
                 console.log(res.data)
@@ -36,8 +47,11 @@ class FullCal extends React.Component {
             .catch(err => console.log(err));
     };
 
-    componentDidMount ()  {
+    componentDidMount() {
         this.getUserId();
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     };
 
     getTix = (tickets) => {
@@ -46,6 +60,7 @@ class FullCal extends React.Component {
         tickets.map(function (newTix) {
             console.log
             const userTix = {
+                id: newTix.id,
                 title: newTix.eventTitle,
                 start: newTix.date
             }
@@ -60,11 +75,15 @@ class FullCal extends React.Component {
         })
     }
 
-
+    testFunc = event => {
+        alert("chicken")
+        console.log("chicken")
+    }
     render() {
         return (
             <div id="example-component" className="fullCal">
                 <FullCalendar
+
                     id="fullCal-main"
                     header={{
                         left: 'prev,next today',
@@ -76,19 +95,19 @@ class FullCal extends React.Component {
                     editable={false}
                     eventLimit={true} // allow "more" link when too many events
                     events={this.state.events}
+                    eventClick={this.openModal}
                 />
-
-                {/* <Link to="/addTix" className="n-pills">
-                    <Button size='small' id='exchange-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
-                        <Icon name='exchange' /> Find Tickets
-                    </Button>
-                </Link>
-                
-                <Link to="/addWatcher" className="n-pills">
-                    <Button size='small' id='add-button' className={window.location.pathname === "/addWatcher" ? "active" : ""}>
-                        <Icon name='add circle' /> Add Tickets
-                    </Button>
-                </Link> */}
+                <Modal
+                    className="ss-modal"
+                    overlayClassName="Overlay"
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    // style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <h1>Chicken</h1>
+                </Modal>
             </div>
         );
     }

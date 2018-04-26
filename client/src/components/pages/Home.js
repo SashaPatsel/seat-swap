@@ -11,7 +11,9 @@ class Home extends React.Component {
   render() {
     return (
       <div className="ss-wrapper">
-        <Nav />
+        <Nav 
+        inOut="Out"
+        />
         <div className="row">
           <div className="col-md-7">
             <FullCal />
@@ -31,3 +33,12 @@ class Home extends React.Component {
 
 
 export default Home;
+// # Responsive Assignment
+// ##  Things You Did Well
+
+// ## Things To Improve On
+
+// ## Final Comments
+
+//1. conditional rendering if answered question or timeout
+//2. 
