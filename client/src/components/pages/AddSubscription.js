@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Input from "../Form/Input";
-import Organizations from "../../utils/Organizations.json";
 import SubscriptionCard from "../SubscriptionCard";
+import API from "./../../utils/API";
 
 class AddSubscription extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class AddSubscription extends Component {
       OrganizationId: "",
      	subName: "",
       UserId:"",
-      Organizations: Organizations
+      Organizations: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,6 +19,7 @@ class AddSubscription extends Component {
 
   componentDidMount() {
   	this.getUserId();
+    this.getOrganizationInfo();
   }
 
 
@@ -32,14 +33,22 @@ class AddSubscription extends Component {
     this.setState({UserId: userID});
   }
 
+  getOrganizationInfo = () => {
+    API.getOrgs()
+    .then(res => {
+      this.setState({Organizations: res.data})
+    }).catch(err =>
+      console.log(err)
+    );
+    console.log("allorg", this.state.Organizations);
+  }
+
 	handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-
-    console.log("change", event.target.value);
   };  
 
   handleSubmit(event) {
