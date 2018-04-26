@@ -26,11 +26,13 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "cheerio-req": "^1.2.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
+    "jquery": "^3.3.1",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "node-rest-client": "^3.1.0",
@@ -41,6 +43,9 @@
     "passport-oauth2-strategy": "^1.0.4",
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
+    "react-dom": "^16.3.2",
+    "react-responsive-modal": "^2.1.0",
+    "request": "^2.85.0",
     "sequelize": "^4.35.2"
   },
   "devDependencies": {
