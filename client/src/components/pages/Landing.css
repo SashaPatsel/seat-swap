@@ -76,27 +76,46 @@
 	-webkit-animation-name: bGround; /* Safari 4.0 - 8.0 */
 	-webkit-animation-duration: s; /* Safari 4.0 - 8.0 */
 	animation-iteration-count: 299;
-	animation-duration: 40s;
+	animation-duration: 90s;
 }
 
 
+/* https://s3-media4.fl.yelpcdn.com/bphoto/O7c1-VOPxdV6LWuTFYBKaw/o.jpg */
+/* http://puntacanacheaptransfers.com/assets/img/concert.jpg */
 
 /* Standard syntax */
 @keyframes bGround {
 	0%   {
-		background:	url(https://images.pexels.com/photos/269948/pexels-photo-269948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) no-repeat fixed;background-size: cover;
+		background:	url(http://puntacanacheaptransfers.com/assets/img/concert.jpg) no-repeat fixed;
+		background-size: cover;
 		height: 100%;
 		width: 100%;
 		position: absolute;
 	}
-	33%  {	
-		background: url(https://www.billboard.com/files/media/davies_symphony_hall.jpg) no-repeat fixed;background-size: cover;
+	20%  {	
+		background: url(https://www.billboard.com/files/media/davies_symphony_hall.jpg) no-repeat fixed;
+		background-size: cover;
 		height: 100%;
 		width: 100%;
 		position: absolute;
 	}
-	66%  {
-		background: url(https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-s3.si.com%2Fs3fs-public%2Fstyles%2Fmarquee_large_2x%2Fpublic%2F2015%2F06%2F05%2Foracle-arena-warriors.jpg%3Fitok%3DD4IcX6-B&w=700&q=85) no-repeat fixed; background-size: cover;
+	40%  {
+		background: url(https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-s3.si.com%2Fs3fs-public%2Fstyles%2Fmarquee_large_2x%2Fpublic%2F2015%2F06%2F05%2Foracle-arena-warriors.jpg%3Fitok%3DD4IcX6-B&w=700&q=85) no-repeat fixed; 
+		background-size: cover;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
+	60%  {	
+		background: url(https://images.pexels.com/photos/269948/pexels-photo-269948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) no-repeat fixed;
+		background-size: cover;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
+	80%  {
+		background: url(https://s3-media4.fl.yelpcdn.com/bphoto/O7c1-VOPxdV6LWuTFYBKaw/o.jpg) no-repeat fixed; 
+		background-size: cover;
 		height: 100%;
 		width: 100%;
 		position: absolute;

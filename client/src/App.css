@@ -120,43 +120,65 @@ button:hover {
 
 @keyframes mSub {
 	0%   {  
-    -webkit-text-stroke: 2px white;
-    color: rgb(235,79,28);}
-	33%  { 
-    -webkit-text-stroke: 2px rgb(218,165,32);
+    -webkit-text-stroke: 1px white;
+    color: rgb(204, 0, 0);}
+	20%  { 
+    -webkit-text-stroke: 1px rgb(218,165,32);
     color: black;}
-	66%  {	 
-    -webkit-text-stroke: 2px rgb(9,72,170);
+	40%  {	 
+    -webkit-text-stroke: 1px rgb(9,72,170);
     color: rgb(247,196,70);}
+  60%  {	 
+    -webkit-text-stroke: 1px rgb(235,79,28);
+    color: rgb(247,196,70);}
+  80%  {	 
+    -webkit-text-stroke: 1px rgb(169,6,15);
+    color: #B3995D;}
 }
 
 @keyframes mTitle {
 	0%   {  
     -webkit-text-stroke: 2px white;
-    color: rgb(235,79,28);}
-	33%  { 
+    color: rgb(204, 0, 0);}
+	20%  { 
     -webkit-text-stroke: 2px rgb(218,165,32);
     color: black;}
-	66%  {	 
+	40%  {	 
     -webkit-text-stroke: 2px rgb(9,72,170);
     color: rgb(247,196,70);}
+  60%  { 
+    -webkit-text-stroke: 2px rgb(235,79,28);
+    color: black;}
+  80%  {	 
+    -webkit-text-stroke: 2px rgb(169,6,15);
+    color: #B3995D;}
 }
 
 @keyframes jButton {
 	0%   {  
-    background-color: rgb(235,79,28);
+    background-color: rgb(204, 0, 0);
     border: solid 2px white;
     color: white;
   }
-	33%  {  
+	20%  {  
     background-color: rgb(218,165,32);
     border: solid 2px black;
     color: black;
   }
-	66%  {	 
+	40%  {	 
      background-color: rgb(9,72,170);
     border: solid 2px rgb(247,196,70);
     color: rgb(247,196,70);
+  }
+  60%  {  
+    background-color: rgb(235,79,28);
+    border: solid 2px black;
+    color: black;
+  }
+	80%  {	 
+     background-color: rgb(169,6,15);
+    border: solid 2px #B3995D;
+    color: #B3995D;
   }
 }
 

@@ -33,3 +33,12 @@ class Home extends React.Component {
 
 
 export default Home;
+// # Responsive Assignment
+// ##  Things You Did Well
+
+// ## Things To Improve On
+
+// ## Final Comments
+
+//1. conditional rendering if answered question or timeout
+//2. 
