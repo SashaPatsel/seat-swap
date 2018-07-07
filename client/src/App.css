@@ -1,93 +1,76 @@
-/* .App {
-  text-align: center;
-}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); }
+  80% {
+    transform: translateX(10px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-.App-title {
-  font-size: 1.5em;
-}
+/* Reset CSS for cross-browser compatibility */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* allows other elements to inherit box-sizing specified in body */
+  box-sizing: inherit; }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
-
-/* SS Style */
+html {
+  /* this makes it a lot easier to calcute rem. 62.5 is 10/16 so our defualt fontsize is relative to user settings */
+  font-size: 62.5%; }
 
 body {
-  background-color: rgb(205,205,205)
-}
+  /* makes it so that padding and width don't add to total size of element. i.e. height and width will now extend to define other parts of the box model */
+  box-sizing: border-box; }
 
-.fc-button {
-  background-color: #9ad3de;
-}
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 400px;
+  line-height: 1.7;
+  color: #878787; }
 
-.ss-wrapper {
-  height: 100%;
-  width: 100%;
-}
-
-.ss-nav {
-  background-color: #026670;
-  color: #c9c9c9;
-  width: 100%;
-  height: 10%;
-  border-radius: 0px;
-}
-
-.fullCal {
-  margin-left: 5%;
-  margin-right: 5%; 
-}
-
-#fullCal-main {
-  width: 100%;
-  background-color: white;
-  color: #026670;
-  padding: 1em;
-}
-
-
-a.fc-day-number {
-  color: #026670;
-}
-
-.logo {
-  width: 10%;
-  position: relative;
-  bottom: .9em;
-  left: .9em;
-}
-
-a {
-  color: #026670;
-}
-
-a.hover {
-  color: #026670;
-}
-
-.rightNav {
-  height: 41.5em;
-  background-color: white;
-  color: #026670;
-}
-
-.n-pills {
-  font-size: 13px;
-}
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
