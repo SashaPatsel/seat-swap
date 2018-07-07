@@ -1,16 +1,16 @@
 import React from "react";
-import Nav from './Nav'
-import FullCal from "./Calendar";
+import Nav from '../components/Nav'
+import FullCal from "../components/Calendar";
 import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
-import Navpills from "./Navpills";
+import Navpills from "../components/Navpills";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Pending from "./pages/PendingTrades";
-import MyRequests from "./pages/MyRequests";
-import OrgTix from "./pages/OrgTix";
-import AllTix from "./pages/AllTix";
-import Historyy from "./pages/Historyy";
-import News from "./pages/News";
+import Pending from "./PendingTrades";
+import MyRequests from "./MyRequests";
+import OrgTix from "./OrgTix";
+import AllTix from "./AllTix";
+import Historyy from "./Historyy";
+import News from "./News";
 
 
 

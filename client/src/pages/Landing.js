@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import SignIn from "../SignIn";
-import SignUp from "../SignUp";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 
 class Landing extends Component {
 	render() {
