@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./SignUp.css";
+import Input from "../Form/Input"
 
 class SignUp extends Component {
   // Setting the component's initial state
@@ -63,35 +63,47 @@ class SignUp extends Component {
           <h3>Sign Up</h3>
         </div>
         <form className="form" >
-          <input
+          <Input
             value={this.state.firstname}
             name="firstname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="First Name"
+            id="fName"
+            for="fName"
+            label="First Name"
           />
-          <input
+          <Input
             value={this.state.lastname}
             name="lastname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
+            id="lName"
+            for="lName"
+            label="Last Name"
           />
-          <input
+          <Input
             value={this.state.email}
             name="email"
             onChange={this.handleInputChange}
-            type="text"
+            type="email"
             placeholder="Email Address"
+            id="email"
+            for="email"
+            label="Email Address"
           />
-          <input
+          <Input
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="password"
             placeholder="Password"
+            id="pword"
+            for="pword"
+            label="Password"
           />
-          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
+          <Input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
         </form>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import Button from "../components/Button"
 
 class Landing extends Component {
 state = {
@@ -21,15 +22,12 @@ handleScroll(event) {
 	console.log(this.state.scrollY)
 
 }
-doScroll() {
-	console.log("yo")
-}
 	render() {
 		return (
-			<div> 
+			<div id="landing"> 
 				<SignUp/>
 				<SignIn/>
-					
+				<Button text="Sign Up &rarr;" type="btn--primary"/>
 			</div>
 		)
 	}

@@ -1,9 +1,12 @@
 import React from "react";
 
 const Input = props => (
-  <div className="form-group">
-    <input className="form-control" {...props} />
-  </div>
+
+
+<div class="form__group">
+<input class="form__input"{...props} />
+<label {...props} class="form__label">{props.label}</label>
+</div>
 );
 
 export default Input
