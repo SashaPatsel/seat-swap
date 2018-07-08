@@ -1,17 +1,13 @@
 import React, { Component } from "react";
-// import "./Form.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import axios from "axios";
-// import Google from "../Google";
-
+import "./SignUp.css";
 
 class SignUp extends Component {
   // Setting the component's initial state
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     };
@@ -29,25 +25,32 @@ class SignUp extends Component {
   
     event.preventDefault();
 
+    console.log("email, pwd", this.state.email, this.state.password);
+
     fetch("/auth/signup", {
       method: "POST",
       credentials: "include",
       mode: "cors",
-      data: {
-      email: this.state.email,
-      password: this.state.password,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName
-    }}).then(response  => {
-      console.log(response)
-      //console.log(response.headers.get("content-type"));
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        firstname: this.state.firstname,
+        lastname: this.state.lastname
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    }).then(response  => {
+      console.log(response);
+
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
 
     this.setState({
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     });
@@ -56,23 +59,20 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-          <div>
-            <a href="/auth/google">Google SignUp</a>
-          </div>
-          <div>
-            <a href="/auth/facebook">Facebook SignUp</a>
-          </div>
+        <div className="row">
+          <h3>Sign Up</h3>
+        </div>
         <form className="form" >
           <input
-            value={this.state.firstName}
-            name="firstName"
+            value={this.state.firstname}
+            name="firstname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="First Name"
           />
           <input
-            value={this.state.lastName}
-            name="lastName"
+            value={this.state.lastname}
+            name="lastname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
@@ -88,10 +88,10 @@ class SignUp extends Component {
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
-            type="text"
+            type="password"
             placeholder="Password"
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
         </form>
       </div>
     );

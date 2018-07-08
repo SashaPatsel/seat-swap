@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-// import "./Form.css";
-import {BrowserRouter as Router} from "react-router-dom";
-import axios from "axios";
-// import Google from "../Google";
-// import Facebook from "../Facebook";
+import "./SignIn.css";
+import fblogo from "./fblogo.png";
+import googlelogo from "./google.png";
 
 class SignIn extends Component {
   // Setting the component's initial state
@@ -26,31 +24,41 @@ class SignIn extends Component {
   
     event.preventDefault();
 
-    axios.post("/auth/signin", {
-      email: this.state.email,
-      password: this.state.password
+    fetch("/auth/signin", {
+      method: "POST",
+      credentials: "include",
+      mode: "cors",
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
     }).then(response  => {
       console.log(response)
+
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
 
     this.setState({
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     });
   };
 
   render() {
-
     return (
       <div>
-        <div>
-          <a href="/auth/google">Google SignIn</a>
+        <div className="row">
+          <h3>Sign In</h3>
         </div>
-        <div>
-          <a href="/auth/facebook">Facebook SignIn</a>
-        </div>
+        <br/>
+        <br/>
         <form className="form" method="POST" action="http://localhost:5000/signin">
           <input
             value={this.state.email}
@@ -63,11 +71,20 @@ class SignIn extends Component {
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
-            type="text"
+            type="password"
             placeholder="Password"
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit} Submit />
         </form>
+        <br/>
+        <div className="row" id="landing-link">
+          <div className="col-xs-12 col-sm-6 col-md-6 text-right">
+            <a href="/auth/google"><img alt="googlelogin" src={googlelogo} id="googlelogo"/></a>
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-6 text-left">
+            <a href="/auth/facebook"><img alt="facebooklogin" src={fblogo} id="fblogo"/></a>
+          </div>
+        </div>
       </div>
     );
   }

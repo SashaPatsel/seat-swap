@@ -1,7 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var Ticket = sequelize.define("Ticket", {
-        date: DataTypes.DATE,
-        seatSec: DataTypes.INTEGER,
+        date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        seatSec: DataTypes.STRING,
         seatRow: DataTypes.STRING,
         seatNum: DataTypes.INTEGER,
         eventTitle: DataTypes.STRING,
@@ -20,7 +23,8 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
         Ticket.belongsTo(models.Subscription);
-        Ticket.belongsTo(models.Organization);        
+        Ticket.belongsTo(models.Organization);
+        Ticket.hasMany(models.Match);        
     };
     return Ticket;
 };

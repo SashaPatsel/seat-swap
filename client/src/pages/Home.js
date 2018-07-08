@@ -4,42 +4,28 @@ import FullCal from "../components/Calendar";
 import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 import Navpills from "../components/Navpills";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Pending from "./PendingTrades";
-import MyRequests from "./MyRequests";
-import OrgTix from "./OrgTix";
-import AllTix from "./AllTix";
-import Historyy from "./Historyy";
-import News from "./News";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-
-
-
-
-
-
-const Wrapper = props => (
-  <div className="ss-wrapper">
-    <Nav />
-    <div className="row">
-      <div className="col-md-7">
-        <FullCal />
-      </div>
-      <div className="col-md-5">
-        <Router>
-          <div className="rightNav">
-            <Navpills />
-            <Route exact path="/pendingtrades" component={Pending} />
-            <Route exact path="/requests" component={MyRequests} />
-            <Route exact path="/orgtix" component={OrgTix} />
-            <Route path="/alltix" component={AllTix} />
-            <Route path="/history" component={Historyy} />
-            <Route path="/news" component={News} />
+class Home extends React.Component {
+  render() {
+    return (
+      <div className="ss-wrapper">
+        <Nav />
+        <div className="row">
+          <div className="col-md-7">
+            <FullCal />
           </div>
-        </Router>
+          <div className="col-md-5">
+            <div className="rightNav">
+              <Navpills />
+            </div>
+        </div>
       </div>
-    </div>
-  </div>
-);
+      </div>
+    );
+  }
+}
 
-export default Wrapper;
+
+
+export default Home;

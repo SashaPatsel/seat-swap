@@ -7,7 +7,7 @@ state = {
 	scrollY: 0
 }
 	componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll.bind(this));
 }
 
 componentWillUnmount() {
@@ -29,7 +29,6 @@ doScroll() {
 			<div> 
 				<SignUp/>
 				<SignIn/>
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 					
 			</div>
 		)
