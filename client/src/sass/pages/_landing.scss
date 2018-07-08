@@ -1,3 +1,20 @@
-body {
-  background-color: rgba(150,150,150,1);
+.landing {
+  // background-color: rgba($color-black, 1);
+
+
+ &__signup-box {
+    background-image: linear-gradient(105deg, 
+    rgba($color-white, .9) 0%,
+    rgba($color-white, .9) 50%,
+    transparent 50%),
+    url(./images/attpark.jpeg);
+    background-size: cover;
+    border-radius: $border-rad-sm;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
+
+    &--form {
+      width: 50%;
+      padding: 6rem;
+    }
+  }
 }

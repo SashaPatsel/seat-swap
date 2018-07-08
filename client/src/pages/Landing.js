@@ -24,10 +24,15 @@ handleScroll(event) {
 }
 	render() {
 		return (
-			<div id="landing"> 
+			<div className="landing" id="landing"> 
+			<div className="row">
+				<div className="landing__signup-box">
+				<div className="landing__signup-box--form">
 				<SignUp/>
+				</div>
+				</div>
+			</div>
 				<SignIn/>
-				<Button text="Sign Up &rarr;" type="btn--primary"/>
 			</div>
 		)
 	}

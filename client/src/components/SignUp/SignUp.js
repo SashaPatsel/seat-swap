@@ -59,10 +59,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <h3>Sign Up</h3>
-        </div>
-        <form className="form" >
+        <form >
           <Input
             value={this.state.firstname}
             name="firstname"
@@ -103,7 +100,7 @@ class SignUp extends Component {
             for="pword"
             label="Password"
           />
-          <Input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
+          <Input type="submit" className="btn btn-prim" id="click" onClick={this.handleFormSubmit}Submit/>
         </form>
       </div>
     );

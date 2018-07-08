@@ -41,8 +41,7 @@ html {
 
 body {
   /* makes it so that padding and width don't add to total size of element. i.e. height and width will now extend to define other parts of the box model */
-  box-sizing: border-box;
-  height: 300vh; }
+  box-sizing: border-box; }
 
 body {
   font-family: 'Hind Siliguri', sans-serif;
@@ -222,5 +221,11 @@ body {
   .row .col-3-of-4 {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
-body {
-  background-color: #969696; }
+.landing__signup-box {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(./images/attpark.jpeg);
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3); }
+  .landing__signup-box--form {
+    width: 50%;
+    padding: 6rem; }
