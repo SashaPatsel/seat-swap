@@ -29,7 +29,7 @@
       }
 
       &::-webkit-input-placeholder {
-        color: $color-grey-dark-2;
+        color: $color-grey-light-1;
       }
 
   }
@@ -44,6 +44,7 @@
     //allows us to use box-model properties
     display: block;
     transition: all .3s;
+    color: white;
   }
 
   //plus selects the very next element (sibling). ~ selects multiple siblings

@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = props => (
   <div>
-  <button class={`btn ${props.type}`}>{props.text}</button>
+  <button className={`btn ${props.genre}`}>{props.text}</button>
   </div>
 );
 

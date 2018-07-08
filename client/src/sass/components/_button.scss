@@ -41,9 +41,13 @@
   &--primary {
     background-color: $color-primary;
     color: $color-grey-light-1;
-
   }
   
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-grey-light-1;
+
+  }
   &::after{
     /* must always specify content for pseudo elements */
     content: "";

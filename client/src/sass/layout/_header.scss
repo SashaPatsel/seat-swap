@@ -11,5 +11,8 @@
   box-shadow: 0rem 2rem 8rem rgba($color-black, .3);
 
   
-
+  &__text-box {
+    @include center-right-top-element;
+    width: 33%;
+  }
 }

@@ -90,10 +90,7 @@ body {
   color: #878787; }
 
 .heading-primary {
-  position: absolute;
-  top: 15%;
-  left: 85%;
-  transform: translate(-85%, -15%);
+  text-align: center;
   -webkit-background-clip: text;
   color: #F64900;
   line-height: 1.3;
@@ -111,20 +108,19 @@ body {
     -webkit-animation: moveInTop 1.5s ease-out; }
 
 .heading-secondary {
-  position: absolute;
-  top: 42%;
-  left: 90%;
-  transform: translate(-90%, -42%);
-  display: inline;
-  width: 35rem;
-  font-size: 3.5rem;
+  text-align: left;
+  font-size: 2.8rem;
   background-image: linear-gradient(to right, #F68E00, #FFAA35);
   -webkit-background-clip: text;
   color: transparent;
   font-style: italic;
   text-transform: uppercase;
   border-bottom: 2px white solid;
-  padding-bottom: -1rem; }
+  padding-bottom: -1rem;
+  -webkit-animation: moveInLeft 1.5s ease-out; }
+
+.u-primary-shadow {
+  box-shadow: 0 1rem 3rem rgba(246, 73, 0, 0.5); }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -155,6 +151,10 @@ body {
 
 .btn--primary {
   background-color: #F64900;
+  color: #f7f7f7; }
+
+.btn--secondary {
+  background-color: #06599F;
   color: #f7f7f7; }
 
 .btn::after {
@@ -218,7 +218,7 @@ body {
   .form__input:focus:invalid {
     border-bottom: 3px solid #ff7730; }
   .form__input::-webkit-input-placeholder {
-    color: #999; }
+    color: #f7f7f7; }
 
 .form__label {
   font-size: 1.2rem;
@@ -226,7 +226,8 @@ body {
   margin-left: 2rem;
   margin-top: .7rem;
   display: block;
-  transition: all .3s; }
+  transition: all .3s;
+  color: white; }
 
 .form__input:placeholder-shown + .form__label {
   opacity: 0;
@@ -283,7 +284,7 @@ body {
     width: 60%;
     animation: growFromCenter 1s ease-out; }
   .about__signup-box {
-    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 50%), url(./images/attpark.jpeg);
+    background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 50%), url(./images/attpark.jpeg);
     background-size: cover;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
@@ -328,3 +329,9 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
   position: relative;
   box-shadow: 0rem 2rem 8rem rgba(0, 0, 0, 0.3); }
+  .header__text-box {
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    transform: translate(-90%, -15%);
+    width: 33%; }
