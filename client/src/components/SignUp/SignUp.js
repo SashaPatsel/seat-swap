@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "../Form/Input"
+import Button from "../Button"
 
 class SignUp extends Component {
   // Setting the component's initial state
@@ -100,7 +101,7 @@ class SignUp extends Component {
             for="pword"
             label="Password"
           />
-          <Input type="submit" className="btn btn-prim" id="click" onClick={this.handleFormSubmit}Submit/>
+          <Button type="submit" className="btn btn-prim" id="click" onClick={this.handleFormSubmit} text="Sign Up"/>
         </form>
       </div>
     );

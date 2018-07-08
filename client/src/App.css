@@ -26,6 +26,20 @@
     opacity: 1;
     transform: translate(0); } }
 
+@keyframes growFromCenter {
+  0% {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1); }
+  100% {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); } }
+
 /* Reset CSS for cross-browser compatibility */
 *,
 *::after,
@@ -77,7 +91,7 @@ body {
   color: #878787; }
 
 .btn--primary {
-  background-color: #EB5A14;
+  background-color: #F64900;
   color: #f7f7f7; }
 
 .btn::after {
@@ -103,14 +117,14 @@ body {
 
 .btn-text:link, .btn-text:visited {
   font-size: 1.6rem;
-  color: #EB5A14;
+  color: #F64900;
   display: inline-block;
   text-decoration: none;
-  border-bottom: 1px solid #EB5A14;
+  border-bottom: 1px solid #F64900;
   padding: 3px; }
 
 .btn-text--anim-trig:hover .btn-text {
-  background-color: #EB5A14;
+  background-color: #F64900;
   color: white;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.27);
   transform: translateY(-2px); }
@@ -127,7 +141,7 @@ body {
   padding: 1.5rem 2rem;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
-  color: inherit;
+  color: black;
   border: none;
   font-family: inherit;
   border-bottom: 3px solid transparent;
@@ -172,7 +186,7 @@ body {
 .form__radio-button {
   height: 3rem;
   width: 3rem;
-  border: 5px solid #EB5A14;
+  border: 5px solid #F64900;
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -188,12 +202,16 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #EB5A14;
+    background-color: #F64900;
     opacity: 0;
     transition: opacity .2s; }
 
 .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
+
+.about {
+  background-image: linear-gradient(to top, #F64900, white);
+  height: 85vh; }
 
 .row {
   max-width: 114rem;
@@ -221,11 +239,28 @@ body {
   .row .col-3-of-4 {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
-.landing__signup-box {
-  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(./images/attpark.jpeg);
+.header {
+  height: 65vh;
+  background-blend-mode: soft-light;
+  background-image: linear-gradient(to right bottom, #FF7235, #F64900), url(./images/fans-1.jpeg);
   background-size: cover;
-  border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3); }
-  .landing__signup-box--form {
-    width: 50%;
-    padding: 6rem; }
+  background-position: bottom;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+  position: relative;
+  box-shadow: 0rem 2rem 8rem rgba(0, 0, 0, 0.3); }
+  .header__signup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    animation: growFromCenter 1s; }
+  .header__signup-box {
+    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 50%), url(./images/attpark.jpeg);
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3); }
+    .header__signup-box--form {
+      width: 50%;
+      padding: 6rem; }

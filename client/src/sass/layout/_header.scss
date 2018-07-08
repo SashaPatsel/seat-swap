@@ -1,0 +1,36 @@
+
+.header {
+  height: 65vh;
+  background-blend-mode: soft-light;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary), url(./images/fans-1.jpeg);
+  background-size: cover;
+  background-position: bottom;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+  position: relative;
+  box-shadow: 0rem 2rem 8rem rgba($color-black, .3);
+
+  
+  &__signup {
+    @include center-element;
+    width: 60%;
+    animation: growFromCenter 1s;
+
+  }
+
+  &__signup-box {
+    background-image: linear-gradient(105deg, 
+    rgba($color-white, .75) 0%,
+    rgba($color-white, .75) 50%,
+    transparent 50%),
+    url(./images/attpark.jpeg);
+    background-size: cover;
+    border-radius: $border-rad-sm;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
+
+    &--form {
+      width: 50%;
+      padding: 6rem;
+    }
+  }
+}
