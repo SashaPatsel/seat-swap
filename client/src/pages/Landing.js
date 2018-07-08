@@ -28,11 +28,14 @@ class Landing extends Component {
 		
 				</section>
 				<section className="about"> 
-							<div className="row header__signup">
-						<div className="header__signup-box">
-							<div className="header__signup-box--form">
+							<div className="row about__signup">
+						<div className="about__signup-box">
+							<div className="about__signup-box--form">
 								<SignUp />
 							</div>
+							<h1 className="heading-primary"><span className="heading-primary--1">Seat</span> <span className="heading-primary--2">Swap</span></h1>
+
+							<h2 className="heading-secondary">Never miss an event</h2>
 						</div>
 					</div>
 				</section>	

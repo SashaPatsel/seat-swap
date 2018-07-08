@@ -12,3 +12,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin center-right-element {
+position: absolute;
+top: 50%;
+left: 85%;
+transform: translate(-85%, -50%);
+} 
+
+@mixin center-right-top-element {
+  position: absolute;
+  top: 15%;
+  left: 85%;
+  transform: translate(-85%, -15%);
+  } 

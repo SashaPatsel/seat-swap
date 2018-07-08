@@ -21,7 +21,19 @@
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(8rem); }
+  97% {
+    transform: translateY(-0.3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-8rem); }
+  97% {
+    transform: translateY(0.3rem); }
   100% {
     opacity: 1;
     transform: translate(0); } }
@@ -39,6 +51,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1); } }
+
+@keyframes growFromRight {
+  0% {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -75%) scale(0.1); }
+  100% {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -75%) scale(1); } }
 
 /* Reset CSS for cross-browser compatibility */
 *,
@@ -62,6 +88,43 @@ body {
   font-weight: 400px;
   line-height: 1.7;
   color: #878787; }
+
+.heading-primary {
+  position: absolute;
+  top: 15%;
+  left: 85%;
+  transform: translate(-85%, -15%);
+  -webkit-background-clip: text;
+  color: #F64900;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 1.3rem;
+  font-size: 6rem;
+  backface-visibility: hidden; }
+  .heading-primary--1 {
+    display: block;
+    letter-spacing: 3.1rem;
+    -webkit-animation: moveInBottom 1.5s ease-out; }
+  .heading-primary--2 {
+    display: block;
+    letter-spacing: 2.2rem;
+    -webkit-animation: moveInTop 1.5s ease-out; }
+
+.heading-secondary {
+  position: absolute;
+  top: 42%;
+  left: 90%;
+  transform: translate(-90%, -42%);
+  display: inline;
+  width: 35rem;
+  font-size: 3.5rem;
+  background-image: linear-gradient(to right, #F68E00, #FFAA35);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: italic;
+  text-transform: uppercase;
+  border-bottom: 2px white solid;
+  padding-bottom: -1rem; }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -212,6 +275,22 @@ body {
 .about {
   background-image: linear-gradient(to top, #F64900, white);
   height: 85vh; }
+  .about__signup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    animation: growFromCenter 1s ease-out; }
+  .about__signup-box {
+    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 50%), url(./images/attpark.jpeg);
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+    position: relative; }
+    .about__signup-box--form {
+      width: 50%;
+      padding: 6rem; }
 
 .row {
   max-width: 114rem;
@@ -249,18 +328,3 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
   position: relative;
   box-shadow: 0rem 2rem 8rem rgba(0, 0, 0, 0.3); }
-  .header__signup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    animation: growFromCenter 1s; }
-  .header__signup-box {
-    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 50%), url(./images/attpark.jpeg);
-    background-size: cover;
-    border-radius: 3px;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3); }
-    .header__signup-box--form {
-      width: 50%;
-      padding: 6rem; }
