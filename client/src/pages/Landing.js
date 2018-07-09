@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import logo from "../images/logo-1.png"
 
 
 class Landing extends Component {
@@ -23,17 +24,14 @@ class Landing extends Component {
 	render() {
 		return (
 			<div className="landing" id="landing">
-				<section className="header">
-
-
-				</section>
+				<div className="landing__hero"></div>
 				<section className="about">
 					<div className="row about__signup">
 						<div className="about__signup-box">
 							<div className="about__signup-box--form">
 								<SignUp />
 							</div>
-
+								<img className="about__logo" src={logo}/>
 							<div className="header__text-box">
 								<h1 className="heading-primary"><span className="heading-primary--1">Seat</span> <span className="heading-primary--2">Swap</span></h1>
 
@@ -42,7 +40,6 @@ class Landing extends Component {
 						</div>
 
 						<div className="header__menu">
-						
 						</div>
 					</div>
 				</section>

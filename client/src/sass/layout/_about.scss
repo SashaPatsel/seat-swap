@@ -1,6 +1,13 @@
 .about {
-  background-image: linear-gradient(to top, $color-primary, $color-white);
+  background-image: linear-gradient(to top, $color-black, $color-primary);
   height: 85vh;
+  margin-top: -20rem;
+
+  &__logo {
+    @include center-element;
+    height: 10rem;
+    width: auto;
+  }
 
   &__signup {
     @include center-element;

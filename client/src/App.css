@@ -274,8 +274,16 @@ body {
   opacity: 1; }
 
 .about {
-  background-image: linear-gradient(to top, #F64900, white);
-  height: 85vh; }
+  background-image: linear-gradient(to top, #000000, #F64900);
+  height: 85vh;
+  margin-top: -20rem; }
+  .about__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10rem;
+    width: auto; }
   .about__signup {
     position: absolute;
     top: 50%;
@@ -319,7 +327,14 @@ body {
   .row .col-3-of-4 {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
-.header {
+.header__text-box {
+  position: absolute;
+  top: 15%;
+  left: 90%;
+  transform: translate(-90%, -15%);
+  width: 33%; }
+
+.landing__hero {
   height: 65vh;
   background-blend-mode: soft-light;
   background-image: linear-gradient(to right bottom, #FF7235, #F64900), url(./images/fans-1.jpeg);
@@ -329,9 +344,3 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
   position: relative;
   box-shadow: 0rem 2rem 8rem rgba(0, 0, 0, 0.3); }
-  .header__text-box {
-    position: absolute;
-    top: 15%;
-    left: 90%;
-    transform: translate(-90%, -15%);
-    width: 33%; }
