@@ -23,7 +23,8 @@
     transparent 50%),
     url(./images/attpark.jpeg);
     background-size: cover;
-    border-radius: $border-rad-sm;
+    opacity: .9;
+    border-radius: 1rem;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
     position: relative;
     &--form {

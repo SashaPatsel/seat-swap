@@ -147,7 +147,7 @@ body {
 
 .btn--white {
   background-color: #fff;
-  color: #878787; }
+  color: black; }
 
 .btn--primary {
   background-color: #F64900;
@@ -294,7 +294,8 @@ body {
   .about__signup-box {
     background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 50%), url(./images/attpark.jpeg);
     background-size: cover;
-    border-radius: 3px;
+    opacity: .9;
+    border-radius: 1rem;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
     position: relative; }
     .about__signup-box--form {
@@ -334,13 +335,58 @@ body {
   transform: translate(-90%, -15%);
   width: 33%; }
 
-.landing__hero {
-  height: 65vh;
-  background-blend-mode: soft-light;
-  background-image: linear-gradient(to right bottom, #FF7235, #F64900), url(./images/fans-1.jpeg);
-  background-size: cover;
-  background-position: bottom;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+.intro {
+  height: 100vh;
+  width: 100vw;
   position: relative;
-  box-shadow: 0rem 2rem 8rem rgba(0, 0, 0, 0.3); }
+  z-index: 5; }
+  .intro__heading--main {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    z-index: 5;
+    text-transform: uppercase;
+    font-size: 8rem;
+    transform: translateX(-50%);
+    letter-spacing: 2.6rem; }
+  .intro__heading--sub {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    z-index: 5;
+    color: orange;
+    font-size: 5rem;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    letter-spacing: 1rem; }
+  .intro__heroes {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    object-fit: cover; }
+    .intro__heroes-1 {
+      left: 0;
+      clip-path: polygon(0 0, 80% 0, 65% 100%, 0 100%);
+      z-index: 3; }
+    .intro__heroes-2 {
+      left: 26%;
+      clip-path: polygon(10% 0, 100% 0, 80% 100%, 0 100%);
+      z-index: 2;
+      width: 45%; }
+    .intro__heroes-3 {
+      left: 60%;
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 1; }
+  .intro__auth-container--local {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    padding-bottom: 1rem;
+    border-bottom: solid 2px white; }
+  .intro__login-link {
+    font-size: 1.7rem;
+    text-align: center;
+    margin-top: 1rem; }
