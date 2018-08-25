@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import "./SignIn.css";
+import Input from "../Form/Input"
+import Button from "../Button"
+
+
 import fblogo from "./fblogo.png";
 import googlelogo from "./google.png";
 
@@ -54,37 +57,27 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <h3>Sign In</h3>
-        </div>
-        <br/>
-        <br/>
         <form className="form" method="POST" action="http://localhost:5000/signin">
-          <input
+          <Input
             value={this.state.email}
             name="email"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Email Address"
           />
-          <input
+          <Input
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="password"
             placeholder="Password"
           />
-          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit} Submit />
+          <div className="popup__button">
+            <Button type="submit" id="click" onClick={this.handleFormSubmit} text="Sign In" genre="btn--secondary popup__button" />
+          </div>
         </form>
-        <br/>
-        <div className="row" id="landing-link">
-          <div className="col-xs-12 col-sm-6 col-md-6 text-right">
-            <a href="/auth/google"><img alt="googlelogin" src={googlelogo} id="googlelogo"/></a>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-md-6 text-left">
-            <a href="/auth/facebook"><img alt="facebooklogin" src={fblogo} id="fblogo"/></a>
-          </div>
-        </div>
+
+        
       </div>
     );
   }

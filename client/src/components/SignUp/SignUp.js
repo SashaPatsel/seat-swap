@@ -101,7 +101,7 @@ class SignUp extends Component {
             for="pword"
             label="Password"
           />
-          <Button type="submit" genre="btn--secondary" id="click" onClick={this.handleFormSubmit} text="Sign Up"/>
+          <Button type="submit" genre="btn--secondary popup__button" id="click" onClick={this.handleFormSubmit} text="Sign Up"/>
         </form>
       </div>
     );

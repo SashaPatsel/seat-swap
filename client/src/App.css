@@ -351,6 +351,9 @@ body {
     line-height: 1; }
   .popup__close:hover {
     color: #F64900; }
+  .popup__button {
+    display: block;
+    margin: auto; }
 
 .about {
   background-image: linear-gradient(to top, #000000, #F64900);
