@@ -3,62 +3,34 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: rgba($color-black, .85);
+  background-color: rgba(0,0,0, .85);
   height: 100vh;
   width: 100%;
 
   opacity: 0;
   visibility: hidden;
 
+  &__heading {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
   &__content {
     @include center-element;
-    width: 75%;
-    background-color: white;
-    box-shadow: 0 2rem 4rem rgba($color-black, .3);
+    width: 40%;
+    background-image: linear-gradient(to bottom right, $color-secondary-dark, $color-primary-dark);
+    box-shadow: 0 2rem 4rem rgba(0,0,0, .3);
     border-radius: $border-rad-sm;
     display: table;
     overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(.25);
     transition: all .5s .2s;
+    color: black;
+    padding: 3rem;
   }
 
-  &__left {
-    width: 33.33333%;
-    display: table-cell;
-  }
-
-  &__right {
-    width: 66.66666%;
-    display: table-cell;
-    vertical-align: middle;
-    padding: 3rem 5rem;
-
-  }
-
-  &__img {
-    display: block;
-    width: 35rem;
-    height: 23rem;
-  }
-
-  &__text {
-    font-size: 1.4rem;
-    margin-bottom: 4rem;
-
-    -moz-column-count: 2;
-    -ms-column-gap: 4rem;
-    -webkit-column-rule:1px solid $color-grey-light-2;
-
-    column-count: 2;
-    column-gap: 4rem;
-    column-rule:1px solid $color-grey-light-2;
-
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
 
   //OPEN STATES
   &:target {
@@ -74,7 +46,7 @@
   &__close {
     &:link,
     &:visited {
-      color: $color-grey-dark;
+      color: rgb(100,100,100);
       position: absolute;
       top: 2.5rem;
       right: 2.5rem;
@@ -90,3 +62,5 @@
     }
   }
 }
+
+//LANDING MODAL

@@ -7,8 +7,10 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/auth-button";
 @import "components/button";
 @import "components/form";
+@import "components/modal";
 
 @import "layout/about";
 @import "layout/grid";
