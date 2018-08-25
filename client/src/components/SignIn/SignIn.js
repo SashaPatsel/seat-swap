@@ -57,7 +57,7 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <form className="form" method="POST" action="http://localhost:5000/signin">
+        <form className="form" onClick={this.handleFormSubmit}>
           <Input
             value={this.state.email}
             name="email"
@@ -73,7 +73,7 @@ class SignIn extends Component {
             placeholder="Password"
           />
           <div className="popup__button">
-            <Button type="submit" id="click" onClick={this.handleFormSubmit} text="Sign In" genre="btn--secondary popup__button" />
+            <Button type="submit" id="click"  text="Sign In" genre="btn--secondary popup__button" />
           </div>
         </form>
 

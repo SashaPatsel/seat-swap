@@ -20,10 +20,11 @@ class SignUp extends Component {
     this.setState({
       [name]: value
     });
+  
   };
 
   handleFormSubmit = event => {
-  
+  console.log(this.state)
     event.preventDefault();
 
     console.log("email, pwd", this.state.email, this.state.password);
@@ -60,7 +61,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <form >
+        <form onSubmit={this.handleFormSubmit}>
           <Input
             value={this.state.firstname}
             name="firstname"
@@ -68,7 +69,7 @@ class SignUp extends Component {
             type="text"
             placeholder="First Name"
             id="fName"
-            for="fName"
+            htmlFor="fName"
             label="First Name"
           />
           <Input
@@ -78,7 +79,7 @@ class SignUp extends Component {
             type="text"
             placeholder="Last Name"
             id="lName"
-            for="lName"
+            htmlFor="lName"
             label="Last Name"
           />
           <Input
@@ -88,7 +89,7 @@ class SignUp extends Component {
             type="email"
             placeholder="Email Address"
             id="email"
-            for="email"
+            htmlFor="email"
             label="Email Address"
           />
           <Input
@@ -98,10 +99,10 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
             id="pword"
-            for="pword"
+            htmlFor="pword"
             label="Password"
           />
-          <Button type="submit" genre="btn--secondary popup__button" id="click" onClick={this.handleFormSubmit} text="Sign Up"/>
+          <Button type="submit" genre="btn--secondary popup__button" id="click"  text="Sign Up"/>
         </form>
       </div>
     );
