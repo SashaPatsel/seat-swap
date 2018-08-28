@@ -21,6 +21,7 @@
     font-size: 8rem;
     transform: translateX(-50%);
     letter-spacing: 2.6rem;
+    color: white;
   }
 
   &__heading--sub {
@@ -85,11 +86,14 @@
   }
 
   &__login-link {
-    font-size: 1.7rem;
+    font-size: 2rem;
     text-align: center;
     margin-top: 1rem;
-    border-bottom: solid 2px white;
+    border-bottom: solid 3px white;
     padding-bottom: 1rem;
+    color: white;
+    text-decoration: none;
+
   }
 
   &__oauth {
@@ -100,6 +104,5 @@
         color: white; 
       } 
   }
-
 
 }

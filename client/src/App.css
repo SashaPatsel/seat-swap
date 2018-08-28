@@ -226,6 +226,168 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.27);
   transform: translateY(-2px); }
 
+/* SS Style */
+/*body {
+  background-color: #ffffff
+}*/
+body {
+  /* font-family: 'Raleway', sans-serif; */
+  background-color: black; }
+
+/* .ss-wrapper {
+  font-size: 12px;
+} */
+.fc-button {
+  background-color: #9ad3de; }
+
+.TOHead {
+  color: black;
+  font-size: 3em; }
+
+.ss-wrapper {
+  height: 100%;
+  width: 100%; }
+
+.ss-nav {
+  background-color: #bb732a;
+  color: #c9c9c9;
+  width: 100%;
+  height: 2%;
+  border-radius: 0px; }
+
+.signOut {
+  float: right;
+  height: 2em;
+  font-size: 1em; }
+
+.nav-link {
+  font-size: .15em; }
+
+.fullCal {
+  margin-left: 2%;
+  margin-right: 5%; }
+
+#fullCal-main {
+  background-color: gainsboro;
+  color: black;
+  padding: 1em;
+  border: solid 4px #bb732a;
+  border-radius: 15px; }
+
+a.fc-day-number {
+  color: #bb732a;
+  font-size: .9em; }
+
+.logo {
+  width: 10%;
+  position: relative;
+  left: .9em;
+  bottom: .8em; }
+
+a {
+  color: #bb732a; }
+
+a.hover {
+  color: #bb732a; }
+
+dropdown {
+  height: 40%; }
+
+.rightNav {
+  height: 46em;
+  background-color: gainsboro;
+  color: #25274d;
+  border: solid 4px #bb732a;
+  border-radius: 15px;
+  padding: 1%;
+  overflow: auto; }
+
+.nav-tabs {
+  background-color: #bb732a;
+  border-radius: 10px;
+  font-size: 100px;
+  /* position: absolute;
+  z-index: 99;
+  width: 90.5%; */ }
+
+#exchange-button {
+  margin-top: 1%;
+  background-color: #bb732a;
+  color: white;
+  border-radius: 15px; }
+
+#add-button {
+  margin-top: 1%;
+  margin-left: 1%;
+  background-color: #bb732a;
+  color: white;
+  border-radius: 15px; }
+
+#trade-offers {
+  margin: .5%; }
+
+.myAvail {
+  font-size: 2em;
+  text-align: left; }
+
+.fc-more {
+  color: #022140; }
+
+.list-group-item {
+  border: black solid 2px;
+  margin: 3px; }
+
+.offerButton:hover {
+  color: #bb732a; }
+
+.offerButton {
+  position: relative;
+  float: right;
+  margin: 1%; }
+
+.listItemOfferTitle {
+  position: relative;
+  color: #25274d;
+  bottom: 1em;
+  text-align: center; }
+
+.fc-content {
+  background-color: #bb732a; }
+
+.delete-watcher {
+  color: white;
+  background-color: #bb732a;
+  border: solid 1.5px black;
+  height: 28px;
+  float: right; }
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  background-color: #bb732a;
+  padding: .3em;
+  color: white;
+  border: solid 1.5px black; }
+
+.watchInstruct {
+  font-size: 1.6em; }
+
+.watcher-date {
+  float: left;
+  position: relative; }
+
+.auth-button {
+  color: white;
+  background-color: rgba(70, 70, 70, 0.7);
+  border-radius: 15px;
+  border: solid 1px white; }
+
+.nav-item {
+  background-color: white; }
+
+.nav-link {
+  color: black; }
+
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
 
@@ -430,7 +592,8 @@ body {
     text-transform: uppercase;
     font-size: 8rem;
     transform: translateX(-50%);
-    letter-spacing: 2.6rem; }
+    letter-spacing: 2.6rem;
+    color: white; }
   .intro__heading--sub {
     position: absolute;
     left: 50%;
@@ -471,11 +634,13 @@ body {
     transform: translate(-50%, -65%);
     z-index: 8; }
   .intro__login-link {
-    font-size: 1.7rem;
+    font-size: 2rem;
     text-align: center;
     margin-top: 1rem;
-    border-bottom: solid 2px white;
-    padding-bottom: 1rem; }
+    border-bottom: solid 3px white;
+    padding-bottom: 1rem;
+    color: white;
+    text-decoration: none; }
   .intro__oauth {
     margin-top: 1rem; }
     .intro__oauth--or {
