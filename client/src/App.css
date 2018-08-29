@@ -83,8 +83,8 @@ body {
   /* makes it so that padding and width don't add to total size of element. i.e. height and width will now extend to define other parts of the box model */
   box-sizing: border-box; }
 
-h2 {
-  font-family: inherit; }
+.row {
+  margin-right: 0px !important; }
 
 body {
   font-family: 'Hind Siliguri', sans-serif;
@@ -121,6 +121,9 @@ body {
   border-bottom: 2px white solid;
   padding-bottom: -1rem;
   -webkit-animation: moveInLeft 1.5s ease-out; }
+
+h2 {
+  font-family: inherit; }
 
 .u-primary-shadow {
   box-shadow: 0 1rem 3rem rgba(246, 73, 0, 0.5); }
@@ -231,168 +234,6 @@ body {
 .btn-text:active {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.27);
   transform: translateY(-2px); }
-
-/* SS Style */
-/*body {
-  background-color: #ffffff
-}*/
-body {
-  /* font-family: 'Raleway', sans-serif; */
-  background-color: black; }
-
-/* .ss-wrapper {
-  font-size: 12px;
-} */
-.fc-button {
-  background-color: #9ad3de; }
-
-.TOHead {
-  color: black;
-  font-size: 3em; }
-
-.ss-wrapper {
-  height: 100%;
-  width: 100%; }
-
-.ss-nav {
-  background-color: #bb732a;
-  color: #c9c9c9;
-  width: 100%;
-  height: 2%;
-  border-radius: 0px; }
-
-.signOut {
-  float: right;
-  height: 2em;
-  font-size: 1em; }
-
-.nav-link {
-  font-size: .15em; }
-
-.fullCal {
-  margin-left: 2%;
-  margin-right: 5%; }
-
-#fullCal-main {
-  background-color: gainsboro;
-  color: black;
-  padding: 1em;
-  border: solid 4px #bb732a;
-  border-radius: 15px; }
-
-a.fc-day-number {
-  color: #bb732a;
-  font-size: .9em; }
-
-.logo {
-  width: 10%;
-  position: relative;
-  left: .9em;
-  bottom: .8em; }
-
-a {
-  color: #bb732a; }
-
-a.hover {
-  color: #bb732a; }
-
-dropdown {
-  height: 40%; }
-
-.rightNav {
-  height: 46em;
-  background-color: gainsboro;
-  color: #25274d;
-  border: solid 4px #bb732a;
-  border-radius: 15px;
-  padding: 1%;
-  overflow: auto; }
-
-.nav-tabs {
-  background-color: #bb732a;
-  border-radius: 10px;
-  font-size: 100px;
-  /* position: absolute;
-  z-index: 99;
-  width: 90.5%; */ }
-
-#exchange-button {
-  margin-top: 1%;
-  background-color: #bb732a;
-  color: white;
-  border-radius: 15px; }
-
-#add-button {
-  margin-top: 1%;
-  margin-left: 1%;
-  background-color: #bb732a;
-  color: white;
-  border-radius: 15px; }
-
-#trade-offers {
-  margin: .5%; }
-
-.myAvail {
-  font-size: 2em;
-  text-align: left; }
-
-.fc-more {
-  color: #022140; }
-
-.list-group-item {
-  border: black solid 2px;
-  margin: 3px; }
-
-.offerButton:hover {
-  color: #bb732a; }
-
-.offerButton {
-  position: relative;
-  float: right;
-  margin: 1%; }
-
-.listItemOfferTitle {
-  position: relative;
-  color: #25274d;
-  bottom: 1em;
-  text-align: center; }
-
-.fc-content {
-  background-color: #bb732a; }
-
-.delete-watcher {
-  color: white;
-  background-color: #bb732a;
-  border: solid 1.5px black;
-  height: 28px;
-  float: right; }
-
-.TOButton {
-  position: relative;
-  right: -75%;
-  background-color: #bb732a;
-  padding: .3em;
-  color: white;
-  border: solid 1.5px black; }
-
-.watchInstruct {
-  font-size: 1.6em; }
-
-.watcher-date {
-  float: left;
-  position: relative; }
-
-.auth-button {
-  color: white;
-  background-color: rgba(70, 70, 70, 0.7);
-  border-radius: 15px;
-  border: solid 1px white; }
-
-.nav-item {
-  background-color: white; }
-
-.nav-link {
-  color: black; }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -626,3 +467,162 @@ dropdown {
     .intro__oauth--or {
       font-size: 1.5rem;
       color: white; }
+
+/* SS Style */
+/*body {
+  background-color: #ffffff
+}*/
+body {
+  /* font-family: 'Raleway', sans-serif; */ }
+
+/* .ss-wrapper {
+  font-size: 12px;
+} */
+.fc-button {
+  background-color: #9ad3de; }
+
+.TOHead {
+  color: black;
+  font-size: 3em; }
+
+.ss-wrapper {
+  height: 100%;
+  width: 100%; }
+
+.ss-nav {
+  background-color: #06599F;
+  color: #c9c9c9;
+  width: 100%;
+  height: 2%;
+  border-radius: 0px; }
+
+.signOut {
+  float: right;
+  height: 2em;
+  font-size: 1em; }
+
+.nav-link {
+  font-size: .15em; }
+
+.fullCal {
+  margin-left: 2%;
+  margin-right: 5%; }
+
+#fullCal-main {
+  color: black;
+  padding: 1em;
+  border: solid 4px #06599F;
+  border-radius: 15px; }
+
+a.fc-day-number {
+  color: #06599F;
+  font-size: .9em; }
+
+.logo {
+  width: 10%;
+  position: relative;
+  left: .9em;
+  bottom: .8em; }
+
+a {
+  color: #F64900; }
+
+a.hover {
+  color: #F64900; }
+
+dropdown {
+  height: 40%; }
+
+.rightNav {
+  height: 46em;
+  color: #25274d;
+  border: solid 4px #06599F;
+  border-radius: 15px;
+  padding: 1%;
+  overflow: auto; }
+
+.nav-tabs {
+  background-color: #06599F;
+  border-radius: 10px;
+  font-size: 100px;
+  /* position: absolute;
+  z-index: 99;
+  width: 90.5%; */ }
+
+#exchange-button {
+  margin-top: 1%;
+  background-color: #06599F;
+  color: white;
+  border-radius: 15px; }
+
+#add-button {
+  margin-top: 1%;
+  margin-left: 1%;
+  background-color: #06599F;
+  color: white;
+  border-radius: 15px; }
+
+#trade-offers {
+  margin: .5%; }
+
+.myAvail {
+  font-size: 2em;
+  text-align: left; }
+
+.fc-more {
+  color: #022140; }
+
+.list-group-item {
+  border: black solid 2px;
+  margin: 3px; }
+
+.offerButton:hover {
+  color: #06599F; }
+
+.offerButton {
+  position: relative;
+  float: right;
+  margin: 1%; }
+
+.listItemOfferTitle {
+  position: relative;
+  color: #25274d;
+  bottom: 1em;
+  text-align: center; }
+
+.fc-content {
+  background-color: #06599F; }
+
+.delete-watcher {
+  color: white;
+  background-color: #06599F;
+  border: solid 1.5px black;
+  height: 28px;
+  float: right; }
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  background-color: #06599F;
+  padding: .3em;
+  color: white;
+  border: solid 1.5px black; }
+
+.watchInstruct {
+  font-size: 1.6em; }
+
+.watcher-date {
+  float: left;
+  position: relative; }
+
+.auth-button {
+  color: white;
+  background-color: rgba(70, 70, 70, 0.7);
+  border-radius: 15px;
+  border: solid 1px white; }
+
+.nav-item {
+  background-color: white; }
+
+.nav-link {
+  color: black; }

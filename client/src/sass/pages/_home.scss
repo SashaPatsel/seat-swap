@@ -1,0 +1,201 @@
+/* SS Style */
+
+/*body {
+  background-color: #ffffff
+}*/
+
+body {
+  /* font-family: 'Raleway', sans-serif; */
+  // background-color: black;
+}
+
+/* .ss-wrapper {
+  font-size: 12px;
+} */
+
+.fc-button {
+  background-color: #9ad3de;
+}
+
+.TOHead {
+  color: black;
+  font-size: 3em;
+}
+
+.ss-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+
+.ss-nav {
+  background-color: $color-secondary;
+  color: #c9c9c9;
+  width: 100%;
+  height: 2%;
+  border-radius: 0px;
+}
+
+.signOut {
+  float: right;
+  height: 2em;
+  font-size: 1em;
+}
+
+.nav-link {
+  font-size: .15em;
+}
+
+.fullCal {
+  margin-left: 2%;
+  margin-right: 5%; 
+}
+
+#fullCal-main {
+  // background-color: rgb(220,220,220);
+  color: black;
+  padding: 1em;
+  border: solid 4px $color-secondary;
+  border-radius: 15px;
+}
+
+
+a.fc-day-number {
+  color: $color-secondary;
+  font-size: .9em;
+}
+
+.logo {
+  width: 10%;
+  position: relative;
+  left: .9em;
+  bottom: .8em;
+}
+
+a {
+  color: $color-primary;
+}
+
+a.hover {
+  color: $color-primary;
+}
+
+dropdown {
+  height: 40%;
+}
+
+.rightNav {
+  height: 46em;
+  // background-color: rgb(220,220,220);
+  color: #25274d;
+  border: solid 4px $color-secondary;
+  border-radius: 15px;
+  padding: 1%;
+  overflow: auto;
+}
+
+.nav-tabs {
+  background-color: $color-secondary;
+  border-radius: 10px;
+  font-size: 100px;
+  /* position: absolute;
+  z-index: 99;
+  width: 90.5%; */
+}
+
+
+#exchange-button {
+ margin-top: 1%;
+ background-color: $color-secondary;
+ color: white;
+ border-radius: 15px;
+}
+
+#add-button {
+  margin-top: 1%;
+  margin-left: 1%;
+  background-color: $color-secondary;
+  color: white;
+  border-radius: 15px;
+ }
+
+#trade-offers {
+  margin: .5%;
+}
+.myAvail {
+  font-size: 2em;
+  text-align: left;
+}
+
+.fc-more {
+  color: #022140;
+}
+
+.list-group-item {
+  border: black solid 2px;
+  margin: 3px;
+}
+
+.offerButton:hover {
+  color: $color-secondary;
+}
+
+.offerButton {
+  position: relative;
+  float: right;
+  margin: 1%;
+}
+
+.listItemOfferTitle {
+  position: relative;
+  color: #25274d;
+  bottom: 1em;
+  text-align: center;
+}
+
+.fc-content {
+  background-color: $color-secondary;
+}
+
+.delete-watcher {
+  color: white;
+  background-color: $color-secondary;
+  border: solid 1.5px black;
+  height: 28px;
+  float: right;
+}
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  background-color: $color-secondary;
+  padding: .3em;
+  color: white;
+  border: solid 1.5px black;
+}
+
+.watchInstruct {
+  font-size: 1.6em;
+}
+
+.watcher-date {
+  float: left;
+  position: relative;
+}
+
+.auth-button {
+  color: white;
+  background-color: rgba(70,70,70,.7);
+  border-radius: 15px;
+  border: solid 1px white;
+}
+
+.nav-item {
+  background-color: white;
+}
+
+.nav-link {
+  color: black;
+}
+
+
