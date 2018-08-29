@@ -1,13 +1,15 @@
 
 
-.btn {
+.bttn {
   &,
   &:link,
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
-    display: inline-block;
+    display: block;
+    margin: auto;
+
     border-radius: 10rem;
     transition: all .2s; 
     position: relative;
@@ -22,6 +24,7 @@
   
   &:hover {
     filter: brightness(90%);
+    transform: translateY(-5px);
   }
   
   &:active,

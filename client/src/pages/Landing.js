@@ -41,7 +41,7 @@ class Landing extends Component {
 
 					<div className="intro__auth-container--local">
 					<a href="#signUp">
-						<Button type="submit" genre="btn--white" id="click" onClick={this.handleFormSubmit} text="Start Swapping" />
+						<Button type="submit" genre="bttn--white" id="click" onClick={this.handleFormSubmit} text="Start Swapping" />
 						</a>
 
 						<a href="#signIn"><p className="intro__login-link"> Login</p></a>

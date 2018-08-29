@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 const AuthButton = props => (
-  <div className={`auth-button auth-button--${props.company}`}>
-      <img className="auth-button__img" src={props.logo} />
+  <div className={`auth-buttons auth-buttons--${props.company}`}>
+      <img className="auth-buttons__img" src={props.logo} />
   </div>
 )
 

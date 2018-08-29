@@ -83,6 +83,9 @@ body {
   /* makes it so that padding and width don't add to total size of element. i.e. height and width will now extend to define other parts of the box model */
   box-sizing: border-box; }
 
+h2 {
+  font-family: inherit; }
+
 body {
   font-family: 'Hind Siliguri', sans-serif;
   font-weight: 400px;
@@ -122,41 +125,43 @@ body {
 .u-primary-shadow {
   box-shadow: 0 1rem 3rem rgba(246, 73, 0, 0.5); }
 
-.auth-button {
+.auth-buttons {
   height: 5rem;
   width: 5rem;
   border-radius: 100%;
   overflow: hidden;
   display: inline-block; }
-  .auth-button:hover {
+  .auth-buttons:hover {
     transform: translateY(-0.3rem);
     /* x-axis, y-axis, blur */
     box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2); }
-    .auth-button:hover::after {
+    .auth-buttons:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .auth-button:active, .auth-button:focus {
+  .auth-buttons:active, .auth-buttons:focus {
     outline: none;
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.2); }
-  .auth-button__img {
+  .auth-buttons__img {
     height: 5rem;
     width: 5rem;
-    border-radius: 10rem; }
-  .auth-button--facebook {
+    border-radius: 10rem;
+    border-color: transparent; }
+  .auth-buttons--facebook {
     background-color: #3b5a95;
     margin-right: 5rem;
     margin-left: 3rem; }
-    .auth-button--facebook::after {
+    .auth-buttons--facebook::after {
       background-color: #3b5a95; }
-  .auth-button--google {
+  .auth-buttons--google {
     background-color: transparent; }
 
-.btn, .btn:link, .btn:visited {
+.bttn, .bttn:link, .bttn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
-  display: inline-block;
+  display: block;
+  margin: auto;
   border-radius: 10rem;
   transition: all .2s;
   position: relative;
@@ -167,27 +172,28 @@ body {
   border: none;
   cursor: pointer; }
 
-.btn:hover {
-  filter: brightness(90%); }
+.bttn:hover {
+  filter: brightness(90%);
+  transform: translateY(-5px); }
 
-.btn:active, .btn:focus {
+.bttn:active, .bttn:focus {
   outline: none;
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.2); }
 
-.btn--white {
+.bttn--white {
   background-color: #fff;
   color: black; }
 
-.btn--primary {
+.bttn--primary {
   background-color: #F64900;
   color: #f7f7f7; }
 
-.btn--secondary {
+.bttn--secondary {
   background-color: #06599F;
   color: #f7f7f7; }
 
-.btn::after {
+.bttn::after {
   /* must always specify content for pseudo elements */
   content: "";
   display: inline-block;
@@ -200,10 +206,10 @@ body {
   z-index: -1;
   transition: all .4s; }
 
-.btn--white::after {
+.bttn--white::after {
   background-color: white; }
 
-.btn--animated {
+.bttn--animated {
   animation: moveInBottom .5s ease-out .75;
   /* automatically apply styles of 0% before anim starts */
   animation-fill-mode: backwards; }
