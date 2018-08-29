@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import Input from "../Form/Input";
-import API from "./../../utils/API";
+import Input from "../components/Form/Input";
+import API from "./../utils/API";
 
 class AddTicket extends Component {
   constructor(props) {

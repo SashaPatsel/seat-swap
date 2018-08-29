@@ -1,10 +1,9 @@
 import React from "react";
-import API from "../../utils/API";
-import List from "../MatchList";
-import ListItem from "../MatchListItem";
-import OfferList from "../MatchOfferList";
-// import OfferListItem from "../MatchOfferListItem";
-import { Button, Icon } from 'semantic-ui-react';
+import API from "../utils/API";
+import List from "../components/MatchList";
+import ListItem from "../components/MatchListItem";
+import OfferList from "../components/MatchOfferList";
+
 
 
 class Offers extends React.Component {

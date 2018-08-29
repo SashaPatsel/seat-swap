@@ -1,12 +1,10 @@
 import React from "react";
-import "./myRequest.css";
-import API from "./../../utils/API";
-import List from "../MatchList";
-import ListItem from "../MatchListItem";
-import OfferList from "../MatchOfferList";
-import { Button, Icon } from 'semantic-ui-react';
-import DeleteBtn from "../DeleteButton";
-import AcceptOffer from "../AcceptOffer"
+import API from "./../utils/API";
+import List from "../components/MatchList";
+import ListItem from "../components/MatchListItem";
+import OfferList from "../components/MatchOfferList";
+import DeleteBtn from "../components/DeleteButton";
+import AcceptOffer from "../components/AcceptOffer"
 
 
 

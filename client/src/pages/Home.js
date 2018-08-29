@@ -1,11 +1,10 @@
 import React from "react";
-import Nav from '../Nav'
-import FullCal from "../Calendar";
+import Nav from '../components/Nav'
+import FullCal from "../components/Calendar";
 import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
-import Navpills from "../Navpills";
+import Navpills from "../components/Navpills";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 
 class Home extends React.Component {
   render() {
@@ -20,9 +19,8 @@ class Home extends React.Component {
             <div className="rightNav">
               <Navpills />
             </div>
-
-          </div>
         </div>
+      </div>
       </div>
     );
   }

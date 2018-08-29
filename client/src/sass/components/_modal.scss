@@ -1,0 +1,72 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0,0,0, .85);
+  height: 100vh;
+  width: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  &__content {
+    @include center-element;
+    width: 40%;
+    background-image: linear-gradient(to bottom right, $color-secondary-dark, $color-primary-dark);
+    box-shadow: 0 2rem 4rem rgba(0,0,0, .3);
+    border-radius: $border-rad-sm;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25);
+    transition: all .5s .2s;
+    color: black;
+    padding: 3rem;
+  }
+
+
+  //OPEN STATES
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      color: rgb(100,100,100);
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .2s;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  //LANDING MODAL
+&__button {
+  display: block;
+  margin: auto;
+
+}
+}
+

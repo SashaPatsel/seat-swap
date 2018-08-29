@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./SignUp.css";
+import Input from "../Form/Input"
+import Button from "../Button"
 
 class SignUp extends Component {
   // Setting the component's initial state
@@ -19,10 +20,11 @@ class SignUp extends Component {
     this.setState({
       [name]: value
     });
+  
   };
 
   handleFormSubmit = event => {
-  
+  console.log(this.state)
     event.preventDefault();
 
     console.log("email, pwd", this.state.email, this.state.password);
@@ -59,39 +61,48 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <h3>Sign Up</h3>
-        </div>
-        <form className="form" >
-          <input
+        <form onSubmit={this.handleFormSubmit}>
+          <Input
             value={this.state.firstname}
             name="firstname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="First Name"
+            id="fName"
+            htmlFor="fName"
+            label="First Name"
           />
-          <input
+          <Input
             value={this.state.lastname}
             name="lastname"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
+            id="lName"
+            htmlFor="lName"
+            label="Last Name"
           />
-          <input
+          <Input
             value={this.state.email}
             name="email"
             onChange={this.handleInputChange}
-            type="text"
+            type="email"
             placeholder="Email Address"
+            id="email"
+            htmlFor="email"
+            label="Email Address"
           />
-          <input
+          <Input
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="password"
             placeholder="Password"
+            id="pword"
+            htmlFor="pword"
+            label="Password"
           />
-          <input type="submit" className="row auth-button" id="click" onClick={this.handleFormSubmit}Submit/>
+          <Button type="submit" genre="btn--secondary popup__button" id="click"  text="Sign Up"/>
         </form>
       </div>
     );

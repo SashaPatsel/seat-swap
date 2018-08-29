@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Offers from "./pages/TradeOffers";
-import MyRequests from "./pages/MyRequests";
-import OrgTix from "./pages/OrgTix";
-import AllTix from "./pages/AllTix";
-import Historyy from "./pages/Historyy";
-import News from "./pages/News";
-import AddTicket from "./pages/AddTicket";
-import AddSubscription from "./pages/AddSubscription";
+import Offers from "../pages/TradeOffers";
+import MyRequests from "../pages/MyRequests";
+// import OrgTix from "../pages/OrgTix";
+// import AllTix from "../pages/AllTix";
+// import Historyy from "../pages/Historyy";
+// import News from "../pages/News";
+import AddTicket from "../pages/AddTicket";
+import AddSubscription from "../pages/AddSubscription";
 import Watcher from "./Watcher/Watcher";
 
 

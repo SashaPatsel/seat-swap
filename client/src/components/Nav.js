@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button, Icon } from 'semantic-ui-react';
 
 const Nav = () => (
 <nav className="navbar navbar-default ss-nav">

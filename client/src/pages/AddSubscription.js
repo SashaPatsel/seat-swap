@@ -1,13 +1,16 @@
 import React, {Component} from "react";
-import Input from "../Form/Input";
+import Input from "../components/Form/Input";
+import SubscriptionCard from "../components/SubscriptionCard";
+import API from "./../utils/API";
 
-class Test extends Component {
+class AddSubscription extends Component {
   constructor(props) {
     super(props);
     this.state = {
       OrganizationId: "",
      	subName: "",
-      UserId:""
+      UserId:"",
+      Organizations: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,7 +19,9 @@ class Test extends Component {
 
   componentDidMount() {
   	this.getUserId();
+    this.getOrganizationInfo();
   }
+
 
   getUserId = () => {
     const cookie = document.cookie.split(";");
@@ -28,14 +33,22 @@ class Test extends Component {
     this.setState({UserId: userID});
   }
 
+  getOrganizationInfo = () => {
+    API.getOrgs()
+    .then(res => {
+      this.setState({Organizations: res.data})
+    }).catch(err =>
+      console.log(err)
+    );
+    console.log("allorg", this.state.Organizations);
+  }
+
 	handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-
-    console.log("change", event.target.value);
   };  
 
   handleSubmit(event) {
@@ -56,10 +69,11 @@ class Test extends Component {
       })
     }).then(response  => {
       console.log(response);
-
-      //this.getSubscriptionInfo(this.state.UserId)
-
-      //window.location.href = "/";
+      this.setState({
+        OrganizationId: "",
+        subName: ""
+      });
+      window.location.href = "/";
     }).catch(err => {
       console.log(err);
     })
@@ -81,23 +95,14 @@ class Test extends Component {
                       <select className="form-control" value={this.state.OrganizationId} onChange={this.handleChange} name="OrganizationId">
                         <optgroup label="Pick One">
                           <option value=""></option>
-                        </optgroup>
-                        <optgroup label="Sports">
-                          <option value="1">Golden State Warriors</option>
-                          <option value="2">San Francisco Giants</option>
-                          <option value="3">San Francisco 49ers</option>
-                          <option value="4">Oakland Raiders</option>
-                          <option value="5">Los Angeles Lakers</option>
-                        </optgroup>
-                        <optgroup label="Art & Music">
-                          <option value="6">San Francisco Symphony</option>
-                          <option value="7">San Francisco Ballet</option>
-                          <option value="8">San Francisco Opera</option>
-                          <option value="9">Metropolitan Opera</option>
-                          <option value="10">Lyric Opera of Chicago</option>
-                          <option value="11">Chicago Symphony Orchestra</option>
-                          <option value="12">Canegie Hall</option>
-                        </optgroup>
+                          {this.state.Organizations.map(organization => {
+                            return <SubscriptionCard 
+                            key={organization.id}
+                            id={organization.id}
+                            name={organization.name}
+                            />
+                          })}
+                        </optgroup>        
                       </select> 
                     </div>                                  
                   </div>
@@ -130,4 +135,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default AddSubscription;
