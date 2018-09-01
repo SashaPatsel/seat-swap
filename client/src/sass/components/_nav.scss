@@ -6,20 +6,35 @@
 
   //NavIcons
   &__icon {
-    font-size: 40px;
+    font-size: 4rem;
     color: white;
-    
+    margin: auto;
+    display: block;
+    width: 5rem;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(.8);
+    }
 
     &-container {
-      display: inline;
+      display: inline-block;
+      padding-left: 3rem;
+
+   
 
       &:not(:last-child) {
-        margin-right: 1rem;
+        padding-right: 3rem;
+        border-right: solid 3px white;
       }
     }
 
     &-label {
-      display: inline-block;
+      display: block;
     }
   }
 }

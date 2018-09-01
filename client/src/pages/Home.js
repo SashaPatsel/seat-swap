@@ -10,8 +10,14 @@ class Home extends React.Component {
   render() {
     return (
       <div className="ss-wrapper">
-        <Nav />  
-        <div className="row">
+        <Nav />
+
+        {/* <Router>
+          <Switch>
+            <Route path="/yourTickets" component={}/>
+          </Switch>
+        </Router> */}
+        {/* <div className="row">
           <div className="col-md-7">
             <FullCal />
           </div>
@@ -21,7 +27,7 @@ class Home extends React.Component {
             </div>
         </div>
         
-      </div>
+      </div> */}
       </div>
     );
   }

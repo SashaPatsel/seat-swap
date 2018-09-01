@@ -94,3 +94,13 @@
     transform: translate(-50%, -75%) scale(1);
   }
 }
+
+@keyframes fullSpin {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+      transform: rotate(360deg)
+  }
+}

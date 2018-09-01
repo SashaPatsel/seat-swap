@@ -19,7 +19,10 @@ body {
     box-sizing: border-box;
 }
 
-
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
 
 .row {
   margin-right: 0px !important;

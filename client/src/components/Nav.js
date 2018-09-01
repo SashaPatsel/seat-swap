@@ -15,7 +15,7 @@ const Nav = () => (
         <NavIcon icon="fa-search" label="Find Tickets"/>
         <NavIcon icon="fa-handshake" label="Pending Trades"/>
         <NavIcon icon="fa-envelope" label="Offers for my Tickets"/>
-        <NavIcon icon="fa-sign-out-alt" label="Sign Out"/>
+        <NavIcon icon="fa-sign-out-alt" label="Sign Out" destination="/logout"/>
         
         
         {/* <ul className="nav navbar-nav navbar-right">
@@ -26,7 +26,6 @@ const Nav = () => (
                 </ul>
             </li>
         </ul> */}
-        <a href="/logout" className="signOut">Sign Out</a>
  
 </nav>
     
