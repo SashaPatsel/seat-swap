@@ -8,7 +8,7 @@ const Nav = () => (
                 <img className="logo" src="https://www.shareicon.net/download/2015/10/05/651639_cinema_512x512.png" />
             </a> */}
         
-
+    <div className="navigation__nav">
         <NavIcon icon="fa-ticket-alt" label="Your Tickets"/>
         {/* Goes inside your tickets */}
         {/* <NavIcon icon="fa-plus" label="Add Tickets"/> */}
@@ -16,7 +16,7 @@ const Nav = () => (
         <NavIcon icon="fa-handshake" label="Pending Trades"/>
         <NavIcon icon="fa-envelope" label="Offers for my Tickets"/>
         <NavIcon icon="fa-sign-out-alt" label="Sign Out" destination="/logout"/>
-        
+      </div>  
         
         {/* <ul className="nav navbar-nav navbar-right">
             <li className="dropdown">

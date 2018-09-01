@@ -12,6 +12,22 @@ html {
   /* this makes it a lot easier to calcute rem. 62.5 is 10/16 so our defualt fontsize is relative to user settings */
   // defines what 1 rem is
   font-size: 62.5%;
+
+  // Media query order should always be descending. This is the only way the browser can properly apply the styling to each screen size respectively.
+
+  //The reason being, that because both apply (both conditions being true--the screen is smaller thna 1200px AND 900px), the most recent code, will win the tie breaker, and be applied.
+
+  @include responsive(l-desk) {
+    font-size: 75%; //1rem = 12px 12/16 = 75%
+  }
+
+  @include responsive(t-land) { // width < 1200?
+    font-size: 56.25%; //1rem = 9px 9/16 = 56.25%
+  }
+
+  @include responsive(t-port) { // width < 900?
+    font-size: 50%; //1rem = 8px 8/16 = 50%
+  }
 }
 
 body {

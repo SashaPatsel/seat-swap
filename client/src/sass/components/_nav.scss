@@ -4,6 +4,37 @@
   margin-bottom: 2.5rem;
   box-shadow: 0 .7rem 2rem rgba(0,0,0,.5);
 
+  &__nav {
+    display: block;
+    width: 60%;
+    margin: auto;
+
+    @include responsive(t-land) {
+      width: 80%;
+    }
+    @include responsive(t-port) {
+      width: 100%;
+    }
+
+    @media (max-width: 615px) {
+      width: 90%;
+    }
+
+    @media (max-width: 540px) {
+      width: 100%;
+    }
+
+    @media (max-width: 490px) {
+      width: 90%;
+    }
+
+    @media (max-width: 435px) {
+      width: 100%;
+    }
+  }
+
+
+
   //NavIcons
   &__icon {
     font-size: 4rem;
@@ -11,6 +42,25 @@
     margin: auto;
     display: block;
     width: 5rem;
+
+    @media (max-width: 730px) {
+      font-size: 3rem;
+      width: 3rem;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 615px) {
+      font-size: 2rem;
+      width: 1.5rem;
+
+    }
+
+    @media (max-width: 490px) {
+      font-size: 3rem;
+    }
 
     &:hover {
       transform: scale(1.2);
@@ -25,16 +75,53 @@
       display: inline-block;
       padding-left: 3rem;
 
-   
+
+
+      @media (max-width: 730px) {
+  
+        &:first-child {
+          padding-left: 0;
+        }
+
+        
+      }
+
+      @media (max-width: 615px) {
+        padding: 1rem !important;
+  
+      }
+
+    
 
       &:not(:last-child) {
         padding-right: 3rem;
         border-right: solid 3px white;
+        
+        @media (max-width: 490px) {
+          padding: 0 4rem 0 3rem !important;
+        }
       }
+
+      &:last-child {
+        @media (max-width: 490px) {
+          padding-left: 2rem !important;
+        }
+      }
+
+
     }
 
     &-label {
       display: block;
+
+      @media (max-width: 730px) {
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 490px) {
+        display: none;
+      }
+
     }
   }
 }

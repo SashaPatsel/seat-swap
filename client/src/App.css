@@ -1,3 +1,17 @@
+/*
+0 - 600px: Phone
+
+600px - 900px: Tablet-Portrait
+
+900px - 1200 px: Tablet-Landscape
+
+[1200px - 1800px]: Normal styling
+
+1800px + : Large desktop
+
+Good working order: Base & Typography -> General Layout & Grid -> Page Layout -> Components
+
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -84,6 +98,15 @@
 html {
   /* this makes it a lot easier to calcute rem. 62.5 is 10/16 so our defualt fontsize is relative to user settings */
   font-size: 62.5%; }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   /* makes it so that padding and width don't add to total size of element. i.e. height and width will now extend to define other parts of the box model */
@@ -379,12 +402,47 @@ h2 {
   padding: 2rem;
   margin-bottom: 2.5rem;
   box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.5); }
+  .navigation__nav {
+    display: block;
+    width: 60%;
+    margin: auto; }
+    @media (max-width: 75em) {
+      .navigation__nav {
+        width: 80%; } }
+    @media (max-width: 56.25em) {
+      .navigation__nav {
+        width: 100%; } }
+    @media (max-width: 615px) {
+      .navigation__nav {
+        width: 90%; } }
+    @media (max-width: 540px) {
+      .navigation__nav {
+        width: 100%; } }
+    @media (max-width: 490px) {
+      .navigation__nav {
+        width: 90%; } }
+    @media (max-width: 435px) {
+      .navigation__nav {
+        width: 100%; } }
   .navigation__icon {
     font-size: 4rem;
     color: white;
     margin: auto;
     display: block;
     width: 5rem; }
+    @media (max-width: 730px) {
+      .navigation__icon {
+        font-size: 3rem;
+        width: 3rem; }
+        .navigation__icon:first-child {
+          padding-left: 0; } }
+    @media (max-width: 615px) {
+      .navigation__icon {
+        font-size: 2rem;
+        width: 1.5rem; } }
+    @media (max-width: 490px) {
+      .navigation__icon {
+        font-size: 3rem; } }
     .navigation__icon:hover {
       transform: scale(1.2);
       cursor: pointer; }
@@ -393,11 +451,29 @@ h2 {
     .navigation__icon-container {
       display: inline-block;
       padding-left: 3rem; }
+      @media (max-width: 730px) {
+        .navigation__icon-container:first-child {
+          padding-left: 0; } }
+      @media (max-width: 615px) {
+        .navigation__icon-container {
+          padding: 1rem !important; } }
       .navigation__icon-container:not(:last-child) {
         padding-right: 3rem;
         border-right: solid 3px white; }
+        @media (max-width: 490px) {
+          .navigation__icon-container:not(:last-child) {
+            padding: 0 4rem 0 3rem !important; } }
+      @media (max-width: 490px) {
+        .navigation__icon-container:last-child {
+          padding-left: 2rem !important; } }
     .navigation__icon-label {
       display: block; }
+      @media (max-width: 730px) {
+        .navigation__icon-label {
+          font-size: 1.5rem; } }
+      @media (max-width: 490px) {
+        .navigation__icon-label {
+          display: none; } }
 
 .about {
   background-image: linear-gradient(to top, #000000, #06599F);
