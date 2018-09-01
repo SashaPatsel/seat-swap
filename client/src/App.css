@@ -95,7 +95,7 @@ body {
 .heading-primary {
   text-align: center;
   -webkit-background-clip: text;
-  color: #F64900;
+  color: #06599F;
   line-height: 1.3;
   text-transform: uppercase;
   letter-spacing: 1.3rem;
@@ -113,7 +113,7 @@ body {
 .heading-secondary {
   text-align: left;
   font-size: 2.8rem;
-  background-image: linear-gradient(to right, #F68E00, #FFAA35);
+  background-image: linear-gradient(to right, #ff6600, #FFAA35);
   -webkit-background-clip: text;
   color: transparent;
   font-style: italic;
@@ -126,7 +126,7 @@ h2 {
   font-family: inherit; }
 
 .u-primary-shadow {
-  box-shadow: 0 1rem 3rem rgba(246, 73, 0, 0.5); }
+  box-shadow: 0 1rem 3rem rgba(6, 89, 159, 0.5); }
 
 .auth-buttons {
   height: 5rem;
@@ -189,11 +189,11 @@ h2 {
   color: black; }
 
 .bttn--primary {
-  background-color: #F64900;
+  background-color: #06599F;
   color: #f7f7f7; }
 
 .bttn--secondary {
-  background-color: #06599F;
+  background-color: #ff6600;
   color: #f7f7f7; }
 
 .bttn::after {
@@ -219,14 +219,14 @@ h2 {
 
 .btn-text:link, .btn-text:visited {
   font-size: 1.6rem;
-  color: #F64900;
+  color: #06599F;
   display: inline-block;
   text-decoration: none;
-  border-bottom: 1px solid #F64900;
+  border-bottom: 1px solid #06599F;
   padding: 3px; }
 
 .btn-text--anim-trig:hover .btn-text {
-  background-color: #F64900;
+  background-color: #06599F;
   color: white;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.27);
   transform: translateY(-2px); }
@@ -289,7 +289,7 @@ h2 {
 .form__radio-button {
   height: 3rem;
   width: 3rem;
-  border: 5px solid #F64900;
+  border: 5px solid #06599F;
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -305,7 +305,7 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #F64900;
+    background-color: #06599F;
     opacity: 0;
     transition: opacity .2s; }
 
@@ -332,7 +332,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40%;
-    background-image: linear-gradient(to bottom right, #033762, #982D00);
+    background-image: linear-gradient(to bottom right, #c93217, #033762);
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     display: table;
@@ -359,13 +359,28 @@ h2 {
     transition: all .2s;
     line-height: 1; }
   .popup__close:hover {
-    color: #F64900; }
+    color: #06599F; }
   .popup__button {
     display: block;
     margin: auto; }
 
+.navigation {
+  background-color: #06599F;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.5); }
+  .navigation__icon {
+    font-size: 40px;
+    color: white; }
+    .navigation__icon-container {
+      display: inline; }
+      .navigation__icon-container:not(:last-child) {
+        margin-right: 1rem; }
+    .navigation__icon-label {
+      display: inline-block; }
+
 .about {
-  background-image: linear-gradient(to top, #000000, #F64900);
+  background-image: linear-gradient(to top, #000000, #06599F);
   height: 85vh;
   margin-top: -20rem; }
   .about__logo {
@@ -525,10 +540,10 @@ a.fc-day-number {
   bottom: .8em; }
 
 a {
-  color: #F64900; }
+  color: #06599F; }
 
 a.hover {
-  color: #F64900; }
+  color: #06599F; }
 
 dropdown {
   height: 40%; }

@@ -10,7 +10,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="ss-wrapper">
-        <Nav />
+        <Nav />  
         <div className="row">
           <div className="col-md-7">
             <FullCal />
@@ -20,6 +20,7 @@ class Home extends React.Component {
               <Navpills />
             </div>
         </div>
+        
       </div>
       </div>
     );
