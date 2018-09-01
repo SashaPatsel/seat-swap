@@ -5,6 +5,7 @@ var session = require("express-session");
 var passport = require("passport");
 var passportSetup = require("./config/passport-setup");
 require("dotenv").config();
+var path = require("path")
 
 var PORT = process.env.PORT || 5000;
 
@@ -61,6 +62,10 @@ app.use("/auth", authRoutes);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/test-routes.js")(app);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

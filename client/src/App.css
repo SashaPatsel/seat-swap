@@ -447,7 +447,8 @@ h2 {
       transform: scale(1.2);
       cursor: pointer; }
     .navigation__icon:active {
-      transform: scale(0.8); }
+      transform: scale(0.8);
+      transition: .2s; }
     .navigation__icon-container {
       display: inline-block;
       padding-left: 3rem; }

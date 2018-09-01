@@ -4,6 +4,7 @@ import FullCal from "../components/Calendar";
 import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 import Navpills from "../components/Navpills";
+import YourTickets from "./YourTickets"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Home extends React.Component {
@@ -11,13 +12,13 @@ class Home extends React.Component {
     return (
       <div className="ss-wrapper">
         <Nav />
-
-        {/* <Router>
+          {/* <YourTickets/> */}
+        <Router>
           <Switch>
-            <Route path="/yourTickets" component={}/>
+            <Route path="/yo" component={YourTickets}/>
           </Switch>
-        </Router> */}
-        {/* <div className="row">
+        </Router> 
+       {/* <div className="row">
           <div className="col-md-7">
             <FullCal />
           </div>

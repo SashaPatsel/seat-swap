@@ -10,30 +10,32 @@ module.exports = function(app) {
     // app.get("*", function(req, res) {
     //     res.redirect("/")
     // })
-    app.get("/requests", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("/tradeoffers", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("orgtix", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("alltix", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("history", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("News", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("addTix", function(req, res) {
-        res.redirect("/")
-    })
-    app.get("addWatcher", function(req, res) {
-        res.redirect("/")
-    })
+    // app.get("/requests", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("/tradeoffers", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("orgtix", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("alltix", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("history", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("News", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("addTix", function(req, res) {
+    //     res.redirect("/")
+    // })
+    // app.get("/yo", function(req, res) {
+    //     res.redirect("/")
+    // })
+
+
 
 	app.get("/", function(req, res) {
         if (req.isAuthenticated()) {

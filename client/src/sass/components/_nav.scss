@@ -69,6 +69,7 @@
 
     &:active {
       transform: scale(.8);
+      transition: .2s;
     }
 
     &-container {

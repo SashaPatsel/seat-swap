@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Landing from "../pages/Landing";
-import Home from "../pages/Home"
+// import Home from "../pages/Home"
+import YourTickets from "../pages/YourTickets"
+import PendingTrades from "../pages/PendingTrades"
+
+import Nav from './Nav'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 class MainContainer extends Component {
@@ -8,9 +12,12 @@ class MainContainer extends Component {
 		if (document.cookie.length > 0) {
 			return (
 			<div>
-				<Router> 
+				<Nav />
+
+				<Router location="HistoryLocation"> 
 					<Switch>
-						<Route path="/" component={Home} />
+						<Route exact path="/" component={YourTickets} />
+						<Route exact path="/trades" component={PendingTrades} />
 					</Switch>
 				</Router>
 			</div>
