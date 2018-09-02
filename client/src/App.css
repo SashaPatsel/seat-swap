@@ -532,6 +532,32 @@ h2 {
         .navigation__icon-label {
           display: none; } }
 
+.util-button {
+  width: 10rem; }
+  .util-button:hover .util-button__icon-container {
+    transform: translateY(-0.5rem); }
+  .util-button:active .util-button__icon-container {
+    transform: translateY(0.5rem); }
+  .util-button__icon {
+    color: white;
+    font-size: 5rem;
+    text-align: center; }
+    .util-button__icon-container {
+      display: block;
+      width: 7rem;
+      height: 7rem;
+      padding: 1rem 1rem 1rem 1.3rem;
+      border-radius: 100%;
+      background-color: #06599F;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+      margin: auto; }
+    .util-button__icon-label {
+      margin-top: 2rem;
+      color: black;
+      display: block;
+      font-size: 1.2rem;
+      text-align: center; }
+
 .about {
   background-image: linear-gradient(to top, #000000, #06599F);
   height: 85vh;
@@ -741,3 +767,13 @@ h2 {
 .watcher-date {
   float: left;
   position: relative; }
+
+.your-tickets__new-tix {
+  position: absolute;
+  left: 3rem;
+  top: 30rem; }
+
+.your-tickets__new-sub {
+  position: absolute;
+  left: 3rem;
+  top: 45rem; }
