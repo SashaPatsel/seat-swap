@@ -268,6 +268,31 @@ h2 {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.27);
   transform: translateY(-2px); }
 
+#fullCal-main {
+  color: black;
+  padding: 1em;
+  border: solid 4px #06599F;
+  border-radius: 15px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.7); }
+
+.fullCal {
+  width: 50%;
+  margin-left: 2rem; }
+
+.fc-button {
+  background-color: #9ad3de; }
+
+.fc-day {
+  height: 4rem !important; }
+  .fc-day-number {
+    color: black !important; }
+
+.fc-more {
+  color: #022140; }
+
+.fc-content {
+  background-color: #06599F; }
+
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
 
@@ -580,87 +605,6 @@ h2 {
       font-size: 1.5rem;
       color: white; }
 
-/* SS Style */
-/*body {
-  background-color: #ffffff
-}*/
-body {
-  /* font-family: 'Raleway', sans-serif; */ }
-
-/* .ss-wrapper {
-  font-size: 12px;
-} */
-.fc-button {
-  background-color: #9ad3de; }
-
-.TOHead {
-  color: black;
-  font-size: 3em; }
-
-.ss-wrapper {
-  height: 100%;
-  width: 100%; }
-
-.ss-nav {
-  background-color: #06599F;
-  color: #c9c9c9;
-  width: 100%;
-  height: 2%;
-  border-radius: 0px; }
-
-.signOut {
-  float: right;
-  height: 2em;
-  font-size: 1em; }
-
-.nav-link {
-  font-size: .15em; }
-
-.fullCal {
-  margin-left: 2%;
-  margin-right: 5%; }
-
-#fullCal-main {
-  color: black;
-  padding: 1em;
-  border: solid 4px #06599F;
-  border-radius: 15px; }
-
-a.fc-day-number {
-  color: #06599F;
-  font-size: .9em; }
-
-.logo {
-  width: 10%;
-  position: relative;
-  left: .9em;
-  bottom: .8em; }
-
-a {
-  color: #06599F; }
-
-a.hover {
-  color: #06599F; }
-
-dropdown {
-  height: 40%; }
-
-.rightNav {
-  height: 46em;
-  color: #25274d;
-  border: solid 4px #06599F;
-  border-radius: 15px;
-  padding: 1%;
-  overflow: auto; }
-
-.nav-tabs {
-  background-color: #06599F;
-  border-radius: 10px;
-  font-size: 100px;
-  /* position: absolute;
-  z-index: 99;
-  width: 90.5%; */ }
-
 #exchange-button {
   margin-top: 1%;
   background-color: #06599F;
@@ -681,9 +625,6 @@ dropdown {
   font-size: 2em;
   text-align: left; }
 
-.fc-more {
-  color: #022140; }
-
 .list-group-item {
   border: black solid 2px;
   margin: 3px; }
@@ -701,9 +642,6 @@ dropdown {
   color: #25274d;
   bottom: 1em;
   text-align: center; }
-
-.fc-content {
-  background-color: #06599F; }
 
 .delete-watcher {
   color: white;
@@ -726,15 +664,3 @@ dropdown {
 .watcher-date {
   float: left;
   position: relative; }
-
-.auth-button {
-  color: white;
-  background-color: rgba(70, 70, 70, 0.7);
-  border-radius: 15px;
-  border: solid 1px white; }
-
-.nav-item {
-  background-color: white; }
-
-.nav-link {
-  color: black; }

@@ -3,6 +3,7 @@ import Landing from "../pages/Landing";
 // import Home from "../pages/Home"
 import YourTickets from "../pages/YourTickets"
 import PendingTrades from "../pages/PendingTrades"
+import TradeOffers from "../pages/TradeOffers"
 
 import Nav from './Nav'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -18,6 +19,7 @@ class MainContainer extends Component {
 					<Switch>
 						<Route exact path="/" component={YourTickets} />
 						<Route exact path="/trades" component={PendingTrades} />
+						<Route exact path="/offers" component={TradeOffers} />
 					</Switch>
 				</Router>
 			</div>

@@ -9,12 +9,13 @@ const Nav = () => (
             </a> */}
         
     <div className="navigation__nav">
-        <NavIcon icon="fa-ticket-alt" label="Your Tickets" destination="/tickets"/>
+            
+        <NavIcon icon="fa-ticket-alt" label="Your Tickets" destination="/"/>
         {/* Goes inside your tickets */}
         {/* <NavIcon icon="fa-plus" label="Add Tickets"/> */}
         <NavIcon icon="fa-search" label="Find Tickets"/>
         <NavIcon icon="fa-handshake" label="Pending Trades" destination="/trades"/>
-        <NavIcon icon="fa-envelope" label="Offers for my Tickets"/>
+        <NavIcon icon="fa-envelope" label="Offers for my Tickets" destination="/offers"/>
         <NavIcon icon="fa-sign-out-alt" label="Sign Out" destination="/logout"/>
       </div>  
         

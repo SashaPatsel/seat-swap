@@ -1,0 +1,43 @@
+
+#fullCal-main {
+  // background-color: rgb(220,220,220);
+  color: black;
+  padding: 1em;
+  border: solid 4px $color-primary;
+  border-radius: 15px;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.7);
+}
+
+.fullCal {
+  width: 50%;
+  margin-left: 2rem;
+  
+}
+
+.fc {
+  
+  &-button {
+    background-color: #9ad3de;
+  }
+  
+
+  &-day  {
+    height: 4rem !important;
+  
+    &-number {
+      color: black !important;
+    }
+    
+  }
+  &-more {
+    color: #022140;
+  }
+
+  &-content {
+    background-color: $color-primary;
+  }
+
+}
+
+
+

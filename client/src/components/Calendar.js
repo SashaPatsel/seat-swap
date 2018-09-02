@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // ... and fullcalendar-reactwrapper.
 import FullCalendar from 'fullcalendar-reactwrapper';
 import API from "../utils/API";
-import { Button, Icon } from 'semantic-ui-react';
+import Button from "./Button"
 import { Link } from "react-router-dom";
 
 class FullCal extends React.Component {
@@ -78,17 +78,17 @@ class FullCal extends React.Component {
                     events={this.state.events}
                 />
 
-                <Link to="/addTix" className="n-pills">
+                {/* <Link to="/addTix" className="n-pills">
                     <Button size='small' id='exchange-button' className={window.location.pathname === "/addTix" ? "active" : ""}>
-                        <Icon name='exchange' /> Find Tickets
+                        Find Tickets
                     </Button>
                 </Link>
                 
                 <Link to="/addWatcher" className="n-pills">
                     <Button size='small' id='add-button' className={window.location.pathname === "/addWatcher" ? "active" : ""}>
-                        <Icon name='add circle' /> Add Tickets
+                         Add Tickets
                     </Button>
-                </Link>
+                </Link> */}
             </div>
         );
     }

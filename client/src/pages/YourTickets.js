@@ -1,6 +1,9 @@
 import React from "react";
 import API from "./../utils/API";
-
+import Calendar from "../components/Calendar"
+import FullCal from "../components/Calendar";
+import FullCalendar from 'fullcalendar-reactwrapper';
+import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 
 
 
@@ -16,8 +19,7 @@ class YourTickets extends React.Component {
     return (
 
 <div>
-  <h1>WAZ GUD!?</h1>
-  <h1>WAZ GUD!?</h1>
+  <FullCal/>
 
   </div>
 

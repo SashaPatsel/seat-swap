@@ -63,9 +63,11 @@ require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/test-routes.js")(app);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+
+//In development, this needs to be switched to client rather than build. 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/public/index.html"));
+// });
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
