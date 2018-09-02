@@ -18,15 +18,12 @@ class YourTickets extends React.Component {
 
     return (
 
-<div>
-  <FullCal/>
+      <div className="container">
+        <FullCal />
 
-  </div>
-
+      </div>
 
     )
-
-
   }
 }
 

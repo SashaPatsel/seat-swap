@@ -272,26 +272,41 @@ h2 {
   color: black;
   padding: 1em;
   border: solid 4px #06599F;
-  border-radius: 15px;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.7); }
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.7); }
 
-.fullCal {
-  width: 50%;
-  margin-left: 2rem; }
+.fc-widget-header a {
+  color: #0a06d4 !important; }
+
+.fc-widget-content {
+  height: 9rem !important; }
+
+.fc-list-item-title a {
+  color: #0a06d4 !important; }
+
+.fc h2 {
+  color: #06599F; }
+
+.fc span {
+  color: #06599F; }
 
 .fc-button {
   background-color: #9ad3de; }
 
-.fc-day {
-  height: 4rem !important; }
-  .fc-day-number {
-    color: black !important; }
+.fc-day-grid-container {
+  height: 55rem !important; }
 
-.fc-more {
-  color: #022140; }
+.fc-day-number {
+  color: #06599F !important; }
+
+.fc-title {
+  color: white !important; }
+
+.fc-time {
+  color: white !important; }
 
 .fc-content {
-  background-color: #06599F; }
+  background-color: #0a06d4;
+  padding: .3rem; }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }

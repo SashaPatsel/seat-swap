@@ -4,37 +4,66 @@
   color: black;
   padding: 1em;
   border: solid 4px $color-primary;
-  border-radius: 15px;
-  box-shadow: 0 1rem 2rem rgba(0,0,0,.7);
-}
-
-.fullCal {
-  width: 50%;
-  margin-left: 2rem;
+  box-shadow: 0 2rem 2rem rgba(0,0,0,.7);
   
 }
 
+
+
 .fc {
+
+  &-widget-header a {
+    color: $color-secondary !important; 
+  }
+
+
+  &-widget-content {
+    height: 9rem !important; 
+  }
+
+  &-list-item-title a{
+    color: $color-secondary !important;
+  }
+
+  h2 {
+    color: $color-primary;
+  }
+
+  span {
+    color: $color-primary;
+  }
   
   &-button {
     background-color: #9ad3de;
   }
   
 
+
   &-day  {
-    height: 4rem !important;
-  
+    // height: 5rem !important; 
+
+    &-grid-container {
+      height: 55rem !important;
+    }
+
     &-number {
-      color: black !important;
+      color: $color-primary !important;
     }
     
   }
-  &-more {
-    color: #022140;
+
+  &-title {
+    color: white !important;
   }
 
+  &-time {
+    color: white !important;
+  }
+
+
   &-content {
-    background-color: $color-primary;
+    background-color: $color-secondary;
+    padding: .3rem;
   }
 
 }
