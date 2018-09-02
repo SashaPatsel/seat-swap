@@ -97,7 +97,8 @@ Good working order: Base & Typography -> General Layout & Grid -> Page Layout ->
 
 html {
   /* this makes it a lot easier to calcute rem. 62.5 is 10/16 so our defualt fontsize is relative to user settings */
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  scroll-behavior: smooth; }
   @media (min-width: 112.5em) {
     html {
       font-size: 75%; } }
@@ -552,8 +553,13 @@ h2 {
   transform: translate(-90%, -15%);
   width: 33%; }
 
-.intro {
+.landing-about {
   height: 100vh;
+  width: 100%;
+  background-color: transparent; }
+
+.intro {
+  height: 80rem;
   width: 100vw;
   position: relative;
   z-index: 5; }
@@ -619,6 +625,31 @@ h2 {
     .intro__oauth--or {
       font-size: 1.5rem;
       color: white; }
+  .intro__parallax {
+    position: fixed;
+    z-index: 1;
+    background-image: url("https://images.unsplash.com/photo-1470755711115-961e80ee0284?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=17792efb947bf0488c16d979db79eff5&auto=format&fit=crop&w=1950&q=80");
+    height: 100vh;
+    width: 100%;
+    background-size: cover; }
+  .intro__scroll {
+    color: white;
+    border: solid white 2px;
+    border-radius: 30px;
+    padding: 12px 5px 5px 5px;
+    font-size: 26px;
+    width: 55px;
+    height: 55px;
+    text-align: center; }
+    .intro__scroll-contain {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translate(-50%);
+      z-index: 200; }
+    .intro__scroll:hover {
+      background: linear-gradient(to bottom, #0a06d4, #3485C7);
+      color: black; }
 
 #exchange-button {
   margin-top: 1%;

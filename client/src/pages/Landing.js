@@ -28,7 +28,7 @@ class Landing extends Component {
 	render() {
 		return (
 			<div className="landing" id="landing">
-
+						<div className="intro__parallax"></div>	
 				<section className="intro">
 
 					<h1 className="intro__heading--main">Seat Swap</h1>
@@ -58,7 +58,9 @@ class Landing extends Component {
 						</a>
 						</div>
 					</div>
-
+					<a href="#about" className="intro__scroll-contain">
+        <i className="fa fa-angle-double-down intro__scroll"></i>
+      </a>
 				</section>
 
 				<Modal modal="signUp" exitDestination="#" h1="Sign Up">
@@ -68,8 +70,13 @@ class Landing extends Component {
 				<Modal modal="signIn" exitDestination="#" h1="Sign In">
 					<SignIn/>
 				</Modal>
-			</div>
 
+	
+			
+			<div className="landing-about" id="about"></div>
+
+			</div>
+// Parallax below with an about section. This is super important
 
 		)
 	}
