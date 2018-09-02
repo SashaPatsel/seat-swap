@@ -75,22 +75,35 @@ class Landing extends Component {
 
 
 				<div className="landing-about" id="about">
+					<h2 className="landing-about__heading">See it all</h2>
 					<div className="container">
 						<div className="row">
 							<div class="col-md-3">
-								<Card>
+								<Card img="https://images.unsplash.com/photo-1449748040579-354c191a7934?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjIxMTIzfQ&s=7bee13000bedc1de01bb9d5e43168d54&auto=format&fit=crop&w=1950&q=80">
+									<p className="landing-about__card-text">
+									Keep track of all your tickets in one centralized place.
+									</p>
 								</Card>
 							</div>
 							<div class="col-md-3">
-								<Card>
+								<Card img="https://images.unsplash.com/photo-1532089006065-de61ca171e56?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ba70aba13c3634a61c4bfbd6cf24f792&auto=format&fit=crop&w=1950&q=80">
+								<p className="landing-about__card-text">
+									Find tickets for all the events you want to see.
+								</p>
 								</Card>
 							</div>
 							<div class="col-md-3">
-								<Card>
+								<Card img="https://images.unsplash.com/photo-1527684002373-02a02a68e86f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1debe1a90ad0be0d448cd2b115bde98e&auto=format&fit=crop&w=1595&q=80">
+								<p className="landing-about__card-text">
+									Propose ticket trades to other users.
+									</p>
 								</Card>
 							</div>
 							<div class="col-md-3">
-								<Card>
+								<Card img="https://images.unsplash.com/photo-1508997449629-303059a039c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af90f024facc8921c9bf854da77f222a&auto=format&fit=crop&w=1950&q=80">
+								<p className="landing-about__card-text">
+									Browse through tickets until you find the trade that's right for you.
+									</p>
 								</Card>
 							</div>
 						</div>

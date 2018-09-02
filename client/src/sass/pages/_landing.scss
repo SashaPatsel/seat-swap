@@ -1,6 +1,29 @@
 .landing {
   &-about {
-  margin: 10rem 0;
+  margin: 30rem 0;
+  position: relative;
+
+    &__heading {
+      position: absolute;
+      top: -25rem;
+      left: 50%;
+      transform: translate(-50%);
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 2rem;
+      font-size: 15rem;
+      width: 65%;
+      text-align: center;
+      text-shadow: 0 2rem 1rem rgba(0,0,0,.8);
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    &__card-text {
+      // text-align: center;
+      text-transform: uppercase;
+      color: white;
+      font-size: 2rem;
+    }
   }
 
 }
