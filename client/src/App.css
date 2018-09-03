@@ -273,7 +273,8 @@ h2 {
   color: black;
   padding: 1em;
   border: solid 4px #06599F;
-  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.7); }
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.7);
+  overflow: scroll !important; }
 
 .fc-widget-header a {
   color: #0a06d4 !important; }
@@ -294,7 +295,7 @@ h2 {
   background-color: #9ad3de; }
 
 .fc-day-grid-container {
-  height: 55rem !important; }
+  height: 45rem !important; }
 
 .fc-day-number {
   color: #06599F !important; }
@@ -308,6 +309,12 @@ h2 {
 .fc-content {
   background-color: #0a06d4;
   padding: .3rem; }
+
+.fc-scroller {
+  height: auto !important; }
+
+.fc-list-view {
+  height: 50rem !important; }
 
 .ss-card {
   height: 40rem;
@@ -420,12 +427,12 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
+    width: 60%;
+    height: 70rem;
+    overflow: scroll;
     background-image: linear-gradient(to bottom right, #c93217, #033762);
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
     border-radius: 3px;
-    display: table;
-    overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
     transition: all .5s .2s;
@@ -595,7 +602,7 @@ h2 {
   width: 33%; }
 
 .landing-about {
-  margin: 30rem 0;
+  margin: 30rem 0 15rem 0;
   position: relative; }
   .landing-about__heading {
     position: absolute;
@@ -769,11 +776,13 @@ h2 {
   position: relative; }
 
 .your-tickets__new-tix {
-  position: absolute;
+  position: fixed;
   left: 3rem;
   top: 30rem; }
+  .your-tickets__new-tix--button {
+    margin-top: 3rem; }
 
 .your-tickets__new-sub {
-  position: absolute;
+  position: fixed;
   left: 3rem;
   top: 45rem; }

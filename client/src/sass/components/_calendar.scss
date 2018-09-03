@@ -5,7 +5,7 @@
   padding: 1em;
   border: solid 4px $color-primary;
   box-shadow: 0 2rem 2rem rgba(0,0,0,.7);
-  
+  overflow: scroll !important;
 }
 
 
@@ -43,7 +43,7 @@
     // height: 5rem !important; 
 
     &-grid-container {
-      height: 55rem !important;
+      height: 45rem !important;
     }
 
     &-number {
@@ -64,6 +64,15 @@
   &-content {
     background-color: $color-secondary;
     padding: .3rem;
+  }
+
+  &-scroller {
+    height: auto !important;
+
+  }
+
+  &-list-view {
+    height: 50rem !important;
   }
 
 }

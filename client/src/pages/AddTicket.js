@@ -1,12 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Input from "../components/Form/Input";
 import API from "./../utils/API";
+import Button from "../components/Button"
 
 class AddTicket extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      UserId:"",
+      UserId: "",
       tixTime: "",
       seatSec: "",
       seatRow: "",
@@ -30,12 +31,12 @@ class AddTicket extends Component {
 
   getUserId = () => {
     const cookie = document.cookie.split(";");
-      console.log("cookie", cookie)
+    console.log("cookie", cookie)
     let userID = cookie[0];
-      userID = userID.split("=");
-      userID = userID[1];
-      console.log("userID:", userID);
-    this.setState({UserId: userID});
+    userID = userID.split("=");
+    userID = userID[1];
+    console.log("userID:", userID);
+    this.setState({ UserId: userID });
     setTimeout(this.getSubscriptionInfo(userID), 2000);
   }
 
@@ -46,27 +47,27 @@ class AddTicket extends Component {
       [name]: value
     });
 
-    this.setState({OrganizationId: event.target[event.target.selectedIndex].getAttribute("data-organizationid")})
-  };  
+    this.setState({ OrganizationId: event.target[event.target.selectedIndex].getAttribute("data-organizationid") })
+  };
 
 
-  handleChange = event => { 
+  handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-  };  
-  
+  };
+
 
   getSubscriptionInfo = id => {
     API.getAllSubs(id)
-    .then(res => {
-      this.setState({allSubscriptions: res.data});
-      // console.log("allSub", this.state.allSubscriptions);
-    }).catch(err => 
-      console.log(err)
-    );
+      .then(res => {
+        this.setState({ allSubscriptions: res.data });
+        // console.log("allSub", this.state.allSubscriptions);
+      }).catch(err =>
+        console.log(err)
+      );
   }
 
   handleTixSubmit(event) {
@@ -92,7 +93,7 @@ class AddTicket extends Component {
       headers: new Headers({
         "Content-Type": "application/json"
       })
-    }).then(response  => {
+    }).then(response => {
       console.log(response);
       this.setState({
         tixDate: "",
@@ -112,137 +113,92 @@ class AddTicket extends Component {
   render() {
     return (
       <div>
-        <div className="col-10">
-          <form  onSubmit={this.handleTixSubmit}>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Pick the subscription</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleSelectChange} name="SubscriptionId" > 
-                        <option value=""></option>
-                        {this.state.allSubscriptions.map(subscription => {
-                          return <option key={subscription.id} value={subscription.id} data-organizationid={subscription.OrganizationId}>{subscription.name}</option>
-                        })}                      
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>What is the name of the event?</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <Input
-                      value={this.state.eventTitle}
-                      onChange={this.handleChange}
-                      name="eventTitle"
-                      placeholder="Name of Event"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+        <form onSubmit={this.handleTixSubmit}>
 
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p><span className="glyphicon glyphicon-calendar"></span> Time of the Event: </p> 
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">                   
-                    <div className="select-time">
-                        <input placeholder="Event Time" name="tixTime" type="datetime-local"value={this.state.tixTime} onChange={this.handleChange}/> 
-                    </div>               
-                  </div>
-                </div>
-              </div>
-            </div>
-                
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Seat Section:</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <Input
-                      value={this.state.seatSec}
-                      onChange={this.handleChange}
-                      name="seatSec"
-                      placeholder="Seat Section"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Seat Row:</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <Input
-                      value={this.state.seatRow}
-                      onChange={this.handleChange}
-                      name="seatRow"
-                      placeholder="Seat Row"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Seat Number:</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <Input
-                      value={this.state.seatNum}
-                      onChange={this.handleChange}
-                      name="seatNum"
-                      placeholder="Seat Number"
-                    />
-                  </div>
-                </div>
-                </div>
-            </div>
+          <div className="your-tickets__new-tix--form-group">
 
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <div className="panel-title">
-                  <p>Ticket Status</p>
-                </div>
-                <div className="panel-body">
-                  <div className="section-content">
-                    <div className="select">
-                      <select className="form-control" value={this.state.status} onChange={this.handleChange} name="status">
-                        <option value="locked">locked</option>
-                        <option value="available">available</option>
-                        <option value="flexible">flexible</option>
-                        <option value="gone">gone</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p>Pick the subscription</p>
+            <select className="form-control" value={this.state.SubscriptionId} onChange={this.handleSelectChange} name="SubscriptionId" >
+              <option value=""></option>
+              {this.state.allSubscriptions.map(subscription => {
+                return <option key={subscription.id} value={subscription.id} data-organizationid={subscription.OrganizationId}>{subscription.name}</option>
+              })}
+            </select>
 
-          <input type="submit" value="Add"/>
+
+
+            <p>What is the name of the event?</p>
+            <Input
+              value={this.state.eventTitle}
+              onChange={this.handleChange}
+              name="eventTitle"
+              placeholder="Name of Event"
+            />
+
+          </div>
+
+          <div className="your-tickets__new-tix--form-group">
+
+            <p><span className="glyphicon glyphicon-calendar"></span> Time of the Event: </p>
+
+
+            <div className="select-time">
+              <Input placeholder="Event Time" name="tixTime" type="datetime-local" value={this.state.tixTime} onChange={this.handleChange} />
+
+
+              <p>Seat Section:</p>
+
+
+              <Input
+                value={this.state.seatSec}
+                onChange={this.handleChange}
+                name="seatSec"
+                placeholder="Seat Section"
+              />
+
+            </div>
+          </div>
+          <div className="your-tickets__new-tix--form-group">
+
+            <p>Seat Row:</p>
+
+
+            <Input
+              value={this.state.seatRow}
+              onChange={this.handleChange}
+              name="seatRow"
+              placeholder="Seat Row"
+            />
+
+            <p>Seat Number:</p>
+
+            <Input
+              value={this.state.seatNum}
+              onChange={this.handleChange}
+              name="seatNum"
+              placeholder="Seat Number"
+            />
+          </div>
+
+          <p>Ticket Status</p>
+
+
+          <select className="form-control" value={this.state.status} onChange={this.handleChange} name="status">
+            <option value="locked">locked</option>
+            <option value="available">available</option>
+            <option value="flexible">flexible</option>
+            <option value="gone">gone</option>
+          </select>
+
+          <div className="your-tickets__new-tix--button">    
+          <Button type="submit" genre="btn--secondary popup__button" text="Add" />
+          </div>
         </form>
-      </div>
-    </div>
+
+      </div >
     )
   }
 }

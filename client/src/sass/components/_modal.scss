@@ -18,12 +18,12 @@
 
   &__content {
     @include center-element;
-    width: 40%;
+    width: 60%;
+    height: 70rem;
+    overflow: scroll;
     background-image: linear-gradient(to bottom right, $color-secondary-dark, $color-primary-dark);
     box-shadow: 0 2rem 4rem rgba(0,0,0, .3);
     border-radius: $border-rad-sm;
-    display: table;
-    overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(.25);
     transition: all .5s .2s;

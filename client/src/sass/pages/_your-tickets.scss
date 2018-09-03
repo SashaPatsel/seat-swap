@@ -1,12 +1,18 @@
 .your-tickets {
   &__new-tix {
-    position: absolute;
+    position: fixed;
     left: 3rem;
     top: 30rem;
+
+
+    &--button {
+      margin-top: 3rem;
+    }
+
   }
 
   &__new-sub {
-    position: absolute;
+    position: fixed;
     left: 3rem;
     top: 45rem;
   }

@@ -95,7 +95,7 @@ class Landing extends Component {
 							<div class="col-md-3">
 								<Card img="https://images.unsplash.com/photo-1527684002373-02a02a68e86f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1debe1a90ad0be0d448cd2b115bde98e&auto=format&fit=crop&w=1595&q=80">
 								<p className="landing-about__card-text">
-									Propose ticket trades to other users.
+									Propose trades to other users.
 									</p>
 								</Card>
 							</div>
