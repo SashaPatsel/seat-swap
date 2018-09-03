@@ -3,7 +3,7 @@ import API from "../utils/API";
 import List from "../components/MatchList";
 import ListItem from "../components/MatchListItem";
 import OfferList from "../components/MatchOfferList";
-
+import Button from "../components/Button";
 
 
 class Offers extends React.Component {
@@ -60,18 +60,21 @@ class Offers extends React.Component {
 
     return (
       <div className="navTabs" id="trade-offers">
+        <div className="container">
         <div className="nav-content">
 
-          <h1 className="TOHead">Interest in my Tickets</h1>
+          <h1 className="trade-offers__heading">Interest in my Tickets</h1>
           <List>
             {this.state.matches.map(match => (
-              <ListItem key={match.id} id={match.Ticket.id}
-
+              <ListItem 
+              key={match.id} 
+              id={match.Ticket.id}
+              event={match.Ticket.eventTitle}
+              date={this.convertDate(match.Ticket.date)}
               >
-                {/* convertDate={() => this.convertDate(match.Ticket.date)} */}
-                <strong className="myAvail" >{match.Ticket.eventTitle}</strong>
+                <strong className="myAvail" ></strong>
                 <br />
-                ({this.convertDate(match.Ticket.date)})
+    
 
                 <OfferList id={match.Ticket.id}>
                   <li>
@@ -96,7 +99,7 @@ class Offers extends React.Component {
                             <td>{tix.seatSec}</td>
                             <td>{tix.seatRow}</td>
                             <td>{tix.seatNum}</td>
-                            <td> < button className="offerButton" onClick={() => this.sendTradeOffer(match.id, tix.id)}>Send Offer!</button></td>
+                            <td> < Button genre="bttn--primary" click={() => this.sendTradeOffer(match.id, tix.id)} text="Send Offer!"/></td>
                           </tr>
                             
                       ))}
@@ -108,6 +111,7 @@ class Offers extends React.Component {
             ))}
           </List>
         </div >
+        </div>
       </div >
     );
   }

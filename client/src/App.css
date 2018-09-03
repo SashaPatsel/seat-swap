@@ -408,6 +408,20 @@ h2 {
 .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
 
+.list-group-item {
+  margin-bottom: 2rem !important; }
+
+.list__title {
+  font-size: 3rem;
+  color: black; }
+
+.list__event-info {
+  display: inline-block; }
+
+.list__bttn {
+  display: inline-block;
+  float: right; }
+
 .popup {
   position: fixed;
   top: 0;
@@ -774,6 +788,17 @@ h2 {
 .watcher-date {
   float: left;
   position: relative; }
+
+.trade-offers__heading {
+  color: #06599F;
+  text-shadow: 0 1.5rem 1.5rem rgba(0, 0, 0, 0.7);
+  text-align: center;
+  margin: 5rem 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 6rem;
+  letter-spacing: 1.5rem;
+  text-transform: uppercase;
+  transform: skew(-15deg); }
 
 .your-tickets__new-tix {
   position: fixed;

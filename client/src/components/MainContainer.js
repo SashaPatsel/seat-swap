@@ -4,6 +4,7 @@ import Landing from "../pages/Landing";
 import YourTickets from "../pages/YourTickets"
 import PendingTrades from "../pages/PendingTrades"
 import TradeOffers from "../pages/TradeOffers"
+import FindTickets from "../pages/FindTickets"
 
 import Nav from './Nav'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -17,9 +18,10 @@ class MainContainer extends Component {
 
 				<Router location="HistoryLocation"> 
 					<Switch>
-						<Route exact path="/" component={YourTickets} />
+						<Route exact path="/" component={TradeOffers} />
 						<Route exact path="/trades" component={PendingTrades} />
 						<Route exact path="/offers" component={TradeOffers} />
+						<Route exact path="/find" component={FindTickets} />
 					</Switch>
 				</Router>
 			</div>
