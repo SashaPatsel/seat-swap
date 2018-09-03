@@ -13,7 +13,7 @@ const Nav = () => (
         <NavIcon icon="fa-ticket-alt" label="Your Tickets" destination="/"/>
         {/* Goes inside your tickets */}
         {/* <NavIcon icon="fa-plus" label="Add Tickets"/> */}
-        <NavIcon icon="fa-search" label="Find Tickets"/>
+        <NavIcon icon="fa-search" label="Find Tickets" destination="/find"/>
         <NavIcon icon="fa-handshake" label="Pending Trades" destination="/trades"/>
         <NavIcon icon="fa-envelope" label="Offers for my Tickets" destination="/offers"/>
         <NavIcon icon="fa-sign-out-alt" label="Sign Out" destination="/logout"/>

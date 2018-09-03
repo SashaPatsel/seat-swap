@@ -18,7 +18,7 @@ class MainContainer extends Component {
 
 				<Router location="HistoryLocation"> 
 					<Switch>
-						<Route exact path="/" component={TradeOffers} />
+						<Route exact path="/" component={YourTickets} />
 						<Route exact path="/trades" component={PendingTrades} />
 						<Route exact path="/offers" component={TradeOffers} />
 						<Route exact path="/find" component={FindTickets} />
