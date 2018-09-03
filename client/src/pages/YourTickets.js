@@ -6,7 +6,7 @@ import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 import Modal from "../components/Modal"
 import AddTicket from "./AddTicket"
-
+import AddSubscription from "./AddSubscription"
 
 class YourTickets extends React.Component {
 
@@ -36,7 +36,7 @@ class YourTickets extends React.Component {
 				</Modal>
 
 				<Modal modal="addSubs" exitDestination="#" h1="Add Subscriptions">
-					
+           <AddSubscription/>
 				</Modal>
       </div>
     )

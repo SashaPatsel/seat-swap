@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Input from "../components/Form/Input";
 import SubscriptionCard from "../components/SubscriptionCard";
+import Button from "../components/Button";
 import API from "./../utils/API";
 
 class AddSubscription extends Component {
@@ -127,7 +128,7 @@ class AddSubscription extends Component {
                 </div>
               </div>
             </div>
-            <input id="save-sub" type="submit" value="Save" />
+            <Button  type="submit" genre="btn--secondary popup__button" text="Save" id="save-sub"/>
           </form>
         </div>
       </div>
