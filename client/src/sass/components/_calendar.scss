@@ -1,0 +1,81 @@
+
+#fullCal-main {
+  // background-color: rgb(220,220,220);
+  color: black;
+  padding: 1em;
+  border: solid 4px $color-primary;
+  box-shadow: 0 2rem 2rem rgba(0,0,0,.7);
+  overflow: scroll !important;
+}
+
+
+
+.fc {
+
+  &-widget-header a {
+    color: $color-secondary !important; 
+  }
+
+
+  &-widget-content {
+    height: 9rem !important; 
+  }
+
+  &-list-item-title a{
+    color: $color-secondary !important;
+  }
+
+  h2 {
+    color: $color-primary;
+  }
+
+  span {
+    color: $color-primary;
+  }
+  
+  &-button {
+    background-color: #9ad3de;
+  }
+  
+
+
+  &-day  {
+    // height: 5rem !important; 
+
+    &-grid-container {
+      height: 45rem !important;
+    }
+
+    &-number {
+      color: $color-primary !important;
+    }
+    
+  }
+
+  &-title {
+    color: white !important;
+  }
+
+  &-time {
+    color: white !important;
+  }
+
+
+  &-content {
+    background-color: $color-secondary;
+    padding: .3rem;
+  }
+
+  &-scroller {
+    height: auto !important;
+
+  }
+
+  &-list-view {
+    height: 50rem !important;
+  }
+
+}
+
+
+

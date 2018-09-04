@@ -1,0 +1,36 @@
+.about {
+  background-image: linear-gradient(to top, $color-black, $color-primary);
+  height: 85vh;
+  margin-top: -20rem;
+
+  &__logo {
+    @include center-element;
+    height: 10rem;
+    width: auto;
+  }
+
+  &__signup {
+    @include center-element;
+    width: 60%;
+    animation: growFromCenter 1s ease-out;
+
+  }
+
+  &__signup-box {
+    background-image: linear-gradient(105deg, 
+    rgba(black, .6) 0%,
+    rgba(black, .6) 50%,
+    transparent 50%),
+    url(./images/attpark.jpeg);
+    background-size: cover;
+    opacity: .9;
+    border-radius: 1rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
+    position: relative;
+    &--form {
+      width: 50%;
+      padding: 6rem;
+    }
+  }
+  
+}

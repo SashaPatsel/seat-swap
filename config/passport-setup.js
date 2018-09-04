@@ -116,7 +116,7 @@ passport.use('local-signin', new LocalStrategy({
     }
 ));
 
-//passport config for google signin
+// passport config for google signin
 passport.use(new GoogleStrategy({
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
@@ -163,7 +163,7 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-//passport config for facebook signin
+// passport config for facebook signin
 passport.use(new FacebookStrategy({
     clientID: keys.facebook.appID,
     clientSecret: keys.facebook.appSecret,

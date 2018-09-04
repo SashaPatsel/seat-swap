@@ -1,0 +1,10 @@
+
+.header {
+
+
+  
+  &__text-box {
+    @include center-right-top-element;
+    width: 33%;
+  }
+}

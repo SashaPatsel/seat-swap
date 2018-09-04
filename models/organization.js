@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         Organization.hasMany(models.Ticket);
         Organization.hasMany(models.Subscription);
         Organization.hasMany(models.Teamfeed);
+        Organization.hasMany(models.Watcher);
     }
     return Organization;
 };

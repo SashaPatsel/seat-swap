@@ -1,0 +1,172 @@
+.landing {
+  &-about {
+  margin: 30rem 0 15rem 0;
+  position: relative;
+
+    &__heading {
+      position: absolute;
+      top: -25rem;
+      left: 50%;
+      transform: translate(-50%);
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 2rem;
+      font-size: 15rem;
+      width: 65%;
+      text-align: center;
+      text-shadow: 0 2rem 1rem rgba(0,0,0,.8);
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    &__card-text {
+      // text-align: center;
+      text-transform: uppercase;
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+}
+
+.intro {
+    
+  height: 80rem;
+  width: 100vw;
+  position: relative;
+  z-index: 5;
+
+  
+//HEADINGS
+
+  &__heading--main {
+    position: absolute;
+    left: 50%;
+    top:5%;
+    z-index: 5;
+    text-transform: uppercase;
+    font-size: 8rem;
+    transform: translateX(-50%);
+    letter-spacing: 2.6rem;
+    color: white;
+  }
+
+  &__heading--sub {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    z-index: 5;
+    color: orange;
+    font-size:5rem;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    letter-spacing: 1rem;
+
+    text-shadow: -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+
+  //IMAGES
+  &__heroes {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    
+
+      &-1 {
+        left: 0;
+        clip-path: polygon(0 0, 80% 0, 65% 100%, 0 100%);
+        z-index: 3;
+        filter: brightness(70%);
+      }
+
+      &-2 {
+        left: 26%;
+        clip-path: polygon(10% 0, 100% 0, 80% 100%, 0 100%);
+        z-index: 2;
+        width: 45%;
+        filter: brightness(70%);
+        
+      }
+
+      &-3 {
+        left: 60%;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+        z-index: 1;
+        filter: brightness(70%);
+      }
+  }
+
+
+//AUTHENTICATION
+  &__auth-container--local {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    z-index: 8;
+    
+  }
+
+  &__login-link {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    border-bottom: solid 3px white;
+    padding-bottom: 1rem;
+    color: white;
+    text-decoration: none;
+
+  }
+
+  &__oauth {
+    margin-top: 1rem;
+
+      &--or {
+        font-size: 1.5rem;
+        color: white; 
+      } 
+  }
+
+
+  //Parallax
+  &__parallax {
+    position: fixed;
+    z-index:0;
+    background-image: url("https://images.unsplash.com/photo-1470755711115-961e80ee0284?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=17792efb947bf0488c16d979db79eff5&auto=format&fit=crop&w=1950&q=80");
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+  }
+
+  &__scroll {
+    color: white;
+
+    border: solid white 2px;
+    border-radius: 30px;
+    padding: 12px 5px 5px 5px;
+    font-size: 26px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+
+    &-contain {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translate(-50%);
+      z-index: 200;
+    }
+  
+    &:hover {
+      background: linear-gradient(to bottom, $color-secondary, $color-primary-light);
+      color: black;
+    }
+  }
+
+}
+
+

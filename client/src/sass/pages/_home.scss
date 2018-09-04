@@ -1,0 +1,79 @@
+
+
+
+
+#exchange-button {
+ margin-top: 1%;
+ background-color: $color-primary;
+ color: white;
+ border-radius: 15px;
+}
+
+#add-button {
+  margin-top: 1%;
+  margin-left: 1%;
+  background-color: $color-primary;
+  color: white;
+  border-radius: 15px;
+ }
+
+#trade-offers {
+  margin: .5%;
+}
+.myAvail {
+  font-size: 2em;
+  text-align: left;
+}
+
+
+
+.list-group-item {
+  border: black solid 2px;
+  margin: 3px;
+}
+
+.offerButton:hover {
+  color: $color-primary;
+}
+
+.offerButton {
+  position: relative;
+  float: right;
+  margin: 1%;
+}
+
+.listItemOfferTitle {
+  position: relative;
+  color: #25274d;
+  bottom: 1em;
+  text-align: center;
+}
+
+
+
+.delete-watcher {
+  color: white;
+  background-color: $color-primary;
+  border: solid 1.5px black;
+  height: 28px;
+  float: right;
+}
+
+.TOButton {
+  position: relative;
+  right: -75%;
+  background-color: $color-primary;
+  padding: .3em;
+  color: white;
+  border: solid 1.5px black;
+}
+
+.watchInstruct {
+  font-size: 1.6em;
+}
+
+.watcher-date {
+  float: left;
+  position: relative;
+}
+

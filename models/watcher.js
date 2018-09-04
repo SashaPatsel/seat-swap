@@ -13,6 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     Watcher.associate = function(models) {
 
         Watcher.belongsTo(models.Organization);
+        Watcher.belongsTo(models.User);
+        Watcher.hasMany(models.Match);
     };
     return Watcher;
 };
