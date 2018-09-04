@@ -18,6 +18,7 @@ const Nav = () => (
         <NavIcon icon="fa-envelope" label="Offers for my Tickets" destination="/offers"/>
         <NavIcon icon="fa-sign-out-alt" label="Sign Out" destination="/logout"/>
       </div>  
+      
         
         {/* <ul className="nav navbar-nav navbar-right">
             <li className="dropdown">
