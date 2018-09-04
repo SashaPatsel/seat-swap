@@ -52,33 +52,33 @@ router.post("/signin", (req, res, next) => {
   }) (req, res, next);
 });
 
-// //auth with google
-// router.get("/google",
-//     passport.authenticate("google", {
-//         scope: ["profile", "email"]
-//     })
-// );
+//auth with google
+router.get("/google",
+    passport.authenticate("google", {
+        scope: ["profile", "email"]
+    })
+);
 
-// //auth google callback
-// router.get("/google/callback", passport.authenticate('google'), function(req, res) {
-//     res.cookie("user_id", req.user.dataValues.id);
-//     res.cookie("user_name", req.user.dataValues.userName);
-//     return res.redirect("/");
-// });
+//auth google callback
+router.get("/google/callback", passport.authenticate('google'), function(req, res) {
+    res.cookie("user_id", req.user.dataValues.id);
+    res.cookie("user_name", req.user.dataValues.userName);
+    return res.redirect("/");
+});
 
-//auth with facebook
-// router.get("/facebook",
-//     passport.authenticate("facebook", {
-//         scope: ["public_profile", "email"]
-//     })
-// );
+auth with facebook
+router.get("/facebook",
+    passport.authenticate("facebook", {
+        scope: ["public_profile", "email"]
+    })
+);
 
-// //auth facebook callback
-// router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
-//     res.cookie("user_id", req.user.dataValues.id);
-//     res.cookie("user_name", req.user.dataValues.userName);
-//     return res.redirect("/");
+//auth facebook callback
+router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
+    res.cookie("user_id", req.user.dataValues.id);
+    res.cookie("user_name", req.user.dataValues.userName);
+    return res.redirect("/");
 
-// });
+});
 
 module.exports = router;
