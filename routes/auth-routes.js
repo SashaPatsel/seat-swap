@@ -67,18 +67,18 @@ router.post("/signin", (req, res, next) => {
 // });
 
 //auth with facebook
-router.get("/facebook",
-    passport.authenticate("facebook", {
-        scope: ["public_profile", "email"]
-    })
-);
+// router.get("/facebook",
+//     passport.authenticate("facebook", {
+//         scope: ["public_profile", "email"]
+//     })
+// );
 
-//auth facebook callback
-router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
-    res.cookie("user_id", req.user.dataValues.id);
-    res.cookie("user_name", req.user.dataValues.userName);
-    return res.redirect("/");
+// //auth facebook callback
+// router.get("/facebook/callback", passport.authenticate('facebook'), function(req, res) {
+//     res.cookie("user_id", req.user.dataValues.id);
+//     res.cookie("user_name", req.user.dataValues.userName);
+//     return res.redirect("/");
 
-});
+// });
 
 module.exports = router;

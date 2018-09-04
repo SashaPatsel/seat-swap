@@ -164,49 +164,49 @@ passport.use('local-signin', new LocalStrategy({
 // ));
 
 //passport config for facebook signin
-passport.use(new FacebookStrategy({
-    clientID: keys.facebook.appID,
-    clientSecret: keys.facebook.appSecret,
-    callbackURL: "/auth/facebook/callback",
-    profileFields: ["id", "displayName", "email", "first_name", "last_name"]
-}, function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    console.log("ID: " + profile.id);
-    console.log("Display name: " + profile.displayName);
-    console.log("fb passport callback");
+// passport.use(new FacebookStrategy({
+//     clientID: keys.facebook.appID,
+//     clientSecret: keys.facebook.appSecret,
+//     callbackURL: "/auth/facebook/callback",
+//     profileFields: ["id", "displayName", "email", "first_name", "last_name"]
+// }, function(accessToken, refreshToken, profile, done) {
+//     console.log(profile);
+//     console.log("ID: " + profile.id);
+//     console.log("Display name: " + profile.displayName);
+//     console.log("fb passport callback");
 
 
-    process.nextTick(function() {
-        db.User.findOne({
-            where: {
-                socialID: profile.id
-            }
-        }).then(function(user) {
-            if (user) {
-                console.log('signupMessage', 'That email is already taken.');
-                return done(null, user);
-            } else {
-                db.User.create({
-                    userName: profile.displayName,
-                    firstName: profile.name.givenName,
-                    lastName: profile.name.familyName,
-                    email: profile.emails[0].value,
-                    authMethod: "facebook",
-                    socialID: profile.id
+//     process.nextTick(function() {
+//         db.User.findOne({
+//             where: {
+//                 socialID: profile.id
+//             }
+//         }).then(function(user) {
+//             if (user) {
+//                 console.log('signupMessage', 'That email is already taken.');
+//                 return done(null, user);
+//             } else {
+//                 db.User.create({
+//                     userName: profile.displayName,
+//                     firstName: profile.name.givenName,
+//                     lastName: profile.name.familyName,
+//                     email: profile.emails[0].value,
+//                     authMethod: "facebook",
+//                     socialID: profile.id
 
-                }).then(function(dbUser, created) {
-                    if (!dbUser) {
-                        return done(null, false);
-                    } else {
-                        console.log(dbUser.dataValues);
-                        return done(null, dbUser);
-                    }
-                })
-            }
-        })
-    });
+//                 }).then(function(dbUser, created) {
+//                     if (!dbUser) {
+//                         return done(null, false);
+//                     } else {
+//                         console.log(dbUser.dataValues);
+//                         return done(null, dbUser);
+//                     }
+//                 })
+//             }
+//         })
+//     });
 
-}));
+// }));
 
 //generate hash for password
 function generateHash(password) {
