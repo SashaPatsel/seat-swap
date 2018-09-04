@@ -1,7 +1,7 @@
 require("dotenv").config();
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
-var GoogleStrategy = require("passport-google-oauth20");
+// var GoogleStrategy = require("passport-google-oauth20");
 var FacebookStrategy = require("passport-facebook");
 var keys = require("../keys.js");
 var db = require("../models");
@@ -117,51 +117,51 @@ passport.use('local-signin', new LocalStrategy({
 ));
 
 //passport config for google signin
-passport.use(new GoogleStrategy({
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret,
-        callbackURL: "/auth/google/callback"
-    }, function(accessToken, refreshToken, profile, done) {
-        console.log("Email" + profile.emails[0].value);
-        console.log("ID: " + profile.id);
-        console.log("Display name: " + profile.displayName);
-        console.log("given name" + profile.name.givenName);
-        console.log("google passport callback");
+// passport.use(new GoogleStrategy({
+//         clientID: keys.google.clientID,
+//         clientSecret: keys.google.clientSecret,
+//         callbackURL: "/auth/google/callback"
+//     }, function(accessToken, refreshToken, profile, done) {
+//         console.log("Email" + profile.emails[0].value);
+//         console.log("ID: " + profile.id);
+//         console.log("Display name: " + profile.displayName);
+//         console.log("given name" + profile.name.givenName);
+//         console.log("google passport callback");
 
-        //done(null, { id: profile.id });
-        process.nextTick(function() {
-            db.User.findOne({
-                where: {
-                    socialID: profile.id
-                }
-            }).then(function(user) {
-                if (user) {
-                    console.log('Already signed in.');
-                    return done(null, user);
-                } else {
-                    db.User.create({
-                        userName: profile.displayName,
-                        firstName: profile.name.givenName,
-                        lastName: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        authMethod: "google",
-                        socialID: profile.id
+//         //done(null, { id: profile.id });
+//         process.nextTick(function() {
+//             db.User.findOne({
+//                 where: {
+//                     socialID: profile.id
+//                 }
+//             }).then(function(user) {
+//                 if (user) {
+//                     console.log('Already signed in.');
+//                     return done(null, user);
+//                 } else {
+//                     db.User.create({
+//                         userName: profile.displayName,
+//                         firstName: profile.name.givenName,
+//                         lastName: profile.name.familyName,
+//                         email: profile.emails[0].value,
+//                         authMethod: "google",
+//                         socialID: profile.id
 
-                    }).then(function(dbUser, created) {
-                        if (!dbUser) {
-                            return done(null, false);
-                        } else {
-                            console.log(dbUser.dataValues);
-                            return done(null, dbUser);
-                        }
-                    })
-                }
+//                     }).then(function(dbUser, created) {
+//                         if (!dbUser) {
+//                             return done(null, false);
+//                         } else {
+//                             console.log(dbUser.dataValues);
+//                             return done(null, dbUser);
+//                         }
+//                     })
+//                 }
 
 
-            })
-        });
-    }
-));
+//             })
+//         });
+//     }
+// ));
 
 //passport config for facebook signin
 passport.use(new FacebookStrategy({
