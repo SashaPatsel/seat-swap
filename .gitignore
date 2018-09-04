@@ -53,7 +53,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+
 
 # MAC filefinder cache
 .DS_Store
@@ -65,8 +65,4 @@ typings/
 /build
 
 # misc
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 notes.txt
