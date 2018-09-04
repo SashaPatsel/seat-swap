@@ -57,7 +57,7 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <form className="form" onClick={this.handleFormSubmit}>
+        <form className="form" onSubmit={this.handleFormSubmit}>
           <Input
             value={this.state.email}
             name="email"
