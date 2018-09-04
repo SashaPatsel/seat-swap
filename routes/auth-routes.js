@@ -66,7 +66,7 @@ router.get("/google/callback", passport.authenticate('google'), function(req, re
     return res.redirect("/");
 });
 
-auth with facebook
+// auth with facebook
 router.get("/facebook",
     passport.authenticate("facebook", {
         scope: ["public_profile", "email"]
